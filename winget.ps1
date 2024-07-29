@@ -2,8 +2,9 @@
 $ProgressPreference = 'Continue'
 $VerbosePreference = 'Continue'
 
-# İndirme dizini ayarla
-$downloadPath = "$env:USERPROFILE\Downloads\WinGetInstall"
+# Windows geçici dizin yolunu al
+$tempPath = [System.IO.Path]::GetTempPath()
+$downloadPath = Join-Path -Path $tempPath -ChildPath 'WinGetInstall'
 
 # İndirme dizini varsa temizle, yoksa oluştur
 if (Test-Path $downloadPath) {
@@ -11,7 +12,7 @@ if (Test-Path $downloadPath) {
     Remove-Item -Path $downloadPath -Recurse -Force
 }
 Write-Host "Creating download directory $downloadPath..."
-New-Item -Path $downloadPath -ItemType Directory
+New-Item -Path $downloadPath -ItemType Directory -Force
 
 # Bilgilendirme mesajını gösterir
 Write-Host "Downloading WinGet and its dependencies to $downloadPath..."
