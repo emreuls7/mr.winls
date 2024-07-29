@@ -72,9 +72,16 @@ function Handle-Choice {
         22 { Download-And-Execute-Script -Url "https://raw.githubusercontent.com/emreuls7/mr.winls/menu/menu22.cmd" }
         31 { Download-And-Execute-Script -Url "https://raw.githubusercontent.com/emreuls7/mr.winls/menu/menu31.cmd" }
         32 { Download-And-Execute-Script -Url "https://raw.githubusercontent.com/emreuls7/mr.winls/menu/menu32.cmd" }
-        41 { Download-And-Execute-Script -Url "https://raw.githubusercontent.com/emreuls7/mr.winls/tool/winget.ps1" }
-        42 { Download-And-Execute-Script -Url "https://raw.githubusercontent.com/emreuls7/mr.winls/tool/chocolatey.ps1" }
-        
+        41 { 
+            $url = "https://raw.githubusercontent.com/emreuls7/mr.winls/tool/winget.ps1"
+            $scriptContent = (Invoke-WebRequest -Uri $url).Content
+            Invoke-Expression $scriptContent
+        }
+        42 { 
+            $url = "https://raw.githubusercontent.com/emreuls7/mr.winls/tool/chocolatey.ps1"
+            $scriptContent = (Invoke-WebRequest -Uri $url).Content
+            Invoke-Expression $scriptContent
+        }
         88 { 
             # Güvenlik protokolünü TLS 1.2 olarak ayarla
             [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
