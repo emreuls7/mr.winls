@@ -106,7 +106,8 @@ function Handle-Choice {
         }
         99 { 
             Write-Host "You chose Microsoft Activation Scripts (MAS)."                                                                    -ForegroundColor Cyan
-            Start-Process powershell.exe -ArgumentList "irm https://massgrave.dev/get | iex" -Verb RunAs
+            #Start-Process "irm https://massgrave.dev/get | iex" -Verb RunAs
+            [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; Invoke-RestMethod -Uri "https://massgrave.dev/get" | Invoke-Expression
         }
         0 { 
             # Clear the screen
