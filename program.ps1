@@ -18,8 +18,8 @@ function Show-Menu {
     Write-Host "------------------------------------------------------------------------------------------------------------------------" -ForegroundColor Green
     Write-Host "[90] *** Standard PC Install All in One ***        [91] Winget + Chocolatey Upgrade                                     " -ForegroundColor DarkRed
     Write-Host "------------------------------------------------------------------------------------------------------------------------" -ForegroundColor Green
-    Write-Host "[98] Windows Utility (winutil)                                                                                          " -ForegroundColor DarkGray
-    Write-Host "[99] Microsoft Activation Scripts (MAS)                                                                                 " -ForegroundColor DarkGray
+    Write-Host "[98] Windows Utility (winutil)                     [99] Microsoft Activation Scripts (MAS)                              " -ForegroundColor DarkGray
+    Write-Host "[88] Deneme                                                                                                             " -ForegroundColor DarkGray
     Write-Host "------------------------------------------------------------------------------------------------------------------------" -ForegroundColor Green
     Write-Host "[0] Exit                                                                                                                " -ForegroundColor Red
     Write-Host "------------------------------------------------------------------------------------------------------------------------" -ForegroundColor Green
@@ -72,9 +72,28 @@ function Handle-Choice {
         22 { Download-And-Execute-Script -Url "https://raw.githubusercontent.com/emreuls7/mr.winls/menu/menu22.cmd" }
         31 { Download-And-Execute-Script -Url "https://raw.githubusercontent.com/emreuls7/mr.winls/menu/menu31.cmd" }
         32 { Download-And-Execute-Script -Url "https://raw.githubusercontent.com/emreuls7/mr.winls/menu/menu32.cmd" }
-        41 { Download-And-Execute-Script -Url "https://raw.githubusercontent.com/emreuls7/public/other/winget" }
-        42 { Download-And-Execute-Script -Url "https://raw.githubusercontent.com/emreuls7/public/other/chocolatey" }
+        41 { Download-And-Execute-Script -Url "https://raw.githubusercontent.com/emreuls7/mr.winls/tool/winget.ps1" }
+        42 { Download-And-Execute-Script -Url "https://raw.githubusercontent.com/emreuls7/mr.winls/tool/chocolatey.ps1" }
+        
+        88 { 
+            # Güvenlik protokolünü TLS 1.2 olarak ayarla
+            [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 
+            # Script'in URL'sini tanımla
+            $scriptUrl = "https://raw.githubusercontent.com/massgravel/Microsoft-Activation-Scripts/0884271c4fcdc72d95bce7c5c7bdf77ef4a9bcef/MAS/All-In-One-Version/MAS_AIO-CRC32_31F7FD1E.cmd"
+
+            # Script'in kaydedileceği yolu tanımla
+            $scriptPath = "$env:TEMP\MAS_AIO-CRC32_31F7FD1E.cmd"
+
+            # Script'i indir
+            Invoke-WebRequest -Uri $scriptUrl -OutFile $scriptPath
+
+            # İsteğe bağlı olarak indirilen script'in içeriğini görüntüle
+            # Get-Content $scriptPath | Out-Host
+
+            # Script'i çalıştır
+            Invoke-Expression -Command "& `$scriptPath"
+        }
         90 { Download-And-Execute-Script -Url "https://raw.githubusercontent.com/emreuls7/mr.winls/menu/menu90.cmd" }
 
         91 { winget upgrade --all; choco upgrade chocolatey -y; choco upgrade all -y }
