@@ -14,18 +14,18 @@ echo [5]  'winget' Lightshot
 echo [6]  'winget' Winget UI                                                
 echo [7]  'winget' Java 8                                                
 echo [8]  'winget' Free Download Manager                                                 
-echo [9]  "choco"  qBittorrent                                                    
-echo [10] "choco"  UniFi Network Application                                                  
+echo [9]  'choco'  qBittorrent                                                    
+echo [10] 'choco'  UniFi Network Application                                                  
 echo [11] 'winget' Termius                                             
-echo [12] "choco"  FileZilla Server                             
+echo [12] 'choco'  FileZilla Server                             
 echo [13] 'winget' inZip                                                   
 echo [14] 'winget' Notion                                           
 echo [15] 'winget' FL Studio                           
 echo [16] 'winget' NDI 6 Tools                                              
 echo [17] 'winget' NDI 6 Runtime                                 
 echo [18] 'winget' Xtreme Download Manager
-echo [19] {msstore} MSI Center 
-echo [20] {msstore} MSI Driver App Center 
+echo [19] 'msstore' MSI Center 
+echo [20] 'msstore' MSI Driver App Center 
 echo [21] 'winget' CPUID CPU-Z MSI
 echo [22] 'winget' MSI Afterburner
 echo [23] 'winget' ASUS ArmouryCrate
