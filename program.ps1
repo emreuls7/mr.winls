@@ -73,16 +73,26 @@ function Handle-Choice {
         31 { Download-And-Execute-Script -Url "https://raw.githubusercontent.com/emreuls7/mr.winls/menu/menu31.cmd" }
         32 { Download-And-Execute-Script -Url "https://raw.githubusercontent.com/emreuls7/mr.winls/menu/menu32.cmd" }
         41 { 
-            $url = "https://raw.githubusercontent.com/emreuls7/mr.winls/tool/winget.ps1"
-            $scriptContent = (Invoke-WebRequest -Uri $url).Content
-            Invoke-Expression $scriptContent
+            Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/emreuls7/mr.winls/tool/winget.ps1").Content
         }
         42 { 
-            $url = "https://raw.githubusercontent.com/emreuls7/mr.winls/tool/chocolatey.ps1"
+            Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/emreuls7/mr.winls/tool/chocolatey.ps1").Content
+        }
+        88 { 
+            
+        }
+        90 { Download-And-Execute-Script -Url "https://raw.githubusercontent.com/emreuls7/mr.winls/menu/menu90.cmd" }
+
+        91 { winget upgrade --all; choco upgrade chocolatey -y; choco upgrade all -y }
+
+        98 { 
+            Write-Host "You chose Windows Utility (winutil)."                                                                             -ForegroundColor Cyan
+            $url = "https://raw.githubusercontent.com/ChrisTitusTech/winutil/main/winutil.ps1"
             $scriptContent = (Invoke-WebRequest -Uri $url).Content
             Invoke-Expression $scriptContent
         }
-        88 { 
+        99 { 
+            Write-Host "You chose Microsoft Activation Scripts (MAS)."                                                                    -ForegroundColor Cyan
             # Güvenlik protokolünü TLS 1.2 olarak ayarla
             [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 
@@ -100,21 +110,6 @@ function Handle-Choice {
 
             # Script'i çalıştır
             Invoke-Expression -Command "& `$scriptPath"
-        }
-        90 { Download-And-Execute-Script -Url "https://raw.githubusercontent.com/emreuls7/mr.winls/menu/menu90.cmd" }
-
-        91 { winget upgrade --all; choco upgrade chocolatey -y; choco upgrade all -y }
-
-        98 { 
-            Write-Host "You chose Windows Utility (winutil)."                                                                             -ForegroundColor Cyan
-            $url = "https://raw.githubusercontent.com/ChrisTitusTech/winutil/main/winutil.ps1"
-            $scriptContent = (Invoke-WebRequest -Uri $url).Content
-            Invoke-Expression $scriptContent
-        }
-        99 { 
-            Write-Host "You chose Microsoft Activation Scripts (MAS)."                                                                    -ForegroundColor Cyan
-            #Start-Process "irm https://massgrave.dev/get | iex" -Verb RunAs
-            [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; Invoke-RestMethod -Uri "https://massgrave.dev/get" | Invoke-Expression
         }
         0 { 
             # Clear the screen
