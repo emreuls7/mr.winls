@@ -5,7 +5,6 @@ REM This batch file should be run with administrator privileges.
 :: Check if running as administrator
 
 net session >nul 2>&1
-
 if %errorLevel% neq 0 (
     echo You need to run this script as an administrator.
     pause
