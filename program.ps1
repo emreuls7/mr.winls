@@ -13,7 +13,7 @@ function Show-Menu {
     Write-Host "[11] Microsoft Program Install                     [21] * Windows Fixed *                                               " -ForegroundColor Yellow                    
     Write-Host "[12] Microsoft .NET Install                        [22] * Microsoft Fixed *                                             " -ForegroundColor Yellow
     Write-Host "------------------------------------------------------------------------------------------------------------------------" -ForegroundColor Green
-    Write-Host "[31] Setup Program Install ISO + EXE               [41] *** Winget Install  ***                                         " -ForegroundColor Blue
+    Write-Host "[31] Setup Program Install ISO + EXE               [41] *** Winget Install ***                                          " -ForegroundColor Blue
     Write-Host "[32] Setup Microsoft Office Install EXE            [42] *** Chocolatey Install ***                                      " -ForegroundColor Blue
     Write-Host "------------------------------------------------------------------------------------------------------------------------" -ForegroundColor Green
     Write-Host "[90] *** Standard PC Install All in One ***        [91] Winget + Chocolatey Upgrade                                     " -ForegroundColor DarkRed
@@ -73,9 +73,11 @@ function Handle-Choice {
         31 { Download-And-Execute-Script -Url "https://raw.githubusercontent.com/emreuls7/mr.winls/menu/menu31.cmd" }
         32 { Download-And-Execute-Script -Url "https://raw.githubusercontent.com/emreuls7/mr.winls/menu/menu32.cmd" }
         41 { 
+            Write-Host "*** Winget Install ***."
             Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/emreuls7/mr.winls/tool/winget.ps1").Content
         }
         42 { 
+            Write-Host "*** Chocolatey Install ***."
             Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/emreuls7/mr.winls/tool/chocolatey.ps1").Content
         }
         88 { 
@@ -87,9 +89,7 @@ function Handle-Choice {
 
         98 { 
             Write-Host "You chose Windows Utility (winutil)."                                                                             -ForegroundColor Cyan
-            $url = "https://raw.githubusercontent.com/ChrisTitusTech/winutil/main/winutil.ps1"
-            $scriptContent = (Invoke-WebRequest -Uri $url).Content
-            Invoke-Expression $scriptContent
+            Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/ChrisTitusTech/winutil/main/winutil.ps1").Content
         }
         99 { 
             Write-Host "You chose Microsoft Activation Scripts (MAS)."                                                                    -ForegroundColor Cyan
