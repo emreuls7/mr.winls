@@ -5,18 +5,18 @@ cls
 echo ------------------------------------------------------------------------------------------------------------------------
 echo --- menu_01                          --- *** Program Installer *** ---                             CREATED BY MRLSx7 ---
 echo ------------------------------------------------------------------------------------------------------------------------
-echo [1]  PuTTY (winget)                                 [21] *OBS Studio (winget) + Teleport (18.2-copy) *
-echo [2]  WinSCP (choco)                                 [22] **WinRar (winget) + Key (18.2-copy)**
-echo [3]  *Notepad++ (winget)                            [23] Any To ISO (choco) + Key (18.2-copy)
-echo [4]  FileZilla Client (choco)                       [24] Revo Uninstaller Pro (winget) + Key (18.2-copy)
-echo [5]  QuickLook (winget)                             [25] AOMEI Partitio Assistant (winget) + Key (18.2-copy)
-echo [6]  *Advanced IP Scanner (winget)                  [26] Internet Download Manager (winget) + Activation Script (url)
-echo [7]  Advanced Port Scan (choco)                   
-echo [8]  DeepL (winget)                             
-echo [9]  Adobe Acrobat Reader (winget)                                  
-echo [10] Cute PDF Writer (winget)                                   
-echo [11] File Converter (winget)
-echo [12] Mozilla Thunderbird (winget)
+echo [1]  'winget' PuTTY                                [21] 'winget' *OBS Studio*
+echo [2]  'choco'  WinSCP                               [22] 'winget' ***WinRar***
+echo [3]  'winget' *Notepad++                           [23] 'choco'  Any To ISO
+echo [4]  'choco'  FileZilla Client                     [24] 'winget' Revo Uninstaller Pro
+echo [5]  'winget' QuickLook 'winget'                   [25] 'winget' AOMEI Partitio Assistant
+echo [6]  'winget' *Advanced IP Scanner                 [26] 'winget' Internet Download Manager
+echo [7]  'choco'  Advanced Port Scan                   [27] OBS Studio Teleport (18.2-copy)   
+echo [8]  'winget' DeepL                                [28] WinRar Key (18.2-copy)
+echo [9]  'winget' Adobe Acrobat Reader                 [29] Revo Uninstaller Pro Key (18.2-copy)                 
+echo [10] 'winget' Cute PDF Writer                      [30] AOMEI Partitio Assistant Pro Key (18.2-copy)            
+echo [11] 'winget' File Converter                       [31] Internet Download Manager Activation Script
+echo [12] 'winget' Mozilla Thunderbird 
 echo ------------------------------------------------------------------------------------------------------------------------
 echo [31] iTop Easy Desktop (msstore)
 echo [32] Rufus (msstore)
@@ -63,124 +63,21 @@ if %errorlevel% equ 0 (
 )
 ::RUFUS msstore 9PC3H3V7Q9CH
 ::---------------------------------------------------------------------------------------------------------------------------
-if "%choice%"=="21" goto install_obs
-if "%choice%"=="22" goto winrar
-if "%choice%"=="23" goto anytoiso
-if "%choice%"=="24" goto revounis
-if "%choice%"=="25" goto aomeipart
-if "%choice%"=="26" goto idm
+if "%choice%"=="21" winget install OBSProject.OBSStudio -e
+if "%choice%"=="22" winget install RARLab.WinRAR -e
+if "%choice%"=="23" choco install anytoiso -y
+if "%choice%"=="24" winget install RevoUninstaller.RevoUninstallerPro -e
+if "%choice%"=="25" winget install AOMEI.PartitionAssistant -e
+if "%choice%"=="26" winget install Tonec.InternetDownloadManager -e
+if "%choice%"=="27" robocopy "\\192.168.18.2\setup\source\key-crack+\obs-teleport" "C:\Program Files\obs-studio\obs-plugins\64bit" obs-teleport.dll /IS
+if "%choice%"=="28" robocopy "\\192.168.18.2\setup\source\setup\AnyToISO\AnyToISOcrack" "C:\Program Files (x86)\AnyToISO" anytoiso.exe /IS
+if "%choice%"=="29" robocopy "\\192.168.18.2\setup\source\key-crack+\Revo_Uninstaller_Pro" "C:\ProgramData\VS Revo Group\Revo Uninstaller Pro" revouninstallerpro5.lic /IS
+if "%choice%"=="30" robocopy "\\192.168.18.2\setup\source\key-crack+\AOMEI_Partition_Assistant_Pro" "C:\Program Files (x86)\AOMEI Partition Assistant" cfg.ini /IS
+if "%choice%"=="31" powershell -command "irm https://massgrave.dev/ias | iex"
 ::---------------------------------------------------------------------------------------------------------------------------
 if "%choice%"=="0" exit
 ::---------------------------------------------------------------------------------------------------------------------------
 ::pause
-goto menu_01
-::---------------------------------------------------------------------------------------------------------------------------
-::---------------------------------------------------------------------------------------------------------------------------
-:install_obs
-cls
-winget install OBSProject.OBSStudio -e
-pause
-echo ----------------------
-echo OBS Teleport install ? (Yes(Y) / No(N)):
-set /p answer=
-if /i "%answer%"=="Y" goto Y
-if /i "%answer%"=="N" goto N
-
-:Y
-robocopy "\\192.168.18.2\setup\source\key-crack+\obs-teleport" "C:\Program Files\obs-studio\obs-plugins\64bit" obs-teleport.dll /IS
-echo ----------------------
-goto menu_01
-
-:N
-goto menu_01
-::---------------------------------------------------------------------------------------------------------------------------
-:winrar
-cls
-winget install RARLab.WinRAR -e
-echo ----------------------
-echo Winrar Key install? (Yes(Y) / No(N)):
-set /p answer=
-if /i "%answer%"=="Y" goto Y
-if /i "%answer%"=="N" goto N
-
-:Y
-robocopy "\\192.168.18.2\setup\source\key-crack+\WinRAR" "C:\Program Files\WinRAR" rarreg.key /IS
-echo ----------------------
-goto menu_01
-
-:N
-goto menu_01
-::---------------------------------------------------------------------------------------------------------------------------
-:anytoiso
-cls
-choco install anytoiso -y
-::winget install CrystalIDEASoftware.AnyToISO -e
-::start /wait "" "\\192.168.18.2\setup\source\setup\AnyToISO\AnyToISO3.9.6.exe" /S
-echo ----------------------
-echo AnyToISO Pro Key install? (Yes(Y) / No(N)):
-set /p answer=
-if /i "%answer%"=="Y" goto Y
-if /i "%answer%"=="N" goto N
-
-:Y
-robocopy "\\192.168.18.2\setup\source\setup\AnyToISO\AnyToISOcrack" "C:\Program Files (x86)\AnyToISO" anytoiso.exe /IS
-echo ----------------------
-goto menu_01
-
-:N
-goto menu_01
-::---------------------------------------------------------------------------------------------------------------------------
-:revounis
-cls
-winget install RevoUninstaller.RevoUninstallerPro -e
-echo ----------------------
-echo RevoUninstaller Pro *Key* install? (Yes(Y) / No(N)):
-set /p answer=
-if /i "%answer%"=="Y" goto Y
-if /i "%answer%"=="N" goto N
-
-:Y
-robocopy "\\192.168.18.2\setup\source\key-crack+\Revo_Uninstaller_Pro" "C:\ProgramData\VS Revo Group\Revo Uninstaller Pro" revouninstallerpro5.lic /IS
-echo ----------------------
-goto menu_01
-
-:N
-goto menu_01
-::---------------------------------------------------------------------------------------------------------------------------
-:aomeipart
-cls
-::choco install partition-assistant-standard -y
-winget install AOMEI.PartitionAssistant -e
-echo ----------------------
-echo Do you want to *Key* install it on your computer? (Yes(Y) / No(N)):
-set /p answer=
-if /i "%answer%"=="Y" goto Y
-if /i "%answer%"=="N" goto N
-
-:Y
-robocopy "\\192.168.18.2\setup\source\key-crack+\AOMEI_Partition_Assistant_Pro" "C:\Program Files (x86)\AOMEI Partition Assistant" cfg.ini /IS
-echo ----------------------
-goto menu_01
-
-:N
-goto menu_01
-::---------------------------------------------------------------------------------------------------------------------------
-:idm
-cls
-winget install Tonec.InternetDownloadManager -e
-echo ----------------------
-echo Do you want to open it on your computer? (Yes(Y) / No(N)):
-set /p answer=
-if /i "%answer%"=="Y" goto Y
-if /i "%answer%"=="N" goto N
-
-:Y
-powershell -command "irm https://massgrave.dev/ias | iex"
-echo completed.
-echo ----------------------
-goto menu_01
-
-:N
 goto menu_01
 ::---------------------------------------------------------------------------------------------------------------------------
 ::---------------------------------------------------------------------------------------------------------------------------
