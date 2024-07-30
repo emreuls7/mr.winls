@@ -54,7 +54,7 @@ function Handle-Choice {
     )
     
     switch ($Choice) {
-        1 { Download-And-Execute-Script -Url "https://raw.githubusercontent.com/emreuls7/mr.winls/menu/menu01.cmd" }
+        1 { Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/emreuls7/mr.winls/menu/menu01.ps1").Content }
         2 { Download-And-Execute-Script -Url "https://raw.githubusercontent.com/emreuls7/mr.winls/menu/menu02.cmd" }
         3 { Download-And-Execute-Script -Url "https://raw.githubusercontent.com/emreuls7/mr.winls/menu/menu03.cmd" }
         4 { Download-And-Execute-Script -Url "https://raw.githubusercontent.com/emreuls7/mr.winls/menu/menu04.cmd" }
