@@ -5,7 +5,7 @@ $ErrorActionPreference = "Stop"
 [Net.ServicePointManager]::SecurityProtocol = [Net.ServicePointManager]::SecurityProtocol -bor [Net.SecurityProtocolType]::Tls12
 
 $DownloadURL = 'https://raw.githubusercontent.com/emreuls7/mr.winls/tool/ias.cmd'
-$DownloadURL2 = 'https://raw.githubusercontent.com/emreuls7/mr.winls/tool/ias.cmd'
+$DownloadURL2 = 'https://raw.githubusercontent.com/emreuls7/mr.winls/tool/ias.cmd'  # Change this URL if you have an alternative
 
 $rand = Get-Random -Maximum 99999999
 $isAdmin = [bool]([Security.Principal.WindowsIdentity]::GetCurrent().Groups -match 'S-1-5-32-544')
@@ -18,12 +18,14 @@ catch {
     $response = Invoke-WebRequest -Uri $DownloadURL2 -UseBasicParsing
 }
 
-$ScriptArgs = "$args "
+$ScriptArgs = "$args"
 $prefix = "@REM $rand `r`n"
-$content = $prefix + $response
+$content = $prefix + $response.Content
 Set-Content -Path $FilePath -Value $content
 
-Start-Process $FilePath $ScriptArgs -Wait
+Start-Process -FilePath $FilePath -ArgumentList $ScriptArgs -Wait
 
 $FilePaths = @("$env:TEMP\IAS*.cmd", "$env:SystemRoot\Temp\IAS*.cmd")
-foreach ($FilePath in $FilePaths) { Get-Item $FilePath | Remove-Item }
+foreach ($Path in $FilePaths) {
+    Get-ChildItem -Path $Path -ErrorAction SilentlyContinue | Remove-Item -Force
+}
