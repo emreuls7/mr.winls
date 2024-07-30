@@ -8,7 +8,7 @@ function Show-Menu {
     Write-Host "[1] ***-Program Install-***                        [6]  Web Browser Install               " -ForegroundColor White
     Write-Host "[2] Winget 1 Install                               [7]  VPN + Remote Install               " -ForegroundColor White
     Write-Host "[3] Winget 2 Install                               [8]  Media Player Install               " -ForegroundColor White
-    Write-Host "[4] Choco Instal                                   [9]  Chat Messenger Install              " -ForegroundColor DarkGreen
+    Write-Host "[4] Choco Instal                                   [9]  Chat Messenger Install              " -ForegroundColor White
     Write-Host "[5] MS Store Install                               [10] Gaming Launcher Install             " -ForegroundColor DarkGreen
     Write-Host "------------------------------------------------------------------------------------------------------------------------" -ForegroundColor Green
     Write-Host "[11] Microsoft Program Install                     [21] * Windows Fixed *                                               " -ForegroundColor Yellow                    
@@ -69,7 +69,9 @@ function Handle-Choice {
 
     Clear-Host
     switch ($Choice) {
-        1 { Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/emreuls7/mr.winls/menu/menu01.ps1").Content }
+        1 { 
+        Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/emreuls7/mr.winls/menu/menu01.ps1").Content 
+        }
         2 { Download-And-Execute-Script -Url "https://raw.githubusercontent.com/emreuls7/mr.winls/menu/menu02.cmd" }
         3 { Download-And-Execute-Script -Url "https://raw.githubusercontent.com/emreuls7/mr.winls/menu/menu03.cmd" }
         4 { Download-And-Execute-Script -Url "https://raw.githubusercontent.com/emreuls7/mr.winls/menu/menu04.cmd" }
