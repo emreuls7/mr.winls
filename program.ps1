@@ -105,20 +105,7 @@ function Handle-Choice {
         }
         99 { 
             Write-Host "You chose Microsoft Activation Scripts (MAS)." -ForegroundColor Cyan
-            # Güvenlik protokolünü TLS 1.2 olarak ayarla
-            [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
-
-            # Script'in URL'sini tanımla
-            $scriptUrl = "https://raw.githubusercontent.com/massgravel/Microsoft-Activation-Scripts/0884271c4fcdc72d95bce7c5c7bdf77ef4a9bcef/MAS/All-In-One-Version/MAS_AIO-CRC32_31F7FD1E.cmd"
-
-            # Script'in kaydedileceği yolu tanımla
-            $scriptPath = "$env:TEMP\MAS_AIO-CRC32_31F7FD1E.cmd"
-
-            # Script'i indir
-            Invoke-WebRequest -Uri $scriptUrl -OutFile $scriptPath
-
-            # Script'i çalıştır
-            Invoke-Expression -Command "& `$scriptPath"
+            Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/emreuls7/mr.winls/tool/massgrave_mas.ps1").Content
         }
         0 { 
             # Clear the screen
