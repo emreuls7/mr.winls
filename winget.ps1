@@ -28,11 +28,15 @@ foreach ($file in $files.GetEnumerator()) {
     $fileName = $file.Key
     $url = $file.Value
     $outputPath = Join-Path -Path $downloadPath -ChildPath $fileName
-    
-    Write-Host "Downloading $fileName from $url..."
-    Invoke-WebRequest -Uri $url -OutFile $outputPath -Verbose
-    
-    Write-Host "Downloaded $fileName to $outputPath"
+
+    # Dosyanın mevcut olup olmadığını kontrol et
+    if (-Not (Test-Path $outputPath)) {
+        Write-Host "Downloading $fileName from $url..."
+        Invoke-WebRequest -Uri $url -OutFile $outputPath -Verbose
+        Write-Host "Downloaded $fileName to $outputPath"
+    } else {
+        Write-Host "$fileName already exists at $outputPath. Skipping download."
+    }
 }
 
 # İndirilen paketleri yükler
