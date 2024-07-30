@@ -32,18 +32,19 @@ function Download-And-Execute-Script {
     
     $tempFile = [System.IO.Path]::GetTempFileName() + ".cmd"
     try {
-        Write-Host "Downloading script from $Url..."                                                                                     -ForegroundColor Yellow
+        Write-Host "Downloading script from $Url..." -ForegroundColor Yellow
         Invoke-WebRequest -Uri $Url -OutFile $tempFile
-        Write-Host "Script downloaded to $tempFile"                                                                                      -ForegroundColor Green
+        Write-Host "Script downloaded to $tempFile" -ForegroundColor Green
         
-        Write-Host "Executing script..."                                                                                                 -ForegroundColor Yellow
+        Write-Host "Executing script..." -ForegroundColor Yellow
+        # CMD scriptini çalıştır ve sonucu bekle
         Start-Process -FilePath "cmd.exe" -ArgumentList "/c `"$tempFile`"" -Wait -NoNewWindow
     } catch {
-        Write-Host "An error occurred while processing the script: $_"                                                                   -ForegroundColor Red
+        Write-Host "An error occurred while processing the script: $_" -ForegroundColor Red
     } finally {
         if (Test-Path $tempFile) {
             Remove-Item $tempFile -Force
-            Write-Host "Temporary file removed."                                                                                         -ForegroundColor Green
+            Write-Host "Temporary file removed." -ForegroundColor Green
         }
     }
 }
@@ -72,63 +73,48 @@ function Handle-Choice {
         31 { Download-And-Execute-Script -Url "https://raw.githubusercontent.com/emreuls7/mr.winls/menu/menu31.cmd" }
         32 { Download-And-Execute-Script -Url "https://raw.githubusercontent.com/emreuls7/mr.winls/menu/menu32.cmd" }
         41 { 
-            Write-Host "*** Winget Install ***."
+            Write-Host "*** Winget Install ***." -ForegroundColor Blue
             Set-ExecutionPolicy Bypass -Scope Process -Force
             [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor [System.Net.SecurityProtocolType]::Tls12
             iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/emreuls7/mr.winls/tool/winget.ps1'))
         }
         42 { 
-            Write-Host "*** Chocolatey Install ***."
-            Set-ExecutionPolicy Bypass -Scope Process -Force;
-            [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072;
+            Write-Host "*** Chocolatey Install ***." -ForegroundColor Blue
+            Set-ExecutionPolicy Bypass -Scope Process -Force
+            [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072
             iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/emreuls7/mr.winls/tool/chocolatey.ps1'))
         }
         88 { 
-            
+            Write-Host "Functionality not implemented yet." -ForegroundColor Yellow
         }
         90 { Download-And-Execute-Script -Url "https://raw.githubusercontent.com/emreuls7/mr.winls/menu/menu90.cmd" }
-
-        91 { winget upgrade --all; choco upgrade chocolatey -y; choco upgrade all -y }
-
+        91 { 
+            Write-Host "Updating packages with Winget and Chocolatey." -ForegroundColor Yellow
+            winget upgrade --all
+            choco upgrade chocolatey -y
+            choco upgrade all -y
+        }
         98 { 
-            Write-Host "You chose Windows Utility (winutil)."                                                                             -ForegroundColor Cyan
+            Write-Host "You chose Windows Utility (winutil)." -ForegroundColor Cyan
             Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/ChrisTitusTech/winutil/main/winutil.ps1").Content
         }
         99 { 
-            Write-Host "You chose Microsoft Activation Scripts (MAS)."                                                                    -ForegroundColor Cyan
-            # Güvenlik protokolünü TLS 1.2 olarak ayarla
+            Write-Host "You chose Microsoft Activation Scripts (MAS)." -ForegroundColor Cyan
             [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
-
-            # Script'in URL'sini tanımla
             $scriptUrl = "https://raw.githubusercontent.com/massgravel/Microsoft-Activation-Scripts/0884271c4fcdc72d95bce7c5c7bdf77ef4a9bcef/MAS/All-In-One-Version/MAS_AIO-CRC32_31F7FD1E.cmd"
-
-            # Script'in kaydedileceği yolu tanımla
             $scriptPath = "$env:TEMP\MAS_AIO-CRC32_31F7FD1E.cmd"
-
-            # Script'i indir
             Invoke-WebRequest -Uri $scriptUrl -OutFile $scriptPath
-
-            # İsteğe bağlı olarak indirilen script'in içeriğini görüntüle
-            # Get-Content $scriptPath | Out-Host
-
-            # Script'i çalıştır
-            Invoke-Expression -Command "& `$scriptPath"
+            Start-Process -FilePath "cmd.exe" -ArgumentList "/c `"$scriptPath`"" -Wait -NoNewWindow
         }
         0 { 
-
-            # Display the exit message
             Write-Host "------------------------------------------------------------------------------------------------------------------------" -ForegroundColor Cyan
             Write-Host "--- Exit                      --- Thank you for using Software Installer ---                       CREATED BY MRLSx7 ---" -ForegroundColor Red
             Write-Host "------------------------------------------------------------------------------------------------------------------------" -ForegroundColor Cyan
             Write-Host "Exiting..." -ForegroundColor Green
-
-            # Wait for 2 seconds
             Start-Sleep -Seconds 2
-
-            # Exit the script
             exit
         }
-        default { Write-Host "Invalid choice, please try again."                                                                           -ForegroundColor Red }
+        default { Write-Host "Invalid choice, please try again." -ForegroundColor Red }
     }
 }
 
@@ -140,7 +126,7 @@ do {
         $choice = [int]$choice
         Handle-Choice -Choice $choice
     } else {
-        Write-Host "Invalid input. Please enter a number."                                                                               -ForegroundColor Red
+        Write-Host "Invalid input. Please enter a number." -ForegroundColor Red
     }
     if ($choice -ne 0) {
         # Menüden çıkış yapıldıysa ekranı temizle
