@@ -2,7 +2,7 @@
 function Show-Menu {
     Clear-Host
     Write-Host "------------------------------------------------------------------------------------------------------------------------"
-    Write-Host "--- menu_01                          --- *** Program Installer *** ---                             CREATED BY MRLSx7 ---"
+    Write-Host "--- menu_01                          --- *** Program Installer *** ---                             CREATED BY MRLSx7 ---" -ForegroundColor Red
     Write-Host "----------------*winget install*-----------------------------------*winget install*-------------------------------------"
     Write-Host "[1]  PuTTY                                  [11] OBS Studio"
     Write-Host "[2]  Notepad++                              [12] WinRar"
@@ -27,7 +27,7 @@ function Show-Menu {
     Write-Host "[54] AOMEI Partitio Assistant Pro Key (18.2-copy)"
     Write-Host "[55] Internet Download Manager Activation Script"
     Write-Host "------------------------------------------------------------------------------------------------------------------------"
-    Write-Host "[0] Exit"
+    Write-Host "[0] Exit" -ForegroundColor Red
     Write-Host "------------------------------------------------------------------------------------------------------------------------"
 }
 
