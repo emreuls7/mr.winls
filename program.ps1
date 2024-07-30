@@ -147,7 +147,7 @@ do {
     }
     if ($choice -ne 0) {
         # Menüden çıkış yapıldıysa ekranı temizle
-        Clear-Host
+        # Clear-Host
         Read-Host "Press Enter to return to the main menu"
     }
 } while ($choice -ne 0)
