@@ -9,7 +9,7 @@ $DownloadURL2 = 'https://raw.githubusercontent.com/emreuls7/mr.winls/tool/ias.cm
 
 $rand = Get-Random -Maximum 99999999
 $isAdmin = [bool]([Security.Principal.WindowsIdentity]::GetCurrent().Groups -match 'S-1-5-32-544')
-$FilePath = if ($isAdmin) { "$env:SystemRoot\Temp\IAS.cmd" } else { "$env:TEMP\IAS.cmd" }
+$FilePath = if ($isAdmin) { "$env:SystemRoot\Temp\IAS_$rand.cmd" } else { "$env:TEMP\IAS_$rand.cmd" }
 
 try {
     $response = Invoke-WebRequest -Uri $DownloadURL -UseBasicParsing
@@ -25,5 +25,5 @@ Set-Content -Path $FilePath -Value $content
 
 Start-Process $FilePath $ScriptArgs -Wait
 
-$FilePaths = @("$env:TEMP\IAS.cmd", "$env:SystemRoot\Temp\IAS.cmd")
+$FilePaths = @("$env:TEMP\IAS*.cmd", "$env:SystemRoot\Temp\IAS*.cmd")
 foreach ($FilePath in $FilePaths) { Get-Item $FilePath | Remove-Item }
