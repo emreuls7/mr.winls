@@ -2,28 +2,33 @@
 cls
 :menu3
 cls
-echo ------------------------------------------------------------------------------------------------------------------------
-echo --- Menu3                               --- Security Installer ---                                 CREATED BY MRLSx7 ---
-echo ------------------------------------------------------------------------------------------------------------------------
-echo [1] Malwarebytes                                                                                                   
-echo [2] Telerik Fiddler Classic                                                                                        
-echo [3] GlassWire                                                                                                      
-echo [4] Wireshark                                                                                                      
-echo [5] Keeper Password Manager                                                                                        
-echo ------------------------------------------------------------------------------------------------------------------------
+echo -------------------------------------------------------------------
+echo --- menu_03       --- Choco Install ---       CREATED BY MRLSx7 ---
+echo -------------------------------------------------------------------
+echo [1] 
+echo [2] 
+echo [3] 
+echo [4] 
+echo [5] 
+echo [6]  FileZilla Server 
+echo [7]  UniFi Network Application 
+echo [8]  qBittorrent
+echo [9]  
+echo [10] 
+echo -------------------------------------------------------------------
 echo [0] Exit
-echo ------------------------------------------------------------------------------------------------------------------------
+echo -------------------------------------------------------------------
 ::---------------------------------------------------------------------------------------------------------------------------
 set /p choice="Enter your choice (0,1,2,3...): "
 ::---------------------------------------------------------------------------------------------------------------------------
-if "%choice%"=="1" winget install Malwarebytes.Malwarebytes -e
-if "%choice%"=="2" winget install Telerik.Fiddler.Classic -e
-if "%choice%"=="3" winget install GlassWire.GlassWire -e
-if "%choice%"=="4" winget install WiresharkFoundation.Wireshark -e
-if "%choice%"=="5" winget install Keeper.KeeperDesktop -e
-::if "%choice%"=="6" goto install_programC6
-::if "%choice%"=="7" goto install_programC7
-::if "%choice%"=="8" goto install_programC8
+if "%choice%"=="1" 
+if "%choice%"=="2" 
+if "%choice%"=="3" 
+if "%choice%"=="4" 
+if "%choice%"=="5" 
+if "%choice%"=="6" choco install filezilla.server -y
+if "%choice%"=="7" choco install ubiquiti-unifi-controller -y
+if "%choice%"=="8" choco install qbittorrent -y
 ::if "%choice%"=="9" goto install_programC9
 ::if "%choice%"=="10" goto install_programC10
 ::if "%choice%"=="11" goto install_programC11
