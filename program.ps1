@@ -144,6 +144,8 @@ do {
     if ($choice -ne 0) {
         # Menüden çıkış yapıldıysa ekranı temizle
         Clear-Host
-        Read-Host "Press Enter to return to the main menu"
+        Start-Sleep -Seconds 2  # 2 saniye bekler ve ardından ana menüye döner
+        # Read-Host "Press Enter to return to the main menu"
     }
 } while ($choice -ne 0)
+
