@@ -1,32 +1,37 @@
-# Enable TLSv1.2 for compatibility with older clients for current session
-[Net.ServicePointManager]::SecurityProtocol=[Net.SecurityProtocolType]::Tls12
+# TLSv1.2'yi etkinleştirerek uyumlu bağlantılar sağlanır
+[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 
 $DownloadURL1 = 'https://raw.githubusercontent.com/emreuls7/mr.winls/tool/mas.cmd'
 $DownloadURL2 = 'https://raw.githubusercontent.com/emreuls7/mr.winls/tool/mas.cmd'
 
 $URLs = @($DownloadURL1, $DownloadURL2)
 $RandomURL1 = Get-Random -InputObject $URLs
-$RandomURL2 = $URLs -ne $RandomURL1
+$RandomURL2 = $URLs | Where-Object { $_ -ne $RandomURL1 }
 
 try {
     $response = Invoke-WebRequest -Uri $RandomURL1 -UseBasicParsing
 }
 catch {
-	$response = Invoke-WebRequest -Uri $RandomURL2 -UseBasicParsing
+    $response = Invoke-WebRequest -Uri $RandomURL2 -UseBasicParsing
 }
 
-$rand = [Guid]::NewGuid().Guid
+$rand = [Guid]::NewGuid().ToString()
 $isAdmin = [bool]([Security.Principal.WindowsIdentity]::GetCurrent().Groups -match 'S-1-5-32-544')
-$FilePath = if ($isAdmin) { "$env:SystemRoot\Temp\MAS_$rand.cmd" } else { "$env:TEMP\MAS_$rand.cmd" }
+$FilePath = if ($isAdmin) { "$env:SystemRoot\Temp\MAS.cmd" } else { "$env:TEMP\MAS.cmd" }
 
 $ScriptArgs = "$args "
 $prefix = "@::: $rand `r`n"
-$content = $prefix + $response
+$content = $prefix + $response.Content
 Set-Content -Path $FilePath -Value $content
 
-# Set ComSpec variable for current session in case its corrupt in the system
+# Komut işlem değişkenini mevcut oturum için ayarlayın
 $env:ComSpec = "$env:SystemRoot\system32\cmd.exe"
-Start-Process cmd.exe "/c """"$FilePath"" $ScriptArgs""" -Wait
+Start-Process cmd.exe "/c `"$FilePath`" $ScriptArgs" -Wait
 
-$FilePaths = @("$env:TEMP\MAS*.cmd", "$env:SystemRoot\Temp\MAS*.cmd")
-foreach ($FilePath in $FilePaths) { Get-Item $FilePath | Remove-Item }
+# Dosyaları temizle
+$FilePaths = @("$env:TEMP\MAS.cmd", "$env:SystemRoot\Temp\MAS.cmd")
+foreach ($FilePath in $FilePaths) {
+    if (Test-Path $FilePath) {
+        Remove-Item -Path $FilePath -Force
+    }
+}
