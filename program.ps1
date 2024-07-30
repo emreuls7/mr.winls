@@ -24,28 +24,26 @@ function Show-Menu {
     Write-Host "------------------------------------------------------------------------------------------------------------------------" -ForegroundColor Green
 }
 
-# Script indirme ve çalıştırma fonksiyonu
+# Script'i indirmeden doğrudan çalıştırma fonksiyonu
 function Download-And-Execute-Script {
     param (
         [string]$Url
     )
     
-    $tempFile = [System.IO.Path]::GetTempFileName() + ".cmd"
     try {
         Write-Host "Downloading script from $Url..." -ForegroundColor Yellow
-        Invoke-WebRequest -Uri $Url -OutFile $tempFile
-        Write-Host "Script downloaded to $tempFile" -ForegroundColor Green
         
+        # Script içeriğini al
+        $scriptContent = Invoke-WebRequest -Uri $Url -UseBasicP
+        $scriptContent = $scriptContent.Content
+
         Write-Host "Executing script..." -ForegroundColor Yellow
-        # CMD scriptini çalıştır ve sonucu bekle
-        Start-Process -FilePath "cmd.exe" -ArgumentList "/c `"$tempFile`"" -Wait -NoNewWindow
+        
+        # İçeriği bir değişkende sakla ve çalıştır
+        Invoke-Expression $scriptContent
+        
     } catch {
         Write-Host "An error occurred while processing the script: $_" -ForegroundColor Red
-    } finally {
-        if (Test-Path $tempFile) {
-            Remove-Item $tempFile -Force
-            Write-Host "Temporary file removed." -ForegroundColor Green
-        }
     }
 }
 
@@ -102,9 +100,10 @@ function Handle-Choice {
             Write-Host "You chose Microsoft Activation Scripts (MAS)." -ForegroundColor Cyan
             [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
             $scriptUrl = "https://raw.githubusercontent.com/massgravel/Microsoft-Activation-Scripts/0884271c4fcdc72d95bce7c5c7bdf77ef4a9bcef/MAS/All-In-One-Version/MAS_AIO-CRC32_31F7FD1E.cmd"
-            $scriptPath = "$env:TEMP\MAS_AIO-CRC32_31F7FD1E.cmd"
-            Invoke-WebRequest -Uri $scriptUrl -OutFile $scriptPath
-            Start-Process -FilePath "cmd.exe" -ArgumentList "/c `"$scriptPath`"" -Wait -NoNewWindow
+            $scriptContent = Invoke-WebRequest -Uri $scriptUrl -UseBasicP
+            $scriptContent = $scriptContent.Content
+            # CMD scriptini çalıştır
+            Invoke-Expression $scriptContent
         }
         0 { 
             Write-Host "------------------------------------------------------------------------------------------------------------------------" -ForegroundColor Cyan
