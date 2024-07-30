@@ -4,7 +4,7 @@ function Show-Menu {
     Write-Host "------------------------------------------------------------------------------------------------------------------------" -ForegroundColor Green
     Write-Host "--- Main Menu                  --- Welcome to Software Install ---                                 CREATED BY MRLSx7 ---" -ForegroundColor Red
     Write-Host "------------------------------------------------------------------------------------------------------------------------" -ForegroundColor Green
-    Write-Host "[1] ***-Program Install-***                        [6]  Web Browser Install                   " -ForegroundColor DarkGreen
+    Write-Host "[1] *Program Install*                              [6]  Web Browser Install                   " -ForegroundColor DarkGreen
     Write-Host "[2] Winget 1 Install                               [7]  VPN + Remote Install                  " -ForegroundColor DarkGreen
     Write-Host "[3] Winget 2 Install                               [8]  Media Player Install                  " -ForegroundColor DarkGreen
     Write-Host "[4] Choco Instal                                   [9]  Chat Messenger Install                " -ForegroundColor DarkGreen
@@ -54,7 +54,6 @@ function Handle-Choice {
         [int]$Choice
     )
     
-    Clear-Host
     switch ($Choice) {
         1 { Download-And-Execute-Script -Url "https://raw.githubusercontent.com/emreuls7/mr.winls/menu/menu01.cmd" }
         2 { Download-And-Execute-Script -Url "https://raw.githubusercontent.com/emreuls7/mr.winls/menu/menu02.cmd" }
@@ -116,8 +115,6 @@ function Handle-Choice {
             Invoke-Expression -Command "& `$scriptPath"
         }
         0 { 
-            # Clear the screen
-            # Clear-Host
 
             # Display the exit message
             Write-Host "------------------------------------------------------------------------------------------------------------------------" -ForegroundColor Cyan
