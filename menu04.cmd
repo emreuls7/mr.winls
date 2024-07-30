@@ -2,29 +2,52 @@
 cls
 :menu4
 cls
-echo ------------------------------------------------------------------------------------------------------------------------
-echo --- Menu4                         --- Developer Tools Installer ---                                CREATED BY MRLSx7 ---
-echo ------------------------------------------------------------------------------------------------------------------------
-echo [1]  JetBrains Toolbox
-echo [2]  Microsoft Visual Studio Code
-echo [3]  Microsoft Visual Studio Code Insiders
-echo [4]  Microsoft SQL Server Management
-echo [5]  Node.js
-echo [6]  Unity
-echo [7]  Python
-echo ------------------------------------------------------------------------------------------------------------------------
+echo -------------------------------------------------------------------
+echo --- menu_04     --- MS Store Install ---      CREATED BY MRLSx7 ---
+echo -------------------------------------------------------------------
+echo [1] MSI Center 
+echo [2] MSI Driver App Center
+echo [3]  
+echo [4]  
+echo [5]  
+echo [6]  
+echo [7]  
+echo -------------------------------------------------------------------
 echo [0] Exit
-echo ------------------------------------------------------------------------------------------------------------------------
+echo -------------------------------------------------------------------
 ::---------------------------------------------------------------------------------------------------------------------------
 set /p choice="Enter your choice (0,1,2,3...): "
 ::---------------------------------------------------------------------------------------------------------------------------
-if "%choice%"=="1" winget install JetBrains.Toolbox -e
-if "%choice%"=="2" winget install Microsoft.VisualStudioCode -e
-if "%choice%"=="3" winget install Microsoft.VisualStudioCode.Insiders -e
-if "%choice%"=="4" winget install Microsoft.SQLServerManagementStudio -e
-if "%choice%"=="5" winget install OpenJS.NodeJS -e
-if "%choice%"=="6" winget install Unity.Unity.2020 -e
-if "%choice%"=="7" winget install Python.Launcher -e
+::---------------------------------------------------------------------------------------------------------------------------
+if "%choice%"=="1" (
+                    winget list --id 9NVMNJCR03XV -e >nul 2>&1
+                    if %errorlevel% equ 0 (
+                    echo Application already installed. Update in progress...
+                    winget upgrade --id 9NVMNJCR03XV -e --accept-package-agreements --accept-source-agreements --silent
+                    ) else (
+                    echo The application is not installed. Installed...
+                    winget install --id 9NVMNJCR03XV -e --accept-package-agreements --accept-source-agreements --silent
+                    )
+)
+::MSI Center msstore 9NVMNJCR03XV
+::---------------------------------------------------------------------------------------------------------------------------
+if "%choice%"=="2" (
+                    winget list --id 9P9WDH947752 -e >nul 2>&1
+                    if %errorlevel% equ 0 (
+                    echo Application already installed. Update in progress...
+                    winget upgrade --id 9P9WDH947752 -e --accept-package-agreements --accept-source-agreements --silent
+                    ) else (
+                    echo The application is not installed. Installed...
+                    winget install --id 9P9WDH947752 -e --accept-package-agreements --accept-source-agreements --silent
+                    )
+)
+::MSI Driver App Center 9P9WDH947752 Unknown msstore 9P9WDH947752
+::---------------------------------------------------------------------------------------------------------------------------
+if "%choice%"=="3" 
+if "%choice%"=="4" 
+if "%choice%"=="5" 
+if "%choice%"=="6" 
+if "%choice%"=="7" 
 ::---------------------------------------------------------------------------------------------------------------------------
 if "%choice%"=="0" exit
 ::---------------------------------------------------------------------------------------------------------------------------
