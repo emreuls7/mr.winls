@@ -54,7 +54,8 @@ function Handle-Choice {
     param (
         [int]$Choice
     )
-
+    
+    Clear-Host
     switch ($Choice) {
         1 { Download-And-Execute-Script -Url "https://raw.githubusercontent.com/emreuls7/mr.winls/menu/menu01.cmd" }
         2 { Download-And-Execute-Script -Url "https://raw.githubusercontent.com/emreuls7/mr.winls/menu/menu02.cmd" }
@@ -146,6 +147,8 @@ do {
         Write-Host "Invalid input. Please enter a number."                                                                               -ForegroundColor Red
     }
     if ($choice -ne 0) {
+        # Menüden çıkış yapıldıysa ekranı temizle
+        Clear-Host
         Read-Host "Press Enter to return to the main menu"
     }
 } while ($choice -ne 0)
