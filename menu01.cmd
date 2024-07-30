@@ -2,7 +2,7 @@
 cls
 :menu_01
 cls
-echo ------------------------------------------------------------------------------------------------------------------------
+echo ------------------------------------------------------------------------------------------------------------------------20
 echo --- menu_01                          --- *** Program Installer *** ---                             CREATED BY MRLSx7 ---
 echo ----------------*winget install*-----------------------------------*winget install*-------------------------------------
 echo [1]  PuTTY                                  [11] OBS Studio
@@ -15,7 +15,7 @@ echo [7]  QuickLook                              [17] File Converter
 echo [8]  DeepL                                  [18] NVIDIA GeForce Experience 
 echo [9]  Adobe Acrobat Reader                   [19] Intel Driver Support Assistant
 echo [10] Cute PDF Writer                        [20] Rufus
-echo ---------------*choco install*--------------------------------------*msstore install------------------------------------                     
+echo ---------------*choco install*--------------------------------------*msstore install------------------------------------
 echo [21] Any To ISO                             [31] iTop Easy Desktop
 echo [22] WinSCP                                 [32]
 echo [23] FileZilla Client                       [33]
@@ -32,7 +32,6 @@ echo [0] Exit
 echo ------------------------------------------------------------------------------------------------------------------------
 set /p choice="Enter your choice (0,1,2,3...): "
 echo ------------------------------------------------------------------------------------------------------------------------
-cls
 ::---------------------------------------------------------------------------------------------------------------------------
 if "%choice%"=="1" winget install PuTTY.PuTTY -e
 if "%choice%"=="2" winget install Notepad++.Notepad++ -e
