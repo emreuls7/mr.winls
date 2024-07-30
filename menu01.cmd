@@ -17,21 +17,14 @@ echo [8]  DeepL                                  [18] NVIDIA GeForce Experience
 echo [9]  Adobe Acrobat Reader                   [19] Intel Driver Support Assistant
 echo [10] Cute PDF Writer                        [20] Rufus
 echo ------------------------------------------------------------------------------------------------------------------------
-echo *choco install
-echo [21] Any To ISO
-echo [22] WinSCP   
-echo [23] FileZilla Client
-echo [24] Advanced Port Scan
-echo [25]
+echo *choco install                              *msstore install
+echo [21] Any To ISO                             [31] iTop Easy Desktop
+echo [22] WinSCP                                 [32]
+echo [23] FileZilla Client                       [33]
+echo [24] Advanced Port Scan                     [34]
+echo [25]                                        [35]
 echo ------------------------------------------------------------------------------------------------------------------------
-echo *msstore install
-echo [31] iTop Easy Desktop 
-echo [32]  
-echo [33]
-echo [34]
-echo [35]
-echo ------------------------------------------------------------------------------------------------------------------------
-echo Key copy
+echo *key copy
 echo [51] OBS Studio Teleport (18.2-copy)
 echo [52] WinRar Key (18.2-copy)
 echo [53] Revo Uninstaller Pro Key (18.2-copy)
