@@ -4,11 +4,11 @@ function Show-Menu {
     Write-Host "------------------------------------------------------------------------------------------------------------------------" -ForegroundColor Green
     Write-Host "--- Main Menu                  --- Welcome to Software Install ---                                 CREATED BY MRLSx7 ---" -ForegroundColor Red
     Write-Host "------------------------------------------------------------------------------------------------------------------------" -ForegroundColor Green
-    Write-Host "[1]  ***-Program Install-***                       [6]  Browser Install                                                 " -ForegroundColor DarkGreen
-    Write-Host "[2]  Program Install                               [7]  VPN + Remote Install                                            " -ForegroundColor DarkGreen
-    Write-Host "[3]  Security Install                              [8]  Media Player Install                                            " -ForegroundColor DarkGreen
-    Write-Host "[4]  Developer Tools Install                       [9]  Chat Messenger Install                                          " -ForegroundColor DarkGreen
-    Write-Host "[5]  Driver Install                                [10] Games Launcher Install                                          " -ForegroundColor DarkGreen
+    Write-Host "[1] ***-Program Install-***                       [6]  Browser Install                                                 " -ForegroundColor DarkGreen
+    Write-Host "[2] Winget Install                                [7]  VPN + Remote Install                                            " -ForegroundColor DarkGreen
+    Write-Host "[3] Choco Instal                                  [8]  Media Player Install                                            " -ForegroundColor DarkGreen
+    Write-Host "[4] MS Store Install                              [9]  Chat Messenger Install                                          " -ForegroundColor DarkGreen
+    Write-Host "[5]                                               [10] Games Launcher Install                                          " -ForegroundColor DarkGreen
     Write-Host "------------------------------------------------------------------------------------------------------------------------" -ForegroundColor Green
     Write-Host "[11] Microsoft Program Install                     [21] * Windows Fixed *                                               " -ForegroundColor Yellow                    
     Write-Host "[12] Microsoft .NET Install                        [22] * Microsoft Fixed *                                             " -ForegroundColor Yellow
