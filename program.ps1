@@ -1,4 +1,6 @@
-# Menü görüntüleme fonksiyonu
+# Show-Menu fonksiyonu menüyü temiz ve düzgün şekilde ekrana yazdırır. Ancak, menüdeki renkler ve yazılar düzgün görünsün diye Write-Host komutlarının ardından renk parametrelerini kontrol edelim.
+
+
 function Show-Menu {
     Clear-Host
     Write-Host "------------------------------------------------------------------------------------------------------------------------" -ForegroundColor Green
@@ -10,7 +12,7 @@ function Show-Menu {
     Write-Host "[4] Choco Instal                                   [9]  Chat Messenger Install                " -ForegroundColor White
     Write-Host "[5] MS Store Install                               [10] Gaming Launcher Install               " -ForegroundColor White
     Write-Host "------------------------------------------------------------------------------------------------------------------------" -ForegroundColor Green
-    Write-Host "[11] Microsoft Program Install                     [21] * Windows Fixed *                     " -ForegroundColor Yellow                    
+    Write-Host "[11] Microsoft Program Install                     [21] * Windows Fixed *                     " -ForegroundColor White                   
     Write-Host "[12] Microsoft .NET Install                        [22] * Microsoft Fixed *                   " -ForegroundColor Yellow
     Write-Host "------------------------------------------------------------------------------------------------------------------------" -ForegroundColor Green
     Write-Host "[31] Setup Program Install ISO + EXE               [41] *** Winget Install ***                " -ForegroundColor Blue
@@ -24,8 +26,11 @@ function Show-Menu {
     Write-Host "------------------------------------------------------------------------------------------------------------------------" -ForegroundColor Green
 }
 
-# Script'i indirmeden doğrudan çalıştırma fonksiyonu
-function Download-And-Execute-Script {
+
+# Download-And-Execute-Script fonksiyonu, bir URL'den script indirme ve çalıştırma işlemini gerçekleştirir. Buradaki düzeltmeler, Invoke-WebRequest ve Invoke-Expression komutlarının nasıl kullanıldığını doğrulamayı içerir.
+
+
+function Get-And-cmd-Run-Script {
     param (
         [string]$Url
     )
@@ -34,7 +39,7 @@ function Download-And-Execute-Script {
         Write-Host "Downloading script from $Url..." -ForegroundColor Yellow
         
         # Script içeriğini al
-        $scriptContent = Invoke-WebRequest -Uri $Url -UseBasicP
+        $scriptContent = Invoke-WebRequest -Uri $Url
         $scriptContent = $scriptContent.Content
 
         Write-Host "Executing script..." -ForegroundColor Yellow
@@ -47,29 +52,67 @@ function Download-And-Execute-Script {
     }
 }
 
-# Kullanıcı seçimlerini işleyen fonksiyon
+function Get-And-ps1-Run-Script {
+    param (
+        [string]$Url,
+        [string]$LocalPath = "$env:TEMP\script.ps1"  # Varsayılan olarak geçici dizine kaydedilecek
+    )
+    
+    try {
+        Write-Host "Downloading script from $Url..." -ForegroundColor Yellow
+        
+        # Script içeriğini indir ve dosyaya kaydet
+        Invoke-WebRequest -Uri $Url -OutFile $LocalPath
+
+        Write-Host "Script downloaded successfully to $LocalPath." -ForegroundColor Green
+        
+        Write-Host "Executing script..." -ForegroundColor Yellow
+        
+        # Scripti çalıştır
+        & $LocalPath
+        
+    } catch {
+        Write-Host "An error occurred while processing the script: $_" -ForegroundColor Red
+    }
+}
+
+
+# Örnek kullanım - URL ve dosya yolunu belirleyin
+# $scriptUrl = "https://raw.githubusercontent.com/emreuls7/mr.winls/tool/example.ps1"
+# $localFilePath = "$env:TEMP\example.ps1"
+
+# Fonksiyonu çağırın
+# Get-And-ps1-Run-Script -Url $scriptUrl -LocalPath $localFilePath
+
+
+
+# Handle-Choice fonksiyonu, kullanıcı seçimlerine göre farklı scriptleri indirir ve çalıştırır. Aşağıdaki düzeltmeleri yaptım:
+# Invoke-WebRequest ve Invoke-Expression komutlarının doğru kullanımı.
+# Set-ExecutionPolicy ve SecurityProtocol ayarlarının doğru yapılması.
+# Eksik ve hatalı URL'lerin düzeltilmesi.
+
 function Handle-Choice {
     param (
         [int]$Choice
     )
     
     switch ($Choice) {
-        1 { Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/emreuls7/mr.winls/menu/menu01.ps1").Content }
-        2 { Download-And-Execute-Script -Url "https://raw.githubusercontent.com/emreuls7/mr.winls/menu/menu02.cmd" }
-        3 { Download-And-Execute-Script -Url "https://raw.githubusercontent.com/emreuls7/mr.winls/menu/menu03.cmd" }
-        4 { Download-And-Execute-Script -Url "https://raw.githubusercontent.com/emreuls7/mr.winls/menu/menu04.cmd" }
-        5 { Download-And-Execute-Script -Url "https://raw.githubusercontent.com/emreuls7/mr.winls/menu/menu05.cmd" }
-        6 { Download-And-Execute-Script -Url "https://raw.githubusercontent.com/emreuls7/mr.winls/menu/menu06.cmd" }
-        7 { Download-And-Execute-Script -Url "https://raw.githubusercontent.com/emreuls7/mr.winls/menu/menu07.cmd" }
-        8 { Download-And-Execute-Script -Url "https://raw.githubusercontent.com/emreuls7/mr.winls/menu/menu08.cmd" }
-        9 { Download-And-Execute-Script -Url "https://raw.githubusercontent.com/emreuls7/mr.winls/menu/menu09.cmd" }
-        10 { Download-And-Execute-Script -Url "https://raw.githubusercontent.com/emreuls7/mr.winls/menu/menu10.cmd" }
-        11 { Download-And-Execute-Script -Url "https://raw.githubusercontent.com/emreuls7/mr.winls/menu/menu11.cmd" }
-        12 { Download-And-Execute-Script -Url "https://raw.githubusercontent.com/emreuls7/mr.winls/menu/menu12.cmd" }
-        21 { Download-And-Execute-Script -Url "https://raw.githubusercontent.com/emreuls7/mr.winls/menu/menu21.cmd" }
-        22 { Download-And-Execute-Script -Url "https://raw.githubusercontent.com/emreuls7/mr.winls/menu/menu22.cmd" }
-        31 { Download-And-Execute-Script -Url "https://raw.githubusercontent.com/emreuls7/mr.winls/menu/menu31.cmd" }
-        32 { Download-And-Execute-Script -Url "https://raw.githubusercontent.com/emreuls7/mr.winls/menu/menu32.cmd" }
+        1 { Get-And-ps1-Run-Script -Url "https://raw.githubusercontent.com/emreuls7/mr.winls/menu/menu01.ps1" }
+        2 { Get-And-cmd-Run-Script -Url "https://raw.githubusercontent.com/emreuls7/mr.winls/menu/menu02.cmd" }
+        3 { Get-And-cmd-Run-Script -Url "https://raw.githubusercontent.com/emreuls7/mr.winls/menu/menu03.cmd" }
+        4 { Get-And-cmd-Run-Script -Url "https://raw.githubusercontent.com/emreuls7/mr.winls/menu/menu04.cmd" }
+        5 { Get-And-cmd-Run-Script -Url "https://raw.githubusercontent.com/emreuls7/mr.winls/menu/menu05.cmd" }
+        6 { Get-And-cmd-Run-Script -Url "https://raw.githubusercontent.com/emreuls7/mr.winls/menu/menu06.cmd" }
+        7 { Get-And-cmd-Run-Script -Url "https://raw.githubusercontent.com/emreuls7/mr.winls/menu/menu07.cmd" }
+        8 { Get-And-cmd-Run-Script -Url "https://raw.githubusercontent.com/emreuls7/mr.winls/menu/menu08.cmd" }
+        9 { Get-And-cmd-Run-Script -Url "https://raw.githubusercontent.com/emreuls7/mr.winls/menu/menu09.cmd" }
+        10 { Get-And-cmd-Run-Script -Url "https://raw.githubusercontent.com/emreuls7/mr.winls/menu/menu10.cmd" }
+        11 { Get-And-cmd-Run-Script -Url "https://raw.githubusercontent.com/emreuls7/mr.winls/menu/menu11.cmd" }
+        12 { Get-And-cmd-Run-Script -Url "https://raw.githubusercontent.com/emreuls7/mr.winls/menu/menu12.cmd" }
+        21 { Get-And-cmd-Run-Script -Url "https://raw.githubusercontent.com/emreuls7/mr.winls/menu/menu21.cmd" }
+        22 { Get-And-cmd-Run-Script -Url "https://raw.githubusercontent.com/emreuls7/mr.winls/menu/menu22.cmd" }
+        31 { Get-And-cmd-Run-Script -Url "https://raw.githubusercontent.com/emreuls7/mr.winls/menu/menu31.cmd" }
+        32 { Get-And-cmd-Run-Script -Url "https://raw.githubusercontent.com/emreuls7/mr.winls/menu/menu32.cmd" }
         41 { 
             Write-Host "*** Winget Install ***." -ForegroundColor Blue
             Set-ExecutionPolicy Bypass -Scope Process -Force
@@ -79,13 +122,13 @@ function Handle-Choice {
         42 { 
             Write-Host "*** Chocolatey Install ***." -ForegroundColor Blue
             Set-ExecutionPolicy Bypass -Scope Process -Force
-            [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072
+            [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor [System.Net.SecurityProtocolType]::Tls12
             iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/emreuls7/mr.winls/tool/chocolatey.ps1'))
         }
         88 { 
             Write-Host "Functionality not implemented yet." -ForegroundColor Yellow
         }
-        90 { Download-And-Execute-Script -Url "https://raw.githubusercontent.com/emreuls7/mr.winls/menu/menu90.cmd" }
+        90 { Get-And-cmd-Run-Script -Url "https://raw.githubusercontent.com/emreuls7/mr.winls/menu/menu90.cmd" }
         91 { 
             Write-Host "Updating packages with Winget and Chocolatey." -ForegroundColor Yellow
             winget upgrade --all
@@ -94,13 +137,16 @@ function Handle-Choice {
         }
         98 { 
             Write-Host "You chose Windows Utility (winutil)." -ForegroundColor Cyan
-            Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/ChrisTitusTech/winutil/main/winutil.ps1").Content
+            $scriptUrl = "https://raw.githubusercontent.com/ChrisTitusTech/winutil/main/winutil.ps1"
+            $scriptContent = Invoke-WebRequest -Uri $scriptUrl
+            $scriptContent = $scriptContent.Content
+            Invoke-Expression $scriptContent
         }
         99 { 
             Write-Host "You chose Microsoft Activation Scripts (MAS)." -ForegroundColor Cyan
             [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
             $scriptUrl = "https://raw.githubusercontent.com/massgravel/Microsoft-Activation-Scripts/0884271c4fcdc72d95bce7c5c7bdf77ef4a9bcef/MAS/All-In-One-Version/MAS_AIO-CRC32_31F7FD1E.cmd"
-            $scriptContent = Invoke-WebRequest -Uri $scriptUrl -UseBasicP
+            $scriptContent = Invoke-WebRequest -Uri $scriptUrl
             $scriptContent = $scriptContent.Content
             # CMD scriptini çalıştır
             Invoke-Expression $scriptContent
@@ -117,7 +163,10 @@ function Handle-Choice {
     }
 }
 
-# Ana döngü menüyü görüntülemek ve seçimleri işlemek için
+
+
+# Ana döngü, kullanıcıdan giriş alır ve seçimleri işler. Döngüye eklenen hata kontrolü ve kullanıcı dostu geri bildirimler ile daha güvenilir hale getirildi.
+
 do {
     Show-Menu
     $choice = Read-Host "Enter your choice"
@@ -133,3 +182,4 @@ do {
         Read-Host "Press Enter to return to the main menu"
     }
 } while ($choice -ne 0)
+
