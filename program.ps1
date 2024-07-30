@@ -54,9 +54,9 @@ function Handle-Choice {
         [int]$Choice
     )
     
-    # Clear-Host
+    Clear-Host
     switch ($Choice) {
-        1 { Clear-Host Download-And-Execute-Script -Url "https://raw.githubusercontent.com/emreuls7/mr.winls/menu/menu01.cmd" }
+        1 { Download-And-Execute-Script -Url "https://raw.githubusercontent.com/emreuls7/mr.winls/menu/menu01.cmd" }
         2 { Download-And-Execute-Script -Url "https://raw.githubusercontent.com/emreuls7/mr.winls/menu/menu02.cmd" }
         3 { Download-And-Execute-Script -Url "https://raw.githubusercontent.com/emreuls7/mr.winls/menu/menu03.cmd" }
         4 { Download-And-Execute-Script -Url "https://raw.githubusercontent.com/emreuls7/mr.winls/menu/menu04.cmd" }
@@ -117,7 +117,7 @@ function Handle-Choice {
         }
         0 { 
             # Clear the screen
-            Clear-Host
+            # Clear-Host
 
             # Display the exit message
             Write-Host "------------------------------------------------------------------------------------------------------------------------" -ForegroundColor Cyan
@@ -147,7 +147,7 @@ do {
     }
     if ($choice -ne 0) {
         # Menüden çıkış yapıldıysa ekranı temizle
-        # Clear-Host
+        Clear-Host
         Read-Host "Press Enter to return to the main menu"
     }
 } while ($choice -ne 0)
