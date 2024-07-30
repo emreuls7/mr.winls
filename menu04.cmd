@@ -1,9 +1,9 @@
 @echo off
 cls
-:menu3
+:menu_04
 cls
 echo -------------------------------------------------------------------
-echo --- menu_03       --- Choco Install ---       CREATED BY MRLSx7 ---
+echo --- menu_04       --- Choco Install ---       CREATED BY MRLSx7 ---
 echo -------------------------------------------------------------------
 echo [1] 
 echo [2] 
