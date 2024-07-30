@@ -4,24 +4,23 @@ function Show-Menu {
     Write-Host "------------------------------------------------------------------------------------------------------------------------" -ForegroundColor Green
     Write-Host "--- Main Menu                  --- Welcome to Software Install ---                                 CREATED BY MRLSx7 ---" -ForegroundColor Red
     Write-Host "------------------------------------------------------------------------------------------------------------------------" -ForegroundColor Green
-    Write-Host "[1] ***-Program Install-***                        [6]  Web Browser Install                                              " -ForegroundColor DarkGreen
-    Write-Host "[2] Winget 1 Install                               [7]  VPN + Remote Install                                             " -ForegroundColor DarkGreen
-    Write-Host "[3] Winget 2 Install                               [8]  Media Player Install                                             " -ForegroundColor DarkGreen
-    Write-Host "[4] Choco Instal                                   [9]  Chat Messenger Install                                           " -ForegroundColor DarkGreen
-    Write-Host "[5] MS Store Install                               [10] Gaming Launcher Install                                          " -ForegroundColor DarkGreen
+    Write-Host "[1] ***-Program Install-***                        [6]  Web Browser Install                   " -ForegroundColor DarkGreen
+    Write-Host "[2] Winget 1 Install                               [7]  VPN + Remote Install                  " -ForegroundColor DarkGreen
+    Write-Host "[3] Winget 2 Install                               [8]  Media Player Install                  " -ForegroundColor DarkGreen
+    Write-Host "[4] Choco Instal                                   [9]  Chat Messenger Install                " -ForegroundColor DarkGreen
+    Write-Host "[5] MS Store Install                               [10] Gaming Launcher Install               " -ForegroundColor DarkGreen
     Write-Host "------------------------------------------------------------------------------------------------------------------------" -ForegroundColor Green
-    Write-Host "[11] Microsoft Program Install                     [21] * Windows Fixed *                                               " -ForegroundColor Yellow                    
-    Write-Host "[12] Microsoft .NET Install                        [22] * Microsoft Fixed *                                             " -ForegroundColor Yellow
+    Write-Host "[11] Microsoft Program Install                     [21] * Windows Fixed *                     " -ForegroundColor Yellow                    
+    Write-Host "[12] Microsoft .NET Install                        [22] * Microsoft Fixed *                   " -ForegroundColor Yellow
     Write-Host "------------------------------------------------------------------------------------------------------------------------" -ForegroundColor Green
-    Write-Host "[31] Setup Program Install ISO + EXE               [41] *** Winget Install ***                                          " -ForegroundColor Blue
-    Write-Host "[32] Setup Microsoft Office Install EXE            [42] *** Chocolatey Install ***                                      " -ForegroundColor Blue
+    Write-Host "[31] Setup Program Install ISO + EXE               [41] *** Winget Install ***                " -ForegroundColor Blue
+    Write-Host "[32] Setup Microsoft Office Install EXE            [42] *** Chocolatey Install ***            " -ForegroundColor Blue
     Write-Host "------------------------------------------------------------------------------------------------------------------------" -ForegroundColor Green
-    Write-Host "[90] *** Standard PC Install All in One ***        [91] Winget + Chocolatey Upgrade                                     " -ForegroundColor DarkRed
+    Write-Host "[90] *** Standard PC Install All in One ***        [91] Winget + Chocolatey Upgrade           " -ForegroundColor DarkRed
     Write-Host "------------------------------------------------------------------------------------------------------------------------" -ForegroundColor Green
-    Write-Host "[98] Windows Utility (winutil)                     [99] Microsoft Activation Scripts (MAS)                              " -ForegroundColor DarkGray
-    Write-Host "[88] Deneme                                                                                                             " -ForegroundColor DarkGray
+    Write-Host "[98] Windows Utility (winutil)                     [99] Microsoft Activation Scripts (MAS)    " -ForegroundColor DarkGray
     Write-Host "------------------------------------------------------------------------------------------------------------------------" -ForegroundColor Green
-    Write-Host "[0] Exit                                                                                                                " -ForegroundColor Red
+    Write-Host "[0] Exit                                                                                      " -ForegroundColor Red
     Write-Host "------------------------------------------------------------------------------------------------------------------------" -ForegroundColor Green
 }
 
@@ -44,7 +43,7 @@ function Download-And-Execute-Script {
     } finally {
         if (Test-Path $tempFile) {
             Remove-Item $tempFile -Force
-            Write-Host "Temporary file removed."                                                                                          -ForegroundColor Green
+            Write-Host "Temporary file removed."                                                                                         -ForegroundColor Green
         }
     }
 }
