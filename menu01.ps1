@@ -79,12 +79,10 @@ function Handle-Choice {
         52 { robocopy "\\192.168.18.2\setup\source\setup\AnyToISO\AnyToISOcrack" "C:\Program Files (x86)\AnyToISO" anytoiso.exe /IS }
         53 { robocopy "\\192.168.18.2\setup\source\key-crack+\Revo_Uninstaller_Pro" "C:\ProgramData\VS Revo Group\Revo Uninstaller Pro" revouninstallerpro5.lic /IS }
         54 { robocopy "\\192.168.18.2\setup\source\key-crack+\AOMEI_Partition_Assistant_Pro" "C:\Program Files (x86)\AOMEI Partition Assistant" cfg.ini /IS }
-        55 { Invoke-WebRequest -Uri "https://massgrave.dev/ias" -UseBasicP -OutFile "$env:TEMP\activation.ps1"; & "$env:TEMP\activation.ps1" }
+        55 { Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/emreuls7/mr.winls/tool/massgrave_ias.ps1").Content
 
-        0 { 
-            Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/emreuls7/mr.winls/main/program.ps1").Content
-        }
-        # default { Write-Host "Invalid choice. Please try again." }
+        0 { Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/emreuls7/mr.winls/main/program.ps1").Content }
+     default { Write-Host "Invalid choice. Please try again." }
     }
 }
 
