@@ -82,9 +82,9 @@ function Handle-Choice {
         55 { Invoke-WebRequest -Uri "https://massgrave.dev/ias" -UseBasicP -OutFile "$env:TEMP\activation.ps1"; & "$env:TEMP\activation.ps1" }
 
         0 { 
-        Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/emreuls7/mr.winls/main/program.ps1").Content
+            Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/emreuls7/mr.winls/main/program.ps1").Content
         }
-        default { Write-Host "Invalid choice. Please try again." }
+        # default { Write-Host "Invalid choice. Please try again." }
     }
 }
 
