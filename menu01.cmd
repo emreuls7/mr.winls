@@ -11,15 +11,21 @@ echo [3]  'winget' *Notepad++                           [23] 'choco'  Any To ISO
 echo [4]  'choco'  FileZilla Client                     [24] 'winget' Revo Uninstaller Pro
 echo [5]  'winget' QuickLook 'winget'                   [25] 'winget' AOMEI Partitio Assistant
 echo [6]  'winget' *Advanced IP Scanner                 [26] 'winget' Internet Download Manager
-echo [7]  'choco'  Advanced Port Scan                   [27] OBS Studio Teleport (18.2-copy)   
-echo [8]  'winget' DeepL                                [28] WinRar Key (18.2-copy)
-echo [9]  'winget' Adobe Acrobat Reader                 [29] Revo Uninstaller Pro Key (18.2-copy)                 
-echo [10] 'winget' Cute PDF Writer                      [30] AOMEI Partitio Assistant Pro Key (18.2-copy)            
-echo [11] 'winget' File Converter                       [31] Internet Download Manager Activation Script
-echo [12] 'winget' Mozilla Thunderbird 
+echo [7]  'choco'  Advanced Port Scan
+echo [8]  'winget' DeepL
+echo [9]  'winget' Adobe Acrobat Reader
+echo [10] 'winget' Cute PDF Writer
+echo [11] 'winget' File Converter
+echo [12] 'winget' Mozilla Thunderbird
 echo ------------------------------------------------------------------------------------------------------------------------
 echo [31] iTop Easy Desktop (msstore)
 echo [32] Rufus (msstore)
+echo ------------------------------------------------------------------------------------------------------------------------
+[51] OBS Studio Teleport (18.2-copy)
+[52] WinRar Key (18.2-copy)
+[53] Revo Uninstaller Pro Key (18.2-copy)
+[54] AOMEI Partitio Assistant Pro Key (18.2-copy)
+[55] Internet Download Manager Activation Script
 echo ------------------------------------------------------------------------------------------------------------------------
 echo [0] Exit
 echo ------------------------------------------------------------------------------------------------------------------------
@@ -69,6 +75,7 @@ if "%choice%"=="23" choco install anytoiso -y
 if "%choice%"=="24" winget install RevoUninstaller.RevoUninstallerPro -e
 if "%choice%"=="25" winget install AOMEI.PartitionAssistant -e
 if "%choice%"=="26" winget install Tonec.InternetDownloadManager -e
+::---------------------------------------------------------------------------------------------------------------------------
 if "%choice%"=="27" robocopy "\\192.168.18.2\setup\source\key-crack+\obs-teleport" "C:\Program Files\obs-studio\obs-plugins\64bit" obs-teleport.dll /IS
 if "%choice%"=="28" robocopy "\\192.168.18.2\setup\source\setup\AnyToISO\AnyToISOcrack" "C:\Program Files (x86)\AnyToISO" anytoiso.exe /IS
 if "%choice%"=="29" robocopy "\\192.168.18.2\setup\source\key-crack+\Revo_Uninstaller_Pro" "C:\ProgramData\VS Revo Group\Revo Uninstaller Pro" revouninstallerpro5.lic /IS
