@@ -12,7 +12,7 @@ echo [4]  Core Temp
 echo [5]  Lightshot
 echo [6]  Winget UI
 echo [7]  Java 8
-echo [8]  
+echo [8]  DisplayFusion
 echo [9]  Malwarebytes
 echo [10] Telerik Fiddler Classic
 echo [11] Termius
@@ -31,10 +31,12 @@ echo [23] ASUS ArmouryCrate
 echo [24] CPUID ROG CPU-Z
 echo [25] Wireshark
 echo [26] Keeper Password Manager
-echo [27] JetBrains Toolbox
-echo [28] Microsoft Visual Studio Code
-echo [29] Microsoft Visual Studio Code Insiders
-echo [30] Microsoft SQL Server Management
+echo [27] NVIDIA GeForce NOW
+echo [28] NVIDIA PhysX System Software 
+echo [29] NVIDIA Broadcast 
+echo [30] NVIDIA CUDA Toolkit
+echo [31] spacedesk Windows DRIVER
+echo [32] spacedesk Windows VIEWER
 echo -------------------------------------------------------------------
 echo [0] Exit
 echo -------------------------------------------------------------------
@@ -48,7 +50,7 @@ if "%choice%"=="4" winget install ALCPU.CoreTemp -e
 if "%choice%"=="5" winget install Skillbrains.Lightshot -e
 if "%choice%"=="6" winget install SomePythonThings.WingetUIStore -e
 if "%choice%"=="7" winget install Oracle.JavaRuntimeEnvironment -e
-if "%choice%"=="8" winget install SoftDeluxe.FreeDownloadManager -e
+if "%choice%"=="8" winget install BinaryFortress.DisplayFusion -e
 if "%choice%"=="9" winget install Malwarebytes.Malwarebytes -e
 if "%choice%"=="10" winget install Telerik.Fiddler.Classic -e
 if "%choice%"=="11" winget install Termius.Termius -e
@@ -67,10 +69,12 @@ if "%choice%"=="23" winget install Asus.ArmouryCrate
 if "%choice%"=="24" winget install CPUID.CPU-Z.ROG
 if "%choice%"=="25" winget install WiresharkFoundation.Wireshark -e
 if "%choice%"=="26" winget install Keeper.KeeperDesktop -e
-if "%choice%"=="27" winget install JetBrains.Toolbox -e
-if "%choice%"=="28" winget install Microsoft.VisualStudioCode -e
-if "%choice%"=="29" winget install Microsoft.VisualStudioCode.Insiders -e
-if "%choice%"=="30" winget install Microsoft.SQLServerManagementStudio -e
+if "%choice%"=="27" winget install Nvidia.GeForceNow -e
+if "%choice%"=="28" winget install Nvidia.PhysX -e
+if "%choice%"=="29" winget install Nvidia.Broadcast -e
+if "%choice%"=="30" winget install Nvidia.CUDA -e
+if "%choice%"=="31" winget install Datronicsoft.SpacedeskDriver.Server-e
+if "%choice%"=="32" winget install Datronicsoft.SpacedeskDriver.Client -e
 ::---------------------------------------------------------------------------------------------------------------------------
 if "%choice%"=="0" exit
 ::---------------------------------------------------------------------------------------------------------------------------
