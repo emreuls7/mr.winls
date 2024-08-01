@@ -16,10 +16,8 @@ echo -------------------------------------------------------------------
 set /p choice="Enter your choice (0,1,2,3...): "
 ::---------------------------------------------------------------------------------------------------------------------------
 
+:: Define temporary directory
 set "tempDir=C:\Windows\Temp"
-
-:: Create the directory if it doesn't exist
-if not exist "%tempDir%" mkdir "%tempDir%"
 
 :: Handle user choices
 if "%choice%"=="1" (
@@ -28,9 +26,6 @@ if "%choice%"=="1" (
     if exist "%tempDir%\menu21_1.cmd" (
         call "%tempDir%\menu21_1.cmd"
         del "%tempDir%\menu21_1.cmd"
-    ) else (
-        echo Failed to download menu21_1.cmd.
-    )
 )
 if "%choice%"=="2" (
     echo Downloading and executing menu21_2.cmd...
@@ -38,9 +33,6 @@ if "%choice%"=="2" (
     if exist "%tempDir%\menu21_2.cmd" (
         call "%tempDir%\menu21_2.cmd"
         del "%tempDir%\menu21_2.cmd"
-    ) else (
-        echo Failed to download menu21_2.cmd.
-    )
 )
 if "%choice%"=="3" (
     echo Downloading and executing menu21_3.cmd...
@@ -48,9 +40,6 @@ if "%choice%"=="3" (
     if exist "%tempDir%\menu21_3.cmd" (
         call "%tempDir%\menu21_3.cmd"
         del "%tempDir%\menu21_3.cmd"
-    ) else (
-        echo Failed to download menu21_3.cmd.
-    )
 )
 if "%choice%"=="4" (
     echo Downloading and executing menu21_4.cmd...
@@ -58,9 +47,6 @@ if "%choice%"=="4" (
     if exist "%tempDir%\menu21_4.cmd" (
         call "%tempDir%\menu21_4.cmd"
         del "%tempDir%\menu21_4.cmd"
-    ) else (
-        echo Failed to download menu21_4.cmd.
-    )
 )
 
 if "%choice%"=="0" exit
