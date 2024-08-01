@@ -3,7 +3,7 @@ cls
 :menu_02
 cls
 echo -------------------------------------------------------------------
-echo --- menu_02      --- Winget Install ---       CREATED BY MRLSx7 ---
+echo --- menu_02     --- Winget 1 Install ---      CREATED BY MRLSx7 ---
 echo -------------------------------------------------------------------
 echo [1]  TechPowerUp GPU-Z
 echo [2]  Crystal Disk Info
@@ -25,18 +25,6 @@ echo [17] NDI 6 Runtime
 echo [18] Python
 echo [19] Node.js
 echo [20] Unity
-echo [21] CPUID CPU-Z MSI
-echo [22] MSI Afterburner
-echo [23] ASUS ArmouryCrate
-echo [24] CPUID ROG CPU-Z
-echo [25] Wireshark
-echo [26] Keeper Password Manager
-echo [27] NVIDIA GeForce NOW
-echo [28] NVIDIA PhysX System Software 
-echo [29] NVIDIA Broadcast 
-echo [30] NVIDIA CUDA Toolkit
-echo [31] spacedesk Windows DRIVER
-echo [32] spacedesk Windows VIEWER
 echo -------------------------------------------------------------------
 echo [0] Exit
 echo -------------------------------------------------------------------
@@ -63,18 +51,7 @@ if "%choice%"=="17" winget install NDI.NDIRuntime -e
 if "%choice%"=="18" winget install Python.Launcher -e
 if "%choice%"=="19" winget install OpenJS.NodeJS -e
 if "%choice%"=="20" winget install Unity.Unity.2020 -e
-if "%choice%"=="21" winget install CPUID.CPU-Z.MSI -e
-if "%choice%"=="22" winget install Guru3D.Afterburner -e
-if "%choice%"=="23" winget install Asus.ArmouryCrate
-if "%choice%"=="24" winget install CPUID.CPU-Z.ROG
-if "%choice%"=="25" winget install WiresharkFoundation.Wireshark -e
-if "%choice%"=="26" winget install Keeper.KeeperDesktop -e
-if "%choice%"=="27" winget install Nvidia.GeForceNow -e
-if "%choice%"=="28" winget install Nvidia.PhysX -e
-if "%choice%"=="29" winget install Nvidia.Broadcast -e
-if "%choice%"=="30" winget install Nvidia.CUDA -e
-if "%choice%"=="31" winget install Datronicsoft.SpacedeskDriver.Server-e
-if "%choice%"=="32" winget install Datronicsoft.SpacedeskDriver.Client -e
+
 ::---------------------------------------------------------------------------------------------------------------------------
 if "%choice%"=="0" exit
 ::---------------------------------------------------------------------------------------------------------------------------
