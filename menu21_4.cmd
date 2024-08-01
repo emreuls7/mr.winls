@@ -145,9 +145,9 @@ reg add "HKEY_CURRENT_USER\Software\Microsoft\Office\16.0\Outlook\Preferences" /
 )
 ::---------------------------------------------------------------------------------------------------------------------------
 if "%choice%"=="0" (
-    powershell -Command "Invoke-WebRequest -Uri https://raw.githubusercontent.com/emreuls7/mr.winls/menu/menu21_1.cmd -OutFile '%tempDir%\menu21.cmd'"
-    call "%tempDir%\menu21_1.cmd"
-    del "%tempDir%\menu21_1.cmd"
+    powershell -Command "Invoke-WebRequest -Uri https://raw.githubusercontent.com/emreuls7/mr.winls/menu/menu21.cmd -OutFile '%tempDir%\menu21.cmd'"
+    call "%tempDir%\menu21.cmd"
+    del "%tempDir%\menu21.cmd"
 )
 ::---------------------------------------------------------------------------------------------------------------------------
 goto menu_21_04
