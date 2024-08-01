@@ -17,6 +17,11 @@ echo -------------------------------------------------------------------
 ::---------------------------------------------------------------------------------------------------------------------------
 set /p choice="Enter your choice (0,1,2,3...): "
 ::---------------------------------------------------------------------------------------------------------------------------
+set "tempDir=C:\Windows\Temp"
+
+:: Create the directory if it doesn't exist
+if not exist "%tempDir%" mkdir "%tempDir%"
+
 if "%choice%"=="1" powershell -Command "Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Lsa' -Name 'LimitBlankPasswordUse' -Value 0"
 if "%choice%"=="2" (
                       reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\0" /v 1806 /t REG_DWORD /d 0 /f
