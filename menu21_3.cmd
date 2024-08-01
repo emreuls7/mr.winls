@@ -17,10 +17,9 @@ echo -------------------------------------------------------------------
 ::---------------------------------------------------------------------------------------------------------------------------
 set /p choice="Enter your choice (0,1,2,3...): "
 ::---------------------------------------------------------------------------------------------------------------------------
-set "tempDir=C:\Windows\Temp"
 
-:: Create the directory if it doesn't exist
-if not exist "%tempDir%" mkdir "%tempDir%"
+:: Define temporary directory
+set "tempDir=C:\Windows\Temp"
 
 if "%choice%"=="1" powershell -Command "Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Lsa' -Name 'LimitBlankPasswordUse' -Value 0"
 if "%choice%"=="2" (
