@@ -3,7 +3,7 @@ cls
 :menu_06
 cls
 echo -------------------------------------------------------------------
-echo --- menu_06    --- Browser Installer ---     CREATED BY MRLSx7 ---
+echo --- menu_06    --- Browser Install ---       CREATED BY MRLSx7 ---
 echo -------------------------------------------------------------------
 echo [1]  Google Chrome
 echo [2]  Google Chrome Dev
