@@ -34,7 +34,11 @@ if "%choice%"=="5" (
 )
 if "%choice%"=="6" net user scan /add
 ::---------------------------------------------------------------------------------------------------------------------------
-if "%choice%"=="0" exit
+if "%choice%"=="0" (
+    powershell -Command "Invoke-WebRequest -Uri https://raw.githubusercontent.com/emreuls7/mr.winls/menu/menu21_1.cmd -OutFile '%tempDir%\menu21.cmd'"
+    call "%tempDir%\menu21_1.cmd"
+    del "%tempDir%\menu21_1.cmd"
+)
 ::---------------------------------------------------------------------------------------------------------------------------
 pasue
 goto menu_21_3
