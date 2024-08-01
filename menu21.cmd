@@ -5,8 +5,8 @@ cls
 echo -------------------------------------------------------------------
 echo --- menu_21    --- * Windows Fixed * ---      CREATED BY MRLSx7 ---
 echo -------------------------------------------------------------------
-echo [1] menu_21_1
-echo [2] menu_21_2
+echo [1] menu_21_1 Sytem file Fixed
+echo [2] menu_21_2 
 echo [3] menu_21_3
 echo [4] menu_21_4 OUTLOOK FIX
 echo [0] Exit
