@@ -46,9 +46,9 @@ if "%choice%"=="7" reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Polic
 if "%choice%"=="8" reg delete "HKCU\Software\Microsoft\Windows\CurrentVersion\Policies\Associations" /v LowRiskFileTypes /f
 ::---------------------------------------------------------------------------------------------------------------------------
 if "%choice%"=="0" (
-    powershell -Command "Invoke-WebRequest -Uri https://raw.githubusercontent.com/emreuls7/mr.winls/menu/menu21_1.cmd -OutFile '%tempDir%\menu21.cmd'"
-    call "%tempDir%\menu21_1.cmd"
-    del "%tempDir%\menu21_1.cmd"
+    powershell -Command "Invoke-WebRequest -Uri https://raw.githubusercontent.com/emreuls7/mr.winls/menu/menu21.cmd -OutFile '%tempDir%\menu21.cmd'"
+    call "%tempDir%\menu21.cmd"
+    del "%tempDir%\menu21.cmd"
 )
 ::---------------------------------------------------------------------------------------------------------------------------
 pasue
