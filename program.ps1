@@ -2,27 +2,27 @@
 # Menü görüntüleme fonksiyonu
 function Show-Menu {
     Clear-Host
-    Write-Host "------------------------------------------------------------------------------------------------------------------------" -ForegroundColor Yellow
+    Write-Host "------------------------------------------------------------------------------------------------------------------------" -ForegroundColor Green
     Write-Host "--- Main Menu                  --- Welcome to Software Install ---                                 CREATED BY MRLSx7 ---" -ForegroundColor Red
-    Write-Host "------------------------------------------------------------------------------------------------------------------------" -ForegroundColor Yellow
-    Write-Host "[1] * Program Install *                            [6]  Web Browser Install               " -ForegroundColor White
-    Write-Host "[2] Winget 1* Install                              [7]  VPN + Remote Install              " -ForegroundColor White
-    Write-Host "[3] Winget 2* Install                              [8]  Media Player Install              " -ForegroundColor White
-    Write-Host "[4] Choco Instal                                   [9]  Chat Messenger Install            " -ForegroundColor White
-    Write-Host "[5] MS Store Install                               [10] Gaming Launcher Install           " -ForegroundColor White
-    Write-Host "------------------------------------------------------------------------------------------------------------------------" -ForegroundColor Yellow
-    Write-Host "[11] Microsoft Program Install                     [21] * Microsoft Windows Fixed *       " -ForegroundColor White                    
-    Write-Host "[12] Microsoft .NET Install                                                               " -ForegroundColor White
-    Write-Host "------------------------------------------------------------------------------------------------------------------------" -ForegroundColor Yellow
-    Write-Host "[31] Setup Program Install ISO + EXE               [41] * Winget Install *                " -ForegroundColor White
-    Write-Host "[32] Setup Microsoft Office Install EXE            [42] * Chocolatey Install *            " -ForegroundColor White
-    Write-Host "------------------------------------------------------------------------------------------------------------------------" -ForegroundColor Yellow
-    Write-Host "[90] *** Standard PC Install All in One ***        [91] Winget + Chocolatey Upgrade       " -ForegroundColor White
-    Write-Host "------------------------------------------------------------------------------------------------------------------------" -ForegroundColor Yellow
-    Write-Host "[98] Windows Utility (winutil)                     [99] Microsoft Activation Scripts (MAS)" -ForegroundColor White
-    Write-Host "------------------------------------------------------------------------------------------------------------------------" -ForegroundColor Yellow
+    Write-Host "------------------------------------------------------------------------------------------------------------------------" -ForegroundColor Green
+    Write-Host "[1] * Program Install *                            [6]  Web Browser Install               " -ForegroundColor DarkGray
+    Write-Host "[2] Winget 1* Install                              [7]  VPN + Remote Install              " -ForegroundColor DarkGray
+    Write-Host "[3] Winget 2* Install                              [8]  Media Player Install              " -ForegroundColor DarkGray
+    Write-Host "[4] Choco Instal                                   [9]  Chat Messenger Install            " -ForegroundColor DarkGray
+    Write-Host "[5] MS Store Install                               [10] Gaming Launcher Install           " -ForegroundColor DarkGray
+    Write-Host "------------------------------------------------------------------------------------------------------------------------" -ForegroundColor Green
+    Write-Host "[11] Microsoft Program Install                     [21] * Microsoft Windows Fixed *       " -ForegroundColor DarkGray                    
+    Write-Host "[12] Microsoft .NET Install                                                               " -ForegroundColor DarkGray
+    Write-Host "------------------------------------------------------------------------------------------------------------------------" -ForegroundColor Green
+    Write-Host "[31] Setup Program Install ISO + EXE               [41] * Winget Install *                " -ForegroundColor DarkGray
+    Write-Host "[32] Setup Microsoft Office Install EXE            [42] * Chocolatey Install *            " -ForegroundColor DarkGray
+    Write-Host "------------------------------------------------------------------------------------------------------------------------" -ForegroundColor Green
+    Write-Host "[90] *** Standard PC Install All in One ***        [91] Winget + Chocolatey Upgrade       " -ForegroundColor DarkGray
+    Write-Host "------------------------------------------------------------------------------------------------------------------------" -ForegroundColor Green
+    Write-Host "[98] Windows Utility (winutil)                     [99] Microsoft Activation Scripts (MAS)" -ForegroundColor DarkGray
+    Write-Host "------------------------------------------------------------------------------------------------------------------------" -ForegroundColor Green
     Write-Host "[0] Exit                                                                                   " -ForegroundColor Red
-    Write-Host "------------------------------------------------------------------------------------------------------------------------" -ForegroundColor Yellow
+    Write-Host "------------------------------------------------------------------------------------------------------------------------" -ForegroundColor Green
 }
 
 
@@ -37,11 +37,11 @@ function Download-And-Execute-Script {
     
     $tempFile = [System.IO.Path]::GetTempFileName() + ".cmd"
     try {
-        Write-Host "Downloading script from $Url..." -ForegroundColor Yellow
+        Write-Host "Downloading script from $Url..." -ForegroundColor Green
         Invoke-WebRequest -Uri $Url -OutFile $tempFile
         Write-Host "Script downloaded to $tempFile" -ForegroundColor Green
         
-        Write-Host "Executing script..." -ForegroundColor Yellow
+        Write-Host "Executing script..." -ForegroundColor Green
         Start-Process -FilePath "cmd.exe" -ArgumentList "/c `"$tempFile`"" -Wait -NoNewWindow
     } catch {
         Write-Host "An error occurred while processing the script: $_" -ForegroundColor Red
