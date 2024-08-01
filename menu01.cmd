@@ -33,8 +33,11 @@ echo ---------------------------------------------------------------------------
 set /p choice="Enter your choice (0,1,2,3...): "
 cls
 echo ------------------------------------------------------------------------------------------------------------------------
+set "tempDir=C:\Windows\Temp"
 
-:: Check and install programs
+:: Create the directory if it doesn't exist
+if not exist "%tempDir%" mkdir "%tempDir%"
+
 if "%choice%"=="1" winget install PuTTY.PuTTY -e || echo Installation failed for PuTTY
 if "%choice%"=="2" winget install Notepad++.Notepad++ -e || echo Installation failed for Notepad++
 if "%choice%"=="3" winget install JetBrains.Toolbox -e || echo Installation failed for JetBrains Toolbox
@@ -81,7 +84,7 @@ if "%choice%"=="54" robocopy "\\192.168.18.2\setup\source\key-crack+\AOMEI_Parti
 if "%choice%"=="55" powershell -command "https://raw.githubusercontent.com/emreuls7/mr.winls/tool/massgrave_ias.ps1" || echo Activation script failed
 
 if "%choice%"=="0" (
-    powershell -Command "Invoke-WebRequest -Uri https://raw.githubusercontent.com/emreuls7/mr.winls/menu/menu01.cmd -OutFile '%tempDir%\menu01.cmd'"
+    powershell -NoProfile -ExecutionPolicy Bypass -Command  "Invoke-WebRequest -Uri https://raw.githubusercontent.com/emreuls7/mr.winls/menu/menu01.cmd -OutFile '%tempDir%\menu01.cmd'"
     call "%tempDir%\menu01.cmd"
     del "%tempDir%\menu01.cmd"
 )
