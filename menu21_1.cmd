@@ -21,7 +21,6 @@ set /p choice="Enter your choice (0,1,2,3,4,5,6): "
 :: Define temporary directory
 set "tempDir=C:\Windows\Temp"
 
-:: Handle user choices
 if "%choice%"=="1" (
     echo Running System File Checker...
     sfc /scannow
@@ -58,9 +57,6 @@ if "%choice%"=="0" (
     if exist "%tempDir%\menu21.cmd" (
         call "%tempDir%\menu21.cmd"
         del "%tempDir%\menu21.cmd"
-    ) else (
-        echo Failed to download the script.
-    )
 )
 
 :: Pause to let the user read the output
