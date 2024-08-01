@@ -13,12 +13,29 @@ echo -------------------------------------------------------------------
 ::---------------------------------------------------------------------------------------------------------------------------
 set /p choice="Enter your choice (0,1,2,3...): "
 ::---------------------------------------------------------------------------------------------------------------------------
-if "%choice%"=="1" https://raw.githubusercontent.com/emreuls7/mr.winls/menu/menu21_1.cmd
-if "%choice%"=="2" https://raw.githubusercontent.com/emreuls7/mr.winls/menu/menu21_1.cmd
-if "%choice%"=="3" https://raw.githubusercontent.com/emreuls7/mr.winls/menu/menu21_1.cmd
+set "tempDir=C:\Windows\Temp"
+
+:: Create the directory if it doesn't exist
+if not exist "%tempDir%" mkdir "%tempDir%"
+
+if "%choice%"=="1" (
+    powershell -Command "Invoke-WebRequest -Uri https://raw.githubusercontent.com/emreuls7/mr.winls/menu/menu21_1.cmd -OutFile '%tempDir%\menu21_1.cmd'"
+    call "%tempDir%\menu21_1.cmd"
+    del "%tempDir%\menu21_1.cmd"
+)
+if "%choice%"=="2" (
+    powershell -Command "Invoke-WebRequest -Uri https://raw.githubusercontent.com/emreuls7/mr.winls/menu/menu21_2.cmd -OutFile '%tempDir%\menu21_2.cmd'"
+    call "%tempDir%\menu21_2.cmd"
+    del "%tempDir%\menu21_2.cmd"
+)
+if "%choice%"=="3" (
+    powershell -Command "Invoke-WebRequest -Uri https://raw.githubusercontent.com/emreuls7/mr.winls/menu/menu21_3.cmd -OutFile '%tempDir%\menu21_3.cmd'"
+    call "%tempDir%\menu21_3.cmd"
+    del "%tempDir%\menu21_3.cmd"
+)
 ::---------------------------------------------------------------------------------------------------------------------------
 if "%choice%"=="0" exit
 ::---------------------------------------------------------------------------------------------------------------------------
-pasue
+pause
 goto menu_21
 ::---------------------------------------------------------------------------------------------------------------------------
