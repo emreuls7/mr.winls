@@ -25,9 +25,9 @@ if "%choice%"=="5" gpupdate /force
 if "%choice%"=="6" dism.exe /online /enable-feature /featurename:"SMB1Protocol"
 ::---------------------------------------------------------------------------------------------------------------------------
 if "%choice%"=="0" (
-    powershell -Command "Invoke-WebRequest -Uri https://raw.githubusercontent.com/emreuls7/mr.winls/menu/menu21_1.cmd -OutFile '%tempDir%\menu21.cmd'"
-    call "%tempDir%\menu21_1.cmd"
-    del "%tempDir%\menu21_1.cmd"
+    powershell -Command "Invoke-WebRequest -Uri https://raw.githubusercontent.com/emreuls7/mr.winls/menu/menu21.cmd -OutFile '%tempDir%\menu21.cmd'"
+    call "%tempDir%\menu21.cmd"
+    del "%tempDir%\menu21.cmd"
 )
 ::---------------------------------------------------------------------------------------------------------------------------
 pasue
