@@ -53,7 +53,11 @@ if "%choice%"=="19" winget install OpenJS.NodeJS -e
 if "%choice%"=="20" winget install Unity.Unity.2020 -e
 
 ::---------------------------------------------------------------------------------------------------------------------------
-if "%choice%"=="0" exit
+if "%choice%"=="0" (
+    powershell -NoProfile -ExecutionPolicy Bypass -Command "Invoke-WebRequest -Uri https://raw.githubusercontent.com/emreuls7/mr.winls/main/program.ps1 -OutFile '%tempDir%\program.ps1'"
+    call "%tempDir%\program.ps1"
+    del "%tempDir%\program.ps1"
+)
 ::---------------------------------------------------------------------------------------------------------------------------
 ::pause
 goto menu_02
