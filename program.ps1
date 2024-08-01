@@ -5,23 +5,23 @@ function Show-Menu {
     Write-Host "------------------------------------------------------------------------------------------------------------------------" -ForegroundColor Yellow
     Write-Host "--- Main Menu                  --- Welcome to Software Install ---                                 CREATED BY MRLSx7 ---" -ForegroundColor Red
     Write-Host "------------------------------------------------------------------------------------------------------------------------" -ForegroundColor Yellow
-    Write-Host "[1] ***-Program Install-***                        [6]  Web Browser Install               " -ForegroundColor White
-    Write-Host "[2] Winget 1 Install                               [7]  VPN + Remote Install               " -ForegroundColor White
-    Write-Host "[3] Winget 2 Install                               [8]  Media Player Install               " -ForegroundColor White
-    Write-Host "[4] Choco Instal                                   [9]  Chat Messenger Install              " -ForegroundColor White
-    Write-Host "[5] MS Store Install                               [10] Gaming Launcher Install             " -ForegroundColor White
+    Write-Host "[1] * Program Install *                            [6]  Web Browser Install               " -ForegroundColor White
+    Write-Host "[2] Winget 1* Install                              [7]  VPN + Remote Install              " -ForegroundColor White
+    Write-Host "[3] Winget 2* Install                              [8]  Media Player Install              " -ForegroundColor White
+    Write-Host "[4] Choco Instal                                   [9]  Chat Messenger Install            " -ForegroundColor White
+    Write-Host "[5] MS Store Install                               [10] Gaming Launcher Install           " -ForegroundColor White
     Write-Host "------------------------------------------------------------------------------------------------------------------------" -ForegroundColor Yellow
-    Write-Host "[11] Microsoft Program Install                     [21] * Microsoft Windows Fixed *            " -ForegroundColor White                    
-    Write-Host "[12] Microsoft .NET Install                                                                    " -ForegroundColor White
+    Write-Host "[11] Microsoft Program Install                     [21] * Microsoft Windows Fixed *       " -ForegroundColor White                    
+    Write-Host "[12] Microsoft .NET Install                                                               " -ForegroundColor White
     Write-Host "------------------------------------------------------------------------------------------------------------------------" -ForegroundColor Yellow
-    Write-Host "[31] Setup Program Install ISO + EXE               [41] *** Winget Install ***                                          " -ForegroundColor White
-    Write-Host "[32] Setup Microsoft Office Install EXE            [42] *** Chocolatey Install ***                                      " -ForegroundColor White
+    Write-Host "[31] Setup Program Install ISO + EXE               [41] * Winget Install *                " -ForegroundColor White
+    Write-Host "[32] Setup Microsoft Office Install EXE            [42] * Chocolatey Install *            " -ForegroundColor White
     Write-Host "------------------------------------------------------------------------------------------------------------------------" -ForegroundColor Yellow
-    Write-Host "[90] *** Standard PC Install All in One ***        [91] Winget + Chocolatey Upgrade                                     " -ForegroundColor White
+    Write-Host "[90] *** Standard PC Install All in One ***        [91] Winget + Chocolatey Upgrade       " -ForegroundColor White
     Write-Host "------------------------------------------------------------------------------------------------------------------------" -ForegroundColor Yellow
-    Write-Host "[98] Windows Utility (winutil)                     [99] Microsoft Activation Scripts (MAS)                              " -ForegroundColor White
+    Write-Host "[98] Windows Utility (winutil)                     [99] Microsoft Activation Scripts (MAS)" -ForegroundColor White
     Write-Host "------------------------------------------------------------------------------------------------------------------------" -ForegroundColor Yellow
-    Write-Host "[0] Exit                                                                                                                " -ForegroundColor Red
+    Write-Host "[0] Exit                                                                                   " -ForegroundColor Red
     Write-Host "------------------------------------------------------------------------------------------------------------------------" -ForegroundColor Yellow
 }
 
