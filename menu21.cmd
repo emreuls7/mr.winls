@@ -20,22 +20,22 @@ set "tempDir=C:\Windows\Temp"
 if not exist "%tempDir%" mkdir "%tempDir%"
 
 if "%choice%"=="1" (
-    powershell -Command "Invoke-WebRequest -Uri https://raw.githubusercontent.com/emreuls7/mr.winls/menu/menu21_1.cmd -OutFile '%tempDir%\menu21_1.cmd'"
+    powershell -NoProfile -ExecutionPolicy Bypass -Command "Invoke-WebRequest -Uri https://raw.githubusercontent.com/emreuls7/mr.winls/menu/menu21_1.cmd -OutFile '%tempDir%\menu21_1.cmd'"
     call "%tempDir%\menu21_1.cmd"
     del "%tempDir%\menu21_1.cmd"
 )
 if "%choice%"=="2" (
-    powershell -Command "Invoke-WebRequest -Uri https://raw.githubusercontent.com/emreuls7/mr.winls/menu/menu21_2.cmd -OutFile '%tempDir%\menu21_2.cmd'"
+    powershell -NoProfile -ExecutionPolicy Bypass -Command "Invoke-WebRequest -Uri https://raw.githubusercontent.com/emreuls7/mr.winls/menu/menu21_2.cmd -OutFile '%tempDir%\menu21_2.cmd'"
     call "%tempDir%\menu21_2.cmd"
     del "%tempDir%\menu21_2.cmd"
 )
 if "%choice%"=="3" (
-    powershell -Command "Invoke-WebRequest -Uri https://raw.githubusercontent.com/emreuls7/mr.winls/menu/menu21_3.cmd -OutFile '%tempDir%\menu21_3.cmd'"
+    powershell -NoProfile -ExecutionPolicy Bypass -Command "Invoke-WebRequest -Uri https://raw.githubusercontent.com/emreuls7/mr.winls/menu/menu21_3.cmd -OutFile '%tempDir%\menu21_3.cmd'"
     call "%tempDir%\menu21_3.cmd"
     del "%tempDir%\menu21_3.cmd"
 )
 if "%choice%"=="4" (
-    powershell -Command "Invoke-WebRequest -Uri https://raw.githubusercontent.com/emreuls7/mr.winls/menu/menu21_4.cmd -OutFile '%tempDir%\menu21_4.cmd'"
+    powershell -NoProfile -ExecutionPolicy Bypass -Command "Invoke-WebRequest -Uri https://raw.githubusercontent.com/emreuls7/mr.winls/menu/menu21_4.cmd -OutFile '%tempDir%\menu21_4.cmd'"
     call "%tempDir%\menu21_4.cmd"
     del "%tempDir%\menu21_4.cmd"
 )
