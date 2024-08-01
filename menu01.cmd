@@ -88,10 +88,6 @@ if "%choice%"=="0" (
     call "%tempDir%\menu01.cmd"
     del "%tempDir%\menu01.cmd"
 )
-:: Invalid choice handling
-if "%choice%" LSS "0" (
-    echo Invalid choice. Please try again.
-)
 
 pause
 goto menu_01
