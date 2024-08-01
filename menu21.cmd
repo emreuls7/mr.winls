@@ -8,6 +8,7 @@ echo -------------------------------------------------------------------
 echo [1] menu_21_1
 echo [2] menu_21_2
 echo [3] menu_21_3
+echo [4] menu_21_4 OUTLOOK FIX
 echo [0] Exit
 echo -------------------------------------------------------------------
 ::---------------------------------------------------------------------------------------------------------------------------
@@ -32,6 +33,11 @@ if "%choice%"=="3" (
     powershell -Command "Invoke-WebRequest -Uri https://raw.githubusercontent.com/emreuls7/mr.winls/menu/menu21_3.cmd -OutFile '%tempDir%\menu21_3.cmd'"
     call "%tempDir%\menu21_3.cmd"
     del "%tempDir%\menu21_3.cmd"
+)
+if "%choice%"=="4" (
+    powershell -Command "Invoke-WebRequest -Uri https://raw.githubusercontent.com/emreuls7/mr.winls/menu/menu21_4.cmd -OutFile '%tempDir%\menu21_4.cmd'"
+    call "%tempDir%\menu21_4.cmd"
+    del "%tempDir%\menu21_4.cmd"
 )
 ::---------------------------------------------------------------------------------------------------------------------------
 if "%choice%"=="0" exit
