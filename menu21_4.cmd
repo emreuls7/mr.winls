@@ -23,19 +23,7 @@ echo -------------------------------------------------------------------
 ::---------------------------------------------------------------------------------------------------------------------------
 set /p choice="Enter your choice (0,1,2,3...): "
 ::---------------------------------------------------------------------------------------------------------------------------
-if "%choice%"=="1" goto install_programW1
-if "%choice%"=="2" goto install_programW2
-if "%choice%"=="3" goto install_programW3
-if "%choice%"=="4" goto install_programW4
-if "%choice%"=="5" goto install_programW5
-if "%choice%"=="6" goto install_programW6
-::---------------------------------------------------------------------------------------------------------------------------
-if "%choice%"=="0" 
-::---------------------------------------------------------------------------------------------------------------------------
-goto menu_21_04
-::---------------------------------------------------------------------------------------------------------------------------
-:install_programW1
-cls
+if "%choice%"=="1" (
 rem Setting WarmLargeFileSize for PST files (decimal equivalent of 00017c00: 6144)
 reg add "HKEY_CURRENT_USER\Software\Microsoft\Office\12.0\Outlook\PST" /v WarmLargeFileSize /t REG_DWORD /d 6144 /f
 
@@ -47,13 +35,8 @@ reg add "HKEY_CURRENT_USER\Software\Microsoft\Office\12.0\Outlook\OST" /v WarmLa
 
 rem Setting MaxLargeFileSize for OST files (decimal equivalent of 00017c00: 6144)
 reg add "HKEY_CURRENT_USER\Software\Microsoft\Office\12.0\Outlook\OST" /v MaxLargeFileSize /t REG_DWORD /d 6144 /f
-
-pause
-goto menu_21_04
-::---------------------------------------------------------------------------------------------------------------------------
-:install_programW2
-cls
-
+)
+if "%choice%"=="2" (
 rem Setting WarmLargeFileSize for PST files (decimal equivalent of f3cf3cf2: 4080214766)
 reg add "HKEY_CURRENT_USER\Software\Microsoft\Office\12.0\Outlook\PST" /v WarmLargeFileSize /t REG_DWORD /d 4080214766 /f
 
@@ -65,13 +48,8 @@ reg add "HKEY_CURRENT_USER\Software\Microsoft\Office\12.0\Outlook\OST" /v WarmLa
 
 rem Setting MaxLargeFileSize for OST files (decimal equivalent of ffffffff: 4294967295)
 reg add "HKEY_CURRENT_USER\Software\Microsoft\Office\12.0\Outlook\OST" /v MaxLargeFileSize /t REG_DWORD /d 4294967295 /f
-
-pause
-goto menu_21_04
-::---------------------------------------------------------------------------------------------------------------------------
-:install_programW3
-cls
-
+)
+if "%choice%"=="3" (
 rem Setting WarmLargeFileSize for PST files (decimal equivalent of 00017c00: 6144)
 reg add "HKEY_CURRENT_USER\Software\Microsoft\Office\14.0\Outlook\PST" /v WarmLargeFileSize /t REG_DWORD /d 6144 /f
 
@@ -83,13 +61,8 @@ reg add "HKEY_CURRENT_USER\Software\Microsoft\Office\14.0\Outlook\OST" /v WarmLa
 
 rem Setting MaxLargeFileSize for OST files (decimal equivalent of 00017c00: 6144)
 reg add "HKEY_CURRENT_USER\Software\Microsoft\Office\14.0\Outlook\OST" /v MaxLargeFileSize /t REG_DWORD /d 6144 /f
-
-pause
-goto menu_21_04
-::---------------------------------------------------------------------------------------------------------------------------
-:install_programW4
-cls
-
+)
+if "%choice%"=="4" (
 rem Setting WarmLargeFileSize for PST files (decimal equivalent of f3cf3cf2: 4080214766)
 reg add "HKEY_CURRENT_USER\Software\Microsoft\Office\14.0\Outlook\PST" /v WarmLargeFileSize /t REG_DWORD /d 4080214766 /f
 
@@ -101,13 +74,8 @@ reg add "HKEY_CURRENT_USER\Software\Microsoft\Office\14.0\Outlook\OST" /v WarmLa
 
 rem Setting MaxLargeFileSize for OST files (decimal equivalent of ffffffff: 4294967295)
 reg add "HKEY_CURRENT_USER\Software\Microsoft\Office\14.0\Outlook\OST" /v MaxLargeFileSize /t REG_DWORD /d 4294967295 /f
-
-pause
-goto menu_21_04
-::---------------------------------------------------------------------------------------------------------------------------
-:install_programW5
-cls
-
+(
+if "%choice%"=="5" (
 rem Setting WarmLargeFileSize for PST files (decimal equivalent of 00017c00: 6144)
 reg add "HKEY_CURRENT_USER\Software\Microsoft\Office\15.0\Outlook\PST" /v WarmLargeFileSize /t REG_DWORD /d 6144 /f
 
@@ -119,13 +87,8 @@ reg add "HKEY_CURRENT_USER\Software\Microsoft\Office\15.0\Outlook\OST" /v WarmLa
 
 rem Setting MaxLargeFileSize for OST files (decimal equivalent of 00017c00: 6144)
 reg add "HKEY_CURRENT_USER\Software\Microsoft\Office\15.0\Outlook\OST" /v MaxLargeFileSize /t REG_DWORD /d 6144 /f
-
-pause
-goto menu_21_04
-::---------------------------------------------------------------------------------------------------------------------------
-:install_programW6
-cls
-
+)
+if "%choice%"=="6" (
 rem Setting WarmLargeFileSize for PST files (decimal equivalent of f3cf3cf2: 4080214766)
 reg add "HKEY_CURRENT_USER\Software\Microsoft\Office\15.0\Outlook\PST" /v WarmLargeFileSize /t REG_DWORD /d 4080214766 /f
 
@@ -137,13 +100,8 @@ reg add "HKEY_CURRENT_USER\Software\Microsoft\Office\15.0\Outlook\OST" /v WarmLa
 
 rem Setting MaxLargeFileSize for OST files (decimal equivalent of ffffffff: 4294967295)
 reg add "HKEY_CURRENT_USER\Software\Microsoft\Office\15.0\Outlook\OST" /v MaxLargeFileSize /t REG_DWORD /d 4294967295 /f
-
-pause
-goto menu_21_04
-::---------------------------------------------------------------------------------------------------------------------------
-:install_programW7
-cls
-
+)
+if "%choice%"=="7" (
 rem Setting WarmLargeFileSize for PST files (decimal equivalent of 00017c00: 6144)
 reg add "HKEY_CURRENT_USER\Software\Microsoft\Office\16.0\Outlook\PST" /v WarmLargeFileSize /t REG_DWORD /d 6144 /f
 
@@ -155,13 +113,8 @@ reg add "HKEY_CURRENT_USER\Software\Microsoft\Office\16.0\Outlook\OST" /v WarmLa
 
 rem Setting MaxLargeFileSize for OST files (decimal equivalent of 00017c00: 6144)
 reg add "HKEY_CURRENT_USER\Software\Microsoft\Office\16.0\Outlook\OST" /v MaxLargeFileSize /t REG_DWORD /d 6144 /f
-
-pause
-goto menu_21_04
-::---------------------------------------------------------------------------------------------------------------------------
-:install_programW8
-cls
-
+)
+if "%choice%"=="8" (
 rem Setting WarmLargeFileSize for PST files (decimal equivalent of f3cf3cf2: 4080214766)
 reg add "HKEY_CURRENT_USER\Software\Microsoft\Office\16.0\Outlook\PST" /v WarmLargeFileSize /t REG_DWORD /d 4080214766 /f
 
@@ -173,43 +126,29 @@ reg add "HKEY_CURRENT_USER\Software\Microsoft\Office\16.0\Outlook\OST" /v WarmLa
 
 rem Setting MaxLargeFileSize for OST files (decimal equivalent of ffffffff: 4294967295)
 reg add "HKEY_CURRENT_USER\Software\Microsoft\Office\16.0\Outlook\OST" /v MaxLargeFileSize /t REG_DWORD /d 4294967295 /f
-
-pause
-goto menu_21_04
-::---------------------------------------------------------------------------------------------------------------------------
-:install_programW9
-cls
-
+)
+if "%choice%"=="9" (
 rem Setting MaximumAttachmentSize for Outlook Preferences (decimal equivalent of 00030720: 198656)
 reg add "HKEY_CURRENT_USER\Software\Microsoft\Office\12.0\Outlook\Preferences" /v MaximumAttachmentSize /t REG_DWORD /d 198656 /f
-
-pause
-goto menu_21_04
-::---------------------------------------------------------------------------------------------------------------------------
-:install_programW10
-cls
-
+)
+if "%choice%"=="10" (
 rem Setting MaximumAttachmentSize for Outlook Preferences (decimal equivalent of 00030720: 198656)
 reg add "HKEY_CURRENT_USER\Software\Microsoft\Office\14.0\Outlook\Preferences" /v MaximumAttachmentSize /t REG_DWORD /d 198656 /f
-
-pause
-goto menu_21_04
-::---------------------------------------------------------------------------------------------------------------------------
-:install_programW11
-cls
-
+)
+if "%choice%"=="11" (
 rem Setting MaximumAttachmentSize for Outlook Preferences (decimal equivalent of 00030720: 198656)
 reg add "HKEY_CURRENT_USER\Software\Microsoft\Office\15.0\Outlook\Preferences" /v MaximumAttachmentSize /t REG_DWORD /d 198656 /f
-
-pause
-goto menu_21_04
-::---------------------------------------------------------------------------------------------------------------------------
-:install_programW12
-cls
-
+)
+if "%choice%"=="12" (
 rem Setting MaximumAttachmentSize for Outlook Preferences (decimal equivalent of 00030720: 198656)
 reg add "HKEY_CURRENT_USER\Software\Microsoft\Office\16.0\Outlook\Preferences" /v MaximumAttachmentSize /t REG_DWORD /d 198656 /f
-
-pause
+)
+::---------------------------------------------------------------------------------------------------------------------------
+if "%choice%"=="0" (
+    powershell -Command "Invoke-WebRequest -Uri https://raw.githubusercontent.com/emreuls7/mr.winls/menu/menu21_1.cmd -OutFile '%tempDir%\menu21.cmd'"
+    call "%tempDir%\menu21_1.cmd"
+    del "%tempDir%\menu21_1.cmd"
+)
+::---------------------------------------------------------------------------------------------------------------------------
 goto menu_21_04
 ::---------------------------------------------------------------------------------------------------------------------------
