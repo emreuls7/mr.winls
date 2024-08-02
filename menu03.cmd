@@ -3,7 +3,7 @@ cls
 :menu_03
 cls
 echo -------------------------------------------------------------------
-echo --- menu_03     --- Winget 2 Install ---      CREATED BY MRLSx7 ---
+echo --- menu_03     --- Winget 2 Install ---                        ---
 echo -------------------------------------------------------------------
 echo [1] CPUID CPU-Z MSI
 echo [2] MSI Afterburner
