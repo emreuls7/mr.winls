@@ -3,7 +3,7 @@ cls
 :menu_11
 cls
 echo -------------------------------------------------------------------
-echo --- menu_11 --- Microsoft Program Install --- CREATED BY MRLSx7 ---
+echo --- menu_11 --- Microsoft Program Install ---                   ---
 echo -------------------------------------------------------------------
 echo [1]  Microsoft OneNote Store
 echo [2]  Microsoft PC Manager
