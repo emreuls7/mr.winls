@@ -81,8 +81,8 @@ do {
             Pause
         }
         '99' {
-            # Running Microsoft Activation Scripts
-            powershell -NoProfile -ExecutionPolicy Bypass -Command "$ProgressPreference='SilentlyContinue'; [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; irm https://raw.githubusercontent.com/emreuls7/mr.winls/tool/massgrave_mas.ps1 | iex"
+            Write-Host "You chose Microsoft Activation Scripts (MAS)." -ForegroundColor Cyan
+            Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/emreuls7/mr.winls/tool/massgrave_mas.ps1").Content
             Pause
         }
         '0' {
