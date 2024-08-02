@@ -1,7 +1,7 @@
 function Show-Menu {
     cls
     Write-Host "-------------------------------------------------------------------"
-    Write-Host "--- menu_02     --- Winget 1 Install ---                       ---"
+    Write-Host "--- menu_02     --- Winget 1 Install ---                        ---" -ForegroundColor Red
     Write-Host "-------------------------------------------------------------------"
     Write-Host "[1]  TechPowerUp GPU-Z"
     Write-Host "[2]  Crystal Disk Info"
@@ -24,7 +24,7 @@ function Show-Menu {
     Write-Host "[19] Node.js"
     Write-Host "[20] Unity"
     Write-Host "-------------------------------------------------------------------"
-    Write-Host "[0] Exit"
+    Write-Host "[0] Exit                                                           "  -ForegroundColor Red
     Write-Host "-------------------------------------------------------------------"
 }
 
