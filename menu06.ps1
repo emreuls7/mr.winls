@@ -1,7 +1,7 @@
 function Show-Menu {
     cls
     Write-Host "-------------------------------------------------------------------"
-    Write-Host "--- menu_06    --- Browser Install ---                          ---"
+    Write-Host "--- menu_06    --- Browser Install ---                          ---" -ForegroundColor Red
     Write-Host "-------------------------------------------------------------------"
     Write-Host "[1]  Google Chrome"
     Write-Host "[2]  Google Chrome Dev"
@@ -13,9 +13,9 @@ function Show-Menu {
     Write-Host "[8]  Opera GX Stable"
     Write-Host "[9]  Safari"
     Write-Host "[10] Tor Browser"
-    Write-Host "------------------------------------------------------------------------------------------------------------------------"
-    Write-Host "[0] Back to Main Menu"
-    Write-Host "------------------------------------------------------------------------------------------------------------------------"
+    Write-Host "-------------------------------------------------------------------"
+    Write-Host "[0] Exit" -ForegroundColor Red
+    Write-Host "-------------------------------------------------------------------"
 }
 
 function Install-Browser {
