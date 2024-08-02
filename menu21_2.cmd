@@ -3,7 +3,7 @@ cls
 :menu_21_2
 cls
 echo -------------------------------------------------------------------
-echo --- menu_21_2   --- * Windows Fixed * ---     CREATED BY MRLSx7 ---
+echo --- menu_21_2   --- * Windows Fixed * ---                       ---
 echo -------------------------------------------------------------------
 echo [1] Disable User Account Control
 echo [2] Enable User Account Control
