@@ -3,7 +3,7 @@ cls
 :menu_12
 cls
 echo -------------------------------------------------------------------
-echo --- menu_12 --- Microsoft .NET Installer ---  CREATED BY MRLSx7 ---
+echo --- menu_12 --- Microsoft .NET Installer ---                    ---
 echo -------------------------------------------------------------------
 echo [1]  Microsoft Dot Net Framework 3.5
 echo [2]  Microsoft Dot Net Framework 4.5.1
