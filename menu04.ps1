@@ -1,13 +1,13 @@
 function Show-Menu {
     cls
     Write-Host "-------------------------------------------------------------------"
-    Write-Host "--- menu_04       --- Choco Install ---                         ---"
+    Write-Host "--- menu_04       --- Choco Install ---                         ---" -ForegroundColor Red
     Write-Host "-------------------------------------------------------------------"
     Write-Host "[1] FileZilla Server"
     Write-Host "[2] UniFi Network Application"
     Write-Host "[3] qBittorrent"
     Write-Host "-------------------------------------------------------------------"
-    Write-Host "[0] Exit"
+    Write-Host "[0] Exit                                                           " -ForegroundColor Red
     Write-Host "-------------------------------------------------------------------"
 }
 
