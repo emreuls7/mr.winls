@@ -3,7 +3,7 @@ cls
 :menu_10
 cls
 echo -------------------------------------------------------------------
-echo --- menu_02  --- Games Lounge Installer ---   CREATED BY MRLSx7 ---
+echo --- menu_02  --- Games Lounge Installer ---                     ---
 echo -------------------------------------------------------------------
 echo [1] Steam
 echo [2] Epic Games Launcher
