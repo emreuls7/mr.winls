@@ -2,7 +2,7 @@
 function Show-Menu_31 {
     cls
     Write-Host "-------------------------------------------------------------------"
-    Write-Host "--- menu_31    --- Setup Program Installer ISO EXE ---           ---"
+    Write-Host "--- menu_31    --- Setup Program Installer ISO EXE ---          ---" -ForegroundColor Red
     Write-Host "-------------------------------------------------------------------"
     Write-Host "[1] Adobe Master Collection"
     Write-Host "[2] Blackmagic Design Davinci Resolve Studio"
@@ -14,7 +14,7 @@ function Show-Menu_31 {
     Write-Host "[8] VMware Workstation Pro"
     Write-Host "[9] PDF Converter Elite"
     Write-Host "-------------------------------------------------------------------"
-    Write-Host "[0] Exit"
+    Write-Host "[0] Exit" -ForegroundColor Red
     Write-Host "-------------------------------------------------------------------"
 }
 
