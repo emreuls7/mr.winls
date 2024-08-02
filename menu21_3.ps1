@@ -2,7 +2,7 @@
 function Show-Menu_21_3 {
     cls
     Write-Host "-------------------------------------------------------------------"
-    Write-Host "--- menu_21    --- * Windows Fixed * ---                        ---"
+    Write-Host "--- menu_21    --- * Windows Fixed * ---                        ---" -ForegroundColor Red
     Write-Host "-------------------------------------------------------------------"
     Write-Host "[1] Disabling 'Accounts: Limit local account use of blank passwords to console logon only'"
     Write-Host "[2] Enabling 'Launching applications and unsafe files' in Internet Options"
@@ -11,7 +11,7 @@ function Show-Menu_21_3 {
     Write-Host "[5] Enabling Remote Desktop for Administrator"
     Write-Host "[6] User Creation ( scan )"
     Write-Host "-------------------------------------------------------------------"
-    Write-Host "[0] Exit"
+    Write-Host "[0] Exit" -ForegroundColor Red
     Write-Host "-------------------------------------------------------------------"
 }
 
