@@ -49,233 +49,44 @@ echo.
 ::---------------------------------------------------------------------------------------------------------------------------
 set /p choice="Enter your choice (0,1,2,3...): "
 ::---------------------------------------------------------------------------------------------------------------------------
-if "%choice%"=="1" goto install_programL1
-if "%choice%"=="2" goto install_programL2
-if "%choice%"=="3" goto install_programL3
-if "%choice%"=="4" goto install_programL4
-if "%choice%"=="5" goto install_programL5
-if "%choice%"=="6" goto install_programL6
-if "%choice%"=="7" goto install_programL7
-if "%choice%"=="8" goto install_programL8
-if "%choice%"=="9" goto install_programL9
-if "%choice%"=="10" goto install_programL10
-if "%choice%"=="11" goto install_programL11
-if "%choice%"=="12" goto install_programL12
-if "%choice%"=="13" goto install_programL13
-if "%choice%"=="14" goto install_programL14
-if "%choice%"=="15" goto install_programL15
-if "%choice%"=="16" goto install_programL16
-if "%choice%"=="17" goto install_programL17
-if "%choice%"=="18" goto install_programL18
-if "%choice%"=="19" goto install_programL19
-if "%choice%"=="20" goto install_programL20
-if "%choice%"=="21" goto install_programL21
-if "%choice%"=="22" goto install_programL22
-if "%choice%"=="23" goto install_programL23
-if "%choice%"=="24" goto install_programL24
-if "%choice%"=="25" goto install_programL25
-if "%choice%"=="26" goto install_programL26
-if "%choice%"=="27" goto install_programL27
-if "%choice%"=="28" goto install_programL28
-if "%choice%"=="29" goto install_programL29
-if "%choice%"=="30" goto install_programL30
-if "%choice%"=="31" goto install_programL31
-if "%choice%"=="32" goto install_programL32
-if "%choice%"=="33" goto install_programL33
-if "%choice%"=="34" goto install_programL34
-if "%choice%"=="35" goto install_programL35
-if "%choice%"=="36" goto install_programL36
-if "%choice%"=="37" goto install_programL37
-if "%choice%"=="38" goto install_programL38
-if "%choice%"=="39" goto install_programL39
-if "%choice%"=="40" goto install_programL40
-::---------------------------------------------------------------------------------------------------------------------------
-if "%choice%"=="0" goto main_menu
+if "%choice%"=="1" choco install dotnet3.5 -y & goto menu_12
+if "%choice%"=="2" choco install dotnet4.5.1 -y & goto menu_12
+if "%choice%"=="3" choco install dotnet4.5.2 -y & goto menu_12
+if "%choice%"=="4" winget install Microsoft.OpenJDK.11 -e & goto menu_12
+if "%choice%"=="5" winget install Microsoft.OpenJDK.16 -e & goto menu_12
+if "%choice%"=="6" winget install Microsoft.OpenJDK.17 -e & goto menu_12
+if "%choice%"=="7" winget install Microsoft.OpenJDK.21 -e & goto menu_12
+if "%choice%"=="8" winget install Microsoft.dotnetRuntime.3-x64 -e & goto menu_12
+if "%choice%"=="9" winget install Microsoft.dotnetRuntime.3-x86 -e & goto menu_12
+if "%choice%"=="10" winget install Microsoft.dotnetRuntime.5-x64 -e & goto menu_12
+if "%choice%"=="11" winget install Microsoft.dotnetRuntime.5-x86 -e & goto menu_12
+if "%choice%"=="12" winget install Microsoft.dotnetRuntime.6-x64 -e & goto menu_12
+if "%choice%"=="13" winget install Microsoft.dotnetRuntime.6-x86 -e & goto menu_12
+if "%choice%"=="14" winget install Microsoft.VCRedist.2005.x86 -e & goto menu_12
+if "%choice%"=="15" winget install Microsoft.VCRedist.2005.x64 -e & goto menu_12
+if "%choice%"=="16" winget install Microsoft.VCRedist.2008.x86 -e & goto menu_12
+if "%choice%"=="17" winget install Microsoft.VCRedist.2008.x64 -e & goto menu_12
+if "%choice%"=="18" winget install Microsoft.VCRedist.2010.x86 -e & goto menu_12
+if "%choice%"=="19" winget install Microsoft.VCRedist.2010.x64 -e & goto menu_12
+if "%choice%"=="20" winget install Microsoft.VCRedist.2012.x86 -e & goto menu_12
+if "%choice%"=="21" winget install Microsoft.VCRedist.2012.x64 -e & goto menu_12
+if "%choice%"=="22" winget install Microsoft.VCRedist.2013.x86 -e & goto menu_12
+if "%choice%"=="23" winget install Microsoft.VCRedist.2013.x64 -e & goto menu_12
+if "%choice%"=="24" winget install Microsoft.VCRedist.2015+.x86 -e & goto menu_12
+if "%choice%"=="25" winget install Microsoft.VCRedist.2015+.x64 -e & goto menu_12
+if "%choice%"=="26" winget install Microsoft.DotNet.Runtime.3_1 -e & goto menu_12
+if "%choice%"=="27" winget install Microsoft.DotNet.Runtime.5 -e & goto menu_12
+if "%choice%"=="28" winget install Microsoft.DotNet.Runtime.6 -e & goto menu_12
+if "%choice%"=="29" winget install Microsoft.DotNet.Runtime.7 -e & goto menu_12
+if "%choice%"=="30" winget install Microsoft.DotNet.Runtime.8 -e & goto menu_12
+if "%choice%"=="31" winget install Microsoft.DotNet.Runtime.Preview -e & goto menu_12
+if "%choice%"=="32" winget install Microsoft.DotNet.HostingBundle.3_1 -e & goto menu_12
+if "%choice%"=="33" winget install Microsoft.DotNet.HostingBundle.5 -e & goto menu_12
+if "%choice%"=="34" winget install Microsoft.DotNet.HostingBundle.6 -e & goto menu_12
+if "%choice%"=="35" winget install Microsoft.DotNet.HostingBundle.7 -e & goto menu_12
+if "%choice%"=="36" winget install Microsoft.DotNet.HostingBundle.8 -e & goto menu_12
+if "%choice%"=="37" winget install Microsoft.DotNet.HostingBundle.Preview -e & goto menu_12
+if "%choice%"=="0" exit
 ::---------------------------------------------------------------------------------------------------------------------------
 goto menu_12
 ::---------------------------------------------------------------------------------------------------------------------------
-:install_programL1
-cls
-choco install dotnet3.5 -y
-goto menu_12
-::---------------------------------------------------------------------------------------------------------------------------
-:install_programL2
-cls
-choco install dotnet4.5.1 -y
-goto menu_12
-::--------------------------------------------------------------------------------------------------------------------------
-:install_programL3
-cls
-choco install dotnet4.5.2 -y
-::winget install Microsoft.DotNet.Framework.DeveloperPack.4.5
-goto menu_12
-::---------------------------------------------------------------------------------------------------------------------------
-:install_programL4
-cls
-winget install Microsoft.OpenJDK.11 -e
-goto menu_12
-::---------------------------------------------------------------------------------------------------------------------------
-:install_programL5
-cls
-winget install Microsoft.OpenJDK.16 -e
-goto menu_12
-::---------------------------------------------------------------------------------------------------------------------------
-:install_programL6
-cls
-winget install Microsoft.OpenJDK.17 -e
-goto menu_12
-::---------------------------------------------------------------------------------------------------------------------------
-:install_programL7
-cls
-winget install Microsoft.OpenJDK.21 -e
-goto menu_12
-::---------------------------------------------------------------------------------------------------------------------------
-:install_programL8
-cls
-winget install Microsoft.dotnetRuntime.3-x64 -e
-goto menu_12
-::---------------------------------------------------------------------------------------------------------------------------
-:install_programL9
-cls
-winget install Microsoft.dotnetRuntime.3-x86 -e
-goto menu_12
-::---------------------------------------------------------------------------------------------------------------------------
-:install_programL10
-cls
-winget install Microsoft.dotnetRuntime.5-x64 -e
-goto menu_12
-::---------------------------------------------------------------------------------------------------------------------------
-:install_programL11
-cls
-winget install Microsoft.dotnetRuntime.5-x86 -e
-goto menu_12
-::---------------------------------------------------------------------------------------------------------------------------
-:install_programL12
-cls
-winget install Microsoft.dotnetRuntime.6-x64 -e
-goto menu_12
-::---------------------------------------------------------------------------------------------------------------------------
-:install_programL13
-cls
-winget install Microsoft.dotnetRuntime.6-x86 -e
-goto menu_12
-::---------------------------------------------------------------------------------------------------------------------------
-:install_programL14
-cls
-winget install Microsoft.VCRedist.2005.x86 -e
-goto menu_12
-::---------------------------------------------------------------------------------------------------------------------------
-:install_programL15
-cls
-winget install Microsoft.VCRedist.2005.x64 -e
-goto menu_12
-::---------------------------------------------------------------------------------------------------------------------------
-:install_programL16
-cls
-winget install Microsoft.VCRedist.2008.x86 -e
-goto menu_12
-::---------------------------------------------------------------------------------------------------------------------------
-:install_programL17
-cls
-winget install Microsoft.VCRedist.2008.x64 -e
-goto menu_12
-::---------------------------------------------------------------------------------------------------------------------------
-:install_programL18
-cls
-winget install Microsoft.VCRedist.2010.x86 -e
-goto menu_12
-::---------------------------------------------------------------------------------------------------------------------------
-:install_programL19
-cls
-winget install Microsoft.VCRedist.2010.x64 -e
-goto menu_12
-::---------------------------------------------------------------------------------------------------------------------------
-:install_programL20
-cls
-winget install Microsoft.VCRedist.2012.x86 -e
-goto menu_12
-::---------------------------------------------------------------------------------------------------------------------------
-:install_programL21
-cls
-winget install Microsoft.VCRedist.2012.x64 -e
-goto menu_12
-::---------------------------------------------------------------------------------------------------------------------------
-:install_programL22
-cls
-winget install Microsoft.VCRedist.2013.x86 -e
-goto menu_12
-::---------------------------------------------------------------------------------------------------------------------------
-:install_programL23
-cls
-winget install Microsoft.VCRedist.2013.x64 -e
-goto menu_12
-::---------------------------------------------------------------------------------------------------------------------------
-:install_programL24
-cls
-winget install Microsoft.VCRedist.2015+.x86 -e
-goto menu_12
-::---------------------------------------------------------------------------------------------------------------------------
-:install_programL25
-cls
-winget install Microsoft.VCRedist.2015+.x64 -e
-goto menu_12
-::---------------------------------------------------------------------------------------------------------------------------
-:install_programL26
-cls
-winget install Microsoft.DotNet.Runtime.3_1 -e
-goto menu_12
-::---------------------------------------------------------------------------------------------------------------------------
-:install_programL27
-cls
-winget install Microsoft.DotNet.Runtime.5 -e
-goto menu_12
-::---------------------------------------------------------------------------------------------------------------------------
-:install_programL28
-cls
-winget install Microsoft.DotNet.Runtime.6 -e
-goto menu_12
-::---------------------------------------------------------------------------------------------------------------------------
-:install_programL29
-cls
-winget install Microsoft.DotNet.Runtime.7 -e
-goto menu_12
-::---------------------------------------------------------------------------------------------------------------------------
-:install_programL30
-cls
-winget install Microsoft.DotNet.Runtime.8 -e
-goto menu_12
-::---------------------------------------------------------------------------------------------------------------------------
-:install_programL31
-cls
-winget install Microsoft.DotNet.Runtime.Preview -e
-goto menu_12
-::---------------------------------------------------------------------------------------------------------------------------
-:install_programL32
-cls
-winget install Microsoft.DotNet.HostingBundle.3_1 -e
-goto menu_12
-::---------------------------------------------------------------------------------------------------------------------------
-:install_programL33
-cls
-winget install Microsoft.DotNet.HostingBundle.5 -e
-goto menu_12
-::---------------------------------------------------------------------------------------------------------------------------
-:install_programL34
-cls
-winget install Microsoft.DotNet.HostingBundle.6 -e
-goto menu_12
-::---------------------------------------------------------------------------------------------------------------------------
-:install_programL35
-cls
-winget install Microsoft.DotNet.HostingBundle.7 -e
-goto menu_12
-::---------------------------------------------------------------------------------------------------------------------------
-:install_programL36
-cls
-winget install Microsoft.DotNet.HostingBundle.8 -e
-goto menu_12
-::---------------------------------------------------------------------------------------------------------------------------
-:install_programL37
-cls
-winget install Microsoft.DotNet.HostingBundle.Preview -e
-goto menu_12
