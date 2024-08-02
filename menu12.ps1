@@ -1,7 +1,7 @@
 function Show-Menu {
     cls
     Write-Host "-------------------------------------------------------------------"
-    Write-Host "--- menu_12 --- Microsoft .NET Installer ---                    ---"
+    Write-Host "--- menu_12 --- Microsoft .NET Installer ---                    ---" -ForegroundColor Red
     Write-Host "-------------------------------------------------------------------"
     Write-Host "[1]  Microsoft Dot Net Framework 3.5"
     Write-Host "[2]  Microsoft Dot Net Framework 4.5.1"
@@ -41,7 +41,7 @@ function Show-Menu {
     Write-Host "[36] Microsoft ASP.NET Core Hosting Bundle 8.0"
     Write-Host "[37] Microsoft ASP.NET Core Hosting Bundle 9.0 Preview"
     Write-Host "-------------------------------------------------------------------"
-    Write-Host "[0] Exit"
+    Write-Host "[0] Exit" -ForegroundColor Red
     Write-Host "-------------------------------------------------------------------"
 }
 
