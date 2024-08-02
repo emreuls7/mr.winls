@@ -31,6 +31,11 @@ echo -------------------------------------------------------------------
 ::---------------------------------------------------------------------------------------------------------------------------
 set /p choice="Enter your choice (0,1,2,3...): "
 ::---------------------------------------------------------------------------------------------------------------------------
+set "tempDir=C:\Windows\Temp"
+
+:: Create the directory if it doesn't exist
+if not exist "%tempDir%" mkdir "%tempDir%"
+
 if "%choice%"=="1" winget install TechPowerUp.GPU-Z -e
 if "%choice%"=="2" winget install CrystalDewWorld.CrystalDiskInfo -e
 if "%choice%"=="3" winget install CrystalDewWorld.CrystalDiskMark -e
