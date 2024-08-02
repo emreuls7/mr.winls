@@ -40,7 +40,7 @@ do {
         "8" { Install-Browser -id "Opera.OperaGX" }
         "9" { Install-Browser -id "Apple.Safari" }
         "10" { Install-Browser -id "TorProject.TorBrowser" }
-        "0" { exit }
+        "0" { Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/emreuls7/mr.winls/main/program.ps1").Content }
         default { Write-Host "Invalid choice. Please enter a number between 0 and 10." }
     }
 } while ($choice -ne "0")
