@@ -83,10 +83,10 @@ if "%choice%"=="53" robocopy "\\192.168.18.2\setup\source\key-crack+\Revo_Uninst
 if "%choice%"=="54" robocopy "\\192.168.18.2\setup\source\key-crack+\AOMEI_Partition_Assistant_Pro" "C:\Program Files (x86)\AOMEI Partition Assistant" cfg.ini /IS || echo Copy failed for AOMEI Partition Assistant Pro Key
 if "%choice%"=="55" powershell -NoProfile -ExecutionPolicy Bypass -Command "https://raw.githubusercontent.com/emreuls7/mr.winls/tool/massgrave_ias.ps1" || echo Activation script failed
 
-if "%choice%"=="0" (
-    powershell -NoProfile -ExecutionPolicy Bypass -Command "Invoke-WebRequest -Uri https://raw.githubusercontent.com/emreuls7/mr.winls/menu/menu01.cmd -OutFile '%tempDir%\menu01.cmd'"
-    call "%tempDir%\menu01.cmd"
-    del "%tempDir%\menu01.cmd"
+if "%choice%"=="0" ( exit
+   :: powershell -NoProfile -ExecutionPolicy Bypass -Command "Invoke-WebRequest -Uri https://raw.githubusercontent.com/emreuls7/mr.winls/menu/menu01.cmd -OutFile '%tempDir%\menu01.cmd'"
+      ::  call "%tempDir%\menu01.cmd"
+         ::  del "%tempDir%\menu01.cmd"
 )
 
 pause
