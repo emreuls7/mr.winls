@@ -1,7 +1,7 @@
 function Show-Menu {
     cls
     Write-Host "-------------------------------------------------------------------"
-    Write-Host "--- menu_10  --- Games Lounge Installer ---                     ---"
+    Write-Host "--- menu_10  --- Games Lounge Installer ---                     ---" -ForegroundColor Red
     Write-Host "-------------------------------------------------------------------"
     Write-Host "[1] Steam"
     Write-Host "[2] Epic Games Launcher"
@@ -13,7 +13,7 @@ function Show-Menu {
     Write-Host "[8] Google Play Games Beta"
     Write-Host "[9] Blitz"
     Write-Host "===================================================================="
-    Write-Host "[0] Exit"
+    Write-Host "[0] Exit" -ForegroundColor Red
     Write-Host "===================================================================="
 }
 
