@@ -58,7 +58,7 @@ switch ($choice) {
         DownloadAndExecute -url "https://raw.githubusercontent.com/emreuls7/mr.winls/menu/menu21_4.cmd" -fileName "menu21_4.cmd"
     }
     '0' {
-        exit
+        Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/emreuls7/mr.winls/main/program.ps1").Content
     }
     default {
         Write-Output "Invalid choice. Please enter a valid option."
