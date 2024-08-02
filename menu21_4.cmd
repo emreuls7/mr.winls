@@ -3,7 +3,7 @@ cls
 :menu_21_04
 cls
 echo -------------------------------------------------------------------
-echo --- menu_21    --- * Outlook Fixed * ---      CREATED BY MRLSx7 ---
+echo --- menu_21    --- * Outlook Fixed * ---                        ---
 echo -------------------------------------------------------------------
 echo [1]  Outlook 2007 - 12.0 ost-pst 100gb                                                                             
 echo [2]  Outlook 2007 - 12.0 ost-pst max                                                                               
