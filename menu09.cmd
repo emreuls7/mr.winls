@@ -3,7 +3,7 @@ cls
 :menu_09
 cls
 echo -------------------------------------------------------------------
-echo --- menu_09  --- Chat Messenger Install ---   CREATED BY MRLSx7 ---
+echo --- menu_09  --- Chat Messenger Install ---                     ---
 echo -------------------------------------------------------------------
 echo [1]  WhatsApp
 echo [2]  WhatsApp Beta
