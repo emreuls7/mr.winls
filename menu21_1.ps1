@@ -2,7 +2,7 @@
 function Show-Menu {
     cls
     Write-Host "-------------------------------------------------------------------"
-    Write-Host "--- menu_21    --- * System File Fixed * ---                    ---"
+    Write-Host "--- menu_21    --- * System File Fixed * ---                    ---" -ForegroundColor Red
     Write-Host "-------------------------------------------------------------------"
     Write-Host "[1] System File Checker"
     Write-Host "[2] DISM Scan Health"
@@ -11,7 +11,7 @@ function Show-Menu {
     Write-Host "[5] Group Policy Updates Forcing"
     Write-Host "[6] Enable SMB 1.0/CIFS File Sharing Support on Windows"
     Write-Host "-------------------------------------------------------------------"
-    Write-Host "[0] Return to Main Menu"
+    Write-Host "[0] Exit" -ForegroundColor Red
     Write-Host "-------------------------------------------------------------------"
 }
 
