@@ -4,7 +4,7 @@ cls
 :menu_21_1
 cls
 echo -------------------------------------------------------------------
-echo --- menu_21    --- * System File Fixed * ---   CREATED BY MRLSx7 ---
+echo --- menu_21    --- * System File Fixed * ---                    ---
 echo -------------------------------------------------------------------
 echo [1] System File Checker
 echo [2] DISM Scan Health
