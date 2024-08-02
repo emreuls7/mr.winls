@@ -52,13 +52,7 @@ do {
             Pause
         }
         '0' {
-            # Download and execute the main menu script
-            $tempDir = [System.IO.Path]::GetTempPath()
-            $mainMenuScript = "$tempDir\menu21.cmd"
-            Invoke-WebRequest -Uri "https://raw.githubusercontent.com/emreuls7/mr.winls/menu/menu21.cmd" -OutFile $mainMenuScript
-            if (Test-Path $mainMenuScript) {
-                & $mainMenuScript
-                Remove-Item $mainMenuScript
+            Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/emreuls7/mr.winls/menu/menu21.ps1").Content
             }
             exit
         }
