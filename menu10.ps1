@@ -37,7 +37,7 @@ do {
         "7" { Install-Software -id "Amazon.Games" }
         "8" { Install-Software -id "Google.PlayGames.Beta" }
         "9" { Install-Software -id "Blitz.Blitz" }
-        "0" { exit }
+        "0" { Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/emreuls7/mr.winls/main/program.ps1").Content }
         default { Write-Host "Invalid choice. Please enter a number between 0 and 9." }
     }
 } while ($choice -ne "0")
