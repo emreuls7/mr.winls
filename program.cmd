@@ -73,12 +73,12 @@ goto ShowMenu
 
 :WingetInstall
 echo *** Winget Install ***.
-powershell -command "iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/emreuls7/mr.winls/tool/winget.ps1'))"
+powershell -NoProfile -ExecutionPolicy Bypass -Command "iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/emreuls7/mr.winls/tool/winget.ps1'))"
 goto ShowMenu
 
 :ChocolateyInstall
 echo *** Chocolatey Install ***.
-powershell -command "iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/emreuls7/mr.winls/tool/chocolatey.ps1'))"
+powershell -NoProfile -ExecutionPolicy Bypass -Command "iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/emreuls7/mr.winls/tool/chocolatey.ps1'))"
 goto ShowMenu
 
 :UpgradeAll
@@ -89,12 +89,12 @@ goto ShowMenu
 
 :WinUtil
 echo You chose Windows Utility (winutil).
-powershell -command "Invoke-Expression (Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/ChrisTitusTech/winutil/main/winutil.ps1').Content"
+powershell -NoProfile -ExecutionPolicy Bypass -Command "Invoke-Expression (Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/ChrisTitusTech/winutil/main/winutil.ps1').Content"
 goto ShowMenu
 
 :MAS
 echo You chose Microsoft Activation Scripts (MAS).
-powershell -command "Invoke-Expression (Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/emreuls7/mr.winls/tool/massgrave_mas.ps1').Content"
+powershell -NoProfile -ExecutionPolicy Bypass -Command "Invoke-Expression (Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/emreuls7/mr.winls/tool/massgrave_mas.ps1').Content"
 goto ShowMenu
 
 :Exit
