@@ -1,7 +1,7 @@
 # Function to clear the screen and display the menu
 function Show-Menu {
     Clear-Host
-    Write-Host "------------------------------------------------------------------------------------------------------------------------"
+    Write-Host "------------------------------------------------------------------------------------------------------------------------"  -ForegroundColor Green
     Write-Host "--- menu_01                          --- *** Program Installer *** ---                             CREATED BY MRLSx7 ---" -ForegroundColor Red
     Write-Host "----------------*winget install*-----------------------------------*winget install*-------------------------------------" -ForegroundColor Green
     Write-Host "[1]  PuTTY                                  [11] OBS Studio"
@@ -14,21 +14,21 @@ function Show-Menu {
     Write-Host "[8]  DeepL                                  [18] NVIDIA GeForce Experience"
     Write-Host "[9]  Adobe Acrobat Reader                   [19] Intel Driver Support Assistant"
     Write-Host "[10] Cute PDF Writer                        [20] Rufus"
-    Write-Host "---------------*choco install*--------------------------------------*msstore install------------------------------------"
+    Write-Host "---------------*choco install*--------------------------------------*msstore install------------------------------------"  -ForegroundColor Green
     Write-Host "[21] Any To ISO                             [31] iTop Easy Desktop"
     Write-Host "[22] WinSCP                                 [32]"
     Write-Host "[23] FileZilla Client                       [33]"
     Write-Host "[24] Advanced Port Scan                     [34]"
     Write-Host "[25]                                        [35]"
-    Write-Host "-----------------*keys*-------------------------------------------------------------------------------------------------"
+    Write-Host "-----------------*keys*-------------------------------------------------------------------------------------------------"  -ForegroundColor Green
     Write-Host "[51] OBS Studio Teleport (18.2-copy)"
     Write-Host "[52] WinRar Key (18.2-copy)"
     Write-Host "[53] Revo Uninstaller Pro Key (18.2-copy)"
     Write-Host "[54] AOMEI Partitio Assistant Pro Key (18.2-copy)"
     Write-Host "[55] Internet Download Manager Activation Script"
-    Write-Host "------------------------------------------------------------------------------------------------------------------------"
+    Write-Host "------------------------------------------------------------------------------------------------------------------------"  -ForegroundColor Green
     Write-Host "[0] Exit" -ForegroundColor Red
-    Write-Host "------------------------------------------------------------------------------------------------------------------------"
+    Write-Host "------------------------------------------------------------------------------------------------------------------------"  -ForegroundColor Green
 }
 
 # Function to handle installations and activations
