@@ -2,7 +2,7 @@
 function Show-Menu_21_2 {
     cls
     Write-Host "-------------------------------------------------------------------"
-    Write-Host "--- menu_21_2   --- * Windows Fixed * ---                       ---"
+    Write-Host "--- menu_21_2   --- * Windows Fixed * ---                       ---" -ForegroundColor Red
     Write-Host "-------------------------------------------------------------------"
     Write-Host "[1] Disable User Account Control"
     Write-Host "[2] Enable User Account Control"
@@ -13,7 +13,7 @@ function Show-Menu_21_2 {
     Write-Host "[7] Remove 'Open File - Security Warning' Prompt on Windows"
     Write-Host "[8] Restore 'Open File - Security Warning' Prompt on Windows"
     Write-Host "-------------------------------------------------------------------"
-    Write-Host "[0] Exit"
+    Write-Host "[0] Exit" -ForegroundColor Red
     Write-Host "-------------------------------------------------------------------"
 }
 
