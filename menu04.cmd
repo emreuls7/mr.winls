@@ -3,7 +3,7 @@ cls
 :menu_04
 cls
 echo -------------------------------------------------------------------
-echo --- menu_04       --- Choco Install ---       CREATED BY MRLSx7 ---
+echo --- menu_04       --- Choco Install ---                         ---
 echo -------------------------------------------------------------------
 echo [1] FileZilla Server
 echo [2] UniFi Network Application
