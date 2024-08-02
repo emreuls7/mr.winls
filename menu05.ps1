@@ -1,12 +1,12 @@
 function Show-Menu {
     cls
     Write-Host "-------------------------------------------------------------------"
-    Write-Host "--- menu_05     --- MS Store Install ---                        ---"
+    Write-Host "--- menu_05     --- MS Store Install ---                        ---" -ForegroundColor Red
     Write-Host "-------------------------------------------------------------------"
     Write-Host "[1] MSI Center"
     Write-Host "[2] MSI Driver App Center"
     Write-Host "-------------------------------------------------------------------"
-    Write-Host "[0] Exit"
+    Write-Host "[0] Exit" -ForegroundColor Red
     Write-Host "-------------------------------------------------------------------"
 }
 
