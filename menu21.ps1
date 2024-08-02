@@ -22,14 +22,14 @@ function DownloadAndExecute {
 function ShowMenu {
     Clear-Host
     Write-Output "-------------------------------------------------------------------"
-    Write-Output "--- menu_21    --- * Windows Fixed * ---                        ---"
+    Write-Output "--- menu_21    --- * Windows Fixed * ---                        ---" -ForegroundColor Red
     Write-Output "-------------------------------------------------------------------"
     Write-Output "[1] menu_21_1 System file Fixed"
     Write-Output "[2] menu_21_2"
     Write-Output "[3] menu_21_3"
     Write-Output "[4] menu_21_4 OUTLOOK FIX"
     Write-Output "-------------------------------------------------------------------"
-    Write-Output "[0] Exit"
+    Write-Output "[0] Exit" -ForegroundColor Red
     Write-Output "-------------------------------------------------------------------"
 }
 
