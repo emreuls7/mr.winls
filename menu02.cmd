@@ -3,7 +3,7 @@ cls
 :menu_02
 cls
 echo -------------------------------------------------------------------
-echo --- menu_02     --- Winget 1 Install ---      CREATED BY MRLSx7 ---
+echo --- menu_02     --- Winget 1 Install ---                       ---
 echo -------------------------------------------------------------------
 echo [1]  TechPowerUp GPU-Z
 echo [2]  Crystal Disk Info
