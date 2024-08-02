@@ -3,7 +3,7 @@ cls
 :menu_21_3
 cls
 echo -------------------------------------------------------------------
-echo --- menu_21    --- * Windows Fixed * ---      CREATED BY MRLSx7 ---
+echo --- menu_21    --- * Windows Fixed * ---                        ---
 echo -------------------------------------------------------------------
 echo [1] Disabling 'Accounts: Limit local account use of blank passwords to console logon only
 echo [2] Enabling "Launching applications and unsafe files" in Internet Options
