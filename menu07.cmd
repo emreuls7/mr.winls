@@ -3,7 +3,7 @@ cls
 :menu_07
 cls
 echo --------------------------------------------------------------
-echo --- menu_07 --- VPN + Remote Install --- CREATED BY MRLSx7 ---
+echo --- menu_07 --- VPN + Remote Install ---                   ---
 echo --------------------------------------------------------------
 echo [1]  FortiClient VPN
 echo [2]  Windscribe VPN
