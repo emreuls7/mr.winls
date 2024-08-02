@@ -3,7 +3,7 @@ cls
 :menu_08
 cls
 echo --------------------------------------------------------------
-echo --- menu_08 --- Media Player Install --- CREATED BY MRLSx7 ---
+echo --- menu_08 --- Media Player Install ---                   ---
 echo --------------------------------------------------------------
 echo [1]  VLC media player
 echo [2]  MPC-HC
