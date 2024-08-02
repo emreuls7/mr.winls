@@ -38,7 +38,7 @@ function Install-Software {
         "10" { winget install Nvidia.CUDA -e }
         "11" { winget install Datronicsoft.SpacedeskDriver.Server -e }
         "12" { winget install Datronicsoft.SpacedeskDriver.Client -e }
-        "0" { exit }
+        "0" { Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/emreuls7/mr.winls/main/program.ps1").Content }
         default { Write-Host "Invalid choice. Please enter a number between 0 and 12." }
     }
 }
