@@ -3,7 +3,7 @@ cls
 :menu_05
 cls
 echo -------------------------------------------------------------------
-echo --- menu_05     --- MS Store Install ---      CREATED BY MRLSx7 ---
+echo --- menu_05     --- MS Store Install ---                        ---
 echo -------------------------------------------------------------------
 echo [1] MSI Center 
 echo [2] MSI Driver App Center  
