@@ -4,7 +4,6 @@ color 0A
 :: Define temporary directory
 set "tempDir=C:\Windows\Temp"
 
-:: Menü fonksiyonu
 :ShowMenu
 cls
 echo ------------------------------------------------------------------------------------------------------------------------
@@ -28,10 +27,8 @@ echo [98] Windows Utility (winutil)                     [99] Microsoft Activatio
 echo ------------------------------------------------------------------------------------------------------------------------
 echo [0] Exit                                                                                   
 echo ------------------------------------------------------------------------------------------------------------------------
-
 set /p choice=Enter your choice: 
-
-:: Kullanıcı seçimine göre işlem yap
+echo ------------------------------------------------------------------------------------------------------------------------
 if "%choice%"=="1" goto ProgramInstall
 if "%choice%"=="2" goto DownloadScript
 if "%choice%"=="3" goto DownloadScript
