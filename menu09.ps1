@@ -1,7 +1,7 @@
 function Show-Menu {
     cls
     Write-Host "-------------------------------------------------------------------"
-    Write-Host "--- menu_09  --- Chat Messenger Install ---                     ---"
+    Write-Host "--- menu_09  --- Chat Messenger Install ---                     ---" -ForegroundColor Red
     Write-Host "-------------------------------------------------------------------"
     Write-Host "[1]  WhatsApp"
     Write-Host "[2]  WhatsApp Beta"
@@ -15,7 +15,7 @@ function Show-Menu {
     Write-Host "[10] Signal"
     Write-Host "[11] Signal Beta"
     Write-Host "-------------------------------------------------------------------"
-    Write-Host "[0] Exit"
+    Write-Host "[0] Exit" -ForegroundColor Red
     Write-Host "-------------------------------------------------------------------"
 }
 
