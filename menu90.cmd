@@ -1,47 +1,7 @@
 @echo off
-REM This batch file should be run with administrator privileges.
-
-:: Check if running as administrator
-net session >nul 2>&1
-if %errorLevel% neq 0 (
-    echo You need to run this script as an administrator.
-    pause
-    exit /b
-)
-
 echo ----------------------------------------------------------------------------------------
 echo Install List
 echo -------------
-echo Disable User Account Control
-echo Turning off Windows Defender Firewall
-echo Enable Network Discovery
-echo Disable Accounts: Limit local account use of blank passwords to console logon only
-echo Enabling "Launching applications and unsafe files" in Internet Options 
-echo Network Folder FIX 
-echo Ultimate Performance...
-echo Enable Administrator Account
-echo Enabling Remote Desktop for Administrator
-echo Enable SMB 1.0/CIFS File Sharing Support on Windows
-echo -------
-echo Winget Install
-echo Chocolat Install
-echo -------
-echo ***PC restart***
-echo -------
-echo dotnet3.5+4.5.1+.4.5.2
-echo Microsoft.VCRedist.2005+2015+
-echo Google Chrome
-echo Notepad++
-echo WinRAR
-echo VLC
-echo Adobe Acrobat Reader
-echo Cute PDF Writer
-echo File Converter
-echo UltraVnc
-echo Microsoft Office ProPlus 2021
-echo -------
-echo and Microsoft Activation Scripts open
-echo -------------------------------------------------------------------------------------------
 echo Do you want to install it on your computer? (Yes(Y) / No(N):
 set /p answer=
 if /i "%answer%"=="Y" goto Y
