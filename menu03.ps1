@@ -1,7 +1,7 @@
 function Show-Menu {
     cls
     Write-Host "-------------------------------------------------------------------"
-    Write-Host "--- menu_03     --- Winget 2 Install ---                        ---"
+    Write-Host "--- menu_03     --- Winget 2 Install ---                        ---" -ForegroundColor Red
     Write-Host "-------------------------------------------------------------------"
     Write-Host "[1] CPUID CPU-Z MSI"
     Write-Host "[2] MSI Afterburner"
@@ -15,9 +15,9 @@ function Show-Menu {
     Write-Host "[10] NVIDIA CUDA Toolkit"
     Write-Host "[11] spacedesk Windows DRIVER"
     Write-Host "[12] spacedesk Windows VIEWER"
-    Write-Host "----------------------------------------------------------"
-    Write-Host "[0] Exit"
-    Write-Host "----------------------------------------------------------"
+    Write-Host "-------------------------------------------------------------------"
+    Write-Host "[0] Exit                                                           " -ForegroundColor Red
+    Write-Host "-------------------------------------------------------------------"
 }
 
 function Install-Software {
