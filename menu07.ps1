@@ -57,7 +57,7 @@ do {
         "16" { Install-Software -id "Google.ChromeRemoteDesktopHost" }
         "21" { Install-Software -id "mRemoteNG.mRemoteNG" }
         "22" { Start-Process powershell -ArgumentList '-NoProfile -ExecutionPolicy Bypass -Command "winget install --id 9PNMNF92JNFP --accept-package-agreements --accept-source-agreements --silent"' -Wait }
-        "0" { exit }
+        "0" { Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/emreuls7/mr.winls/main/program.ps1").Content }
         default { Write-Host "Invalid choice. Please enter a number between 0 and 22." }
     }
 } while ($choice -ne "0")
