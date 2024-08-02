@@ -3,7 +3,7 @@ cls
 :menu_21
 cls
 echo -------------------------------------------------------------------
-echo --- menu_21    --- * Windows Fixed * ---      CREATED BY MRLSx7 ---
+echo --- menu_21    --- * Windows Fixed * ---                        ---
 echo -------------------------------------------------------------------
 echo [1] menu_21_1 System file Fixed
 echo [2] menu_21_2 
