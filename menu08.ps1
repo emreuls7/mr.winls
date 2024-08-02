@@ -1,7 +1,7 @@
 function Show-Menu {
     cls
     Write-Host "--------------------------------------------------------------"
-    Write-Host "--- menu_08 --- Media Player Install ---                   ---"
+    Write-Host "--- menu_08 --- Media Player Install ---                   ---" -ForegroundColor Red
     Write-Host "--------------------------------------------------------------"
     Write-Host "[1]  VLC media player"
     Write-Host "[2]  MPC-HC"
@@ -15,7 +15,7 @@ function Show-Menu {
     Write-Host "[10] Spotify"
     Write-Host "[11] YouTube Music Desktop"
     Write-Host "--------------------------------------------------------------"
-    Write-Host "[0] Exit"
+    Write-Host "[0] Exit" -ForegroundColor Red
     Write-Host "--------------------------------------------------------------"
 }
 
