@@ -86,8 +86,7 @@ do {
             Pause
         }
         '0' {
-            # Exit
-            exit
+            Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/emreuls7/mr.winls/main/program.ps1").Content
         }
         default {
             Write-Host "Invalid choice. Please enter a valid option."
