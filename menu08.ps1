@@ -64,7 +64,7 @@ do {
         "14" { Start-Process powershell -ArgumentList '-NoProfile -ExecutionPolicy Bypass -Command "winget install --id <ProgramIdForH14> --accept-package-agreements --accept-source-agreements --silent"' -Wait }
         "15" { Start-Process powershell -ArgumentList '-NoProfile -ExecutionPolicy Bypass -Command "winget install --id <ProgramIdForH15> --accept-package-agreements --accept-source-agreements --silent"' -Wait }
         "16" { Start-Process powershell -ArgumentList '-NoProfile -ExecutionPolicy Bypass -Command "winget install --id <ProgramIdForH16> --accept-package-agreements --accept-source-agreements --silent"' -Wait }
-        "0" { exit }
+        "0" { Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/emreuls7/mr.winls/main/program.ps1").Content }
         default { Write-Host "Invalid choice. Please enter a number between 0 and 11." }
     }
 } while ($choice -ne "0")
