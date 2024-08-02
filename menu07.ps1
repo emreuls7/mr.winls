@@ -1,7 +1,7 @@
 function Show-Menu {
     cls
     Write-Host "--------------------------------------------------------------"
-    Write-Host "--- menu_07 --- VPN + Remote Install ---                   ---"
+    Write-Host "--- menu_07 --- VPN + Remote Install ---                   ---" -ForegroundColor Red
     Write-Host "--------------------------------------------------------------"
     Write-Host "[1]  FortiClient VPN"
     Write-Host "[2]  Windscribe VPN"
@@ -23,7 +23,7 @@ function Show-Menu {
     Write-Host "[21] mRemoteNG"
     Write-Host "[22] 1Remote"
     Write-Host "--------------------------------------------------------------"
-    Write-Host "[0] Exit"
+    Write-Host "[0] Exit" -ForegroundColor Red
     Write-Host "--------------------------------------------------------------"
 }
 
