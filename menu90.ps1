@@ -28,21 +28,12 @@ function Handle-Choice {
 }
 
 # Ana döngü, kullanıcıdan giriş alır ve seçimleri işler. Döngüye eklenen hata kontrolü ve kullanıcı dostu geri bildirimler ile daha güvenilir hale getirildi.
-
 # Ana döngü menüyü görüntülemek ve seçimleri işlemek için
+# Main script loop
 do {
     Show-Menu
-    $choice = Read-Host "Enter your choice"
-    if ($choice -match '^\d+$') {
-        $choice = [int]$choice
-        Handle-Choice -Choice $choice
-    } else {
-        Write-Host "Invalid input. Please enter a number." -ForegroundColor Red
-    }
-    if ($choice -ne 0) {
-        # Menüden çıkış yapıldıysa ekranı temizle
-        Clear-Host
-        # Start-Sleep -Seconds 1  # 1 saniye bekler ve ardından ana menüye döner
-        # Read-Host "Press Enter to return to the main menu"
-    }
+    $choice = Read-Host "Enter your choice (0,1,2,3...)"
+    Clear-Host
+    Handle-Choice -choice $choice
+    if ($choice -ne 0) { Start-Sleep -Seconds 2 }
 } while ($choice -ne 0)
