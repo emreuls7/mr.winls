@@ -1,6 +1,5 @@
-# Function to clear the screen and display the menu
+# Ekranı temizleyip menüyü gösteren fonksiyon
 function Show-Menu {
-    Clear-Host
     Clear-Host
     Write-Output "-------------------------------------------------------------------"
     Write-Output "---            --- * Windows Fixed * ---                        ---"
@@ -14,29 +13,45 @@ function Show-Menu {
     Write-Output "-------------------------------------------------------------------"
 }
 
-# Function to handle installations and activations
+# Kullanıcı seçimlerini işleyen fonksiyon
 function Handle-Choice {
     param (
         [int]$choice
     )
 
-# Handle user choices
-switch ($choice) {
-    1 { Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/emreuls7/mr.winls/win/fix1.ps1").Content }
-    2 { Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/emreuls7/mr.winls/win/fix2.ps1").Content }
-    3 { Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/emreuls7/mr.winls/win/fix3.ps1").Content }
-    4 { Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/emreuls7/mr.winls/win/fix4.ps1").Content }
-    0 { Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/emreuls7/mr.winls/main/program.ps1").Content }
-    default {
-        Write-Output "Invalid choice. Please enter a valid option."
+    # Script kaynakları için temel URL
+    $baseUrl = "https://raw.githubusercontent.com/emreuls7/mr.winls/win/"
+
+    # Kullanıcı seçimlerini işleme
+    switch ($choice) {
+        1 { $scriptUrl = "${baseUrl}fix1.ps1" }
+        2 { $scriptUrl = "${baseUrl}fix2.ps1" }
+        3 { $scriptUrl = "${baseUrl}fix3.ps1" }
+        4 { $scriptUrl = "${baseUrl}fix4.ps1" }
+        0 { $scriptUrl = "https://raw.githubusercontent.com/emreuls7/mr.winls/main/program.ps1" }
+        default {
+            Write-Output "Geçersiz seçim. Lütfen geçerli bir seçenek girin."
+            return
+        }
+    }
+
+    # Script'i alıp çalıştırma
+    try {
+        $scriptContent = Invoke-WebRequest -Uri $scriptUrl -ErrorAction Stop
+        Invoke-Expression $scriptContent.Content
+        Write-Output "Script başarıyla çalıştırıldı."
+    } catch {
+        Write-Output "Script'i almak veya çalıştırmak başarısız oldu. Lütfen daha sonra tekrar deneyin."
     }
 }
 
-# Main script loop
+# Ana betik döngüsü
 do {
     Show-Menu
-    $choice = Read-Host "Enter your choice (0,1,2,3...)"
+    $choice = Read-Host "Seçiminizi girin (0,1,2,3...)"
     Clear-Host
     Handle-Choice -choice $choice
-    if ($choice -ne 0) { Start-Sleep -Seconds 2 }
+    if ($choice -ne 0) { 
+        Start-Sleep -Seconds 2 
+    }
 } while ($choice -ne 0)
