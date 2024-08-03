@@ -2,7 +2,7 @@
 function Show-Menu_21_2 {
     cls
     Write-Host "-------------------------------------------------------------------"
-    Write-Host "--- menu_21_2   --- * Windows Fixed * ---                       ---" -ForegroundColor Red
+    Write-Host "---             --- * Windows Fixed * ---                       ---" -ForegroundColor Red
     Write-Host "-------------------------------------------------------------------"
     Write-Host "[1] Disable User Account Control"
     Write-Host "[2] Enable User Account Control"
