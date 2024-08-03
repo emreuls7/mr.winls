@@ -12,7 +12,7 @@ function Show-Menu {
     Write-Host "[5] MS Store Install                               [10] Gaming Launcher Install           " -ForegroundColor DarkGray
     Write-Host "------------------------------------------------------------------------------------------------------------------------" -ForegroundColor Green
     Write-Host "[11] Microsoft Windows Menu                        [15] *Standard PC Install              " -ForegroundColor DarkGray                    
-    Write-Host "[12] Microsoft Windows Fixed *                     [16] *Pasha Lefkosa Other              " -ForegroundColor DarkGray
+    Write-Host "[12] *Microsoft Windows Fixed                      [16] *Pasha Lefkosa Other              " -ForegroundColor DarkGray
     Write-Host "[13] Setup Program Install ISO + EXE               [17] Winget Install *                  " -ForegroundColor DarkGray
     Write-Host "[14] Setup Microsoft Office Install EXE            [18] Chocolatey Install *              " -ForegroundColor DarkGray
     Write-Host "------------------------------------------------------------------------------------------------------------------------" -ForegroundColor Green
