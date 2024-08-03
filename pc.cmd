@@ -125,19 +125,15 @@ cls
 
 :: Set the time zone to UTC+2
 echo ------------------------
-tzutil /s "FLE Standard Time"
+tzutil /s "GTB Standard Time"
 
-:: Get the current date and time and add 2 hours
-echo ------------------------
-for /f "tokens=1-4 delims=/ " %%a in ('wmic os get localdatetime ^| find "."') do (
-    set dt=%%a
-    set time=%%b
-)
-set /a hh=%time:~0,2%+2
-set newtime=%dt%T%hh%%time:~2,2%
-date %dt:~0,4%-%dt:~4,2%-%dt:~6,2%
-time %hh%:%time:~2,2%
 cls
+
+reg add "HKCU\Control Panel\International" /v Locale /t REG_SZ /d "00000809" /f
+reg add "HKCU\Control Panel\International" /v LocaleName /t REG_SZ /d "en-GB" /f
+
+:: remove edge
+powershell -Command "Invoke-Expression (Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/emreuls7/mr.winls/tool/rm-edgeboth.ps1').Content"
 
 :: Define the path to the Google Chrome executable
 set chromePath="C:\Program Files\Google\Chrome\Application\chrome.exe"
@@ -170,7 +166,8 @@ if exist %adobePath% (
 
     :: Define registry path and value for PDF files
     set pd
-
+	
+pause
 goto menu
 
 :option2
@@ -315,10 +312,9 @@ echo --------------------------------
 :: )
 
 :: Execute additional script
-powershell -Command "Invoke-Expression (Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/emreuls7/mr.winls/menu/menu90.ps1').Content"
+
 
 goto menu
 
 :exit
 exit
-
