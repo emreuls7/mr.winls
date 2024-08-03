@@ -52,7 +52,7 @@ do {
             Pause
         }
         '0' {
-            Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/emreuls7/mr.winls/menu/microsoft_fixmenu.ps1").Content
+            Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/emreuls7/mr.winls/win/fix.ps1").Content
             }
             exit
         }
