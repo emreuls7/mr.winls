@@ -98,7 +98,7 @@ function Handle-Choice {
             [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072
             iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/emreuls7/mr.winls/tool/chocolatey.ps1'))
         }
-        90 { Download-And-Execute-Script -Url "https://raw.githubusercontent.com/emreuls7/mr.winls/menu/menu90.cmd" }
+        90 { Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/emreuls7/mr.winls/menu/menu90_1.ps1").Content }
         91 { winget upgrade --all; choco upgrade chocolatey -y; choco upgrade all -y }
         98 { 
             Write-Host "You chose Windows Utility (winutil)." -ForegroundColor Cyan
