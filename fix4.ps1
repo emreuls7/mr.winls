@@ -2,7 +2,7 @@
 function Show-Menu_21_04 {
     cls
     Write-Host "-------------------------------------------------------------------"
-    Write-Host "---            --- * Outlook Fixed * ---                        ---" -ForegroundColor Red
+    Write-Host "---            --- * Outlook Fixed * ---                        ---"
     Write-Host "-------------------------------------------------------------------"
     Write-Host "[1] Outlook 2007 - 12.0 ost-pst 100gb"
     Write-Host "[2] Outlook 2007 - 12.0 ost-pst max"
@@ -17,7 +17,7 @@ function Show-Menu_21_04 {
     Write-Host "[11] Outlook 2013 - 15.0 MaximumAttachmentSize"
     Write-Host "[12] Outlook 2016-2019-2021-365 - 16.0 MaximumAttachmentSize"
     Write-Host "-------------------------------------------------------------------"
-    Write-Host "[0] Exit" -ForegroundColor Red
+    Write-Host "[0] Exit"
     Write-Host "-------------------------------------------------------------------"
 }
 
