@@ -12,7 +12,7 @@ function Show-Menu {
     Write-Host "[5] MS Store Install                               [10] Gaming Launcher Install           " -ForegroundColor DarkGray
     Write-Host "------------------------------------------------------------------------------------------------------------------------" -ForegroundColor Green
     Write-Host "[11] Microsoft Windows Menu                        [15] *Standard PC Install              " -ForegroundColor DarkGray                    
-    Write-Host "[12] *Microsoft Windows Fixed                      [16] *Pasha Lefkosa Other              " -ForegroundColor DarkGray
+    Write-Host "[22] *Microsoft Windows Fixed                      [16] *Pasha Lefkosa Other              " -ForegroundColor DarkGray
     Write-Host "[13] Setup Program Install ISO + EXE               [17] Winget Install *                  " -ForegroundColor DarkGray
     Write-Host "[14] Setup Microsoft Office Install EXE            [18] Chocolatey Install *              " -ForegroundColor DarkGray
     Write-Host "------------------------------------------------------------------------------------------------------------------------" -ForegroundColor Green
@@ -78,9 +78,7 @@ function Handle-Choice {
         Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/emreuls7/mr.winls/ps1/menu10.ps1").Content 
         }
         11 { Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/emreuls7/mr.winls/win/microsoft_menu.ps1").Content }
-        12 {
-        Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/emreuls7/mr.winls/win/fix.ps1").Content 
-        }
+        22 { Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/emreuls7/mr.winls/win/fix.ps1").Content }
         13 { Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/emreuls7/mr.winls/pasha/menu_iso.ps1").Content }
         14 { Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/emreuls7/mr.winls/win/menu_office.ps1").Content }
         15 { Invoke-Expression (Invoke-WebRequest -Uri "https://github.com/emreuls7/mr.winls/blob/pasha/pc.ps1").Content }
