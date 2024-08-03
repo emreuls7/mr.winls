@@ -75,7 +75,7 @@ do {
         "10" { Install-Software -id "9WZDNCRFJ3PS" }
         "11" { Install-Software -id "Microsoft.Office" }
         "12" { Install-Software -id "9WZDNCRFJ3PV" }
-        "0" { Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/emreuls7/mr.winls/menu/menu_microsoft.ps1").Content }
+        "0" { Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/emreuls7/mr.winls/win/microsoft_menu.ps1").Content }
         default { Write-Host "Invalid choice. Please enter a number between 0 and 12." }
     }
 } while ($choice -ne "0")
