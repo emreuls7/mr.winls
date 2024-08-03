@@ -116,6 +116,49 @@ Set-Date -Date $newDateTime
 
 Write-Output "Time zone set to '$timezone' and time updated to $newDateTime."
 
+
+# Define the path to the Google Chrome executable
+$chromePath = "C:\Program Files\Google\Chrome\Application\chrome.exe"
+
+# Check if Chrome exists at the specified path
+if (Test-Path $chromePath) {
+    Write-Output "Google Chrome found at $chromePath"
+
+    # Define registry paths and values for HTTP and HTTPS protocols
+    $regPathHttp = "HKCR:\http\shell\open\command"
+    $regPathHttps = "HKCR:\https\shell\open\command"
+    $chromeCommand = "`"$chromePath`" -- `%1`"  # Note the escaping for registry
+
+    # Set the default command for HTTP and HTTPS to Google Chrome
+    Set-ItemProperty -Path $regPathHttp -Name "(default)" -Value $chromeCommand
+    Set-ItemProperty -Path $regPathHttps -Name "(default)" -Value $chromeCommand
+
+    # Notify user
+    Write-Output "Google Chrome has been set as the default browser for HTTP and HTTPS protocols."
+} else {
+    Write-Output "Google Chrome not found at $chromePath. Please make sure it is installed."
+}
+
+# Define the path to the Adobe Reader executable
+$adobePath = "C:\Program Files\Adobe\Acrobat DC\Acrobat\Acrobat.exe"
+
+# Check if Adobe Reader exists at the specified path
+if (Test-Path $adobePath) {
+    Write-Output "Adobe Reader found at $adobePath"
+
+    # Define registry paths and values for PDF files
+    $pdfRegistryPath = "HKCR:\.pdf\shell\open\command"
+    $adobeCommand = "`"$adobePath`" `"%1`"  # Note the escaping for registry
+
+    # Set the default command for PDF files to Adobe Reader
+    Set-ItemProperty -Path $pdfRegistryPath -Name "(default)" -Value $adobeCommand
+
+    # Notify user
+    Write-Output "Adobe Reader has been set as the default PDF viewer."
+} else {
+    Write-Output "Adobe Reader not found at $adobePath. Please make sure it is installed."
+}
+
 # Install winget
 Write-Output "------------------------"
 Write-Output "winget install"
