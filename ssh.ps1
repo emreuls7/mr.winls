@@ -44,14 +44,14 @@ function Remove-HostKey {
 Remove-HostKey -host $ip_address
 
 # Path to Plink executable
-$plinkPath = "C:\Path\To\plink.exe"  # Change this to the actual path if Plink is not in PATH
+$plinkPath = "C:\Path\To\plink.exe"  # Change this to the actual path of Plink
 
 # Check if Plink exists
 if (Test-Path $plinkPath) {
     # Connect using Plink
     & $plinkPath -ssh "$user@$ip_address" -pw $password -batch -noagent
 } else {
-    Write-Output "Plink is not found in the system PATH. Please install PuTTY or ensure Plink is accessible."
+    Write-Output "Plink is not found in the specified path. Please install PuTTY or specify the correct path to Plink."
 }
 
 # Optional: Pause to see the output (remove or adjust as needed)
