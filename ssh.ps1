@@ -41,10 +41,10 @@ function Remove-HostKey {
 }
 
 # Remove old host key
-Remove-HostKey $ip_address
+Remove-HostKey -host $ip_address
 
-# Use Plink to connect (ensure Plink is installed and in PATH)
-$plinkPath = "plink.exe"  # Adjust if Plink is in a different location
+# Path to Plink executable
+$plinkPath = "C:\Path\To\plink.exe"  # Change this to the actual path if Plink is not in PATH
 
 # Check if Plink exists
 if (Test-Path $plinkPath) {
