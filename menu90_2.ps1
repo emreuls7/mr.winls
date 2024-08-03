@@ -133,5 +133,7 @@ Write-Host "--------------------------------"
 #    Restart-Computer -Force
 #} else {
 #    Write-Host "Exiting..."
-    exit
-}
+    #exit
+#}
+
+Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/emreuls7/mr.winls/menu/menu90.ps1").Content
