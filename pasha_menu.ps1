@@ -20,7 +20,7 @@ function Handle-Choice {
 
     Clear-Host
     switch ($choice) {
-        1 { Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/emreuls7/mr.winls/menu/_pasha_tiger.ps1").Content }
+        1 { Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/emreuls7/mr.winls/menu/pasha_tiger.ps1").Content }
         2 { Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/emreuls7/mr.winls/menu/pasha_mcfid.ps1").Content }
         0 { Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/emreuls7/mr.winls/main/program.ps1").Content }
         default { Write-Host "Invalid choice, please try again." }
