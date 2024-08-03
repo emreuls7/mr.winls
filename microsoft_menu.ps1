@@ -2,14 +2,14 @@
 # Menü görüntüleme fonksiyonu
 function Show-Menu {
     Clear-Host
-    Write-Output "-------------------------------------------------------------------" -ForegroundColor Green
-    Write-Output "---                   --- microsoft ---                         ---" -ForegroundColor Red
-    Write-Output "-------------------------------------------------------------------" -ForegroundColor Green
+    Write-Output "-------------------------------------------------------------------"
+    Write-Output "---                   --- microsoft ---                         ---"
+    Write-Output "-------------------------------------------------------------------"
     Write-Output "[1] Microsoft Program Install"
     Write-Output "[2] Microsoft .NET Install"
-    Write-Output "-------------------------------------------------------------------" -ForegroundColor Green
-    Write-Output "[0] Exit                                                           " -ForegroundColor Red
-    Write-Output "-------------------------------------------------------------------" -ForegroundColor Green
+    Write-Output "-------------------------------------------------------------------"
+    Write-Output "[0] Exit                                                           "
+    Write-Output "-------------------------------------------------------------------"
 }
 
 # Kullanıcı seçimlerini işleyen fonksiyon
@@ -23,7 +23,7 @@ function Handle-Choice {
         1 { Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/emreuls7/mr.winls/menu/menu11.ps1").Content }
         2 { Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/emreuls7/mr.winls/menu/menu12.ps1").Content }
         0 { Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/emreuls7/mr.winls/menu/menu_microsoft.ps1").Content }
-        default { Write-Host "Invalid choice, please try again." -ForegroundColor Red }
+        default { Write-Host "Invalid choice, please try again." }
     }
 }
 
