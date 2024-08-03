@@ -1,14 +1,9 @@
-# PowerShell script to connect to an SSH server and handle host key issues
+# PowerShell script'i, SSH anahtarlarını yönetmek ve bağlantı kurmak için
 
-# Prompt for IP address and credentials
-$ip_address = Read-Host "Enter IP address"
-$user = "root"  # Set username here
-$password = "YourPasswordHere"  # Set password here
-
-# Define the path to the known hosts file
+# Bilinen anahtarlar dosyasının yolu
 $knownHostsFile = "$env:USERPROFILE\.ssh\known_hosts"
 
-# Function to remove old host key from known hosts file
+# Eski anahtarları bilinen anahtarlar dosyasından kaldırmak için işlev
 function Remove-HostKey {
     param (
         [string]$host
@@ -18,41 +13,49 @@ function Remove-HostKey {
         $tempFile = [System.IO.Path]::GetTempFileName()
         $found = $false
 
-        # Read the known hosts file and write all lines except the one matching the host
+        # Bilinen anahtarlar dosyasını okur ve anahtarı içermeyen satırları geçici dosyaya yazar
         Get-Content $knownHostsFile | ForEach-Object {
             if ($_ -match "$host") {
-                $found = $true
+                $found = $true  # Anahtar bulundu
             } else {
-                Add-Content -Path $tempFile -Value $_
+                Add-Content -Path $tempFile -Value $_  # Satırı geçici dosyaya ekler
             }
         }
 
-        # Replace the known hosts file with the updated file
+        # Eski dosyayı yeni dosya ile değiştirir
         if ($found) {
             Move-Item -Path $tempFile -Destination $knownHostsFile -Force
-            Write-Output "Old host key for $host removed."
+            Write-Output "Eski anahtar $host için kaldırıldı."
         } else {
             Remove-Item -Path $tempFile -Force
-            Write-Output "No host key found for $host."
+            Write-Output "Anahtar bulunamadı: $host."
         }
     } else {
-        Write-Output "Known hosts file not found."
+        Write-Output "Bilinen anahtarlar dosyası bulunamadı."
     }
 }
 
-# Remove old host key
+# IP adresini girer ve SSH anahtarını günceller
+$ip_address = Read-Host "İlk IP adresini girin"
+
+# İlk IP adresi için anahtarları kaldırır
 Remove-HostKey -host $ip_address
 
-# Path to Plink executable
-$plinkPath = "C:\Path\To\plink.exe"  # Change this to the actual path of Plink
+# İkinci IP adresini girer ve SSH bağlantısını kurar
+$ip_address2 = Read-Host "İkinci IP adresini girin"
+$user = "root"  # Kullanıcı adını buraya girin
+$password = "YourPasswordHere"  # Şifreyi buraya girin
 
-# Check if Plink exists
+# Plink executable'ının yolu
+$plinkPath = "C:\Path\To\plink.exe"  # Plink'in tam yolunu buraya girin
+
+# Plink'in mevcut olup olmadığını kontrol eder
 if (Test-Path $plinkPath) {
-    # Connect using Plink
-    & $plinkPath -ssh "$user@$ip_address" -pw $password -batch -noagent
+    # Plink kullanarak bağlantı kurar
+    & $plinkPath -ssh "$user@$ip_address2" -pw $password -batch -noagent
 } else {
-    Write-Output "Plink is not found in the specified path. Please install PuTTY or specify the correct path to Plink."
+    Write-Output "Plink belirtilen yolda bulunamadı. Lütfen PuTTY'yi kurun veya Plink'in doğru yolunu belirtin."
 }
 
-# Optional: Pause to see the output (remove or adjust as needed)
-Read-Host -Prompt "Press Enter to continue..."
+# Çıkışın ardından devam etmek için tuşa basmayı bekler
+Read-Host -Prompt "Devam etmek için Enter'a basın..."
