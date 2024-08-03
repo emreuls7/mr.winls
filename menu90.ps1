@@ -2,7 +2,7 @@
 function Show-Menu {
     Clear-Host
     Write-Output "-------------------------------------------------------------------"
-    Write-Output "--- menu_21    --- DEFAULT PC INSTALLER ---                     ---" -ForegroundColor Red
+    Write-Output "--- menu_21    --- DEFAULT PC INSTALLER ---                     ---"-ForegroundColor Red
     Write-Output "-------------------------------------------------------------------"
     Write-Output "[1] USER DEFAULT SET"
     Write-Output "[2] INSTALL DEFAULT"
