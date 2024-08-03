@@ -1,6 +1,13 @@
 # Clear the console
 Clear-Host
 
+# Output introductory message
+Write-Output "-----------------------"
+Write-Output "--- Default Install ---"
+Write-Output "-----------------------"
+Start-Sleep -Seconds 2
+Clear-Host
+
 Write-Host "------------------------"
 Write-Host "Installing .NET Frameworks..."
 choco install dotnet3.5 -y
