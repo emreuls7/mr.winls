@@ -3,7 +3,7 @@ function Show-Menu {
     Clear-Host
     Clear-Host
     Write-Output "-------------------------------------------------------------------" -ForegroundColor Green
-    Write-Output "--- menu_21    --- * Windows Fixed * ---                        ---" -ForegroundColor Red
+    Write-Output "---            --- * Windows Fixed * ---                        ---" -ForegroundColor Red
     Write-Output "-------------------------------------------------------------------" -ForegroundColor Green
     Write-Output "[1] menu_21_1 System file Fixed"
     Write-Output "[2] menu_21_2"
