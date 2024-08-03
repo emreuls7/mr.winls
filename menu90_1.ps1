@@ -143,4 +143,4 @@ if ($restart -eq 'Y' -or $restart -eq 'y') {
     Restart-Computer -Force
 }
 
-Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/emreuls7/mr.winls/main/program.ps1").Content
+Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/emreuls7/mr.winls/menu/menu90.ps1").Content
