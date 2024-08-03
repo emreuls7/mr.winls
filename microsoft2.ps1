@@ -102,7 +102,7 @@ do {
         "35" { Install-Software -id "Microsoft.DotNet.HostingBundle.7" }
         "36" { Install-Software -id "Microsoft.DotNet.HostingBundle.8" }
         "37" { Install-Software -id "Microsoft.DotNet.HostingBundle.Preview" }
-        "0" { Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/emreuls7/mr.winls/main/program.ps1").Content }
+        "0" { Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/emreuls7/mr.winls/win/microsoft_menu.ps1").Content }
         default { Write-Host "Invalid choice. Please enter a number between 0 and 37." }
     }
 } while ($choice -ne "0")
