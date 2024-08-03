@@ -2,7 +2,7 @@
 function Show-Menu_32 {
     cls
     Write-Host "-------------------------------------------------------------------"
-    Write-Host "--- menu_32    --- Setup Microsoft Office Installer EXE         ---" -ForegroundColor Red
+    Write-Host "--- menu_32    --- Setup Microsoft Office Installer EXE         ---"
     Write-Host "-------------------------------------------------------------------"
     Write-Host "[1] Microsoft Office Enterprise 2007"
     Write-Host "[2] Microsoft Office Professional 2013"
@@ -17,7 +17,7 @@ function Show-Menu_32 {
     Write-Host "-------------------------------------------------------------------"
     Write-Host "[99] Microsoft Activation Scripts"
     Write-Host "-------------------------------------------------------------------"
-    Write-Host "[0] Exit" -ForegroundColor Red
+    Write-Host "[0] Exit"
     Write-Host "-------------------------------------------------------------------"
 }
 
