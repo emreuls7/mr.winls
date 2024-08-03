@@ -2,14 +2,14 @@
 # Menü görüntüleme fonksiyonu
 function Show-Menu {
     Clear-Host
-    Write-Output "-------------------------------------------------------------------" -ForegroundColor Green
-    Write-Output "---                  --- PASHA LEFKOSA ---                      ---" -ForegroundColor Red
-    Write-Output "-------------------------------------------------------------------" -ForegroundColor Green
+    Write-Output "-------------------------------------------------------------------"
+    Write-Output "---                  --- PASHA LEFKOSA ---                      ---"
+    Write-Output "-------------------------------------------------------------------"
     Write-Output "[1] TIGER3 LOGO"
     Write-Output "[2] MC FIDELIO"
-    Write-Output "-------------------------------------------------------------------" -ForegroundColor Green
-    Write-Output "[0] Exit                                                           " -ForegroundColor Red
-    Write-Output "-------------------------------------------------------------------" -ForegroundColor Green
+    Write-Output "-------------------------------------------------------------------"
+    Write-Output "[0] Exit                                                           "
+    Write-Output "-------------------------------------------------------------------"
 }
 
 # Kullanıcı seçimlerini işleyen fonksiyon
@@ -23,7 +23,7 @@ function Handle-Choice {
         1 { Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/emreuls7/mr.winls/menu/_pasha_tiger.ps1").Content }
         2 { Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/emreuls7/mr.winls/menu/pasha_mcfid.ps1").Content }
         0 { Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/emreuls7/mr.winls/main/program.ps1").Content }
-        default { Write-Host "Invalid choice, please try again." -ForegroundColor Red }
+        default { Write-Host "Invalid choice, please try again." }
     }
 }
 
