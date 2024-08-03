@@ -2,7 +2,7 @@
 function Show-Menu_21_3 {
     cls
     Write-Host "-------------------------------------------------------------------"
-    Write-Host "--- menu_21    --- * Windows Fixed * ---                        ---" -ForegroundColor Red
+    Write-Host "---            --- * Windows Fixed * ---                        ---" -ForegroundColor Red
     Write-Host "-------------------------------------------------------------------"
     Write-Host "[1] Disabling 'Accounts: Limit local account use of blank passwords to console logon only'"
     Write-Host "[2] Enabling 'Launching applications and unsafe files' in Internet Options"
@@ -62,7 +62,7 @@ do {
             Pause
         }
         '0' {
-            Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/emreuls7/mr.winls/menu/menu21.ps1").Content
+            Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/emreuls7/mr.winls/menu/microsoft_fixmenu.ps1").Content
             }
             exit
         }
