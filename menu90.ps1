@@ -1,14 +1,14 @@
 # Function to display the menu
 function Show-Menu {
     Clear-Host
-    Write-Output "-------------------------------------------------------------------"
-    Write-Output "--- menu_21    --- DEFAULT PC INSTALLER ---                     ---" -ForegroundColor Red
-    Write-Output "-------------------------------------------------------------------"
+    Write-Output "-------------------------------------------------------------------" -ForegroundColor Green
+    Write-Output "--- menu_21    --- DEFAULT PC INSTALL ---                     ---" -ForegroundColor Red
+    Write-Output "-------------------------------------------------------------------" -ForegroundColor Green
     Write-Output "[1] USER DEFAULT SET"
     Write-Output "[2] INSTALL DEFAULT"
-    Write-Output "-------------------------------------------------------------------"
-    Write-Output "[0] Exit                                                           " -ForegroundColor Red
-    Write-Output "-------------------------------------------------------------------"
+    Write-Output "-------------------------------------------------------------------" -ForegroundColor Green
+    Write-Output "[0] Exit" -ForegroundColor Red
+    Write-Output "-------------------------------------------------------------------" -ForegroundColor Green
 }
 
 # Function to handle user choice
@@ -51,7 +51,7 @@ function Handle-Choice {
 # Main loop to display the menu and handle user choices
 do {
     Show-Menu
-    $choice = Read-Host "Enter your choice (0,1,2,3...)"
+    $choice = Read-Host "Enter your choice (0,1,2)"
     Handle-Choice -choice $choice
     if ($choice -ne '0') {
         Read-Host "Press Enter to continue..."
