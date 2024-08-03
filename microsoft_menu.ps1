@@ -20,9 +20,9 @@ function Handle-Choice {
 
     Clear-Host
     switch ($choice) {
-        1 { Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/emreuls7/mr.winls/menu/menu11.ps1").Content }
-        2 { Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/emreuls7/mr.winls/menu/menu12.ps1").Content }
-        0 { Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/emreuls7/mr.winls/menu/menu_microsoft.ps1").Content }
+        1 { Invoke-Expression (Invoke-WebRequest -Uri "https://github.com/emreuls7/mr.winls/edit/win/microsoft1.ps1").Content }
+        2 { Invoke-Expression (Invoke-WebRequest -Uri "https://github.com/emreuls7/mr.winls/edit/win/microsoft2.ps1").Content }
+        0 { Invoke-Expression (Invoke-WebRequest -Uri "https://github.com/emreuls7/mr.winls/edit/win/microsoft_menu.ps1").Content }
         default { Write-Host "Invalid choice, please try again." }
     }
 }
