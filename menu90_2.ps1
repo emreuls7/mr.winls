@@ -92,10 +92,8 @@ if (Test-Path $adobePath) {
     Write-Output "Adobe Reader not found at $adobePath. Please make sure it is installed."
 }
 
-
-
 # Prompt user for Office setup
-$setupOffice = Read-Host "Do you want to set up an OFFICE? (Yes(Y) / No(N))"
+$setupOffice = Read-Host "Do you want to set up OFFICE? (Yes(Y) / No(N))"
 if ($setupOffice -eq 'Y') {
     Start-Process "\\192.168.18.2\setup\source\office\office2021ProPlus_tr\Setup64.exe"
 }
@@ -109,10 +107,9 @@ Write-Host "------------------------"
 # Prompt user for Massgrave setup
 $masOpen = Read-Host "mas open or? (Yes(Y) / No(N))"
 if ($masOpen -eq 'Y') {
-    Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/emreuls7/mr.winls/tool/massgrave_mas.ps1' -UseBasicP -OutFile "$env:TEMP\massgrave_mas.ps1"
+    Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/emreuls7/mr.winls/tool/massgrave_mas.ps1' -OutFile "$env:TEMP\massgrave_mas.ps1"
     & "$env:TEMP\massgrave_mas.ps1"
 }
-
 
 Write-Host "--------------------------------------"
 Write-Host "--- BUNUDA BITIRDIN HADI IYISIN... ---"
@@ -128,12 +125,14 @@ Write-Host "---SEN GEDE RESTART AT AGA...---"
 Write-Host "--------------------------------"
 
 # Prompt user for restart
+# Uncomment if restart is desired
 # $restart = Read-Host "Do you want to RESTART the computer? (Yes(Y) / No(N))"
 # if ($restart -eq 'Y') {
 #    Restart-Computer -Force
-#} else {
+# } else {
 #    Write-Host "Exiting..."
-    #exit
-#}
+#    exit
+# }
 
+# Execute additional script
 Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/emreuls7/mr.winls/menu/menu90.ps1").Content
