@@ -3,7 +3,7 @@ Clear-Host
 
 # Output introductory message
 Write-Output "-----------------------"
-Write-Output "--- Default Install ---"
+Write-Output "---     User Set    ---"
 Write-Output "-----------------------"
 Start-Sleep -Seconds 2
 Clear-Host
