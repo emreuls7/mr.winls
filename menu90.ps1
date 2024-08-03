@@ -1,3 +1,22 @@
+# showmenu
+function ShowMenu {
+    Clear-Host
+    Write-Output "-------------------------------------------------------------------"
+    Write-Output "--- menu_21    --- DEFAULT PC INSTALLER ---                     ---" -ForegroundColor Red
+    Write-Output "-------------------------------------------------------------------"
+    Write-Output "[1] USER DEFAULT SET"
+    Write-Output "[2] INSTALL DEFAULT"
+    Write-Output "-------------------------------------------------------------------"
+    Write-Output "[0] Exit" -ForegroundColor Red
+    Write-Output "-------------------------------------------------------------------"
+}
+
+# Display the menu first
+ShowMenu
+
+# Get user choice
+$choice = Read-Host "Enter your choice (0,1,2,3...)"
+
 # Define temporary directory
 $tempDir = "$env:Temp"
 
@@ -18,24 +37,6 @@ function DownloadAndExecute {
         Remove-Item -Path $filePath
     }
 }
-
-function ShowMenu {
-    Clear-Host
-    Write-Output "-------------------------------------------------------------------"
-    Write-Output "--- menu_21    --- DEFAULT PC INSTALLER ---                     ---" -ForegroundColor Red
-    Write-Output "-------------------------------------------------------------------"
-    Write-Output "[1] USER DEFAULT SET
-    Write-Output "[2] INSTALL DEFAULT
-    Write-Output "-------------------------------------------------------------------"
-    Write-Output "[0] Exit" -ForegroundColor Red
-    Write-Output "-------------------------------------------------------------------"
-}
-
-# Display the menu first
-ShowMenu
-
-# Get user choice
-$choice = Read-Host "Enter your choice (0,1,2,3...)"
 
 # Handle user choices
 switch ($choice) {
