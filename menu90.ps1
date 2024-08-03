@@ -24,10 +24,8 @@ function ShowMenu {
     Write-Output "-------------------------------------------------------------------"
     Write-Output "--- menu_21    --- DEFAULT PC INSTALLER ---                     ---" -ForegroundColor Red
     Write-Output "-------------------------------------------------------------------"
-    Write-Output "[1] INSTALL
-    Write-Output "[2] INSTALL
-    Write-Output "[3] INSTALL
-    Write-Output "[4] INSTALL
+    Write-Output "[1] USER DEFAULT SET
+    Write-Output "[2] INSTALL DEFAULT
     Write-Output "-------------------------------------------------------------------"
     Write-Output "[0] Exit" -ForegroundColor Red
     Write-Output "-------------------------------------------------------------------"
