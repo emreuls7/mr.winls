@@ -1,7 +1,7 @@
 function Show-Menu {
     cls
     Write-Host "-------------------------------------------------------------------"
-    Write-Host "--- menu_11 --- Microsoft Program Install ---                   ---" -ForegroundColor Red
+    Write-Host "---         --- Microsoft Program Install ---                   ---" -ForegroundColor Red
     Write-Host "-------------------------------------------------------------------"
     Write-Host "[1]  Microsoft OneNote Store"
     Write-Host "[2]  Microsoft PC Manager"
@@ -75,7 +75,7 @@ do {
         "10" { Install-Software -id "9WZDNCRFJ3PS" }
         "11" { Install-Software -id "Microsoft.Office" }
         "12" { Install-Software -id "9WZDNCRFJ3PV" }
-        "0" { Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/emreuls7/mr.winls/main/program.ps1").Content }
+        "0" { Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/emreuls7/mr.winls/menu/menu_microsoft.ps1").Content }
         default { Write-Host "Invalid choice. Please enter a number between 0 and 12." }
     }
 } while ($choice -ne "0")
