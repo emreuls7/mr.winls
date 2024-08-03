@@ -1,6 +1,7 @@
 # Clear the console
 Clear-Host
 
+# Output introductory message
 Write-Output "-----------------------"
 Write-Output "--- Default Install ---"
 Write-Output "-----------------------"
@@ -26,7 +27,7 @@ Write-Output "Network Discovery and File Sharing have been enabled..."
 Set-NetFirewallRule -DisplayGroup "Network Discovery" -Enabled True
 Set-NetFirewallRule -DisplayGroup "File and Printer Sharing" -Enabled True
 
-# Start related services
+# Start related services for Network Discovery and File Sharing
 $services = @("fdphost", "fdrespub", "upnphost", "SSDPSRV")
 foreach ($service in $services) {
     Set-Service -Name $service -StartupType Automatic
@@ -86,7 +87,7 @@ powercfg /change hibernate-timeout-ac 0
 powercfg /change hibernate-timeout-dc 0
 Clear-Host
 
-# Enable administrator account
+# Enable administrator account and set password
 Write-Output "------------------------"
 Write-Output "Enabling administrator account..."
 Enable-LocalUser -Name "Administrator"
@@ -95,7 +96,7 @@ $adminPassword = ConvertTo-SecureString "412199" -AsPlainText -Force
 Set-LocalUser -Name "Administrator" -Password $adminPassword
 Clear-Host
 
-# Enable Remote Desktop for Administrator
+# Enable Remote Desktop
 Write-Output "------------------------"
 Write-Output "Enabling Remote Desktop for Administrator..."
 Set-ItemProperty -Path "HKLM:\System\CurrentControlSet\Control\Terminal Server" -Name "fDenyTSConnections" -Value 0
@@ -103,16 +104,14 @@ Enable-NetFirewallRule -DisplayGroup "Remote Desktop"
 Clear-Host
 
 # Set the time zone to UTC+2
+Write-Output "------------------------"
 $timezone = "FLE Standard Time"  # UTC+2 time zone
 tzutil /s $timezone
 
-# Get the current date and time
+# Get the current date and time and add 2 hours
+Write-Output "------------------------"
 $currentDateTime = Get-Date
-
-# Add 2 hours
 $newDateTime = $currentDateTime.AddHours(2)
-
-# Set the new date and time
 Set-Date -Date $newDateTime
 
 Write-Output "Time zone set to '$timezone' and time updated to $newDateTime."
@@ -124,7 +123,7 @@ Invoke-WebRequest -Uri "https://raw.githubusercontent.com/emreuls7/mr.winls/tool
 & .\winget.ps1
 Clear-Host
 
-# Install chocolatey
+# Install Chocolatey
 Write-Output "------------------------"
 Write-Output "choco install"
 Invoke-WebRequest -Uri "https://raw.githubusercontent.com/emreuls7/mr.winls/tool/chocolatey.ps1" -UseBasicP -OutFile "chocolatey.ps1"
@@ -143,4 +142,5 @@ if ($restart -eq 'Y' -or $restart -eq 'y') {
     Restart-Computer -Force
 }
 
+# Execute additional script
 Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/emreuls7/mr.winls/menu/menu90.ps1").Content
