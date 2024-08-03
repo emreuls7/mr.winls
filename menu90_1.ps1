@@ -1,74 +1,81 @@
-@echo off
-cls
-echo --------------------------
-echo --- Default PC Install ---
-echo --------------------------
-echo Do you want to install it on your computer? (Yes(Y) / No(N):
-set /p answer=
-if /i "%answer%"=="Y" goto Y
-if /i "%answer%"=="N" exit
+# Clear the console
+Clear-Host
 
-:Y
-echo Installation process starting...
-timeout 1
-cls
-echo ------------------------
-echo Disable User Account Control
-reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" /v EnableLUA /t REG_DWORD /d 0 /f
-echo Set ConsentPromptBehaviorAdmin to 0 (elevate without prompting)
-reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" /v ConsentPromptBehaviorAdmin /t REG_DWORD /d 0 /f
-cls
-echo ------------------------
-echo Turning off Windows Defender Firewall...
-netsh advfirewall set allprofiles state off
-cls
-echo ------------------------
-echo Network Discovery and File Sharing have been enabled.
-netsh advfirewall firewall set rule group="Network Discovery" new enable=Yes
-netsh advfirewall firewall set rule group="File and Printer Sharing" new enable=Yes
-sc config fdphost start= auto
-sc config fdrespub start= auto
-sc config upnphost start= auto
-sc config SSDPSRV start= auto
-net start fdphost
-net start fdrespub
-net start upnphost
-net start SSDPSRV
-cls
-echo ------------------------
-echo Disabling 'Accounts: Limit local account use of blank passwords to console logon only' setting...
-powershell -Command "Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Lsa' -Name 'LimitBlankPasswordUse' -Value 0"
-cls
-echo ------------------------
-echo Enabling "Launching applications and unsafe files" in Internet Options...
-reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\0" /v 1806 /t REG_DWORD /d 0 /f
-reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\1" /v 1806 /t REG_DWORD /d 0 /f
-reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\2" /v 1806 /t REG_DWORD /d 0 /f
-reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\3" /v 1806 /t REG_DWORD /d 0 /f
-reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\4" /v 1806 /t REG_DWORD /d 0 /f
-cls
-echo ------------------------
-echo Network Folder FIX...
-reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\LanmanWorkstation\Parameters" /v AllowInsecureGuestAuth /t REG_DWORD /d 1 /f
-cls
-echo ------------------------
-echo Checking if Ultimate Performance power plan already exists...
-powercfg /list | findstr /i "e9a42b02-d5df-448d-aa00-03f14749eb61" >nul
+Write-Output "-----------------------"
+Write-Output "--- Default Install ---"
+Write-Output "-----------------------"
+Start-Sleep -Seconds 2
+Clear-Host
 
-if %errorlevel%==0 (
-    echo Ultimate Performance power plan already exists. Activating it...
-    powercfg /setactive e9a42b02-d5df-448d-aa00-03f14749eb61
-) else (
-    echo Ultimate Performance power plan does not exist. Creating it...
-    powercfg /create "Ultimate Performance" e9a42b02-d5df-448d-aa00-03f14749eb61"
-    powercfg /setactive e9a42b02-d5df-448d-aa00-03f14749eb61
-)
+# Disable User Account Control (UAC)
+Write-Output "------------------------"
+Write-Output "Disabling User Account Control (UAC)..."
+Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" -Name "EnableLUA" -Value 0
+Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" -Name "ConsentPromptBehaviorAdmin" -Value 0
+Clear-Host
 
-echo Disabling Fast Startup...
-:: Turn off Fast Startup
+# Turn off Windows Defender Firewall
+Write-Output "------------------------"
+Write-Output "Turning off Windows Defender Firewall..."
+Set-NetFirewallProfile -Profile Domain,Public,Private -Enabled False
+Clear-Host
+
+# Enable Network Discovery and File Sharing
+Write-Output "------------------------"
+Write-Output "Network Discovery and File Sharing have been enabled..."
+Set-NetFirewallRule -DisplayGroup "Network Discovery" -Enabled True
+Set-NetFirewallRule -DisplayGroup "File and Printer Sharing" -Enabled True
+
+# Start related services
+$services = @("fdphost", "fdrespub", "upnphost", "SSDPSRV")
+foreach ($service in $services) {
+    Set-Service -Name $service -StartupType Automatic
+    Start-Service -Name $service
+}
+Clear-Host
+
+# Disable blank password use restriction
+Write-Output "------------------------"
+Write-Output "Disabling 'Accounts: Limit local account use of blank passwords to console logon only' setting..."
+Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Lsa" -Name "LimitBlankPasswordUse" -Value 0
+Clear-Host
+
+# Enable launching unsafe files in Internet Options
+Write-Output "------------------------"
+Write-Output "Enabling 'Launching applications and unsafe files' in Internet Options..."
+$zones = 0..4
+foreach ($zone in $zones) {
+    Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\$zone" -Name 1806 -Value 0
+}
+Clear-Host
+
+# Network Folder FIX
+Write-Output "------------------------"
+Write-Output "Network Folder FIX..."
+Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Services\LanmanWorkstation\Parameters" -Name "AllowInsecureGuestAuth" -Value 1
+Clear-Host
+
+# Check and set Ultimate Performance power plan
+Write-Output "------------------------"
+Write-Output "Checking if Ultimate Performance power plan already exists..."
+$powerPlan = "e9a42b02-d5df-448d-aa00-03f14749eb61"
+$existingPlan = powercfg /list | Select-String -Pattern $powerPlan
+
+if ($existingPlan) {
+    Write-Output "Ultimate Performance power plan already exists. Activating it..."
+    powercfg /setactive $powerPlan
+} else {
+    Write-Output "Ultimate Performance power plan does not exist. Creating it..."
+    powercfg /create "Ultimate Performance" $powerPlan
+    powercfg /setactive $powerPlan
+}
+
+# Disable Fast Startup
+Write-Output "Disabling Fast Startup..."
 powercfg /h off
 
-echo Power management settings are being set to "Never"...
+# Set power management settings to "Never"
+Write-Output "Power management settings are being set to 'Never'..."
 powercfg /change monitor-timeout-ac 0
 powercfg /change monitor-timeout-dc 0
 powercfg /change standby-timeout-ac 0
@@ -77,39 +84,61 @@ powercfg /change disk-timeout-ac 0
 powercfg /change disk-timeout-dc 0
 powercfg /change hibernate-timeout-ac 0
 powercfg /change hibernate-timeout-dc 0
-cls
-echo ------------------------
-echo Enable administrator account
-net user administrator /active:yes
-echo Set the password for administrator
-net user administrator 412199
-cls
-echo ------------------------
-echo Enabling Remote Desktop for Administrator...
-powershell -Command "Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server' -Name 'fDenyTSConnections' -Value 0"
-powershell -Command "Enable-NetFirewallRule -DisplayGroup 'Remote Desktop'"
-echo Remote Desktop has been enabled for Administrator.
-cls
-echo ------------------------
-echo Enable SMB 1.0/CIFS File Sharing Support on Windows
-echo -
-echo bunu kurunca restart atmana gerek yok
-dism.exe /online /enable-feature /featurename:"SMB1Protocol"
-cls
-echo ------------------------
-echo winget install
-powershell -Command "Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/emreuls7/mr.winls/tool/winget.ps1'))"
-cls
-echo ------------------------
-echo choco install
-powershell -Command "Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/emreuls7/mr.winls/tool/chocolatey.ps1'))"
-cls
-echo -------------------------------
-echo --- burda restart at 1 kere ---
-echo -------------------------------
-echo ------------------------------------
-echo --- eger restart attıysan es gec ---
-echo ------------------------------------
-echo Do you want to ***RESTART*** the computer? (Yes(Y) / No(N)):
-set /p answer=
-if /i "%answer%"=="Y" shutdown.exe /r /t 00
+Clear-Host
+
+# Enable administrator account
+Write-Output "------------------------"
+Write-Output "Enabling administrator account..."
+Enable-LocalUser -Name "Administrator"
+Write-Output "Setting the password for administrator..."
+$adminPassword = ConvertTo-SecureString "412199" -AsPlainText -Force
+Set-LocalUser -Name "Administrator" -Password $adminPassword
+Clear-Host
+
+# Enable Remote Desktop for Administrator
+Write-Output "------------------------"
+Write-Output "Enabling Remote Desktop for Administrator..."
+Set-ItemProperty -Path "HKLM:\System\CurrentControlSet\Control\Terminal Server" -Name "fDenyTSConnections" -Value 0
+Enable-NetFirewallRule -DisplayGroup "Remote Desktop"
+Clear-Host
+
+# Set the time zone to UTC+2
+$timezone = "FLE Standard Time"  # UTC+2 time zone
+tzutil /s $timezone
+
+# Get the current date and time
+$currentDateTime = Get-Date
+
+# Add 2 hours
+$newDateTime = $currentDateTime.AddHours(2)
+
+# Set the new date and time
+Set-Date -Date $newDateTime
+
+Write-Output "Time zone set to '$timezone' and time updated to $newDateTime."
+
+# Install winget
+Write-Output "------------------------"
+Write-Output "winget install"
+Invoke-WebRequest -Uri "https://raw.githubusercontent.com/emreuls7/mr.winls/tool/winget.ps1" -UseBasicP -OutFile "winget.ps1"
+& .\winget.ps1
+Clear-Host
+
+# Install chocolatey
+Write-Output "------------------------"
+Write-Output "choco install"
+Invoke-WebRequest -Uri "https://raw.githubusercontent.com/emreuls7/mr.winls/tool/chocolatey.ps1" -UseBasicP -OutFile "chocolatey.ps1"
+& .\chocolatey.ps1
+Clear-Host
+
+# Enable SMB 1.0/CIFS File Sharing Support
+Write-Output "------------------------"
+Write-Output "Enabling SMB 1.0/CIFS File Sharing Support on Windows..."
+Enable-WindowsOptionalFeature -Online -FeatureName "SMB1Protocol"
+Write-Output "------------------------------------"
+
+# Prompt for restart
+$restart = Read-Host "Do you want to ***RESTART*** the computer? (Yes(Y) / No(N))"
+if ($restart -eq 'Y' -or $restart -eq 'y') {
+    Restart-Computer -Force
+}
