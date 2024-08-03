@@ -2,14 +2,14 @@
 # Menü görüntüleme fonksiyonu
 function Show-Menu {
     Clear-Host
-    Write-Output "-------------------------------------------------------------------" -ForegroundColor Green
-    Write-Output "--- menu_21      --- DEFAULT PC INSTALL ---                     ---" -ForegroundColor Red
-    Write-Output "-------------------------------------------------------------------" -ForegroundColor Green
+    Write-Output "-------------------------------------------------------------------"
+    Write-Output "--- menu_21      --- DEFAULT PC INSTALL ---                     ---"
+    Write-Output "-------------------------------------------------------------------"
     Write-Output "[1] USER DEFAULT SET"
     Write-Output "[2] INSTALL DEFAULT"
-    Write-Output "-------------------------------------------------------------------" -ForegroundColor Green
-    Write-Output "[0] Exit" -ForegroundColor Red
-    Write-Output "-------------------------------------------------------------------" -ForegroundColor Green
+    Write-Output "-------------------------------------------------------------------"
+    Write-Output "[0] Exit"
+    Write-Output "-------------------------------------------------------------------"
 }
 
 # Kullanıcı seçimlerini işleyen fonksiyon
