@@ -11,13 +11,10 @@ function Show-Menu {
     Write-Host "[4] Choco Instal                                   [9]  Chat Messenger Install            " -ForegroundColor DarkGray
     Write-Host "[5] MS Store Install                               [10] Gaming Launcher Install           " -ForegroundColor DarkGray
     Write-Host "------------------------------------------------------------------------------------------------------------------------" -ForegroundColor Green
-    Write-Host "[11] Microsoft Program Install                     [21] Microsoft Windows Fixed *         " -ForegroundColor DarkGray                    
-    Write-Host "[12] Microsoft .NET Install                                                               " -ForegroundColor DarkGray
-    Write-Host "------------------------------------------------------------------------------------------------------------------------" -ForegroundColor Green
-    Write-Host "[31] Setup Program Install ISO + EXE               [41] Winget Install *                  " -ForegroundColor DarkGray
-    Write-Host "[32] Setup Microsoft Office Install EXE            [42] Chocolatey Install *              " -ForegroundColor DarkGray
-    Write-Host "------------------------------------------------------------------------------------------------------------------------" -ForegroundColor Green
-    Write-Host "[90] *Standard PC Install All in One               [91] Winget + Chocolatey Upgrade       " -ForegroundColor DarkGray
+    Write-Host "[11] Microsoft Menu                                [15] *Standard PC Install All in One          " -ForegroundColor DarkGray                    
+    Write-Host "[12] Microsoft Windows Fixed *                     [16] *Pasha Lefkosa                           " -ForegroundColor DarkGray
+    Write-Host "[13] Setup Program Install ISO + EXE               [17] Winget Install *                  " -ForegroundColor DarkGray
+    Write-Host "[14] Setup Microsoft Office Install EXE            [18] Chocolatey Install *              " -ForegroundColor DarkGray
     Write-Host "------------------------------------------------------------------------------------------------------------------------" -ForegroundColor Green
     Write-Host "[98] Windows Utility (winutil)                     [99] Microsoft Activation Scripts (MAS)" -ForegroundColor DarkGray
     Write-Host "------------------------------------------------------------------------------------------------------------------------" -ForegroundColor Green
@@ -80,26 +77,27 @@ function Handle-Choice {
         8 { Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/emreuls7/mr.winls/menu/menu08.ps1").Content }
         9 { Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/emreuls7/mr.winls/menu/menu09.ps1").Content }
         10 { Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/emreuls7/mr.winls/menu/menu10.ps1").Content }
-        11 { Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/emreuls7/mr.winls/menu/menu11.ps1").Content }
-        12 { Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/emreuls7/mr.winls/menu/menu12.ps1").Content }
-        21 { Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/emreuls7/mr.winls/menu/menu21.ps1").Content }
-        22 { Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/emreuls7/mr.winls/menu/menu22.ps1").Content }
-        31 { Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/emreuls7/mr.winls/menu/menu32.ps1").Content }
-        32 { Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/emreuls7/mr.winls/menu/menu32.ps1").Content }
-        41 { 
+        11 { Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/emreuls7/mr.winls/menu/microsoft_menu.ps1").Content }
+        12 { Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/emreuls7/mr.winls/menu/microsoft_fixmenu.ps1").Content }
+        13 { Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/emreuls7/mr.winls/menu/menu_iso.ps1").Content }
+        14 { Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/emreuls7/mr.winls/menu/menu_office.ps1").Content }
+        15 { Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/emreuls7/mr.winls/menu/pc_menu.ps1").Content }
+        16 { Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/emreuls7/mr.winls/menu/pasha_menu.ps1").Content }
+        17 { 
             Write-Host "*** Winget Install ***." -ForegroundColor Blue
             Set-ExecutionPolicy Bypass -Scope Process -Force
             [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor [System.Net.SecurityProtocolType]::Tls12
             iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/emreuls7/mr.winls/tool/winget.ps1'))
+            winget upgrade --all
         }
-        42 { 
+        18 { 
             Write-Host "*** Chocolatey Install ***." -ForegroundColor Blue
             Set-ExecutionPolicy Bypass -Scope Process -Force
             [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072
             iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/emreuls7/mr.winls/tool/chocolatey.ps1'))
+            choco upgrade chocolatey -y; choco upgrade all -y
         }
-        90 { Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/emreuls7/mr.winls/menu/menu90.ps1").Content }
-        91 { winget upgrade --all; choco upgrade chocolatey -y; choco upgrade all -y }
+
         98 { 
             Write-Host "You chose Windows Utility (winutil)." -ForegroundColor Cyan
             Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/ChrisTitusTech/winutil/main/winutil.ps1").Content
@@ -116,7 +114,6 @@ function Handle-Choice {
             Write-Host "------------------------------------------------------------------------------------------------------------------------" -ForegroundColor Cyan
             Write-Host "--- Exit                      --- Thank you for using Software Installer ---                       CREATED BY MRLSx7 ---" -ForegroundColor Red
             Write-Host "------------------------------------------------------------------------------------------------------------------------" -ForegroundColor Cyan
-            Write-Host "Exiting..." -ForegroundColor Green
 
             # Wait for 2 seconds
             Start-Sleep -Seconds 2
