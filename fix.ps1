@@ -2,16 +2,16 @@
 function Show-Menu {
     Clear-Host
     Clear-Host
-    Write-Output "-------------------------------------------------------------------" -ForegroundColor Green
-    Write-Output "---            --- * Windows Fixed * ---                        ---" -ForegroundColor Red
-    Write-Output "-------------------------------------------------------------------" -ForegroundColor Green
+    Write-Output "-------------------------------------------------------------------"
+    Write-Output "---            --- * Windows Fixed * ---                        ---"
+    Write-Output "-------------------------------------------------------------------"
     Write-Output "[1] menu_21_1 System file Fixed"
     Write-Output "[2] menu_21_2"
     Write-Output "[3] menu_21_3"
     Write-Output "[4] menu_21_4 OUTLOOK FIX"
-    Write-Output "-------------------------------------------------------------------" -ForegroundColor Green
-    Write-Output "[0] Exit" -ForegroundColor Red
-    Write-Output "-------------------------------------------------------------------" -ForegroundColor Green
+    Write-Output "-------------------------------------------------------------------"
+    Write-Output "[0] Exit"
+    Write-Output "-------------------------------------------------------------------"
 }
 
 # Function to handle installations and activations
