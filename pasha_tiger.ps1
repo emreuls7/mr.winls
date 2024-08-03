@@ -1,27 +1,27 @@
 # Menü işlevini tanımlar
 function Show-Menu {
     cls
-    Write-Host "------------------------------------------------" -ForegroundColor Green
-    Write-Host "---    Pasha Lefkosa Tiger3 Install          ---" -ForegroundColor Green
-    Write-Host "------------------------------------------------" -ForegroundColor Green
-    Write-Host "[1] Windows Credentials 192.168.13.3 add" -ForegroundColor Cyan
-    Write-Host "[2] Tiger3 PASHA Copy C" -ForegroundColor Cyan
-    Write-Host "[3] Tiger3 2015-2019 Copy C" -ForegroundColor Cyan
-    Write-Host "[4] Tiger3 2019 Copy C" -ForegroundColor Cyan
-    Write-Host "[5] Tiger3 2022 Copy C" -ForegroundColor Cyan
-    Write-Host "------------------------------------------------" -ForegroundColor Green
-    Write-Host "[6] Windows Credentials 192.168.48.4 add" -ForegroundColor Cyan
-    Write-Host "[7] Tiger3 AKUN Copy C" -ForegroundColor Cyan
-    Write-Host "------------------------------------------------" -ForegroundColor Green
-    Write-Host "[11] License Tiger3 PASHA" -ForegroundColor Cyan
-    Write-Host "[12] License Tiger3 2015-2019" -ForegroundColor Cyan
-    Write-Host "[13] License Tiger3 2019" -ForegroundColor Cyan
-    Write-Host "[14] License Tiger3 2022" -ForegroundColor Cyan
-    Write-Host "------------------------------------------------" -ForegroundColor Green
-    Write-Host "[15] License Tiger3 AKUN" -ForegroundColor Cyan
-    Write-Host "[21] LHOSVR Windows host" -ForegroundColor Cyan
+    Write-Host "------------------------------------------------"
+    Write-Host "---    Pasha Lefkosa Tiger3 Install          ---"
+    Write-Host "------------------------------------------------"
+    Write-Host "[1] Windows Credentials 192.168.13.3 add"
+    Write-Host "[2] Tiger3 PASHA Copy C"
+    Write-Host "[3] Tiger3 2015-2019 Copy C"
+    Write-Host "[4] Tiger3 2019 Copy C"
+    Write-Host "[5] Tiger3 2022 Copy C"
+    Write-Host "------------------------------------------------"
+    Write-Host "[6] Windows Credentials 192.168.48.4 add"
+    Write-Host "[7] Tiger3 AKUN Copy C"
+    Write-Host "------------------------------------------------"
+    Write-Host "[11] License Tiger3 PASHA"
+    Write-Host "[12] License Tiger3 2015-2019"
+    Write-Host "[13] License Tiger3 2019"
+    Write-Host "[14] License Tiger3 2022"
+    Write-Host "------------------------------------------------"
+    Write-Host "[15] License Tiger3 AKUN"
+    Write-Host "[21] LHOSVR Windows host"
     Write-Host "[0] Exit" -ForegroundColor Red
-    Write-Host "------------------------------------------------" -ForegroundColor Green
+    Write-Host "------------------------------------------------"
 }
 
 # Kullanıcıdan seçim almak için işlev
