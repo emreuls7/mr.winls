@@ -91,6 +91,14 @@ if (Test-Path $adobePath) {
     Write-Host "Adobe Reader not found at $adobePath. Please make sure it is installed."
 }
 
+# whatsapp
+Start-Process powershell -ArgumentList '-NoProfile -ExecutionPolicy Bypass -Command "winget install -e --id 9NKSQGP7F2NH --accept-package-agreements --accept-source-agreements --silent"' -Wait
+
+# Skype
+winget install -id Microsoft.Skype -e
+
+# Windows Scan
+winget install --id 9WZDNCRFJ3PV -e
 
 # Pause to allow user to view the previous message
 Start-Sleep -Seconds 2
@@ -107,4 +115,4 @@ Start-Sleep -Seconds 2
 # }
 
 # Execute additional script
-Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/emreuls7/mr.winls/menu/pc.ps1").Content
+Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/emreuls7/mr.winls/pasha/pc.ps1").Content
