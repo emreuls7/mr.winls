@@ -45,11 +45,21 @@ $software = @(
     "AcroSoftwareInc.CutePDFWriter",
     "AdrienAllard.FileConverter",
     "uvncbvba.UltraVnc"
+    "Microsoft.PCManager"
+    "Microsoft.PowerToys"
+    "Microsoft.Skype"
 )
 foreach ($app in $software) {
     winget install $app -e
 }
 Write-Host "------------------------"
+
+# whatsapp
+Start-Process powershell -ArgumentList '-NoProfile -ExecutionPolicy Bypass -Command "winget install -e --id 9NKSQGP7F2NH --accept-package-agreements --accept-source-agreements --silent"' -Wait
+
+# Windows Scan
+Start-Process powershell -ArgumentList '-NoProfile -ExecutionPolicy Bypass -Command "winget install -e --id 9WZDNCRFJ3PV --accept-package-agreements --accept-source-agreements --silent"' -Wait
+
 
 Write-Host "Upgrading installed software..."
 winget upgrade --all
@@ -91,14 +101,7 @@ if (Test-Path $adobePath) {
     Write-Host "Adobe Reader not found at $adobePath. Please make sure it is installed."
 }
 
-# whatsapp
-Start-Process powershell -ArgumentList '-NoProfile -ExecutionPolicy Bypass -Command "winget install -e --id 9NKSQGP7F2NH --accept-package-agreements --accept-source-agreements --silent"' -Wait
 
-# Skype
-winget install -id Microsoft.Skype -e
-
-# Windows Scan
-winget install --id 9WZDNCRFJ3PV -e
 
 # Pause to allow user to view the previous message
 Start-Sleep -Seconds 2
