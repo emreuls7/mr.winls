@@ -28,10 +28,12 @@ function Show-Menu {
     Write-Host "-------------------------------------------------------------------"
 }
 
-function Install-Application {
+# Function to handle installations and activations
+function Handle-Choice {
     param (
         [int]$choice
     )
+
     switch ($choice) {
         1 { winget install TechPowerUp.GPU-Z -e }
         2 { winget install CrystalDewWorld.CrystalDiskInfo -e }
