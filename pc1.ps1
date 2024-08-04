@@ -5,7 +5,6 @@ Start-Sleep -Seconds 2
 Clear-Host
 
 # Disable User Account Control (UAC)
-Write-Host "------------------------"
 Write-Host "Disabling User Account Control (UAC)..."
 try {
     Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" -Name "EnableLUA" -Value 0 -Type DWord
@@ -17,7 +16,6 @@ try {
 Clear-Host
 
 # Turn off Windows Defender Firewall
-Write-Host "------------------------"
 Write-Host "Turning off Windows Defender Firewall..."
 try {
     Set-NetFirewallProfile -All -Enabled False
@@ -28,7 +26,6 @@ try {
 Clear-Host
 
 # Enable Network Discovery and File Sharing
-Write-Host "------------------------"
 Write-Host "Enabling Network Discovery and File Sharing..."
 try {
     Set-NetFirewallRule -DisplayGroup "Network Discovery" -Enabled True
@@ -47,7 +44,6 @@ try {
 Clear-Host
 
 # Disable blank password use restriction
-Write-Host "------------------------"
 Write-Host "Disabling 'Accounts: Limit local account use of blank passwords to console logon only' setting..."
 try {
     Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Lsa" -Name "LimitBlankPasswordUse" -Value 0 -Type DWord
@@ -58,7 +54,6 @@ try {
 Clear-Host
 
 # Enable launching unsafe files in Internet Options
-Write-Host "------------------------"
 Write-Host "Enabling 'Launching applications and unsafe files' in Internet Options..."
 try {
     for ($zone = 0; $zone -le 4; $zone++) {
@@ -71,7 +66,6 @@ try {
 Clear-Host
 
 # Network Folder FIX
-Write-Host "------------------------"
 Write-Host "Network Folder FIX..."
 try {
     Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Services\LanmanWorkstation\Parameters" -Name "AllowInsecureGuestAuth" -Value 1 -Type DWord
@@ -82,19 +76,12 @@ try {
 Clear-Host
 
 # Check and set Ultimate Performance power plan
-Write-Host "------------------------"
 Write-Host "Checking if Ultimate Performance power plan already exists..."
 try {
-    $powerPlans = powercfg /list | Select-String "Ultimate Performance"
-    if ($powerPlans) {
-        Write-Host "Ultimate Performance power plan already exists. Activating it..."
-        powercfg /setactive e9a42b02-d5df-448d-aa00-03f14749eb61
-    } else {
         Write-Host "Ultimate Performance power plan does not exist. Creating it..."
         powercfg /create "Ultimate Performance" e9a42b02-d5df-448d-aa00-03f14749eb61
-        powercfg /setactive e9a42b02-d5df-448d-aa00-03f14749eb61
-    }
-    Write-Host "Ultimate Performance power plan has been set."
+        powercfg /setactive e9a42b02-d5df-448d-aa00-03f14749eb61  
+        Write-Host "Ultimate Performance power plan has been set."
 } catch {
     Write-Host "Failed to set Ultimate Performance power plan. Error: $_"
 }
@@ -128,7 +115,6 @@ try {
 Clear-Host
 
 # Enable administrator account and set password
-Write-Host "------------------------"
 Write-Host "Enabling administrator account..."
 try {
     Enable-LocalUser -Name "Administrator"
@@ -142,7 +128,6 @@ try {
 Clear-Host
 
 # Enable Remote Desktop
-Write-Host "------------------------"
 Write-Host "Enabling Remote Desktop for Administrator..."
 try {
     Set-ItemProperty -Path "HKLM:\System\CurrentControlSet\Control\Terminal Server" -Name "fDenyTSConnections" -Value 0 -Type DWord
@@ -154,7 +139,6 @@ try {
 Clear-Host
 
 # Set the time zone to UTC+2
-Write-Host "------------------------"
 Write-Host "Setting the time zone to UTC+2..."
 try {
     Set-TimeZone -Id "GTB Standard Time"
@@ -185,6 +169,78 @@ try {
     Write-Host "Failed to remove Microsoft Edge. Error: $_"
 }
 Clear-Host
+
+# Install Winget
+{ 
+Write-Host "*** Winget Install ***." -ForegroundColor Blue
+            Set-ExecutionPolicy Bypass -Scope Process -Force
+            [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor [System.Net.SecurityProtocolType]::Tls12
+            iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/emreuls7/mr.winls/tool/winget.ps1'))
+            winget upgrade --all
+        }
+Clear-Host
+
+# Install Chocolatey
+{ 
+Write-Host "*** Chocolatey Install ***." -ForegroundColor Blue
+            Set-ExecutionPolicy Bypass -Scope Process -Force
+            [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072
+            iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/emreuls7/mr.winls/tool/chocolatey.ps1'))
+            choco upgrade chocolatey -y; choco upgrade all -y
+        }
+Clear-Host
+
+# Enable .NET Framework 3.5
+
+Write-Host "Enabling .NET Framework 3.5..."
+try {
+    Enable-WindowsOptionalFeature -Online -FeatureName NetFx3
+    Write-Host ".NET Framework 3.5 has been enabled."
+} catch {
+    Write-Host "Failed to enable .NET Framework 3.5. Error: $_"
+}
+Clear-Host
+
+# Install .NET Framework 4.8
+
+Write-Host "Installing .NET Framework 4.8..."
+
+# Define the URL and output file path for the .NET Framework 4.8 installer
+$dotnet48Url = "https://download.visualstudio.microsoft.com/download/pr/8e7dc3b5-17c5-42f3-8720-8a1d96c1f6b2/204ad9dc72807f8940dc93f74a885337/dotnet_framework_4.8.exe"
+$outputFile = "$env:TEMP\dotnet_framework_4.8.exe"
+
+try {
+    # Download the .NET Framework 4.8 installer
+    Write-Host "Downloading .NET Framework 4.8..."
+    Invoke-WebRequest -Uri $dotnet48Url -OutFile $outputFile
+    
+    # Install .NET Framework 4.8
+    Write-Host "Installing .NET Framework 4.8..."
+    Start-Process -FilePath $outputFile -ArgumentList "/quiet /norestart" -Wait
+
+    # Remove the installer file after installation
+    Remove-Item $outputFile
+
+    Write-Host ".NET Framework 4.8 has been installed."
+} catch {
+    # Catch any errors and display an error message
+    Write-Host "Failed to install .NET Framework 4.8. Error: $_"
+}
+
+# Clear the console screen
+Clear-Host
+
+# Enable SMB1 Protocol
+
+Write-Host "Enabling SMB1 Protocol..."
+try {
+    Start-Process -NoNewWindow -Wait -FilePath "dism.exe" -ArgumentList "/online /enable-feature /featurename:SMB1Protocol"
+    Write-Host "SMB1 Protocol has been enabled."
+} catch {
+    Write-Host "Failed to enable SMB1 Protocol. Error: $_"
+}
+Clear-Host
+
 
 # Set default browser to Google Chrome
 Write-Host "Setting Google Chrome as the default browser..."
@@ -221,52 +277,6 @@ if (Test-Path $adobePath) {
     }
 } else {
     Write-Host "Adobe Reader not found at $adobePath. Please make sure it is installed."
-}
-Clear-Host
-
-# Install Winget
-Write-Host "Installing Winget..."
-try {
-    Set-ExecutionPolicy Bypass -Scope Process -Force
-    [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072
-    iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/emreuls7/mr.winls/tool/winget.ps1'))
-    Write-Host "Winget has been installed."
-} catch {
-    Write-Host "Failed to install Winget. Error: $_"
-}
-Clear-Host
-
-# Install Chocolatey
-Write-Host "Installing Chocolatey..."
-try {
-    Set-ExecutionPolicy Bypass -Scope Process -Force
-    [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072
-    iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/emreuls7/mr.winls/tool/chocolatey.ps1'))
-    Write-Host "Chocolatey has been installed."
-} catch {
-    Write-Host "Failed to install Chocolatey. Error: $_"
-}
-Clear-Host
-
-# Enable .NET Framework 3.5
-Write-Host "------------------------"
-Write-Host "Enabling .NET Framework 3.5..."
-try {
-    Enable-WindowsOptionalFeature -Online -FeatureName NetFx3
-    Write-Host ".NET Framework 3.5 has been enabled."
-} catch {
-    Write-Host "Failed to enable .NET Framework 3.5. Error: $_"
-}
-Clear-Host
-
-# Enable SMB1 Protocol
-Write-Host "------------------------"
-Write-Host "Enabling SMB1 Protocol..."
-try {
-    Start-Process -NoNewWindow -Wait -FilePath "dism.exe" -ArgumentList "/online /enable-feature /featurename:SMB1Protocol"
-    Write-Host "SMB1 Protocol has been enabled."
-} catch {
-    Write-Host "Failed to enable SMB1 Protocol. Error: $_"
 }
 Clear-Host
 
