@@ -28,7 +28,7 @@ $vcRedists = @(
     "Microsoft.VCRedist.2013.x86",
     "Microsoft.VCRedist.2013.x64",
     "Microsoft.VCRedist.2015+.x86",
-    "Microsoft.VCRedist.2015+.x64"
+    "Microsoft.VCRedist.2015+.x64",
 )
 foreach ($redistributable in $vcRedists) {
     winget install $redistributable -e
@@ -44,10 +44,10 @@ $software = @(
     "Adobe.Acrobat.Reader.64-bit",
     "AcroSoftwareInc.CutePDFWriter",
     "AdrienAllard.FileConverter",
-    "uvncbvba.UltraVnc"
-    "Microsoft.PCManager"
-    "Microsoft.PowerToys"
-    "Microsoft.Skype"
+    "uvncbvba.UltraVnc",
+    "Microsoft.PCManager",
+    "Microsoft.PowerToys",
+    "Microsoft.Skype",
 )
 foreach ($app in $software) {
     winget install $app -e
