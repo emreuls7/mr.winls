@@ -2,9 +2,9 @@
 Clear-Host
 
 # Output introductory message
-Write-Output "-----------------------"
-Write-Output "--- Default Install ---"
-Write-Output "-----------------------"
+Write-Host "-----------------------"
+Write-Host "--- Default Install ---"
+Write-Host "-----------------------"
 Start-Sleep -Seconds 2
 Clear-Host
 
@@ -62,7 +62,7 @@ $chromePath = "C:\Program Files\Google\Chrome\Application\chrome.exe"
 
 # Check if Chrome exists at the specified path
 if (Test-Path $chromePath) {
-    Write-Output "Google Chrome found at $chromePath"
+    Write-Host "Google Chrome found at $chromePath"
 
     # Define registry paths and values for HTTP and HTTPS protocols
     $regPathHttp = "HKCR:\http\shell\open\command"
@@ -74,9 +74,9 @@ if (Test-Path $chromePath) {
     Set-ItemProperty -Path $regPathHttps -Name "(default)" -Value $chromeCommand
 
     # Notify user
-    Write-Output "Google Chrome has been set as the default browser for HTTP and HTTPS protocols."
+    Write-Host "Google Chrome has been set as the default browser for HTTP and HTTPS protocols."
 } else {
-    Write-Output "Google Chrome not found at $chromePath. Please make sure it is installed."
+    Write-Host "Google Chrome not found at $chromePath. Please make sure it is installed."
 }
 
 # Define the path to the Adobe Reader executable
@@ -84,7 +84,7 @@ $adobePath = "C:\Program Files\Adobe\Acrobat DC\Acrobat\Acrobat.exe"
 
 # Check if Adobe Reader exists at the specified path
 if (Test-Path $adobePath) {
-    Write-Output "Adobe Reader found at $adobePath"
+    Write-Host "Adobe Reader found at $adobePath"
 
     # Define registry paths and values for PDF files
     $pdfRegistryPath = "HKCR:\.pdf\shell\open\command"
@@ -94,9 +94,9 @@ if (Test-Path $adobePath) {
     Set-ItemProperty -Path $pdfRegistryPath -Name "(default)" -Value $adobeCommand
 
     # Notify user
-    Write-Output "Adobe Reader has been set as the default PDF viewer."
+    Write-Host "Adobe Reader has been set as the default PDF viewer."
 } else {
-    Write-Output "Adobe Reader not found at $adobePath. Please make sure it is installed."
+    Write-Host "Adobe Reader not found at $adobePath. Please make sure it is installed."
 }
 
 # Prompt user for Office setup
