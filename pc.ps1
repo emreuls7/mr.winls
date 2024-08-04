@@ -2,14 +2,14 @@
 # Menü görüntüleme fonksiyonu
 function Show-Menu {
     Clear-Host
-    Write-Output "-------------------------------------------------------------------"
-    Write-Output "--- menu_21      --- DEFAULT PC INSTALL ---                     ---"
-    Write-Output "-------------------------------------------------------------------"
-    Write-Output "[1] USER DEFAULT SET"
-    Write-Output "[2] INSTALL DEFAULT"
-    Write-Output "-------------------------------------------------------------------"
-    Write-Output "[0] Exit"
-    Write-Output "-------------------------------------------------------------------"
+    Write-Host "-------------------------------------------------------------------"
+    Write-Host "--- menu_21      --- DEFAULT PC INSTALL ---                     ---"
+    Write-Host "-------------------------------------------------------------------"
+    Write-Host "[1] USER DEFAULT SET"
+    Write-Host "[2] INSTALL DEFAULT"
+    Write-Host "-------------------------------------------------------------------"
+    Write-Host "[0] Exit"
+    Write-Host "-------------------------------------------------------------------"
 }
 
 # Kullanıcı seçimlerini işleyen fonksiyon
