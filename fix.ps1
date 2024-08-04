@@ -1,16 +1,16 @@
 # Ekranı temizleyip menüyü gösteren fonksiyon
 function Show-Menu {
     Clear-Host
-    Write-Output "-------------------------------------------------------------------"
-    Write-Output "---            --- * Windows Fixed * ---                        ---"
-    Write-Output "-------------------------------------------------------------------"
-    Write-Output "[1] menu_21_1 System file Fixed"
-    Write-Output "[2] menu_21_2"
-    Write-Output "[3] menu_21_3"
-    Write-Output "[4] menu_21_4 OUTLOOK FIX"
-    Write-Output "-------------------------------------------------------------------"
-    Write-Output "[0] Exit"
-    Write-Output "-------------------------------------------------------------------"
+    Write-Host "-------------------------------------------------------------------"
+    Write-Host "---            --- * Windows Fixed * ---                        ---"
+    Write-Host "-------------------------------------------------------------------"
+    Write-Host "[1] menu_21_1 System file Fixed"
+    Write-Host "[2] menu_21_2"
+    Write-Host "[3] menu_21_3"
+    Write-Host "[4] menu_21_4 OUTLOOK FIX"
+    Write-Host "-------------------------------------------------------------------"
+    Write-Host "[0] Exit"
+    Write-Host "-------------------------------------------------------------------"
 }
 
 # Kullanıcı seçimlerini işleyen fonksiyon
@@ -30,7 +30,7 @@ function Handle-Choice {
         4 { $scriptUrl = "${baseUrl}fix4.ps1" }
         0 { $scriptUrl = "https://raw.githubusercontent.com/emreuls7/mr.winls/main/program.ps1" }
         default {
-            Write-Output "Geçersiz seçim. Lütfen geçerli bir seçenek girin."
+            Write-Host "Geçersiz seçim. Lütfen geçerli bir seçenek girin."
             return
         }
     }
@@ -39,9 +39,9 @@ function Handle-Choice {
     try {
         $scriptContent = Invoke-WebRequest -Uri $scriptUrl -ErrorAction Stop
         Invoke-Expression $scriptContent.Content
-        Write-Output "Script başarıyla çalıştırıldı."
+        Write-Host "Script başarıyla çalıştırıldı."
     } catch {
-        Write-Output "Script'i almak veya çalıştırmak başarısız oldu. Lütfen daha sonra tekrar deneyin."
+        Write-Host "Script'i almak veya çalıştırmak başarısız oldu. Lütfen daha sonra tekrar deneyin."
     }
 }
 
