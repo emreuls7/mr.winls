@@ -1,20 +1,15 @@
 # Clear the console
 Clear-Host
 
-# Output introductory message
-Write-Host "-----------------------"
-Write-Host "--- Default Install ---"
-Write-Host "-----------------------"
 Start-Sleep -Seconds 2
 Clear-Host
-
-Write-Host "------------------------"
 Write-Host "Installing .NET Frameworks..."
 choco install dotnet3.5 -y
 choco install dotnet4.5.1 -y
 choco install dotnet4.5.2 -y
-Write-Host "------------------------"
 
+
+Clear-Host
 Write-Host "Installing VC Redistributables..."
 $vcRedists = @(
     "Microsoft.VCRedist.2005.x86",
@@ -33,8 +28,9 @@ $vcRedists = @(
 foreach ($redistributable in $vcRedists) {
     winget install $redistributable -e
 }
-Write-Host "------------------------"
 
+
+Clear-Host
 Write-Host "Installing additional software..."
 $software = @(
     "Google.Chrome",
@@ -48,11 +44,11 @@ $software = @(
     "Microsoft.PCManager",
     "Microsoft.PowerToys",
     "Microsoft.Skype",
+    "Microsoft.PowerShell",
 )
 foreach ($app in $software) {
     winget install $app -e
 }
-Write-Host "------------------------"
 
 # whatsapp
 Start-Process powershell -ArgumentList '-NoProfile -ExecutionPolicy Bypass -Command "winget install -e --id 9NKSQGP7F2NH --accept-package-agreements --accept-source-agreements --silent"' -Wait
@@ -61,12 +57,14 @@ Start-Process powershell -ArgumentList '-NoProfile -ExecutionPolicy Bypass -Comm
 Start-Process powershell -ArgumentList '-NoProfile -ExecutionPolicy Bypass -Command "winget install -e --id 9WZDNCRFJ3PV --accept-package-agreements --accept-source-agreements --silent"' -Wait
 
 
+Clear-Host
 Write-Host "Upgrading installed software..."
 winget upgrade --all
 choco upgrade chocolatey
 choco upgrade all -y
-Write-Host "------------------------"
 
+
+Clear-Host
 # Define the path to the Google Chrome executable
 $chromePath = "C:\Program Files\Google\Chrome\Application\chrome.exe"
 # Check if Chrome exists at the specified path
@@ -85,6 +83,7 @@ if (Test-Path $chromePath) {
     Write-Host "Google Chrome not found at $chromePath. Please make sure it is installed."
 }
 
+Clear-Host
 # Define the path to the Adobe Reader executable
 $adobePath = "C:\Program Files\Adobe\Acrobat DC\Acrobat\Acrobat.exe"
 # Check if Adobe Reader exists at the specified path
@@ -102,6 +101,114 @@ if (Test-Path $adobePath) {
 }
 
 
+Clear-Host
+# Define the VLC path
+$vlcPath = "C:\Program Files\VideoLAN\VLC\vlc.exe"
+# Set default associations for common media file types
+$fileTypes = @(
+    ".mp4",
+    ".avi",
+    ".mkv",
+    ".mov",
+    ".wmv",
+    ".flv",
+    ".mp3",
+    ".wav"
+)
+
+foreach ($type in $fileTypes) {
+    $command = "assoc $type=VLCFile"
+    Invoke-Expression $command
+}
+# Register VLC as a file type handler
+$shell = New-Object -ComObject Shell.Application
+$folder = $shell.Namespace("C:\")
+$folder.ParseName($vlcPath).InvokeVerb("openas")
+# Define the path to the WinRAR executable
+$winrarPath = "C:\Program Files\WinRAR\WinRAR.exe"
+# List of file extensions to associate with WinRAR
+$fileExtensions = @(
+    ".rar",
+    ".zip",
+    ".7z",
+    ".tar",
+    ".gz",
+    ".bz2",
+    ".xz",
+    ".iso"
+)
+# Helper function to set file association
+function Set-FileAssociation {
+    param (
+        [string]$Extension,
+        [string]$ProgramPath
+    )
+    # Set file association using the default Windows methods
+    $progId = "WinRAR_" + $Extension.TrimStart(".")
+    $regPath = "HKCU:\Software\Classes\$progId"
+    # Create the registry entry for the file type
+    New-Item -Path $regPath -Force | Out-Null
+    New-ItemProperty -Path $regPath -Name "(Default)" -Value "WinRAR $Extension" -Force | Out-Null
+    New-ItemProperty -Path $regPath -Name "FriendlyTypeName" -Value "WinRAR $Extension" -Force | Out-Null
+    # Associate the file type with WinRAR
+    New-Item -Path "HKCU:\Software\Classes\$progId\shell\open\command" -Force | Out-Null
+    Set-ItemProperty -Path "HKCU:\Software\Classes\$progId\shell\open\command" -Name "(Default)" -Value "`"$ProgramPath`" `"%1`"" -Force
+    # Associate file extension with ProgID
+    Set-ItemProperty -Path "HKCU:\Software\Classes\$Extension" -Name "(Default)" -Value $progId
+}
+# Iterate over each file extension and set the association
+foreach ($ext in $fileExtensions) {
+    Set-FileAssociation -Extension $ext -ProgramPath $winrarPath
+}
+        Write-Host "WinRAR has been set as the default application for specified file types."
+
+
+Clear-Host
+# Install UltraVNC using winget
+winget install --id=UltraVNC.UltraVNC --source=winget
+# Wait for the installation to complete
+Start-Sleep -Seconds 30
+# Define the default installation path for UltraVNC
+$installPath = "C:\Program Files\UltraVNC"
+# Define the password
+$password = "412199"
+# Write the password to the registry
+$regPath = "HKLM:\SOFTWARE\UltraVNC\Server"
+$regName = "Password"
+# Create the registry key and set the password
+if (-not (Test-Path $regPath)) {
+    New-Item -Path $regPath -Force
+}
+Set-ItemProperty -Path $regPath -Name $regName -Value $password
+            Write-Output "UltraVNC has been installed and the password has been set."
+
+
+Clear-Host
+# Path to PowerShell 7 executable
+$pwshPath = "C:\Program Files\PowerShell\7\pwsh.exe"
+if (-Not (Test-Path $pwshPath)) {
+    Write-Host "PowerShell 7 is not installed or the path is incorrect."
+    exit
+}
+# Path to the existing PowerShell shortcut
+$powershellShortcutPath = [System.IO.Path]::Combine($env:USERPROFILE, "Desktop\Windows PowerShell.lnk")
+if (Test-Path $powershellShortcutPath) {
+    # Update the existing shortcut
+    $shell = New-Object -ComObject WScript.Shell
+    $shortcut = $shell.CreateShortcut($powershellShortcutPath)
+    $shortcut.TargetPath = $pwshPath
+    $shortcut.Save()
+    Write-Host "Updated PowerShell shortcut: $powershellShortcutPath"
+} else {
+    # Create a new shortcut
+    $shell = New-Object -ComObject WScript.Shell
+    $shortcut = $shell.CreateShortcut($powershellShortcutPath)
+    $shortcut.TargetPath = $pwshPath
+    $shortcut.WorkingDirectory = [System.IO.Path]::GetDirectoryName($pwshPath)
+    $shortcut.Save()
+    Write-Host "Created new PowerShell shortcut: $powershellShortcutPath"
+}
+
 
 # Pause to allow user to view the previous message
 Start-Sleep -Seconds 2
@@ -116,6 +223,9 @@ Start-Sleep -Seconds 2
 #    Write-Host "Exiting..."
 #    exit
 # }
+
+Write-Host "Script execution completed. Press Enter to exit."
+Read-Host
 
 # Execute additional script
 Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/emreuls7/mr.winls/pasha/pc.ps1").Content
