@@ -20,24 +20,25 @@ function Show-Menu {
     Write-Host "-------------------------------------------------------------------"
 }
 
-function Install-Software {
+# Function to handle installations and activations
+function Handle-Choice {
     param (
-        [string]$choice
+        [int]$choice
     )
 
     switch ($choice) {
-        "1" { winget install CPUID.CPU-Z.MSI -e }
-        "2" { winget install Guru3D.Afterburner -e }
-        "3" { winget install Asus.ArmouryCrate }
-        "4" { winget install CPUID.CPU-Z.ROG }
-        "5" { winget install WiresharkFoundation.Wireshark -e }
-        "6" { winget install Keeper.KeeperDesktop -e }
-        "7" { winget install Nvidia.GeForceNow -e }
-        "8" { winget install Nvidia.PhysX -e }
-        "9" { winget install Nvidia.Broadcast -e }
-        "10" { winget install Nvidia.CUDA -e }
-        "11" { winget install Datronicsoft.SpacedeskDriver.Server -e }
-        "12" { winget install Datronicsoft.SpacedeskDriver.Client -e }
+        1 { winget install CPUID.CPU-Z.MSI -e }
+        2 { winget install Guru3D.Afterburner -e }
+        3 { winget install Asus.ArmouryCrate }
+        4 { winget install CPUID.CPU-Z.ROG }
+        5 { winget install WiresharkFoundation.Wireshark -e }
+        6 { winget install Keeper.KeeperDesktop -e }
+        7 { winget install Nvidia.GeForceNow -e }
+        8 { winget install Nvidia.PhysX -e }
+        9 { winget install Nvidia.Broadcast -e }
+        10 { winget install Nvidia.CUDA -e }
+        11 { winget install Datronicsoft.SpacedeskDriver.Server -e }
+        12 { winget install Datronicsoft.SpacedeskDriver.Client -e }
         0 {
             exit
             # Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/emreuls7/mr.winls/main/program.ps1").Content
