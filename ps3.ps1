@@ -4,11 +4,14 @@
 # Pause to allow user to view the previous message
 Start-Sleep -Seconds 2
 Clear-Host
-Write-Host "------------------------"
+
 
 # Prompt user for Massgrave setup
     Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/emreuls7/mr.winls/tool/massgrave_mas.ps1").Content
 
+
+Write-Host "Script execution completed. Press Enter to exit."
+Read-Host
 
 # Execute additional script
 Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/emreuls7/mr.winls/pasha/pc.ps1").Content
