@@ -24,9 +24,12 @@ function Install-Software {
     winget install --id $id -e --accept-package-agreements --accept-source-agreements --silent
 }
 
-do {
-    Show-Menu
-    $choice = Read-Host "Enter your choice (0,1,2,3...)"
+# Function to handle installations and activations
+function Handle-Choice {
+    param (
+        [int]$choice
+    )
+
     switch ($choice) {
         "1" { Install-Software -id "Valve.Steam" }
         "2" { Install-Software -id "EpicGames.EpicGamesLauncher" }
@@ -37,8 +40,20 @@ do {
         "7" { Install-Software -id "Amazon.Games" }
         "8" { Install-Software -id "Google.PlayGames.Beta" }
         "9" { Install-Software -id "Blitz.Blitz" }
-        "0" { Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/emreuls7/mr.winls/main/program.ps1").Content }
-        default { Write-Host "Invalid choice. Please enter a number between 0 and 9." }
+        0 {
+            exit
+            # Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/emreuls7/mr.winls/main/program.ps1").Content
+        }
+        default { Write-Host "Invalid choice. Please try again." }
     }
-} while ($choice -ne "0")
+}
+
+# Main script loop
+do {
+    Show-Menu
+    $choice = Read-Host "Enter your choice (0,1,2,3...)"
+    Clear-Host
+    Handle-Choice -choice $choice
+    if ($choice -ne 0) { Start-Sleep -Seconds 2 }
+} while ($choice -ne 0)
 
