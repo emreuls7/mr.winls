@@ -7,6 +7,7 @@ function Show-Menu {
     Write-Host "-------------------------------------------------------------------"
     Write-Host "[1] USER DEFAULT SET"
     Write-Host "[2] INSTALL DEFAULT"
+    Write-Host "[2] OFFICE INSTALL"
     Write-Host "-------------------------------------------------------------------"
     Write-Host "[0] Exit"
     Write-Host "-------------------------------------------------------------------"
@@ -20,8 +21,9 @@ function Handle-Choice {
 
     Clear-Host
     switch ($choice) {
-        1 { Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/emreuls7/mr.winls/menu/menu90_1.ps1").Content }
-        2 { Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/emreuls7/mr.winls/menu/menu90_2.ps1").Content }
+        1 { Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/emreuls7/mr.winls/pasha/pc1.ps1").Content }
+        2 { Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/emreuls7/mr.winls/pasha/pc2.ps1").Content }
+        3 { Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/emreuls7/mr.winls/pasha/pc3.ps1").Content }
         0 { Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/emreuls7/mr.winls/main/program.ps1").Content }
         default { Write-Host "Invalid choice, please try again." -ForegroundColor Red }
     }
