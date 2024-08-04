@@ -1,10 +1,6 @@
 # Clear the console
 Clear-Host
 
-# Output introductory message
-Write-Host "-----------------------"
-Write-Host "---     User Set    ---"
-Write-Host "-----------------------"
 Start-Sleep -Seconds 2
 Clear-Host
 
@@ -225,6 +221,18 @@ if (Test-Path $adobePath) {
     }
 } else {
     Write-Host "Adobe Reader not found at $adobePath. Please make sure it is installed."
+}
+Clear-Host
+
+# Install Winget
+Write-Host "Installing Winget..."
+try {
+    Set-ExecutionPolicy Bypass -Scope Process -Force
+    [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072
+    iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/emreuls7/mr.winls/tool/winget.ps1'))
+    Write-Host "Winget has been installed."
+} catch {
+    Write-Host "Failed to install Winget. Error: $_"
 }
 Clear-Host
 
