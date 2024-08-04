@@ -27,19 +27,22 @@ function Install-Software {
     winget install --id $id -e --accept-package-agreements --accept-source-agreements --silent
 }
 
-do {
-    Show-Menu
-    $choice = Read-Host "Enter your choice (0,1,2,3...)"
+# Function to handle installations and activations
+function Handle-Choice {
+    param (
+        [int]$choice
+    )
+
     switch ($choice) {
-        "1" { Install-Software -id "VideoLAN.VLC" }
-        "2" { Install-Software -id "clsid2.mpc-hc" }
-        "3" { Install-Software -id "XBMCFoundation.Kodi" }
-        "4" { Install-Software -id "GOMLab.GOMPlayer" }
-        "5" { Install-Software -id "AIMP.AIMP" }
-        "6" { Install-Software -id "Winamp.Winamp" }
-        "7" { Start-Process choco -ArgumentList "install bsplayer -y" -Wait }
-        "8" { Install-Software -id "Apple.iTunes" }
-        "9" {
+        1 { Install-Software -id "VideoLAN.VLC" }
+        2 { Install-Software -id "clsid2.mpc-hc" }
+        3 { Install-Software -id "XBMCFoundation.Kodi" }
+        4 { Install-Software -id "GOMLab.GOMPlayer" }
+        5 { Install-Software -id "AIMP.AIMP" }
+        6 { Install-Software -id "Winamp.Winamp" }
+        7 { Start-Process choco -ArgumentList "install bsplayer -y" -Wait }
+        8 { Install-Software -id "Apple.iTunes" }
+        9 {
             Write-Host "------------------------------------------------------------------------"
             Write-Host "Turk Kanallari Legal IPTV Playlist [Otomatik Gucelleme] - 2024 AKTIF"
             Write-Host "http://stream.tvcdn.net/lists/tr.m3u"
@@ -57,15 +60,21 @@ do {
             Write-Host "------------------------------------------------------------------------"
             Install-Software -id "4gray.iptvnator"
         }
-        "10" { Install-Software -id "Spotify.Spotify" }
-        "11" { Install-Software -id "MartinFinnerup.YouTubeMusicforDesktop" }
-        "12" { Start-Process powershell -ArgumentList '-NoProfile -ExecutionPolicy Bypass -Command "winget install --id <ProgramIdForH12> --accept-package-agreements --accept-source-agreements --silent"' -Wait }
-        "13" { Start-Process powershell -ArgumentList '-NoProfile -ExecutionPolicy Bypass -Command "winget install --id <ProgramIdForH13> --accept-package-agreements --accept-source-agreements --silent"' -Wait }
-        "14" { Start-Process powershell -ArgumentList '-NoProfile -ExecutionPolicy Bypass -Command "winget install --id <ProgramIdForH14> --accept-package-agreements --accept-source-agreements --silent"' -Wait }
-        "15" { Start-Process powershell -ArgumentList '-NoProfile -ExecutionPolicy Bypass -Command "winget install --id <ProgramIdForH15> --accept-package-agreements --accept-source-agreements --silent"' -Wait }
-        "16" { Start-Process powershell -ArgumentList '-NoProfile -ExecutionPolicy Bypass -Command "winget install --id <ProgramIdForH16> --accept-package-agreements --accept-source-agreements --silent"' -Wait }
-        "0" { Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/emreuls7/mr.winls/main/program.ps1").Content }
-        default { Write-Host "Invalid choice. Please enter a number between 0 and 11." }
+        10 { Install-Software -id "Spotify.Spotify" }
+        11 { Install-Software -id "MartinFinnerup.YouTubeMusicforDesktop" }
+        0 {
+            exit
+            # Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/emreuls7/mr.winls/main/program.ps1").Content
+        }
+        default { Write-Host "Invalid choice. Please try again." }
     }
-} while ($choice -ne "0")
+}
 
+# Main script loop
+do {
+    Show-Menu
+    $choice = Read-Host "Enter your choice (0,1,2,3...)"
+    Clear-Host
+    Handle-Choice -choice $choice
+    if ($choice -ne 0) { Start-Sleep -Seconds 2 }
+} while ($choice -ne 0)
