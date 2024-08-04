@@ -32,7 +32,7 @@ function Download-And-Execute-Script {
         Write-Host "Script downloaded to $tempPath" -ForegroundColor Green
         
         Write-Host "Executing script..." -ForegroundColor Green
-        Start-Process -FilePath "powershell.exe" -ArgumentList "-ExecutionPolicy Bypass -File `"$tempPath`"" -Wait -NoNewWindow
+        Start-Process -FilePath "pwsh.exe" -ArgumentList "-ExecutionPolicy Bypass -File `"$tempPath`"" -Wait -NoNewWindow
     } catch {
         Write-Host "An error occurred while processing the script: $_" -ForegroundColor Red
     } finally {
