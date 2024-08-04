@@ -2,14 +2,14 @@
 # Menü görüntüleme fonksiyonu
 function Show-Menu {
     Clear-Host
-    Write-Output "-------------------------------------------------------------------"
-    Write-Output "---                  --- PASHA LEFKOSA ---                      ---"
-    Write-Output "-------------------------------------------------------------------"
-    Write-Output "[1] TIGER3 LOGO"
-    Write-Output "[2] MC FIDELIO"
-    Write-Output "-------------------------------------------------------------------"
-    Write-Output "[0] Exit                                                           "
-    Write-Output "-------------------------------------------------------------------"
+    Write-Host "-------------------------------------------------------------------"
+    Write-Host "---                  --- PASHA LEFKOSA ---                      ---"
+    Write-Host "-------------------------------------------------------------------"
+    Write-Host "[1] TIGER3 LOGO"
+    Write-Host "[2] MC FIDELIO"
+    Write-Host "-------------------------------------------------------------------"
+    Write-Host "[0] Exit                                                           "
+    Write-Host "-------------------------------------------------------------------"
 }
 
 # Kullanıcı seçimlerini işleyen fonksiyon
