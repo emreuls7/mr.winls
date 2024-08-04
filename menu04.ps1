@@ -11,15 +11,16 @@ function Show-Menu {
     Write-Host "-------------------------------------------------------------------"
 }
 
-function Install-Software {
+# Function to handle installations and activations
+function Handle-Choice {
     param (
-        [string]$choice
+        [int]$choice
     )
 
     switch ($choice) {
-        "1" { choco install filezilla.server -y }
-        "2" { choco install ubiquiti-unifi-controller -y }
-        "3" { choco install qbittorrent -y }
+        1 { choco install filezilla.server -y }
+        2 { choco install ubiquiti-unifi-controller -y }
+        3 { choco install qbittorrent -y }
         0 {
             exit
             # Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/emreuls7/mr.winls/main/program.ps1").Content
