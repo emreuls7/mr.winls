@@ -20,14 +20,20 @@ function Install-Software {
         "1" { choco install filezilla.server -y }
         "2" { choco install ubiquiti-unifi-controller -y }
         "3" { choco install qbittorrent -y }
-        "0" { Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/emreuls7/mr.winls/main/program.ps1").Content }
-        default { Write-Host "Invalid choice. Please enter a number between 0 and 3." }
+        0 {
+            exit
+            # Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/emreuls7/mr.winls/main/program.ps1").Content
+        }
+        default { Write-Host "Invalid choice. Please try again." }
     }
 }
 
+# Main script loop
 do {
     Show-Menu
     $choice = Read-Host "Enter your choice (0,1,2,3...)"
-    Install-Software -choice $choice
-} while ($choice -ne "0")
+    Clear-Host
+    Handle-Choice -choice $choice
+    if ($choice -ne 0) { Start-Sleep -Seconds 2 }
+} while ($choice -ne 0)
 
