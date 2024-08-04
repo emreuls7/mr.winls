@@ -53,20 +53,19 @@ function Install-Application {
         18 { winget install Python.Launcher -e }
         19 { winget install OpenJS.NodeJS -e }
         20 { winget install Unity.Unity.2020 -e }
+        0 {
+            exit
+            # Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/emreuls7/mr.winls/main/program.ps1").Content
+        }
+        default { Write-Host "Invalid choice. Please try again." }
     }
 }
 
+# Main script loop
 do {
     Show-Menu
     $choice = Read-Host "Enter your choice (0,1,2,3...)"
-
-    if ($choice -eq "0") {
-        $tempDir = "$env:TEMP"
-        Invoke-WebRequest -Uri "https://raw.githubusercontent.com/emreuls7/mr.winls/main/program.ps1" -OutFile "$tempDir\program.ps1"
-        . "$tempDir\program.ps1"
-        Remove-Item "$tempDir\program.ps1"
-    }
-    else {
-        Install-Application -choice [int]$choice
-    }
-} while ($choice -ne "0")
+    Clear-Host
+    Handle-Choice -choice $choice
+    if ($choice -ne 0) { Start-Sleep -Seconds 2 }
+} while ($choice -ne 0)
