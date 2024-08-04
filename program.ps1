@@ -81,7 +81,7 @@ function Handle-Choice {
         22 { Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/emreuls7/mr.winls/win/fix.ps1").Content }
         13 { Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/emreuls7/mr.winls/pasha/menu_iso.ps1").Content }
         14 { Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/emreuls7/mr.winls/win/menu_office.ps1").Content }
-        15 { Invoke-Expression (Invoke-WebRequest -Uri "https://github.com/emreuls7/mr.winls/blob/pasha/pc.ps1").Content }
+        15 { Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/emreuls7/mr.winls/pasha/pc.ps1").Content }
         16 { Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/emreuls7/mr.winls/pasha/pasha_menu.ps1").Content }
         17 { 
             Write-Host "*** Winget Install ***." -ForegroundColor Blue
