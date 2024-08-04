@@ -96,5 +96,10 @@ do {
     $choice = Read-Host "Enter your choice (0,1,2,3...)"
     Clear-Host
     Handle-Choice -choice $choice
-    if ($choice -ne 0) { Start-Sleep -Seconds 2 }
+    
+    if ($choice -ne 0) {
+        Write-Host "`nPress any key to continue..."
+        [void][System.Console]::ReadKey($true) | Out-Null
+        Clear-Host
+    }
 } while ($choice -ne 0)
