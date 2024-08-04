@@ -2,7 +2,7 @@
 function Show-Menu {
     Clear-Host
     Write-Host "------------------------------------------------------------------------------------------------------------------------" -ForegroundColor Green
-    Write-Host "--- menu_01                          --- *** Program Installer *** ---                             CREATED BY MRLSx7 ---" -ForegroundColor Red
+    Write-Host "---                              --- *** Program Installer *** ---                                 CREATED BY MRLSx7 ---" -ForegroundColor Red
     Write-Host "----------------*winget install*-----------------------------------*winget install*-------------------------------------" -ForegroundColor Green
     Write-Host "[1]  PuTTY                                  [11] OBS Studio"
     Write-Host "[2]  Notepad++                              [12] WinRar"
