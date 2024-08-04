@@ -2,14 +2,14 @@
 # Menü görüntüleme fonksiyonu
 function Show-Menu {
     Clear-Host
-    Write-Output "-------------------------------------------------------------------"
-    Write-Output "---                   --- microsoft ---                         ---"
-    Write-Output "-------------------------------------------------------------------"
-    Write-Output "[1] Microsoft Program Install"
-    Write-Output "[2] Microsoft .NET Install"
-    Write-Output "-------------------------------------------------------------------"
-    Write-Output "[0] Exit                                                           "
-    Write-Output "-------------------------------------------------------------------"
+    Write-Host "-------------------------------------------------------------------"
+    Write-Host "---                   --- microsoft ---                         ---"
+    Write-Host "-------------------------------------------------------------------"
+    Write-Host "[1] Microsoft Program Install"
+    Write-Host "[2] Microsoft .NET Install"
+    Write-Host "-------------------------------------------------------------------"
+    Write-Host "[0] Exit                                                           "
+    Write-Host "-------------------------------------------------------------------"
 }
 
 # Kullanıcı seçimlerini işleyen fonksiyon
