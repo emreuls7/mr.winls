@@ -59,20 +59,16 @@ Write-Host "------------------------"
 
 # Define the path to the Google Chrome executable
 $chromePath = "C:\Program Files\Google\Chrome\Application\chrome.exe"
-
 # Check if Chrome exists at the specified path
 if (Test-Path $chromePath) {
     Write-Host "Google Chrome found at $chromePath"
-
     # Define registry paths and values for HTTP and HTTPS protocols
     $regPathHttp = "HKCR:\http\shell\open\command"
     $regPathHttps = "HKCR:\https\shell\open\command"
     $chromeCommand = "`"$chromePath`" -- `%1`"  # Note the escaping for registry
-
     # Set the default command for HTTP and HTTPS to Google Chrome
     Set-ItemProperty -Path $regPathHttp -Name "(default)" -Value $chromeCommand
     Set-ItemProperty -Path $regPathHttps -Name "(default)" -Value $chromeCommand
-
     # Notify user
     Write-Host "Google Chrome has been set as the default browser for HTTP and HTTPS protocols."
 } else {
@@ -81,18 +77,14 @@ if (Test-Path $chromePath) {
 
 # Define the path to the Adobe Reader executable
 $adobePath = "C:\Program Files\Adobe\Acrobat DC\Acrobat\Acrobat.exe"
-
 # Check if Adobe Reader exists at the specified path
 if (Test-Path $adobePath) {
     Write-Host "Adobe Reader found at $adobePath"
-
     # Define registry paths and values for PDF files
     $pdfRegistryPath = "HKCR:\.pdf\shell\open\command"
     $adobeCommand = "`"$adobePath`" `"%1`"  # Note the escaping for registry
-
     # Set the default command for PDF files to Adobe Reader
     Set-ItemProperty -Path $pdfRegistryPath -Name "(default)" -Value $adobeCommand
-
     # Notify user
     Write-Host "Adobe Reader has been set as the default PDF viewer."
 } else {
