@@ -30,38 +30,14 @@ function Show-Menu {
     Write-Host "[0] Exit" -ForegroundColor Red
     Write-Host "------------------------------------------------------------------------------------------------------------------------"  -ForegroundColor Green
 }
-function Download-And-Execute-Script {
-    param (
-        [string]$Url
-    )
-    
-    # Geçici dosya yolunu oluştur
-    $tempFile = [System.IO.Path]::Combine("C:\Windows\Temp", [System.IO.Path]::GetRandomFileName() + ".ps1")
-    
-    try {
-        Write-Host "Downloading script from $Url..." -ForegroundColor Green
-        Invoke-WebRequest -Uri $Url -OutFile $tempFile
-        Write-Host "Script downloaded to $tempFile" -ForegroundColor Green
-        
-        Write-Host "Executing script..." -ForegroundColor Green
-        Start-Process -FilePath "powershell.exe" -ArgumentList "-ExecutionPolicy Bypass -File `"$tempFile`"" -Wait -NoNewWindow
-    } catch {
-        Write-Host "An error occurred while processing the script: $_" -ForegroundColor Red
-    } finally {
-        if (Test-Path $tempFile) {
-            Remove-Item $tempFile -Force
-            Write-Host "Temporary file removed." -ForegroundColor Green
-        }
-    }
-}
 
+# Function to handle installations and activations
 function Handle-Choice {
     param (
-        [int]$Choice
+        [int]$choice
     )
 
-    Clear-Host
-    switch ($Choice) {
+    switch ($choice) {
         1 { winget install PuTTY.PuTTY -e }
         2 { winget install Notepad++.Notepad++ -e }
         3 { winget install JetBrains.Toolbox -e }
