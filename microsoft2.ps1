@@ -1,5 +1,5 @@
 function Show-Menu {
-    cls
+    Clear-Host
     Write-Host "-------------------------------------------------------------------"
     Write-Host "--- menu_12 --- Microsoft .NET Installer ---                    ---" -ForegroundColor Red
     Write-Host "-------------------------------------------------------------------"
@@ -65,45 +65,64 @@ do {
     Show-Menu
     $choice = Read-Host "Enter your choice (0,1,2,3...)"
     switch ($choice) {
-        "1" { Install-ChocoSoftware -packages @("dotnet3.5") }
-        "2" { Install-ChocoSoftware -packages @("dotnet4.5.1") }
-        "3" { Install-ChocoSoftware -packages @("dotnet4.5.2") }
-        "4" { Install-Software -id "Microsoft.OpenJDK.11" }
-        "5" { Install-Software -id "Microsoft.OpenJDK.16" }
-        "6" { Install-Software -id "Microsoft.OpenJDK.17" }
-        "7" { Install-Software -id "Microsoft.OpenJDK.21" }
-        "8" { Install-Software -id "Microsoft.dotnetRuntime.3-x64" }
-        "9" { Install-Software -id "Microsoft.dotnetRuntime.3-x86" }
-        "10" { Install-Software -id "Microsoft.dotnetRuntime.5-x64" }
-        "11" { Install-Software -id "Microsoft.dotnetRuntime.5-x86" }
-        "12" { Install-Software -id "Microsoft.dotnetRuntime.6-x64" }
-        "13" { Install-Software -id "Microsoft.dotnetRuntime.6-x86" }
-        "14" { Install-Software -id "Microsoft.VCRedist.2005.x86" }
-        "15" { Install-Software -id "Microsoft.VCRedist.2005.x64" }
-        "16" { Install-Software -id "Microsoft.VCRedist.2008.x86" }
-        "17" { Install-Software -id "Microsoft.VCRedist.2008.x64" }
-        "18" { Install-Software -id "Microsoft.VCRedist.2010.x86" }
-        "19" { Install-Software -id "Microsoft.VCRedist.2010.x64" }
-        "20" { Install-Software -id "Microsoft.VCRedist.2012.x86" }
-        "21" { Install-Software -id "Microsoft.VCRedist.2012.x64" }
-        "22" { Install-Software -id "Microsoft.VCRedist.2013.x86" }
-        "23" { Install-Software -id "Microsoft.VCRedist.2013.x64" }
-        "24" { Install-Software -id "Microsoft.VCRedist.2015+.x86" }
-        "25" { Install-Software -id "Microsoft.VCRedist.2015+.x64" }
-        "26" { Install-Software -id "Microsoft.DotNet.Runtime.3_1" }
-        "27" { Install-Software -id "Microsoft.DotNet.Runtime.5" }
-        "28" { Install-Software -id "Microsoft.DotNet.Runtime.6" }
-        "29" { Install-Software -id "Microsoft.DotNet.Runtime.7" }
-        "30" { Install-Software -id "Microsoft.DotNet.Runtime.8" }
-        "31" { Install-Software -id "Microsoft.DotNet.Runtime.Preview" }
-        "32" { Install-Software -id "Microsoft.DotNet.HostingBundle.3_1" }
-        "33" { Install-Software -id "Microsoft.DotNet.HostingBundle.5" }
-        "34" { Install-Software -id "Microsoft.DotNet.HostingBundle.6" }
-        "35" { Install-Software -id "Microsoft.DotNet.HostingBundle.7" }
-        "36" { Install-Software -id "Microsoft.DotNet.HostingBundle.8" }
-        "37" { Install-Software -id "Microsoft.DotNet.HostingBundle.Preview" }
-        "0" { Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/emreuls7/mr.winls/win/microsoft_menu.ps1").Content }
-        default { Write-Host "Invalid choice. Please enter a number between 0 and 37." }
+        1 { Install-ChocoSoftware -packages @("dotnet3.5") }
+        2 { Install-ChocoSoftware -packages @("dotnet4.5.1") }
+        3 { Install-ChocoSoftware -packages @("dotnet4.5.2") }
+        4 { Install-Software -id "Microsoft.OpenJDK.11" }
+        5 { Install-Software -id "Microsoft.OpenJDK.16" }
+        6 { Install-Software -id "Microsoft.OpenJDK.17" }
+        7 { Install-Software -id "Microsoft.OpenJDK.21" }
+        8 { Install-Software -id "Microsoft.dotnetRuntime.3-x64" }
+        9 { Install-Software -id "Microsoft.dotnetRuntime.3-x86" }
+        10 { Install-Software -id "Microsoft.dotnetRuntime.5-x64" }
+        11 { Install-Software -id "Microsoft.dotnetRuntime.5-x86" }
+        12 { Install-Software -id "Microsoft.dotnetRuntime.6-x64" }
+        13 { Install-Software -id "Microsoft.dotnetRuntime.6-x86" }
+        14 { Install-Software -id "Microsoft.VCRedist.2005.x86" }
+        15 { Install-Software -id "Microsoft.VCRedist.2005.x64" }
+        16 { Install-Software -id "Microsoft.VCRedist.2008.x86" }
+        17 { Install-Software -id "Microsoft.VCRedist.2008.x64" }
+        18 { Install-Software -id "Microsoft.VCRedist.2010.x86" }
+        19 { Install-Software -id "Microsoft.VCRedist.2010.x64" }
+        20 { Install-Software -id "Microsoft.VCRedist.2012.x86" }
+        21 { Install-Software -id "Microsoft.VCRedist.2012.x64" }
+        22 { Install-Software -id "Microsoft.VCRedist.2013.x86" }
+        23 { Install-Software -id "Microsoft.VCRedist.2013.x64" }
+        24 { Install-Software -id "Microsoft.VCRedist.2015+.x86" }
+        25 { Install-Software -id "Microsoft.VCRedist.2015+.x64" }
+        26 { Install-Software -id "Microsoft.DotNet.Runtime.3_1" }
+        27 { Install-Software -id "Microsoft.DotNet.Runtime.5" }
+        28 { Install-Software -id "Microsoft.DotNet.Runtime.6" }
+        29 { Install-Software -id "Microsoft.DotNet.Runtime.7" }
+        30 { Install-Software -id "Microsoft.DotNet.Runtime.8" }
+        31 { Install-Software -id "Microsoft.DotNet.Runtime.Preview" }
+        32 { Install-Software -id "Microsoft.DotNet.HostingBundle.3_1" }
+        33 { Install-Software -id "Microsoft.DotNet.HostingBundle.5" }
+        34 { Install-Software -id "Microsoft.DotNet.HostingBundle.6" }
+        35 { Install-Software -id "Microsoft.DotNet.HostingBundle.7" }
+        36 { Install-Software -id "Microsoft.DotNet.HostingBundle.8" }
+        37 { Install-Software -id "Microsoft.DotNet.HostingBundle.Preview" }
+        0 {
+            # exit
+            Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/emreuls7/mr.winls/win/microsoft_menu.ps1").Content
+        }
+        default { Write-Host "Invalid choice. Please try again." }
     }
-} while ($choice -ne "0")
+}
 
+# Main script loop
+do {
+    Show-Menu
+    $choice = Read-Host "Enter your choice (0,1,2,3...)"
+    Clear-Host
+    Handle-Choice -choice $choice
+
+    # Pause for 2 seconds if the choice is not '0'
+    #if ($choice -ne '0') { 
+     #   Start-Sleep -Seconds 2 
+    #}
+
+    # Prompt the user to press Enter to continue
+    Write-Host "`nPress Enter to continue..."
+    Read-Host
+} while ($choice -ne '0')
