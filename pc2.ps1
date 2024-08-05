@@ -1,6 +1,9 @@
 # Clear the console
 Clear-Host
 
+Write-Host "`nPress Enter to continue..."
+    Read-Host
+    
 Start-Sleep -Seconds 2
 Clear-Host
 Write-Host "Installing .NET Frameworks..."
