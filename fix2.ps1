@@ -17,6 +17,7 @@ function Show-Menu {
     Write-Host "-------------------------------------------------------------------"
 }
 
+
 # Function to handle installations and activations
 function Handle-Choice {
     param (
