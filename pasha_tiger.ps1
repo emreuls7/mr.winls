@@ -4,7 +4,7 @@ Clear-Host
 function Show-Menu {
     Clear-Host
     Write-Host "------------------------------------------------" -ForegroundColor Cyan
-    Write-Host "---    Pasha Lefkosa Tiger3 Install          ---" -ForegroundColor Cyan
+    Write-Host "---    Pasha Lefkosa Tiger3 Install          ---" -ForegroundColor Red
     Write-Host "------------------------------------------------" -ForegroundColor Cyan
     Write-Host "[1] Windows Credentials 192.168.13.3 add" -ForegroundColor Yellow
     Write-Host "[2] Tiger3 PASHA Copy C" -ForegroundColor Yellow
@@ -24,7 +24,7 @@ function Show-Menu {
     Write-Host "------------------------------------------------" -ForegroundColor Cyan
     Write-Host "[21] LHOSVR Windows host" -ForegroundColor Yellow
     Write-Host "------------------------------------------------" -ForegroundColor Cyan
-    Write-Host "[0] Exit" -ForegroundColor Yellow
+    Write-Host "[0] Exit" -ForegroundColor Red
     Write-Host "------------------------------------------------" -ForegroundColor Cyan
 
     $choice = Read-Host "Enter your choice (0,1,2,3...)"
