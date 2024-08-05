@@ -9,10 +9,10 @@ function Show-Menu {
     Write-Host "[4] Choco Instal                                   [9]  Chat Messenger Install            "
     Write-Host "[5] MS Store Install                               [10] Gaming Launcher Install           "
     Write-Host "------------------------------------------------------------------------------------------------------------------------" -ForegroundColor Green
-    Write-Host "[11] Microsoft Windows Menu                        [13] Setup Program Install ISO + EXE                "                    
-    Write-Host "[12] *Microsoft Windows Fixed                      [14] Setup Microsoft Office Install EXE             "
-    Write-Host "------------------------------------------------------------------------------------------------------------------------" -ForegroundColor Green
-    Write-Host "[17] Winget Install                                [18] Chocolatey Install                               "
+    Write-Host "[11] Microsoft Windows                            [15] Setup Program Install ISO + EXE                "                    
+    Write-Host "[12] Microsoft Windows                            [16] Setup Microsoft Office Install EXE             "
+    Write-Host "[13] *Microsoft Windows Fixed1                    [17] Winget Install"
+    Write-Host "[14] *Microsoft Windows Fixed2                    [18] Chocolatey Install                               "
     Write-Host "------------------------------------------------------------------------------------------------------------------------" -ForegroundColor Green
     Write-Host "[98] Windows Utility (winutil)                     [99] Microsoft Activation Scripts (MAS)"
     Write-Host "------------------------------------------------------------------------------------------------------------------------" -ForegroundColor Green
@@ -63,10 +63,12 @@ function Handle-Choice {
         8 { Download-And-Execute-Script "https://raw.githubusercontent.com/emreuls7/mr.winls/ps1/menu08.ps1" }
         9 { Download-And-Execute-Script "https://raw.githubusercontent.com/emreuls7/mr.winls/ps1/menu09.ps1" }
         10 { Download-And-Execute-Script "https://raw.githubusercontent.com/emreuls7/mr.winls/ps1/menu10.ps1" }
-        11 { Download-And-Execute-Script "https://raw.githubusercontent.com/emreuls7/mr.winls/win/microsoft_menu.ps1" }
-        12 { Download-And-Execute-Script "https://raw.githubusercontent.com/emreuls7/mr.winls/win/fix.ps1" }
-        13 { Download-And-Execute-Script "https://raw.githubusercontent.com/emreuls7/mr.winls/pasha/menu_iso.ps1" }
-        14 { Download-And-Execute-Script "https://raw.githubusercontent.com/emreuls7/mr.winls/win/menu_office.ps1" }
+        11 { Download-And-Execute-Script "https://raw.githubusercontent.com/emreuls7/mr.winls/win/microsoft1.ps1" }
+        12 { Download-And-Execute-Script "https://raw.githubusercontent.com/emreuls7/mr.winls/win/microsoft2.ps1" }
+        13 { Download-And-Execute-Script "https://raw.githubusercontent.com/emreuls7/mr.winls/win/fix1.ps1" }
+        14 { Download-And-Execute-Script "https://raw.githubusercontent.com/emreuls7/mr.winls/win/fix2.ps1" }
+        15 { Download-And-Execute-Script "https://raw.githubusercontent.com/emreuls7/mr.winls/win/menu_office.ps1" }
+        15 { Download-And-Execute-Script "https://raw.githubusercontent.com/emreuls7/mr.winls/win/menu_office.ps1" }
         17 { 
             Write-Host "*** Winget Install ***." -ForegroundColor Blue
             Set-ExecutionPolicy Bypass -Scope Process -Force
