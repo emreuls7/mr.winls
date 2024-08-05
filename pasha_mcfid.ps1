@@ -160,13 +160,13 @@ while ($true) {
         "4" { Fidelio-Setup }
         "5" { Fidelio-Shortcut }
         "6" { IFC-Setup }
-        "0" {
-            cls
-            Write-Host "------------------------------------------------"
-            Write-Host "Installation Complete. See you next time!"
-            Write-Host "------------------------------------------------"
-            Start-Sleep -Seconds 3
-            break
+        "0" { Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/emreuls7/mr.winls/pasha/pasha_menu.ps1").Content
+            #cls
+            #Write-Host "------------------------------------------------"
+            #Write-Host "Installation Complete. See you next time!"
+            #Write-Host "------------------------------------------------"
+            #Start-Sleep -Seconds 3
+            #break
         }
         default {
             Write-Host "Invalid choice. Please enter a number between 0 and 6." -ForegroundColor Yellow
