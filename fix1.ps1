@@ -15,51 +15,64 @@ function Show-Menu {
     Write-Host "-------------------------------------------------------------------"
 }
 
-# Main loop to handle menu choices
-do {
-    Show-Menu
-    $choice = Read-Host "Enter your choice (0,1,2,3,4,5,6)"
+# Function to handle installations and activations
+function Handle-Choice {
+    param (
+        [int]$choice
+    )
 
     switch ($choice) {
-        '1' {
+        1 {
             Write-Host "Running System File Checker..."
             sfc /scannow
             Pause
         }
-        '2' {
+        2 {
             Write-Host "Running DISM Scan Health..."
             DISM /Online /Cleanup-Image /ScanHealth
             Pause
         }
-        '3' {
+        3 {
             Write-Host "Running DISM Check Health..."
             DISM /Online /Cleanup-Image /CheckHealth
             Pause
         }
-        '4' {
+        4 {
             Write-Host "Running DISM Restore Health..."
             DISM /Online /Cleanup-Image /RestoreHealth
             Pause
         }
-        '5' {
+        5 {
             Write-Host "Forcing Group Policy Updates..."
             gpupdate /force
             Pause
         }
-        '6' {
+        6 {
             Write-Host "Enabling SMB 1.0/CIFS File Sharing Support..."
             dism.exe /online /enable-feature /featurename:"SMB1Protocol"
             Pause
         }
-        '0' {
+         0 {
+            # exit
             Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/emreuls7/mr.winls/win/fix.ps1").Content
-            }
-            exit
         }
-        default {
-            Write-Host "Invalid choice. Please enter a valid option."
-            Pause
-        }
+        default { Write-Host "Invalid choice. Please try again." }
     }
-} while ($true)
+}
 
+# Main script loop
+do {
+    Show-Menu
+    $choice = Read-Host "Enter your choice (0,1,2,3...)"
+    Clear-Host
+    Handle-Choice -choice $choice
+
+    # Pause for 2 seconds if the choice is not '0'
+    #if ($choice -ne '0') { 
+     #   Start-Sleep -Seconds 2 
+    #}
+
+    # Prompt the user to press Enter to continue
+    Write-Host "`nPress Enter to continue..."
+    Read-Host
+} while ($choice -ne '0')
