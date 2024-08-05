@@ -1,5 +1,4 @@
-# Show-Menu fonksiyonu menüyü temiz ve düzgün şekilde ekrana yazdırır. Ancak, menüdeki renkler ve yazılar düzgün görünsün diye Write-Host komutlarının ardından renk parametrelerini kontrol edelim.
-# Menü görüntüleme fonksiyonu
+
 function Show-Menu {
     Clear-Host
     Write-Host "-------------------------------------------------------------------"
@@ -12,28 +11,61 @@ function Show-Menu {
     Write-Host "-------------------------------------------------------------------"
 }
 
-# Kullanıcı seçimlerini işleyen fonksiyon
+function Download-And-Execute-Script {
+    param (
+        [string]$Url
+    )
+    
+    # Geçici dosya yolunu oluştur
+    $tempFile = [System.IO.Path]::Combine("C:\Windows\Temp", [System.IO.Path]::GetRandomFileName() + ".ps1")
+    
+    try {
+        Write-Host "Downloading script from $Url..." -ForegroundColor Green
+        Invoke-WebRequest -Uri $Url -OutFile $tempFile
+        Write-Host "Script downloaded to $tempFile" -ForegroundColor Green
+        
+        Write-Host "Executing script..." -ForegroundColor Green
+        Start-Process -FilePath "powershell.exe" -ArgumentList "-ExecutionPolicy Bypass -File `"$tempFile`"" -Wait -NoNewWindow
+    } catch {
+        Write-Host "An error occurred while processing the script: $_" -ForegroundColor Red
+    } finally {
+        if (Test-Path $tempFile) {
+            Remove-Item $tempFile -Force
+            Write-Host "Temporary file removed." -ForegroundColor Green
+        }
+    }
+}
+
 function Handle-Choice {
     param (
         [int]$Choice
     )
 
     Clear-Host
-    switch ($choice) {
+    switch ($Choice) {
         1 { Invoke-Expression (Invoke-WebRequest -Uri "https://github.com/emreuls7/mr.winls/edit/win/microsoft1.ps1").Content }
         2 { Invoke-Expression (Invoke-WebRequest -Uri "https://github.com/emreuls7/mr.winls/edit/win/microsoft2.ps1").Content }
-        0 { Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/emreuls7/mr.winls/main/program.ps1").Content }
-        default { Write-Host "Invalid choice, please try again." }
+        0 {
+            exit
+            # Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/emreuls7/mr.winls/main/program.ps1").Content
+        }
+        default { Write-Host "Invalid choice. Please try again." }
     }
 }
 
-# Ana döngü, kullanıcıdan giriş alır ve seçimleri işler. Döngüye eklenen hata kontrolü ve kullanıcı dostu geri bildirimler ile daha güvenilir hale getirildi.
-# Ana döngü menüyü görüntülemek ve seçimleri işlemek için
 # Main script loop
 do {
     Show-Menu
     $choice = Read-Host "Enter your choice (0,1,2,3...)"
     Clear-Host
     Handle-Choice -choice $choice
-    if ($choice -ne 0) { Start-Sleep -Seconds 2 }
-} while ($choice -ne 0)
+
+    # Pause for 2 seconds if the choice is not '0'
+    #if ($choice -ne '0') { 
+     #   Start-Sleep -Seconds 2 
+    #}
+
+    # Prompt the user to press Enter to continue
+    Write-Host "`nPress Enter to continue..."
+    Read-Host
+} while ($choice -ne '0')
