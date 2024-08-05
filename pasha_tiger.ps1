@@ -112,7 +112,9 @@ do {
         "14" { License-Tiger3-2022 }
         "15" { License-Tiger3-Akun }
         "21" { Run-Lhosvr }
-        "0" { Write-Host "BYE"; Start-Sleep -Seconds 3; exit }
+        "0" { Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/emreuls7/mr.winls/pasha/pasha_menu.ps1").Content
+        #Write-Host "BYE"; Start-Sleep -Seconds 3; exit 
+        }
         default { Write-Host "Invalid choice. Please select a valid option."; Start-Sleep -Seconds 2 }
     }
 } while ($choice -ne "0")
