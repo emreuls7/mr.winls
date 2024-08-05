@@ -1,6 +1,6 @@
-# Define a function to show the menu
-function Show-Menu_21_3 {
-    cls
+
+function Show-Menu {
+    Clear-Host
     Write-Host "-------------------------------------------------------------------"
     Write-Host "---            --- * Windows Fixed * ---                        ---" -ForegroundColor Red
     Write-Host "-------------------------------------------------------------------"
