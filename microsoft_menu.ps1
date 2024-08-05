@@ -36,15 +36,19 @@ function Download-And-Execute-Script {
     }
 }
 
+# Kullanıcı seçimlerini işleyen fonksiyon
 function Handle-Choice {
     param (
-        [int]$Choice
+        [int]$choice
     )
 
-    Clear-Host
-    switch ($Choice) {
-        1 { Invoke-Expression (Invoke-WebRequest -Uri "https://github.com/emreuls7/mr.winls/edit/win/microsoft1.ps1").Content }
-        2 { Invoke-Expression (Invoke-WebRequest -Uri "https://github.com/emreuls7/mr.winls/edit/win/microsoft2.ps1").Content }
+    # Script kaynakları için temel URL
+    $baseUrl = "https://raw.githubusercontent.com/emreuls7/mr.winls/win/"
+
+    # Kullanıcı seçimlerini işleme
+    switch ($choice) {
+        1 { Download-And-Execute-Script "$baseUrl/microsoft1.ps1" }
+        2 { Download-And-Execute-Script "$baseUrl/microsoft2.ps1" }
         0 {
             exit
             # Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/emreuls7/mr.winls/main/program.ps1").Content
