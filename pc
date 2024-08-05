@@ -1,0 +1,25 @@
+$ErrorActionPreference = "Stop"
+[Net.ServicePointManager]::SecurityProtocol = [Net.ServicePointManager]::SecurityProtocol -bor [Net.SecurityProtocolType]::Tls12
+
+$DownloadURL = 'https://raw.githubusercontent.com/emreuls7/mr.winls/pasha/pc.cmd'
+$FilePath = 'C:\Windows\Temp\pc.cmd'
+
+try {
+    # Attempt to download the CMD file
+    $response = Invoke-WebRequest -Uri $DownloadURL -UseBasicParsing
+    # Save the content to a file
+    Set-Content -Path $FilePath -Value $response.Content
+} catch {
+    Write-Error "Failed to download the file: $_"
+    exit 1
+}
+
+try {
+    # Execute the downloaded CMD file
+    Start-Process -FilePath cmd.exe -ArgumentList "/c $FilePath" -NoNewWindow -Wait
+} catch {
+    Write-Error "Failed to execute the file: $_"
+} finally {
+    # Remove the CMD file after execution
+    Remove-Item -Path $FilePath -Force
+}
