@@ -9,10 +9,10 @@ function Show-Menu {
     Write-Host "[4] Choco Instal                                   [9]  Chat Messenger Install            "
     Write-Host "[5] MS Store Install                               [10] Gaming Launcher Install           "
     Write-Host "------------------------------------------------------------------------------------------------------------------------" -ForegroundColor Green
-    Write-Host "[11] Microsoft Windows Menu                                     "                    
-    Write-Host "[12] *Microsoft Windows Fixed                                   "
-    Write-Host "[13] Setup Program Install ISO + EXE               [17] Winget Install *                  "
-    Write-Host "[14] Setup Microsoft Office Install EXE            [18] Chocolatey Install *              "
+    Write-Host "[11] Microsoft Windows Menu                        [13] Setup Program Install ISO + EXE                "                    
+    Write-Host "[12] *Microsoft Windows Fixed                      [14] Setup Microsoft Office Install EXE             "
+    Write-Host "------------------------------------------------------------------------------------------------------------------------" -ForegroundColor Green
+    Write-Host "[17] Winget Install                                [18] Chocolatey Install                               "
     Write-Host "------------------------------------------------------------------------------------------------------------------------" -ForegroundColor Green
     Write-Host "[98] Windows Utility (winutil)                     [99] Microsoft Activation Scripts (MAS)"
     Write-Host "------------------------------------------------------------------------------------------------------------------------" -ForegroundColor Green
