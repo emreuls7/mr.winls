@@ -4,11 +4,11 @@ function Show-Menu {
     Write-Host "----------------------------------------" -ForegroundColor Green
     Write-Host "---      DEFAULT PC INSTALL          ---" -ForegroundColor Red
     Write-Host "----------------------------------------" -ForegroundColor Green
-    Write-Host "[1] USER DEFAULT SET" -ForegroundColor Magenta
-    Write-Host "[2] INSTALL DEFAULT" -ForegroundColor Yellow
-    Write-Host "[3] OFFICE INSTALL" -ForegroundColor Cyan
+    Write-Host "[1] USER DEFAULT SET        " -ForegroundColor Magenta
+    Write-Host "[2] INSTALL DEFAULT            " -ForegroundColor Yellow
+    Write-Host "[3] OFFICE INSTALL        " -ForegroundColor Cyan
     Write-Host "----------------------------------------" -ForegroundColor Green
-    Write-Host "[0] Exit" -ForegroundColor Red
+    Write-Host "[0] Exit                    " -ForegroundColor Red
     Write-Host "----------------------------------------" -ForegroundColor Green
 }
 
