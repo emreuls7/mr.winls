@@ -55,7 +55,9 @@ function Handle-Choice {
         2 { Download-And-Execute-Script "https://raw.githubusercontent.com/emreuls7/mr.winls/ps1/menu02.ps1" }
         3 { Download-And-Execute-Script "https://raw.githubusercontent.com/emreuls7/mr.winls/ps1/menu03.ps1" }
         4 { Download-And-Execute-Script "https://raw.githubusercontent.com/emreuls7/mr.winls/ps1/menu04.ps1" }
-        5 { Download-And-Execute-Script "https://raw.githubusercontent.com/emreuls7/mr.winls/ps1/menu05.ps1" }
+        5 { 
+        Download-And-Execute-Script "https://raw.githubusercontent.com/emreuls7/mr.winls/ps1/menu05.ps1" 
+        }
         6 { Download-And-Execute-Script "https://raw.githubusercontent.com/emreuls7/mr.winls/ps1/menu06.ps1" }
         7 { Download-And-Execute-Script "https://raw.githubusercontent.com/emreuls7/mr.winls/ps1/menu07.ps1" }
         8 { Download-And-Execute-Script "https://raw.githubusercontent.com/emreuls7/mr.winls/ps1/menu08.ps1" }
