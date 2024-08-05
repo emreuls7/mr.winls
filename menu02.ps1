@@ -55,7 +55,7 @@ function Handle-Choice {
         18 { winget install Python.Launcher -e }
         19 { winget install OpenJS.NodeJS -e }
         20 { winget install Unity.Unity.2020 -e }
-        0 {
+       0 {
             exit
             # Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/emreuls7/mr.winls/main/program.ps1").Content
         }
@@ -69,5 +69,13 @@ do {
     $choice = Read-Host "Enter your choice (0,1,2,3...)"
     Clear-Host
     Handle-Choice -choice $choice
-    if ($choice -ne 0) { Start-Sleep -Seconds 2 }
-} while ($choice -ne 0)
+
+    # Pause for 2 seconds if the choice is not '0'
+    #if ($choice -ne '0') { 
+     #   Start-Sleep -Seconds 2 
+    #}
+
+    # Prompt the user to press Enter to continue
+    Write-Host "`nPress Enter to continue..."
+    Read-Host
+} while ($choice -ne '0')
