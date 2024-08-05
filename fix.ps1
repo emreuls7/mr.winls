@@ -1,4 +1,4 @@
-# Ekranı temizleyip menüyü gösteren fonksiyon
+
 function Show-Menu {
     Clear-Host
     Write-Host "-------------------------------------------------------------------"
