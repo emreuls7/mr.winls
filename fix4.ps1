@@ -21,10 +21,11 @@ function Show-Menu {
     Write-Host "-------------------------------------------------------------------"
 }
 
-# Main loop to handle menu choices
-do {
-    Show-Menu_21_04
-    $choice = Read-Host "Enter your choice (0,1,2,3,...):"
+# Function to handle installations and activations
+function Handle-Choice {
+    param (
+        [int]$choice
+    )
 
     switch ($choice) {
         1 {
