@@ -1,3 +1,6 @@
+# Clear the console
+Clear-Host
+
 Write-Host "`nPress Enter to continue..."
     Read-Host
 
