@@ -2,14 +2,14 @@
 # Menü görüntüleme fonksiyonu
 function Show-Menu {
     Clear-Host
-    Write-Host "-------------------------------------------------------------------"
-    Write-Host "---                  --- PASHA LEFKOSA ---                      ---"
-    Write-Host "-------------------------------------------------------------------"
-    Write-Host "[1] TIGER3 LOGO"
-    Write-Host "[2] MC FIDELIO"
-    Write-Host "-------------------------------------------------------------------"
-    Write-Host "[0] Exit                                                           "
-    Write-Host "-------------------------------------------------------------------"
+    Write-Host "-------------------------------------------------------------------" -ForegroundColor Green
+    Write-Host "---                  --- PASHA LEFKOSA ---                      ---" -ForegroundColor Red
+    Write-Host "-------------------------------------------------------------------" -ForegroundColor Green
+    Write-Host "[1] TIGER3 LOGO" -ForegroundColor DarkRed
+    Write-Host "[2] MC FIDELIO" -ForegroundColor DarkBlue
+    Write-Host "-------------------------------------------------------------------" -ForegroundColor Green
+    Write-Host "[0] Exit                                                           " -ForegroundColor Red
+    Write-Host "-------------------------------------------------------------------" -ForegroundColor Green
 }
 
 
