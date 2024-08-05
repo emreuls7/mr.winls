@@ -36,9 +36,12 @@ function Install-ChocoSoftware {
     }
 }
 
-do {
-    Show-Menu
-    $choice = Read-Host "Enter your choice (0,1,2,3...)"
+# Function to handle installations and activations
+function Handle-Choice {
+    param (
+        [int]$choice
+    )
+
     switch ($choice) {
         1 { Install-Software -id "XPFFZHVGQWWLHB" }
         2 { Install-Software -id "Microsoft.PCManager" }
@@ -76,8 +79,8 @@ do {
         11 { Install-Software -id "Microsoft.Office" }
         12 { Install-Software -id "9WZDNCRFJ3PV" }
         0 {
-            exit
-            # Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/emreuls7/mr.winls/win/microsoft_menu.ps1").Content
+            # exit
+            Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/emreuls7/mr.winls/win/microsoft_menu.ps1").Content
         }
         default { Write-Host "Invalid choice. Please try again." }
     }
