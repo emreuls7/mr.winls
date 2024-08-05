@@ -194,7 +194,6 @@ Write-Host "*** Chocolatey Install ***." -ForegroundColor Blue
 Clear-Host
 
 # Enable .NET Framework 3.5
-
 Write-Host "Enabling .NET Framework 3.5..."
 try {
     Enable-WindowsOptionalFeature -Online -FeatureName NetFx3
@@ -205,9 +204,7 @@ try {
 Clear-Host
 
 # Install .NET Framework 4.8
-
 Write-Host "Installing .NET Framework 4.8..."
-
 # Define the URL and output file path for the .NET Framework 4.8 installer
 $dotnet48Url = "https://download.visualstudio.microsoft.com/download/pr/8e7dc3b5-17c5-42f3-8720-8a1d96c1f6b2/204ad9dc72807f8940dc93f74a885337/dotnet_framework_4.8.exe"
 $outputFile = "$env:TEMP\dotnet_framework_4.8.exe"
@@ -216,70 +213,28 @@ try {
     # Download the .NET Framework 4.8 installer
     Write-Host "Downloading .NET Framework 4.8..."
     Invoke-WebRequest -Uri $dotnet48Url -OutFile $outputFile
-    
     # Install .NET Framework 4.8
     Write-Host "Installing .NET Framework 4.8..."
     Start-Process -FilePath $outputFile -ArgumentList "/quiet /norestart" -Wait
-
     # Remove the installer file after installation
     Remove-Item $outputFile
-
     Write-Host ".NET Framework 4.8 has been installed."
 } catch {
     # Catch any errors and display an error message
     Write-Host "Failed to install .NET Framework 4.8. Error: $_"
 }
 
+
 # Clear the console screen
 Clear-Host
 
 # Enable SMB1 Protocol
-
 Write-Host "Enabling SMB1 Protocol..."
 try {
     Start-Process -NoNewWindow -Wait -FilePath "dism.exe" -ArgumentList "/online /enable-feature /featurename:SMB1Protocol"
     Write-Host "SMB1 Protocol has been enabled."
 } catch {
     Write-Host "Failed to enable SMB1 Protocol. Error: $_"
-}
-Clear-Host
-
-
-# Set default browser to Google Chrome
-Write-Host "Setting Google Chrome as the default browser..."
-$chromePath = "C:\Program Files\Google\Chrome\Application\chrome.exe"
-if (Test-Path $chromePath) {
-    try {
-        $regPathHttp = "HKCR\http\shell\open\command"
-        $regPathHttps = "HKCR\https\shell\open\command"
-        $chromeCommand = "`"$chromePath`" -- `%1`"
-        
-        Set-ItemProperty -Path $regPathHttp -Name "(default)" -Value $chromeCommand -Type String
-        Set-ItemProperty -Path $regPathHttps -Name "(default)" -Value $chromeCommand -Type String
-        Write-Host "Google Chrome has been set as the default browser for HTTP and HTTPS protocols."
-    } catch {
-        Write-Host "Failed to set Google Chrome as default browser. Error: $_"
-    }
-} else {
-    Write-Host "Google Chrome not found at $chromePath. Please make sure it is installed."
-}
-Clear-Host
-
-# Set default PDF reader to Adobe Reader
-Write-Host "Setting Adobe Reader as the default PDF reader..."
-$adobePath = "C:\Program Files\Adobe\Acrobat DC\Acrobat\Acrobat.exe"
-if (Test-Path $adobePath) {
-    try {
-        $regPathPdf = "HKCR\.pdf\shell\open\command"
-        $adobeCommand = "`"$adobePath`" `"%1`""
-        
-        Set-ItemProperty -Path $regPathPdf -Name "(default)" -Value $adobeCommand -Type String
-        Write-Host "Adobe Reader has been set as the default program for PDF files."
-    } catch {
-        Write-Host "Failed to set Adobe Reader as default PDF reader. Error: $_"
-    }
-} else {
-    Write-Host "Adobe Reader not found at $adobePath. Please make sure it is installed."
 }
 Clear-Host
 
