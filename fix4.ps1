@@ -1,6 +1,6 @@
-# Define a function to show the menu
-function Show-Menu_21_04 {
-    cls
+
+function Show-Menu {
+    Clear-Host
     Write-Host "-------------------------------------------------------------------"
     Write-Host "---            --- * Outlook Fixed * ---                        ---"
     Write-Host "-------------------------------------------------------------------"
@@ -27,7 +27,7 @@ do {
     $choice = Read-Host "Enter your choice (0,1,2,3,...):"
 
     switch ($choice) {
-        '1' {
+        1 {
             Write-Host "Setting Outlook 2007 - 12.0 ost-pst 100gb..."
             Set-ItemProperty -Path 'HKCU:\Software\Microsoft\Office\12.0\Outlook\PST' -Name 'WarmLargeFileSize' -Value 6144 -Type DWord
             Set-ItemProperty -Path 'HKCU:\Software\Microsoft\Office\12.0\Outlook\PST' -Name 'MaxLargeFileSize' -Value 6144 -Type DWord
@@ -36,7 +36,7 @@ do {
             Write-Host "Configuration for Outlook 2007 - 12.0 set to 100gb."
             Pause
         }
-        '2' {
+        2 {
             Write-Host "Setting Outlook 2007 - 12.0 ost-pst max..."
             Set-ItemProperty -Path 'HKCU:\Software\Microsoft\Office\12.0\Outlook\PST' -Name 'WarmLargeFileSize' -Value 4080214766 -Type DWord
             Set-ItemProperty -Path 'HKCU:\Software\Microsoft\Office\12.0\Outlook\PST' -Name 'MaxLargeFileSize' -Value 4294967295 -Type DWord
@@ -45,7 +45,7 @@ do {
             Write-Host "Configuration for Outlook 2007 - 12.0 set to max."
             Pause
         }
-        '3' {
+        3 {
             Write-Host "Setting Outlook 2010 - 14.0 ost-pst 100gb..."
             Set-ItemProperty -Path 'HKCU:\Software\Microsoft\Office\14.0\Outlook\PST' -Name 'WarmLargeFileSize' -Value 6144 -Type DWord
             Set-ItemProperty -Path 'HKCU:\Software\Microsoft\Office\14.0\Outlook\PST' -Name 'MaxLargeFileSize' -Value 6144 -Type DWord
@@ -54,7 +54,7 @@ do {
             Write-Host "Configuration for Outlook 2010 - 14.0 set to 100gb."
             Pause
         }
-        '4' {
+        4 {
             Write-Host "Setting Outlook 2010 - 14.0 ost-pst max..."
             Set-ItemProperty -Path 'HKCU:\Software\Microsoft\Office\14.0\Outlook\PST' -Name 'WarmLargeFileSize' -Value 4080214766 -Type DWord
             Set-ItemProperty -Path 'HKCU:\Software\Microsoft\Office\14.0\Outlook\PST' -Name 'MaxLargeFileSize' -Value 4294967295 -Type DWord
@@ -63,7 +63,7 @@ do {
             Write-Host "Configuration for Outlook 2010 - 14.0 set to max."
             Pause
         }
-        '5' {
+        5 {
             Write-Host "Setting Outlook 2013 - 15.0 ost-pst 100gb..."
             Set-ItemProperty -Path 'HKCU:\Software\Microsoft\Office\15.0\Outlook\PST' -Name 'WarmLargeFileSize' -Value 6144 -Type DWord
             Set-ItemProperty -Path 'HKCU:\Software\Microsoft\Office\15.0\Outlook\PST' -Name 'MaxLargeFileSize' -Value 6144 -Type DWord
@@ -72,7 +72,7 @@ do {
             Write-Host "Configuration for Outlook 2013 - 15.0 set to 100gb."
             Pause
         }
-        '6' {
+        6 {
             Write-Host "Setting Outlook 2013 - 15.0 ost-pst max..."
             Set-ItemProperty -Path 'HKCU:\Software\Microsoft\Office\15.0\Outlook\PST' -Name 'WarmLargeFileSize' -Value 4080214766 -Type DWord
             Set-ItemProperty -Path 'HKCU:\Software\Microsoft\Office\15.0\Outlook\PST' -Name 'MaxLargeFileSize' -Value 4294967295 -Type DWord
@@ -81,7 +81,7 @@ do {
             Write-Host "Configuration for Outlook 2013 - 15.0 set to max."
             Pause
         }
-        '7' {
+        7 {
             Write-Host "Setting Outlook 2016-2019-2021-365 - 16.0 ost-pst 100gb..."
             Set-ItemProperty -Path 'HKCU:\Software\Microsoft\Office\16.0\Outlook\PST' -Name 'WarmLargeFileSize' -Value 6144 -Type DWord
             Set-ItemProperty -Path 'HKCU:\Software\Microsoft\Office\16.0\Outlook\PST' -Name 'MaxLargeFileSize' -Value 6144 -Type DWord
@@ -90,7 +90,7 @@ do {
             Write-Host "Configuration for Outlook 2016-2019-2021-365 - 16.0 set to 100gb."
             Pause
         }
-        '8' {
+        8 {
             Write-Host "Setting Outlook 2016-2019-2021-365 - 16.0 ost-pst max..."
             Set-ItemProperty -Path 'HKCU:\Software\Microsoft\Office\16.0\Outlook\PST' -Name 'WarmLargeFileSize' -Value 4080214766 -Type DWord
             Set-ItemProperty -Path 'HKCU:\Software\Microsoft\Office\16.0\Outlook\PST' -Name 'MaxLargeFileSize' -Value 4294967295 -Type DWord
@@ -99,39 +99,51 @@ do {
             Write-Host "Configuration for Outlook 2016-2019-2021-365 - 16.0 set to max."
             Pause
         }
-        '9' {
+        9 {
             Write-Host "Setting Outlook 2007 - 12.0 MaximumAttachmentSize..."
             Set-ItemProperty -Path 'HKCU:\Software\Microsoft\Office\12.0\Outlook\Preferences' -Name 'MaximumAttachmentSize' -Value 198656 -Type DWord
             Write-Host "MaximumAttachmentSize set for Outlook 2007 - 12.0."
             Pause
         }
-        '10' {
+        10 {
             Write-Host "Setting Outlook 2010 - 14.0 MaximumAttachmentSize..."
             Set-ItemProperty -Path 'HKCU:\Software\Microsoft\Office\14.0\Outlook\Preferences' -Name 'MaximumAttachmentSize' -Value 198656 -Type DWord
             Write-Host "MaximumAttachmentSize set for Outlook 2010 - 14.0."
             Pause
         }
-        '11' {
+        11 {
             Write-Host "Setting Outlook 2013 - 15.0 MaximumAttachmentSize..."
             Set-ItemProperty -Path 'HKCU:\Software\Microsoft\Office\15.0\Outlook\Preferences' -Name 'MaximumAttachmentSize' -Value 198656 -Type DWord
             Write-Host "MaximumAttachmentSize set for Outlook 2013 - 15.0."
             Pause
         }
-        '12' {
+        12 {
             Write-Host "Setting Outlook 2016-2019-2021-365 - 16.0 MaximumAttachmentSize..."
             Set-ItemProperty -Path 'HKCU:\Software\Microsoft\Office\16.0\Outlook\Preferences' -Name 'MaximumAttachmentSize' -Value 198656 -Type DWord
             Write-Host "MaximumAttachmentSize set for Outlook 2016-2019-2021-365 - 16.0."
             Pause
         }
-        '0' {
-            Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/emreuls7/mr.winls/win/fix.ps1").Content
-            }
+        0 {
             exit
+            # Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/emreuls7/mr.winls/main/program.ps1").Content
         }
-        default {
-            Write-Host "Invalid choice. Please enter a valid option."
-            Pause
-        }
+        default { Write-Host "Invalid choice. Please try again." }
     }
-} while ($true)
+}
 
+# Main script loop
+do {
+    Show-Menu
+    $choice = Read-Host "Enter your choice (0,1,2,3...)"
+    Clear-Host
+    Handle-Choice -choice $choice
+
+    # Pause for 2 seconds if the choice is not '0'
+    #if ($choice -ne '0') { 
+     #   Start-Sleep -Seconds 2 
+    #}
+
+    # Prompt the user to press Enter to continue
+    Write-Host "`nPress Enter to continue..."
+    Read-Host
+} while ($choice -ne '0')
