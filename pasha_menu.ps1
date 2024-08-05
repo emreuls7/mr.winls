@@ -1,4 +1,3 @@
-# Show-Menu fonksiyonu menüyü temiz ve düzgün şekilde ekrana yazdırır. Ancak, menüdeki renkler ve yazılar düzgün görünsün diye Write-Host komutlarının ardından renk parametrelerini kontrol edelim.
 # Menü görüntüleme fonksiyonu
 function Show-Menu {
     Clear-Host
@@ -11,7 +10,6 @@ function Show-Menu {
     Write-Host "[0] Exit                                                           " -ForegroundColor Red
     Write-Host "-------------------------------------------------------------------" -ForegroundColor Green
 }
-
 
 function Download-And-Execute-Script {
     param (
@@ -45,29 +43,31 @@ function Handle-Choice {
     
     Clear-Host
     switch ($Choice) {
-        1 { Download-And-Execute-Script "https://raw.githubusercontent.com/emreuls7/mr.winls/pasha/pasha_tiger.ps1" }
-        2 { Download-And-Execute-Script "https://raw.githubusercontent.com/emreuls7/mr.winls/pasha/pasha_mcfid.ps1" }
-        0 {
-            exit
-            # Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/emreuls7/mr.winls/main/program.ps1").Content
+        1 { 
+            Write-Host "You have selected TIGER3 LOGO." -ForegroundColor Cyan
+            Download-And-Execute-Script "https://raw.githubusercontent.com/emreuls7/mr.winls/pasha/pasha_tiger.ps1"
         }
-        default { Write-Host "Invalid choice. Please try again." }
+        2 { 
+            Write-Host "You have selected MC FIDELIO." -ForegroundColor Cyan
+            Download-And-Execute-Script "https://raw.githubusercontent.com/emreuls7/mr.winls/pasha/pasha_mcfid.ps1"
+        }
+        0 { 
+            Write-Host "Exiting program. Goodbye!" -ForegroundColor Red
+            exit
+        }
+        default { 
+            Write-Host "Invalid choice. Please try again." -ForegroundColor Red
+        }
     }
 }
 
 # Main script loop
 do {
     Show-Menu
-    $choice = Read-Host "Enter your choice (0,1,2,3...)"
+    $choice = Read-Host "Enter your choice (0,1,2...)"
     Clear-Host
-    Handle-Choice -choice $choice
+    Handle-Choice -Choice $choice
 
-    # Pause for 2 seconds if the choice is not '0'
-    #if ($choice -ne '0') { 
-     #   Start-Sleep -Seconds 2 
-    #}
-
-    # Prompt the user to press Enter to continue
     Write-Host "`nPress Enter to continue..."
     Read-Host
 } while ($choice -ne '0')
