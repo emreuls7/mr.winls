@@ -21,46 +21,45 @@ goto ShowMenu
 cls
 :TigerInstall
 cls
-
-echo ---    Pasha Lefkosa Tiger3 Install          ---
-
+echo -------------------------------------------------------------------
+echo ---                  Pasha Lefkosa Tiger3 Install               ---
+echo -------------------------------------------------------------------
 echo [1] Windows Credentials 192.168.13.3 add
 echo [2] Tiger3 PASHA Copy C
 echo [3] Tiger3 2015-2019 Copy C
 echo [4] Tiger3 2019 Copy C
 echo [5] Tiger3 2022 Copy C
-
+echo -------------------------------------------------------------------
 echo [6] Windows Credentials 192.168.48.4 add
 echo [7] Tiger3 AKUN Copy C
-
+echo -------------------------------------------------------------------
 echo [11] License Tiger3 PASHA
 echo [12] License Tiger3 2015-2019
 echo [13] License Tiger3 2019
 echo [14] License Tiger3 2022
-
+echo -------------------------------------------------------------------
 echo [15] License Tiger3 AKUN
-
+echo -------------------------------------------------------------------
 echo [21] LHOSVR Windows host
-
+echo -------------------------------------------------------------------
 echo [0] Exit
-
-
+echo -------------------------------------------------------------------
 set /p choice=Enter your choice (0,1,2,3...): 
 
-if "%choice%"=="0" :ShowMenu
-if "%choice%"=="1" goto :CmdKeyAdd192_168_13_3
-if "%choice%"=="2" goto :CopyTiger3Pasha
-if "%choice%"=="3" goto :CopyTiger3_2015_2019
-if "%choice%"=="4" goto :CopyTiger3_2019
-if "%choice%"=="5" goto :CopyTiger3_2022
-if "%choice%"=="6" goto :CmdKeyAdd192_168_48_4
-if "%choice%"=="7" goto :CopyTiger3Akun
-if "%choice%"=="11" goto :LicenseTiger3Pasha
-if "%choice%"=="12" goto :LicenseTiger3_2015_2019
-if "%choice%"=="13" goto :LicenseTiger3_2019
-if "%choice%"=="14" goto :LicenseTiger3_2022
-if "%choice%"=="15" goto :LicenseTiger3Akun
-if "%choice%"=="21" goto :RunLhosvr
+if "%choice%"=="0" goto ShowMenu
+if "%choice%"=="1" goto CmdKeyAdd192_168_13_3
+if "%choice%"=="2" goto CopyTiger3Pasha
+if "%choice%"=="3" goto CopyTiger3_2015_2019
+if "%choice%"=="4" goto CopyTiger3_2019
+if "%choice%"=="5" goto CopyTiger3_2022
+if "%choice%"=="6" goto CmdKeyAdd192_168_48_4
+if "%choice%"=="7" goto CopyTiger3Akun
+if "%choice%"=="11" goto LicenseTiger3Pasha
+if "%choice%"=="12" goto LicenseTiger3_2015_2019
+if "%choice%"=="13" goto LicenseTiger3_2019
+if "%choice%"=="14" goto LicenseTiger3_2022
+if "%choice%"=="15" goto LicenseTiger3Akun
+if "%choice%"=="21" goto RunLhosvr
 
 echo Invalid choice. Please select a valid option.
 timeout /t 2 /nobreak >nul
@@ -158,7 +157,7 @@ echo [0] Exit
 echo -------------------------------------------------------------------
 set /p choice="Enter your choice (0,1,2,3...): "
 
-if "%choice%"=="0" :ShowMenu
+if "%choice%"=="0" goto ShowMenu
 if "%choice%"=="1" goto add_windows_credentials
 if "%choice%"=="2" goto oracle_setup
 if "%choice%"=="3" goto mc_setup
