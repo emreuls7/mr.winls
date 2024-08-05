@@ -61,9 +61,12 @@ function Install-ChocoSoftware {
     }
 }
 
-do {
-    Show-Menu
-    $choice = Read-Host "Enter your choice (0,1,2,3...)"
+# Function to handle installations and activations
+function Handle-Choice {
+    param (
+        [int]$choice
+    )
+
     switch ($choice) {
         1 { Install-ChocoSoftware -packages @("dotnet3.5") }
         2 { Install-ChocoSoftware -packages @("dotnet4.5.1") }
