@@ -1,4 +1,3 @@
-
 function Show-Menu {
     Clear-Host
     Write-Host "----------------------------------------" -ForegroundColor Green
@@ -17,7 +16,6 @@ function Download-And-Execute-Script {
         [string]$Url
     )
     
-    # Geçici dosya yolunu oluştur
     $tempFile = [System.IO.Path]::Combine("C:\Windows\Temp", [System.IO.Path]::GetRandomFileName() + ".ps1")
     
     try {
@@ -41,18 +39,27 @@ function Handle-Choice {
     param (
         [int]$Choice
     )
-
     
-    Clear-Host
     switch ($Choice) {
-        1 { Download-And-Execute-Script "https://raw.githubusercontent.com/emreuls7/mr.winls/pasha/pc1.ps1" }
-        2 { Download-And-Execute-Script "https://raw.githubusercontent.com/emreuls7/mr.winls/pasha/pc2.ps1" }
-        3 { Download-And-Execute-Script "https://raw.githubusercontent.com/emreuls7/mr.winls/pasha/pc3.ps1" }
-        0 {
-            exit
-            # Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/emreuls7/mr.winls/main/program.ps1").Content
+        1 { 
+            Write-Host "You have selected USER DEFAULT SET." -ForegroundColor Cyan
+            Download-And-Execute-Script "https://raw.githubusercontent.com/emreuls7/mr.winls/pasha/pc1.ps1"
         }
-        default { Write-Host "Invalid choice. Please try again." }
+        2 { 
+            Write-Host "You have selected INSTALL DEFAULT." -ForegroundColor Cyan
+            Download-And-Execute-Script "https://raw.githubusercontent.com/emreuls7/mr.winls/pasha/pc2.ps1"
+        }
+        3 { 
+            Write-Host "You have selected OFFICE INSTALL." -ForegroundColor Cyan
+            Download-And-Execute-Script "https://raw.githubusercontent.com/emreuls7/mr.winls/pasha/pc3.ps1"
+        }
+        0 { 
+            Write-Host "Exiting program. Goodbye!" -ForegroundColor Red
+            exit
+        }
+        default { 
+            Write-Host "Invalid choice. Please try again." -ForegroundColor Red
+        }
     }
 }
 
@@ -61,14 +68,8 @@ do {
     Show-Menu
     $choice = Read-Host "Enter your choice (0,1,2,3...)"
     Clear-Host
-    Handle-Choice -choice $choice
+    Handle-Choice -Choice $choice
 
-    # Pause for 2 seconds if the choice is not '0'
-    #if ($choice -ne '0') { 
-     #   Start-Sleep -Seconds 2 
-    #}
-
-    # Prompt the user to press Enter to continue
     Write-Host "`nPress Enter to continue..."
     Read-Host
 } while ($choice -ne '0')
