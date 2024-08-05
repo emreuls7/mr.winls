@@ -9,8 +9,8 @@ function Show-Menu {
     Write-Host "[4] Choco Instal                                   [9]  Chat Messenger Install            "
     Write-Host "[5] MS Store Install                               [10] Gaming Launcher Install           "
     Write-Host "------------------------------------------------------------------------------------------------------------------------" -ForegroundColor Green
-    Write-Host "[11] Microsoft Windows Menu                        [15] *Standard PC Install              "                    
-    Write-Host "[12] *Microsoft Windows Fixed                      [16] *Pasha Lefkosa Other              "
+    Write-Host "[11] Microsoft Windows Menu                                     "                    
+    Write-Host "[12] *Microsoft Windows Fixed                                   "
     Write-Host "[13] Setup Program Install ISO + EXE               [17] Winget Install *                  "
     Write-Host "[14] Setup Microsoft Office Install EXE            [18] Chocolatey Install *              "
     Write-Host "------------------------------------------------------------------------------------------------------------------------" -ForegroundColor Green
@@ -65,8 +65,6 @@ function Handle-Choice {
         12 { Download-And-Execute-Script "https://raw.githubusercontent.com/emreuls7/mr.winls/win/fix.ps1" }
         13 { Download-And-Execute-Script "https://raw.githubusercontent.com/emreuls7/mr.winls/pasha/menu_iso.ps1" }
         14 { Download-And-Execute-Script "https://raw.githubusercontent.com/emreuls7/mr.winls/win/menu_office.ps1" }
-        15 { Download-And-Execute-Script "https://raw.githubusercontent.com/emreuls7/mr.winls/pasha/pc.ps1" }
-        16 { Download-And-Execute-Script "https://raw.githubusercontent.com/emreuls7/mr.winls/pasha/pasha_menu.ps1" }
         17 { 
             Write-Host "*** Winget Install ***." -ForegroundColor Blue
             Set-ExecutionPolicy Bypass -Scope Process -Force
