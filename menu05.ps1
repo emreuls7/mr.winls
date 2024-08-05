@@ -9,24 +9,7 @@ function Show-Menu {
     Write-Host "[0] Exit" -ForegroundColor Red
     Write-Host "-------------------------------------------------------------------"
 }
-
-function Install-Or-Upgrade {
-    param (
-        [string]$id
-    )
-    
-    $installed = winget list --id $id -e > $null 2>&1
-    if ($LASTEXITCODE -eq 0) {
-        Write-Host "Application already installed. Update in progress..."
-        winget upgrade --id $id -e --accept-package-agreements --accept-source-agreements --silent
-    } else {
-        Write-Host "The application is not installed. Installing..."
-        winget install --id $id -e --accept-package-agreements --accept-source-agreements --silent
-    }
-}
-
-do {
-   
+ 
 # Function to handle installations and activations
 function Handle-Choice {
     param (
@@ -34,29 +17,18 @@ function Handle-Choice {
     )
 
     switch ($choice) {
-        1 { Install-Or-Upgrade -id "9NVMNJCR03XV" } # MSI Center
-        2 { Install-Or-Upgrade -id "9P9WDH947752" } # MSI Driver App Center
+        1 { winget install -id 9NVMNJCR03XV -e --accept-package-agreements --accept-source-agreements --silent } # MSI Center
+        2 { winget install -id 9P9WDH947752 -e --accept-package-agreements --accept-source-agreements --silent } # MSI Driver App Center
         0 {
             exit
-            # Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/emreuls7/mr.winls/main/program.ps1").Content
         }
         default { Write-Host "Invalid choice. Please try again." }
     }
 }
 
-# Main script loop
+# Main loop
 do {
     Show-Menu
-    $choice = Read-Host "Enter your choice (0,1,2,3...)"
-    Clear-Host
+    $choice = Read-Host "Enter your choice"
     Handle-Choice -choice $choice
-
-    # Pause for 2 seconds if the choice is not '0'
-    #if ($choice -ne '0') { 
-     #   Start-Sleep -Seconds 2 
-    #}
-
-    # Prompt the user to press Enter to continue
-    Write-Host "`nPress Enter to continue..."
-    Read-Host
-} while ($choice -ne '0')
+} while ($choice -ne 0)
