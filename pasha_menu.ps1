@@ -42,14 +42,11 @@ function Handle-Choice {
     param (
         [int]$Choice
     )
-
-     # Script kaynakları için temel URL
-    $baseUrl = "https://raw.githubusercontent.com/emreuls7/mr.winls/pasha/"
     
     Clear-Host
     switch ($Choice) {
-        1 { Download-And-Execute-Script "$baseUrl/pasha_tiger.ps1" }
-        2 { Download-And-Execute-Script "$baseUrl/pasha_mcfid.ps1" }
+        1 { Download-And-Execute-Script "https://raw.githubusercontent.com/emreuls7/mr.winls/pasha//pasha_tiger.ps1" }
+        2 { Download-And-Execute-Script "https://raw.githubusercontent.com/emreuls7/mr.winls/pasha//pasha_mcfid.ps1" }
         0 {
             exit
             # Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/emreuls7/mr.winls/main/program.ps1").Content
