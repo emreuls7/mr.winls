@@ -21,13 +21,14 @@ function Show-Menu_32 {
     Write-Host "-------------------------------------------------------------------"
 }
 
-# Main loop to handle menu choices
-do {
-    Show-Menu_32
-    $choice = Read-Host "Enter your choice (0,1,2,3,...):"
+# Function to handle installations and activations
+function Handle-Choice {
+    param (
+        [int]$choice
+    )
 
     switch ($choice) {
-        '1' {
+        1 {
             cls
             Write-Host "================================================================="
             Write-Host "Key   KGFVY-7733B-8WCK9-KTG64-BC7D8"
@@ -35,63 +36,77 @@ do {
             Start-Process -FilePath "\\192.168.18.2\setup\source\office\office2007Enterprise_tr\Setup.exe" -NoNewWindow -Wait
             Pause
         }
-        '2' {
+        2 {
             cls
             Start-Process -FilePath "\\192.168.18.2\setup\source\office\office2013Pro_tr\setup64.exe" -NoNewWindow -Wait
             Pause
         }
-        '3' {
+        3 {
             cls
             Start-Process -FilePath "\\192.168.18.2\setup\source\office\office2016ProPlus_tr\setup.exe" -NoNewWindow -Wait
             Pause
         }
-        '4' {
+        4 {
             cls
             Start-Process -FilePath "\\192.168.18.2\setup\source\office\office2019ProPlus_tr\Setup64.exe" -NoNewWindow -Wait
             Pause
         }
-        '5' {
+        5 {
             cls
             Start-Process -FilePath "\\192.168.18.2\setup\source\office\office2021ProPlus_tr\Setup64.exe" -NoNewWindow -Wait
             Pause
         }
-        '6' {
+        6 {
             cls
             Start-Process -FilePath "\\192.168.18.2\setup\source\office\office2013Std_tr\setup.exe" -NoNewWindow -Wait
             Pause
         }
-        '7' {
+        7 {
             cls
             Start-Process -FilePath "\\192.168.18.2\setup\source\office\office365Business_tr\Setup64.exe" -NoNewWindow -Wait
             Pause
         }
-        '8' {
+        8 {
             cls
             Start-Process -FilePath "\\192.168.18.2\setup\source\office\office365ProPlus_tr\Setup64.exe" -NoNewWindow -Wait
             Pause
         }
-        '9' {
+        9 {
             cls
             Start-Process -FilePath "\\192.168.18.2\setup\source\office\office365VisioPro_tr\Setup64.exe" -NoNewWindow -Wait
             Pause
         }
-        '10' {
+        10 {
             cls
             Start-Process -FilePath "\\192.168.18.2\setup\source\office\office365ProjectPro_tr\Setup64.exe" -NoNewWindow -Wait
             Pause
         }
-        '99' {
+        99 {
             Write-Host "You chose Microsoft Activation Scripts (MAS)." -ForegroundColor Cyan
             Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/emreuls7/mr.winls/tool/massgrave_mas.ps1").Content
             Pause
         }
-        '0' {
-            Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/emreuls7/mr.winls/main/program.ps1").Content
+        0 {
+            exit
+            # Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/emreuls7/mr.winls/win/fix.ps1").Content
         }
-        default {
-            Write-Host "Invalid choice. Please enter a valid option."
-            Pause
-        }
+        default { Write-Host "Invalid choice. Please try again." }
     }
-} while ($true)
+}
 
+# Main script loop
+do {
+    Show-Menu
+    $choice = Read-Host "Enter your choice (0,1,2,3...)"
+    Clear-Host
+    Handle-Choice -choice $choice
+
+    # Pause for 2 seconds if the choice is not '0'
+    #if ($choice -ne '0') { 
+     #   Start-Sleep -Seconds 2 
+    #}
+
+    # Prompt the user to press Enter to continue
+    Write-Host "`nPress Enter to continue..."
+    Read-Host
+} while ($choice -ne '0')
