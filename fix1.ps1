@@ -52,7 +52,7 @@ function Handle-Choice {
             dism.exe /online /enable-feature /featurename:"SMB1Protocol"
             Pause
         }
-         0 {
+        0 {
             # exit
             Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/emreuls7/mr.winls/win/fix.ps1").Content
         }
