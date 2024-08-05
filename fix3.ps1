@@ -15,19 +15,21 @@ function Show-Menu {
     Write-Host "-------------------------------------------------------------------"
 }
 
-# Main loop to handle menu choices
-do {
-    Show-Menu_21_3
-    $choice = Read-Host "Enter your choice (0,1,2,3,4,5,6)"
+
+# Function to handle installations and activations
+function Handle-Choice {
+    param (
+        [int]$choice
+    )
 
     switch ($choice) {
-        '1' {
+        1 {
             Write-Host "Disabling 'Accounts: Limit local account use of blank passwords to console logon only'..."
             Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Lsa' -Name 'LimitBlankPasswordUse' -Value 0
             Write-Host "Blank password use limit disabled."
             Pause
         }
-        '2' {
+        2 {
             Write-Host "Enabling 'Launching applications and unsafe files' in Internet Options..."
             $zones = 0..4
             foreach ($zone in $zones) {
@@ -36,40 +38,52 @@ do {
             Write-Host "'Launching applications and unsafe files' enabled."
             Pause
         }
-        '3' {
+        3 {
             Write-Host "Enabling Administrator Account..."
             net user administrator /active:yes
             Write-Host "Administrator account enabled."
             Pause
         }
-        '4' {
+        4 {
             Write-Host "Setting Administrator Password..."
             net user administrator admin
             Write-Host "Administrator password set to 'admin'."
             Pause
         }
-        '5' {
+        5 {
             Write-Host "Enabling Remote Desktop for Administrator..."
             Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server' -Name 'fDenyTSConnections' -Value 0
             Enable-NetFirewallRule -DisplayGroup 'Remote Desktop'
             Write-Host "Remote Desktop enabled."
             Pause
         }
-        '6' {
+        6 {
             Write-Host "Creating user 'scan'..."
             net user scan /add
             Write-Host "User 'scan' created."
             Pause
         }
-        '0' {
-            Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/emreuls7/mr.winls/win/fix.ps1").Content
-            }
+        0 {
             exit
+            Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/emreuls7/mr.winls/win/fix.ps1").Content
         }
-        default {
-            Write-Host "Invalid choice. Please enter a valid option."
-            Pause
-        }
+        default { Write-Host "Invalid choice. Please try again." }
     }
-} while ($true)
+}
 
+# Main script loop
+do {
+    Show-Menu
+    $choice = Read-Host "Enter your choice (0,1,2,3...)"
+    Clear-Host
+    Handle-Choice -choice $choice
+
+    # Pause for 2 seconds if the choice is not '0'
+    #if ($choice -ne '0') { 
+     #   Start-Sleep -Seconds 2 
+    #}
+
+    # Prompt the user to press Enter to continue
+    Write-Host "`nPress Enter to continue..."
+    Read-Host
+} while ($choice -ne '0')
