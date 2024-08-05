@@ -85,8 +85,7 @@ function Handle-Choice {
             Pause
         }
         0 {
-            # exit
-            Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/emreuls7/mr.winls/win/fix.ps1").Content
+            exit
         }
         default { Write-Host "Invalid choice. Please try again." }
     }
