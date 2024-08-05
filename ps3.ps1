@@ -1,3 +1,9 @@
+Write-Host "`nPress Enter to continue..."
+    Read-Host
+
+Clear-Host
+
+
 function Download-And-Execute-Script {
     param (
         [string]$Url
