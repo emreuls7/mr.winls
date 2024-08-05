@@ -53,7 +53,7 @@ function Handle-Choice {
         2 { Download-And-Execute-Script "$baseUrl/fix2.ps1" }
         3 { Download-And-Execute-Script "$baseUrl/fix3.ps1" }
         4 { Download-And-Execute-Script "$baseUrl/fix4.ps1" }
-         0 {
+        0 {
             exit
             # Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/emreuls7/mr.winls/main/program.ps1").Content
         }
