@@ -43,7 +43,7 @@ function Handle-Choice {
     )
 
      # Script kaynakları için temel URL
-    $baseUrl = "https://raw.githubusercontent.com/emreuls7/mr.winls/pasha/"
+    $baseUrl = "https://raw.githubusercontent.com/emreuls7/mr.winls/pasha"
     
     Clear-Host
     switch ($Choice) {
