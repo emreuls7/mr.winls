@@ -1,6 +1,6 @@
 
 function Show-Menu {
-    cls
+    Clear-Host
     Write-Host "-------------------------------------------------------------------"
     Write-Host "---             --- * Windows Fixed * ---                       ---" -ForegroundColor Red
     Write-Host "-------------------------------------------------------------------"
