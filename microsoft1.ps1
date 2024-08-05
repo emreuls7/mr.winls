@@ -79,8 +79,7 @@ function Handle-Choice {
         11 { Install-Software -id "Microsoft.Office" }
         12 { Install-Software -id "9WZDNCRFJ3PV" }
         0 {
-            # exit
-            Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/emreuls7/mr.winls/win/microsoft_menu.ps1").Content
+            exit
         }
         default { Write-Host "Invalid choice. Please try again." }
     }
