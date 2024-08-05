@@ -1,5 +1,20 @@
 $FileUrl = "https://raw.githubusercontent.com/emreuls7/mr.winls/pasha/pasha_menu.cmd"
 $FilePath = "C:\Windows\Temp\pasha_menu.cmd"
-Invoke-WebRequest -Uri $FileUrl -OutFile $FilePath
-Start-Process cmd.exe -ArgumentList "/c $FilePath"
-Remove-Item -Path $FilePath
+
+try {
+    # Download the file
+    Invoke-WebRequest -Uri $FileUrl -OutFile $FilePath -ErrorAction Stop
+
+    # Verify the file exists
+    if (Test-Path $FilePath) {
+        # Execute the file
+        Start-Process cmd.exe -ArgumentList "/c $FilePath" -NoNewWindow -Wait
+
+        # Remove the file after execution
+        Remove-Item -Path $FilePath -Force
+    } else {
+        Write-Error "File download failed."
+    }
+} catch {
+    Write-Error "An error occurred: $_"
+}
