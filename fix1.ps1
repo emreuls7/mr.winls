@@ -1,4 +1,4 @@
-# Define a function to show the menu
+
 function Show-Menu {
     cls
     Write-Host "-------------------------------------------------------------------"
