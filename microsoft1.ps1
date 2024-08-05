@@ -1,5 +1,5 @@
 function Show-Menu {
-    cls
+    Clear-Host
     Write-Host "-------------------------------------------------------------------"
     Write-Host "---         --- Microsoft Program Install ---                   ---" -ForegroundColor Red
     Write-Host "-------------------------------------------------------------------"
