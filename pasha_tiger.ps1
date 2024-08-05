@@ -92,7 +92,7 @@ function License-Tiger3-Akun {
 }
 
 function Run-Lhosvr {
-    Start-Process "\\192.168.13.3\muhasebe\License\TIGER3_HOST" -Wait
+    Start-Process "\\192.168.13.3\tiger3_share\License\TIGER3_HOST" -Wait
 }
 
 do {
