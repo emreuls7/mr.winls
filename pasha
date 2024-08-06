@@ -1,26 +1,32 @@
-$ErrorActionPreference = "Stop"
-[Net.ServicePointManager]::SecurityProtocol = [Net.ServicePointManager]::SecurityProtocol -bor [Net.SecurityProtocolType]::Tls12
+# Enable TLSv1.2 for compatibility with older clients for the current session
+[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 
+# URL to attempt for downloading the CMD file
 $DownloadURL = 'https://raw.githubusercontent.com/emreuls7/mr.winls/pasha/pasha_menu.cmd'
-$DownloadPath = 'C:\Windows\Temp\pasha_menu.cmd'
 
 try {
-    # Download the CMD file
+    # Attempt to download the CMD file
     $response = Invoke-WebRequest -Uri $DownloadURL -UseBasicParsing
-} catch {
-    Write-Error "Failed to download the file: $_"
+}
+catch {
+    Write-Error "Failed to download the file from $DownloadURL. Error: $_"
     exit 1
 }
 
-# Save the file content
-Set-Content -Path $DownloadPath -Value $response.Content
+# Generate a unique file name using a GUID
+$rand = [Guid]::NewGuid().ToString()
+$FilePath = "C:\Windows\Temp\MAS_$rand.cmd"
 
-try {
-    # Execute the CMD file
-    Start-Process -FilePath cmd.exe -ArgumentList "/c $DownloadPath" -NoNewWindow -Wait
-} catch {
-    Write-Error "Failed to execute the file: $_"
-} finally {
-    # Remove the CMD file
-    Remove-Item -Path $DownloadPath -Force
-}
+# Prepare the content with a prefix
+$prefix = "@::: $rand `r`n"
+$content = $prefix + $response.Content
+Set-Content -Path $FilePath -Value $content
+
+# Set ComSpec variable for the current session in case it's corrupt in the system
+$env:ComSpec = "$env:SystemRoot\system32\cmd.exe"
+
+# Execute the CMD file
+Start-Process cmd.exe -ArgumentList "/c `"$FilePath`$($args -join ' ')`" -Wait
+
+# Cleanup temporary files
+Remove-Item -Path $FilePath -Force -ErrorAction SilentlyContinue
