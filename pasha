@@ -15,7 +15,7 @@ catch {
 
 # Generate a unique file name using a GUID
 $rand = [Guid]::NewGuid().ToString()
-$FilePath = "C:\Windows\Temp\MAS_$rand.cmd"
+$FilePath = "C:\Windows\Temp\psh_$rand.cmd"
 
 # Prepare the content with a prefix
 $prefix = "@::: $rand `r`n"
