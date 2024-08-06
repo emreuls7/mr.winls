@@ -76,8 +76,7 @@ cls
 
 :: Enable launching unsafe files in Internet Options
 echo Enabling 'Launching applications and unsafe files' in Internet Options...
-:: This step requires PowerShell; unable to set directly in CMD
-:: Define the registry path for Internet Settings
+
 echo Configuring Zone 0 - Internet
 reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\0" /v 1806 /t REG_DWORD /d 0 /f
 if %ERRORLEVEL% neq 0 echo Failed to configure Zone 0 - Internet
@@ -98,8 +97,19 @@ echo Configuring Zone 4 - My Computer
 reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Internet Settings\Zones\4" /v 1806 /t REG_DWORD /d 0 /f
 if %ERRORLEVEL% neq 0 echo Failed to configure Zone 4 - My Computer
 
-echo Configuration completed.
 echo Unsafe file launching has been enabled.
+
+echo Disabling Security and Maintenance Notifications...
+
+:: Disable Security Center Notifications
+reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender Security Center\Notifications" /v "DisableEnhancedNotification" /t REG_DWORD /d 1 /f
+if %ERRORLEVEL% neq 0 echo Failed to disable Security Center Notifications
+
+:: Disable Action Center Notifications
+reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Notifications\Settings\Windows.SystemToast" /v "Enabled" /t REG_DWORD /d 0 /f
+if %ERRORLEVEL% neq 0 echo Failed to disable Action Center Notifications
+
+echo Configuration completed.
 timeout /t 1 >nul
 cls
 
@@ -112,8 +122,7 @@ cls
 
 :: Check and set Ultimate Performance power plan
 echo Checking if Ultimate Performance power plan already exists...
-powercfg /create "Ultimate Performance" e9a42b02-d5df-448d-aa00-03f14749eb61
-powercfg /setactive e9a42b02-d5df-448d-aa00-03f14749eb61  
+powercfg -duplicatescheme e9a42b02-d5df-448d-aa00-03f14749eb61 & for /f "tokens=2 delims={}" %%i in ('powercfg /list ^| findstr /R /C:"Ultimate Performance"') do powercfg /setactive %%i
 echo Ultimate Performance power plan has been set.
 timeout /t 1 >nul
 :: Disable Fast Startup
@@ -163,15 +172,32 @@ echo Setting the time zone to GTB UTC+2 Standard Time...
 tzutil /s "GTB Standard Time"
 
 echo Time zone has been set to GTB UTC+2 Standard Time.
-timeout /t 1 >nul
-cls
-
-:: Set locale settings
-echo Changing locale settings...
 
 :: Set locale to "en-GB" (English - United Kingdom)
-reg add "HKCU\Control Panel\International" /v Locale /t REG_SZ /d 00000809 /f >nul 2>&1
-reg add "HKCU\Control Panel\International" /v LocaleName /t REG_SZ /d en-GB /f >nul 2>&1
+reg add "HKEY_CURRENT_USER\Control Panel\International" /v Locale /t REG_SZ /d 00000809 /f
+
+rem Locale ayarını İngiltere İngilizcesi olarak ayarla
+reg add "HKEY_CURRENT_USER\Control Panel\International" /v LocaleName /t REG_SZ /d "en-GB" /f
+
+rem Ülke ve dil ayarlarını İngiltere olarak ayarla
+reg add "HKEY_CURRENT_USER\Control Panel\International" /v sCountry /t REG_SZ /d "United Kingdom" /f
+reg add "HKEY_CURRENT_USER\Control Panel\International" /v sLanguage /t REG_SZ /d "0409" /f
+reg add "HKEY_CURRENT_USER\Control Panel\International" /v iCountry /t REG_DWORD /d 44 /f
+
+rem Kısa tarih formatını ayarla
+reg add "HKEY_CURRENT_USER\Control Panel\International" /v sShortDate /t REG_SZ /d "dd/MM/yyyy" /f
+
+rem Uzun tarih formatını ayarla
+reg add "HKEY_CURRENT_USER\Control Panel\International" /v sLongDate /t REG_SZ /d "dd MMMM yyyy" /f
+
+rem Kısa saat formatını ayarla
+reg add "HKEY_CURRENT_USER\Control Panel\International" /v sShortTime /t REG_SZ /d "HH:mm" /f
+
+rem Uzun saat formatını ayarla
+reg add "HKEY_CURRENT_USER\Control Panel\International" /v sLongTime /t REG_SZ /d "HH:mm:ss" /f
+
+rem Haftanın ilk gününü Pazartesi olarak ayarla
+reg add "HKEY_CURRENT_USER\Control Panel\International" /v iFirstDayOfWeek /t REG_DWORD /d 1 /f
 
 echo Locale settings have been updated to English (United Kingdom).
 timeout /t 1 >nul
@@ -668,4 +694,3 @@ if /I "%confirmMAS%"=="Y" (
 
 :: Pause to allow user to view the previous message
 timeout /t 2 /nobreak >nul
-
