@@ -7,6 +7,10 @@ echo ----------------------------------------
 echo [1] USER DEFAULT SET
 echo [2] INSTALL DEFAULT
 echo [3] OFFICE INSTALL
+echo [4] MAS
+echo [5] WINUTIL
+echo ----------------------------------------
+echo [  1. VE 2. SECENEKLER HER USERDA YAP  ]
 echo ----------------------------------------
 echo [0] Exit
 echo ----------------------------------------
@@ -17,8 +21,20 @@ if "%choice%"=="0" goto End
 if "%choice%"=="1" goto user_default
 if "%choice%"=="2" goto install_default
 if "%choice%"=="3" goto install_office
-
+if "%choice%"=="4" goto mas_mas
+if "%choice%"=="5" goto win_util
 goto ShowMenu
+
+:mas_mas
+powershell -NoProfile -ExecutionPolicy Bypass -Command "irm 'https://raw.githubusercontent.com/emreuls7/mr.winls/tool/massgrave_mas.ps1' | iex"
+pause
+goto ShowMenu
+
+:win_util
+powershell -NoProfile -ExecutionPolicy Bypass -Command "irm 'https://raw.githubusercontent.com/ChrisTitusTech/winutil/main/winutil.ps1' | iex"
+pause
+goto ShowMenu
+
 
 :user_default
 timeout /t 3 >nul
