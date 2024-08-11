@@ -45,7 +45,7 @@ goto ShowMenu
 
 :winget_install
 cls
-robocopy "\\192.168.18.2\setup\source\WinGetInstall" "C:\Windows\Temp\WinGetInstall" /IS
+robocopy "\\192.168.18.2\setup\source\WinGetInstall" "C:\Windows\Temp\WinGetInstall"
 powershell -Command "Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor [System.Net.SecurityProtocolType]::Tls12; iex ((New-Object System.Net.WebClient).DownloadString('\\192.168.18.2\setup\source\winget.ps1')); winget upgrade --all"
 pause
 goto ShowMenu
@@ -181,29 +181,10 @@ echo --------------------------
 set /p choice="Enter your choice (0,1,2,3...): "
 
 if "%choice%"=="0" goto ShowMenu
-if "%choice%"=="1" goto itop_easy
-if "%choice%"=="2" goto 1remote_install
+if "%choice%"=="1" powershell -NoProfile -ExecutionPolicy Bypass -Command "winget install --id XPFCJVZV10X2WV --accept-package-agreements --accept-source-agreements --silent"
+if "%choice%"=="2" powershell -NoProfile -ExecutionPolicy Bypass -Command "winget install --id 9PNMNF92JNFP --accept-package-agreements --accept-source-agreements --silent"
 pause
 goto msstore_soft
-
-:itop_easy
-    winget list --id XPFCJVZV10X2WV -e >nul 2>&1
-    if %errorlevel% equ 0 (
-        echo The application is already installed. Updating now...
-        winget upgrade --id XPFCJVZV10X2WV -e --accept-package-agreements --accept-source-agreements --silent
-    ) else (
-        echo The application is not installed. Installing...
-        winget install --id XPFCJVZV10X2WV -e --accept-package-agreements --accept-source-agreements --silent
-pause
-goto msstore_soft
-
-:1remote_install
-powershell -NoProfile -ExecutionPolicy Bypass -Command "winget install --id 9PNMNF92JNFP --accept-package-agreements --accept-source-agreements --silent"
-pause
-goto msstore_soft
-
-
-
 
 
 
@@ -214,10 +195,10 @@ cls
 :: Disable User Account Control (UAC)
 echo Disabling User Account Control (UAC)...
 
-:: Kullanıcı Hesabı Denetimi (UAC) özelliğini devre dışı bırakır.
+:: Kullanıcı Hesabı Denetimi (UAC) ozelligini devre dısı bırakır.
 reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" /v "EnableLUA" /t REG_DWORD /d 0 /f
 
-:: Yönetici izinleri için onay isteme davranışını değiştirir (tam kontrol).
+:: Yonetici izinleri için onay isteme davranısını degistirir (tam kontrol).
 reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" /v "ConsentPromptBehaviorAdmin" /t REG_DWORD /d 0 /f
 
 echo UAC has been disabled.
@@ -227,40 +208,40 @@ cls
 :: Turn off Windows Defender Firewall
 echo Turning off Windows Defender Firewall...
 
-:: Güvenlik duvarını tüm profiller için kapatır.
+:: Guvenlik duvarını tum profiller için kapatır.
 netsh advfirewall set allprofiles state off
 
-:: Güvenlik duvarını tüm profiller için açar.
+:: Guvenlik duvarını tum profiller için açar.
 ::netsh advfirewall set allprofiles state on
 
-:: Domain profili için güvenlik duvarını kapatır.
+:: Domain profili için guvenlik duvarını kapatır.
 ::netsh advfirewall set domainprofile state off
 
-:: Domain profili için güvenlik duvarını açar.
+:: Domain profili için guvenlik duvarını açar.
 ::netsh advfirewall set domainprofile state on
 
-:: Private (özel) profili için güvenlik duvarını kapatır.
+:: Private (ozel) profili için guvenlik duvarını kapatır.
 ::netsh advfirewall set privateprofile state off
 
-:: Private (özel) profili için güvenlik duvarını açar.
+:: Private (ozel) profili için guvenlik duvarını açar.
 ::netsh advfirewall set privateprofile state on
 
-:: Public (kamu) profili için güvenlik duvarını kapatır.
+:: Public (kamu) profili için guvenlik duvarını kapatır.
 ::netsh advfirewall set publicprofile state off
 
-:: Public (kamu) profili için güvenlik duvarını açar.
+:: Public (kamu) profili için guvenlik duvarını açar.
 ::netsh advfirewall set publicprofile state on
 
-:: Tüm profillerin güvenlik duvarı ayarlarını görüntüler.
+:: Tum profillerin guvenlik duvarı ayarlarını goruntuler.
 ::netsh advfirewall show allprofiles
 
-:: Domain profilinin güvenlik duvarı ayarlarını görüntüler.
+:: Domain profilinin guvenlik duvarı ayarlarını goruntuler.
 ::netsh advfirewall show domainprofile
 
-:: Private (özel) profilinin güvenlik duvarı ayarlarını görüntüler.
+:: Private (ozel) profilinin guvenlik duvarı ayarlarını goruntuler.
 ::netsh advfirewall show privateprofile
 
-:: Public (kamu) profilinin güvenlik duvarı ayarlarını görüntüler.
+:: Public (kamu) profilinin guvenlik duvarı ayarlarını goruntuler.
 ::netsh advfirewall show publicprofile
 
 echo Windows Defender Firewall is turned off.
@@ -270,16 +251,16 @@ cls
 :: Enable Network Discovery and File Sharing
 echo Enabling Network Discovery and File Sharing...
 
-:: Function Discovery Provider Host hizmetini başlatır.
+:: Function Discovery Provider Host hizmetini baslatır.
 net start fdphost
 
-:: Function Discovery Resource Publication hizmetini başlatır.
+:: Function Discovery Resource Publication hizmetini baslatır.
 net start fdrespub
 
-:: UPnP Device Host hizmetini başlatır.
+:: UPnP Device Host hizmetini baslatır.
 net start upnphost
 
-:: Simple Service Discovery Protocol hizmetini başlatır.
+:: Simple Service Discovery Protocol hizmetini baslatır.
 net start SSDPSRV
 
 echo Network Discovery and File Sharing are enabled.
@@ -289,7 +270,7 @@ cls
 :: Disable blank password use restriction
 echo Disabling 'Accounts: Limit local account use of blank passwords to console logon only' setting...
 
-:: Boş şifrelerle oturum açmayı sınırlayan ayarı kapatır.
+:: Bos sifrelerle oturum açmayı sınırlayan ayarı kapatır.
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\Lsa" /v "LimitBlankPasswordUse" /t REG_DWORD /d 0 /f
 
 echo Blank password use restriction has been disabled.
@@ -338,7 +319,7 @@ cls
 :: Network Folder FIX
 echo Network Folder FIX...
 
-:: LanmanWorkstation hizmeti için güvenli olmayan misafir kimlik doğrulamasını etkinleştirir.
+:: LanmanWorkstation hizmeti için guvenli olmayan misafir kimlik dogrulamasını etkinlestirir.
 reg add "HKLM\SYSTEM\CurrentControlSet\Services\LanmanWorkstation\Parameters" /v "AllowInsecureGuestAuth" /t REG_DWORD /d 1 /f
 
 echo Network Folder insecure guest authentication has been enabled.
@@ -383,7 +364,7 @@ cls
 echo Enable Remote Desktop in the registry
 reg add "HKLM\System\CurrentControlSet\Control\Terminal Server" /v "fDenyTSConnections" /t REG_DWORD /d 0 /f 
 
-:: Uzaktan masaüstü bağlantıları için güvenlik duvarı kurallarını etkinleştirir.
+:: Uzaktan masaustu baglantıları için guvenlik duvarı kurallarını etkinlestirir.
 netsh advfirewall firewall set rule group="remote desktop" new enable=Yes
 
 echo Remote Desktop has been enabled.
@@ -404,7 +385,7 @@ reg add "HKEY_CURRENT_USER\Control Panel\International" /v Locale /t REG_SZ /d 0
 rem Locale ayarını İngiltere İngilizcesi olarak ayarla
 reg add "HKEY_CURRENT_USER\Control Panel\International" /v LocaleName /t REG_SZ /d "en-GB" /f
 
-rem Ülke ve dil ayarlarını İngiltere olarak ayarla
+rem ulke ve dil ayarlarını İngiltere olarak ayarla
 reg add "HKEY_CURRENT_USER\Control Panel\International" /v sCountry /t REG_SZ /d "United Kingdom" /f
 reg add "HKEY_CURRENT_USER\Control Panel\International" /v sLanguage /t REG_SZ /d "0409" /f
 reg add "HKEY_CURRENT_USER\Control Panel\International" /v iCountry /t REG_DWORD /d 44 /f
@@ -424,19 +405,19 @@ reg add "HKEY_CURRENT_USER\Control Panel\International" /v sShortTime /t REG_SZ 
 rem Uzun saat formatını ayarla
 reg add "HKEY_CURRENT_USER\Control Panel\International" /v sLongTime /t REG_SZ /d "HH:mm:ss" /f
 
-rem Ondalık sembolü ayarla
+rem Ondalık sembolu ayarla
 reg add "HKEY_CURRENT_USER\Control Panel\International" /v sDecimal /t REG_SZ /d "." /f
 
-rem Grup ayırıcı sembolü ayarla
+rem Grup ayırıcı sembolu ayarla
 reg add "HKEY_CURRENT_USER\Control Panel\International" /v sGroup /t REG_SZ /d "," /f
 
-rem Para birimi sembolünü ayarla
+rem Para birimi sembolunu ayarla
 reg add "HKEY_CURRENT_USER\Control Panel\International" /v sCurrency /t REG_SZ /d "£" /f
 
 rem Para birimi biçimini ayarla
 reg add "HKEY_CURRENT_USER\Control Panel\International" /v sMonetary /t REG_SZ /d "£#,##0.00" /f
 
-rem Yüzdelik biçimi ayarla
+rem Yuzdelik biçimi ayarla
 reg add "HKEY_CURRENT_USER\Control Panel\International" /v sPercent /t REG_SZ /d "#,##0%" /f
 
 
@@ -444,16 +425,9 @@ echo Locale settings have been updated to English (United Kingdom).
 timeout /t 1 
 cls
 
-:: Remove Edge
-echo Removing Microsoft Edge...
-powershell -NoProfile -ExecutionPolicy Bypass -Command "irm '\\192.168.18.2\setup\source\remove.edge.ps1' | iex"
-echo Microsoft Edge has been removed.
-timeout /t 1 
-cls
-
 :: Install Winget
 echo *** Winget Install ***.
-robocopy "\\192.168.18.2\setup\source\WinGetInstall" "C:\Windows\Temp\WinGetInstall" /IS
+robocopy "\\192.168.18.2\setup\source\WinGetInstall" "C:\Windows\Temp\WinGetInstall"
 powershell -Command "Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor [System.Net.SecurityProtocolType]::Tls12; iex ((New-Object System.Net.WebClient).DownloadString('\\192.168.18.2\setup\source\winget.ps1')); winget upgrade --all"
 timeout /t 1 
 cls
@@ -473,17 +447,24 @@ cls
 
 :: Install .NET Framework 4.8
 echo Installing .NET Framework 4.8...
-
+robocopy "\\192.168.18.2\setup\source\dotnet" "C:\Windows\Temp\dotnet" NDP48-x86-x64-AllOS-ENU.exe
 :: Define the URL and output file path
-powershell -Command "Invoke-WebRequest -Uri '\\192.168.18.2\setup\source\dotnet\NDP48-x86-x64-AllOS-ENU.exe' -OutFile 'C:\Windows\Temp\dotnet_framework_4.8.exe'"
+:: powershell -Command "Invoke-WebRequest -Uri '\\192.168.18.2\setup\source\dotnet\NDP48-x86-x64-AllOS-ENU.exe' -OutFile 'C:\Windows\Temp\dotnet\NDP48-x86-x64-AllOS-ENU.exe'"
 
 :: Start the installer and wait for it to complete
-start /wait "C:\Windows\Temp%\NDP48-x86-x64-AllOS-ENU.exe" /quiet /norestart
+start /wait "C:\Windows\Temp\dotnet\NDP48-x86-x64-AllOS-ENU.exe" /quiet /norestart
 
 :: Clean up the installer file
-:: del "C:\Windows\Temp\NDP48-x86-x64-AllOS-ENU.exe"
+:: del "C:\Windows\Temp\dotnet\NDP48-x86-x64-AllOS-ENU.exe"
 
 echo .NET Framework 4.8 has been installed.
+timeout /t 1 
+cls
+
+:: Remove Edge
+echo Removing Microsoft Edge...
+powershell -NoProfile -ExecutionPolicy Bypass -Command "irm '\\192.168.18.2\setup\source\remove.edge.ps1' | iex"
+echo Microsoft Edge has been removed.
 timeout /t 1 
 cls
 
@@ -606,14 +587,6 @@ if %errorlevel% equ 0 (
     echo Failed to install File Converter.
 )
 
-echo Installing UltraVNC...
-winget install uvncbvba.UltraVnc -e 
-if %errorlevel% equ 0 (
-    echo UltraVNC installation complete.
-) else (
-    echo Failed to install UltraVNC.
-)
-
 echo Installing PC Manager...
 winget install Microsoft.PCManager -e 
 if %errorlevel% equ 0 (
@@ -646,8 +619,6 @@ if %errorlevel% equ 0 (
     echo Failed to install PowerShell.
 )
 
-echo All installations are complete.
-
 :: Install WhatsApp
 echo Installing WhatsApp...
 powershell -NoProfile -ExecutionPolicy Bypass -Command "winget install -e --id 9NKSQGP7F2NH --accept-package-agreements --accept-source-agreements --silent" 
@@ -666,205 +637,7 @@ if %errorlevel% equ 0 (
     echo Failed to install Windows Scan.
 )
 
-:: Clear the console
 cls
-
-:: Upgrade installed software
-echo Upgrading installed software...
-powershell -NoProfile -ExecutionPolicy Bypass -Command "winget upgrade --all" 
-if %errorlevel% equ 0 (
-    echo Software upgrade complete.
-) else (
-    echo Failed to upgrade software.
-)
-
-:: Upgrade Chocolatey and all packages
-choco upgrade chocolatey -y 
-if %errorlevel% equ 0 (
-    echo Chocolatey upgrade complete.
-) else (
-    echo Failed to upgrade Chocolatey.
-)
-
-choco upgrade all -y 
-if %errorlevel% equ 0 (
-    echo All Chocolatey packages upgraded.
-) else (
-    echo Failed to upgrade all Chocolatey packages.
-)
-
-echo All operations are complete.
-
-:: Clear the console
-cls
-
-:: Google Chrome'un varlığını kontrol et
-if exist "C:\Program Files\Google\Chrome\Application\chrome.exe" (
-    echo Google Chrome found at C:\Program Files\Google\Chrome\Application\chrome.exe
-
-    :: HTTP ve HTTPS için kayıt defteri güncellemeleri
-    reg add "HKCR\http\shell\open\command" /ve /d "\"C:\Program Files\Google\Chrome\Application\chrome.exe\" -- \"%%1\"" /f
-    reg add "HKCR\https\shell\open\command" /ve /d "\"C:\Program Files\Google\Chrome\Application\chrome.exe\" -- \"%%1\"" /f
-
-    echo Google Chrome has been set as the default browser for HTTP and HTTPS.
-) else (
-    echo Google Chrome not found at C:\Program Files\Google\Chrome\Application\chrome.exe. Please make sure it is installed.
-)
-
-cls
-
-:: Adobe Acrobat'ın varlığını kontrol et
-if exist "C:\Program Files\Adobe\Acrobat DC\Acrobat\Acrobat.exe" (
-    echo Adobe Reader found at C:\Program Files\Adobe\Acrobat DC\Acrobat\Acrobat.exe
-
-    :: PDF dosyaları için kayıt defteri güncellemesi
-    reg add "HKCR\.pdf\shell\open\command" /ve /d "\"C:\Program Files\Adobe\Acrobat DC\Acrobat\Acrobat.exe\" \"%%1\"" /f
-    if %errorlevel% equ 0 (
-        echo Adobe Reader has been set as the default PDF viewer.
-    ) else (
-        echo Failed to set Adobe Reader as default PDF viewer.
-    )
-) else (
-    echo Adobe Reader not found at C:\Program Files\Adobe\Acrobat DC\Acrobat\Acrobat.exe. Please make sure it is installed.
-)
-
-cls
-
-:: Define VLC path
-if exist "C:\Program Files\VideoLAN\VLC\vlc.exe" (
-    echo Configuring VLC...
-
-    :: Associate file types with VLC
-    echo Associating .mp4 with VLC...
-    assoc .mp4=VLCFile 
-    echo Associating .avi with VLC...
-    assoc .avi=VLCFile 
-    echo Associating .mkv with VLC...
-    assoc .mkv=VLCFile 
-    echo Associating .mov with VLC...
-    assoc .mov=VLCFile 
-    echo Associating .wmv with VLC...
-    assoc .wmv=VLCFile 
-    echo Associating .flv with VLC...
-    assoc .flv=VLCFile 
-    echo Associating .mp3 with VLC...
-    assoc .mp3=VLCFile 
-    echo Associating .wav with VLC...
-    assoc .wav=VLCFile 
-
-    :: Set VLC as the default media player for known file types
-    echo Setting VLC as default media player...
-    ftype VLCFile="C:\Program Files\VideoLAN\VLC\vlc.exe" "%%1" 
-    if %errorlevel% equ 0 (
-        echo VLC has been set as the default media player.
-    ) else (
-        echo Failed to set VLC as default media player.
-    )
-) else (
-    echo VLC not found. Please make sure it is installed.
-)
-
-cls
-
-:: Define WinRAR path
-if exist "C:\Program Files\WinRAR\WinRAR.exe" (
-    echo Configuring WinRAR...
-
-    :: List of file extensions to associate with WinRAR
-    echo Associating .rar with WinRAR...
-    assoc .rar=WinRARFile 
-    ftype WinRARFile="C:\Program Files\WinRAR\WinRAR.exe" "%%1" 
-
-    echo Associating .zip with WinRAR...
-    assoc .zip=WinRARFile 
-    ftype WinRARFile="C:\Program Files\WinRAR\WinRAR.exe" "%%1" 
-
-    echo Associating .7z with WinRAR...
-    assoc .7z=WinRARFile 
-    ftype WinRARFile="C:\Program Files\WinRAR\WinRAR.exe" "%%1" 
-
-    echo Associating .tar with WinRAR...
-    assoc .tar=WinRARFile 
-    ftype WinRARFile="C:\Program Files\WinRAR\WinRAR.exe" "%%1" 
-
-    echo Associating .gz with WinRAR...
-    assoc .gz=WinRARFile 
-    ftype WinRARFile="C:\Program Files\WinRAR\WinRAR.exe" "%%1" 
-
-    echo Associating .bz2 with WinRAR...
-    assoc .bz2=WinRARFile 
-    ftype WinRARFile="C:\Program Files\WinRAR\WinRAR.exe" "%%1" 
-
-    echo Associating .xz with WinRAR...
-    assoc .xz=WinRARFile 
-    ftype WinRARFile="C:\Program Files\WinRAR\WinRAR.exe" "%%1" 
-
-    echo Associating .iso with WinRAR...
-    assoc .iso=WinRARFile 
-    ftype WinRARFile="C:\Program Files\WinRAR\WinRAR.exe" "%%1" 
-
-    echo WinRAR has been set as the default application for specified file types.
-) else (
-    echo WinRAR not found. Please make sure it is installed.
-)
-
-cls
-
-:: Install UltraVNC
-echo Installing UltraVNC...
-winget install --id=UltraVNC.UltraVNC --source=winget 
-
-:: Wait for installation to complete
-timeout /t 30 
-
-:: Configure UltraVNC password
-echo Configuring UltraVNC password...
-
-:: Define registry path and password
-set regPath=HKLM\SOFTWARE\UltraVNC\Server
-set regName=Password
-set password=412199
-
-:: Check if registry path exists
-reg query "%regPath%" 
-if errorlevel 1 (
-    :: Create registry path if it does not exist
-    reg add "%regPath%" /f 
-)
-
-:: Set registry value for password
-reg add "%regPath%" /v "%regName%" /t REG_SZ /d "%password%" /f 
-
-:: Confirm success
-if %ERRORLEVEL% == 0 (
-    echo UltraVNC has been installed and the password has been set.
-) else (
-    echo Failed to install or configure UltraVNC.
-)
-
-
-cls
-
-:: Define paths directly
-if exist "C:\Program Files\PowerShell\7\pwsh.exe" (
-    echo Updating PowerShell shortcut...
-
-    :: Use PowerShell to update the shortcut
-    powershell -Command ^
-        $shell = New-Object -ComObject WScript.Shell; ^
-        $shortcut = $shell.CreateShortcut([System.IO.Path]::Combine($env:USERPROFILE, "Desktop\Windows PowerShell.lnk")); ^
-        $shortcut.TargetPath = "C:\Program Files\PowerShell\7\pwsh.exe"; ^
-        $shortcut.WorkingDirectory = [System.IO.Path]::GetDirectoryName("C:\Program Files\PowerShell\7\pwsh.exe"); ^
-        $shortcut.Save()
-
-    echo PowerShell shortcut updated to point to PowerShell 7.
-) else (
-    echo PowerShell 7 is not installed or the path is incorrect.
-)
-
-
-cls
-
 pause
 goto ShowMenu
 
