@@ -46,13 +46,16 @@ goto ShowMenu
 :winget_install
 cls
 robocopy "\\192.168.18.2\setup\source\WinGetInstall" "C:\Windows\Temp\WinGetInstall"
-powershell -Command "Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor [System.Net.SecurityProtocolType]::Tls12; iex ((New-Object System.Net.WebClient).DownloadString('\\192.168.18.2\setup\source\winget.ps1')); winget upgrade --all"
+powershell -Command "Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor [System.Net.SecurityProtocolType]::Tls12; iex ((New-Object System.Net.WebClient).DownloadString('\\192.168.18.2\setup\source\winget.ps1'))"
+winget upgrade --all
 pause
 goto ShowMenu
 
 :choco_install
 cls
-powershell -Command "Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('\\192.168.18.2\setup\source\chocolatey.ps1')); choco upgrade chocolatey -y; choco upgrade all -y"
+powershell -Command "Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('\\192.168.18.2\setup\source\chocolatey.ps1'))"
+choco upgrade chocolatey -y
+choco upgrade all -y
 pause
 goto ShowMenu
 
@@ -64,6 +67,7 @@ echo ----------------------------------------------------
 echo [1] Winget
 echo [2] Choco
 echo [3] MS Store
+echo [4] Microsoft App
 echo ----------------------------------------------------
 echo [4] OBS Studio Teleport (18.2-copy)
 echo [5] WinRar Key (18.2-copy)
@@ -80,6 +84,7 @@ if "%choice%"=="0" goto ShowMenu
 if "%choice%"=="1" goto winget_soft
 if "%choice%"=="2" goto choco_soft
 if "%choice%"=="3" goto msstore_soft
+if "%choice%"=="4" goto microsoft_app
 
 if "%choice%"=="4" robocopy "\\192.168.18.2\setup\source\key-crack+\obs-teleport" "C:\Program Files\obs-studio\obs-plugins\64bit" obs-teleport.dll /IS
 if "%choice%"=="5" robocopy "\\192.168.18.2\setup\source\setup\AnyToISO\AnyToISOcrack" "C:\Program Files (x86)\AnyToISO" anytoiso.exe /IS
@@ -96,16 +101,26 @@ goto other_soft
 :winget_soft
 cls
 echo ---------------------------------------------------------------------------------------------------------------------
-echo [1]  PuTTY                             [11] OBS Studio                      [21] Google Chrome
-echo [2]  Notepad++                         [12] WinRar                          [22] Google Chrome Dev
-echo [3]  JetBrains Toolbox                 [13] Mozilla Thunderbird             [23] Mozilla Firefox
-echo [4]  Microsoft SQL Server Management   [14] Revo Uninstaller Pro            [24] Mozilla Firefox Developer Edition
-echo [5]  Microsoft Visual Studio Code      [15] AOMEI Partitio Assistant        [25] FortiClient VPN
-echo [6]  Advanced IP Scanner               [16] Internet Download Manager       [26] Windscribe VPN
-echo [7]  QuickLook                         [17] File Converter                  [27] ProtonVPN
-echo [8]  DeepL                             [18] NVIDIA GeForce Experience       [28] Radmin VPN
-echo [9]  Adobe Acrobat Reader              [19] Intel Driver Support Assistant  [29] AnyDesk
-echo [10] Cute PDF Writer                   [20] Rufus                           [30] TeamViewer
+echo [1]  PuTTY                              [21] Google Chrome                    [41] FortiClient VPN
+echo [2]  Notepad++                          [22] Google Chrome Dev                [42] Windscribe VPN
+echo [3]  JetBrains Toolbox                  [23] Mozilla Firefox                  [43] ProtonVPN
+echo [4]  MSQL Server Management             [24] M Firefox Developer Edition      [44] Radmin VPN
+echo [5]  MVisual Studio Code                [25] Brave                            [45] OpenVPN
+echo [6]  Advanced IP Scanner                [26] Brave Dev                        [46] OpenVPN Connect
+echo [7]  QuickLook                          [27] VLC                              [47] UltraVNC
+echo [8]  DeepL                              [28] MPC-HC                           [48] RealVNC Viewer
+echo [9]  Adobe Acrobat Reader               [29] Kodi                             [49] AnyDesk
+echo [10] Cute PDF Writer                    [30] AIMP                             [50] TeamViewer 
+echo [11] OBS Studio                         [31] Winamp                           [51] Steam
+echo [12] WinRar                             [32] iTunes                           [52] Epic Games Launcher
+echo [13] Mozilla Thunderbird                [33] IPTV Nator                       [53] EA app
+echo [14] Revo Uninstaller Pro               [34] Spotify                          [54] Ubisoft Connect
+echo [15] AOMEI Partitio Assistant           [35] Telegram Desktop                 [55] GOG GALAXY
+echo [16] Internet Download Manager          [36] Telegram Desktop Beta            [56] Amazon Games
+echo [17] File Converter                     [37] Discord                          [57] Google Play Games Beta
+echo [18] NVIDIA GeForce Experience          [38] Microsoft OneDrive               [58] Blitz
+echo [19] Intel Driver Support Assistant     [39] Microsoft PC Manager             [59] Microsoft DirectX
+echo [20] Rufus                              [40] Microsoft 365 Enterprise         [60] Microsoft VCRedist 2005-2022+
 echo ---------------------------------------------------------------------------------------------------------------------
 echo [0] Exit
 echo ---------------------------------------------------------------------------------------------------------------------
@@ -137,13 +152,70 @@ if "%choice%"=="21" winget install Google.Chrome -e
 if "%choice%"=="22" winget install Google.Chrome.Dev -e
 if "%choice%"=="23" winget install Mozilla.Firefox -e
 if "%choice%"=="24" winget install Mozilla.Firefox.DeveloperEdition -e
-if "%choice%"=="25" winget install Fortinet.FortiClientVPN -e
-if "%choice%"=="26" winget install Windscribe.Windscribe -e
-if "%choice%"=="27" winget install ProtonTechnologies.ProtonVPN -e
-if "%choice%"=="28" winget install Radmin.VPN -e
-if "%choice%"=="29" winget install AnyDeskSoftwareGmbH.AnyDesk -e
-if "%choice%"=="30" winget install TeamViewer.TeamViewer -e
+if "%choice%"=="25" winget install Brave.Brave -e
+if "%choice%"=="26" winget install Brave.Brave.Dev -e
+if "%choice%"=="27" winget install VideoLAN.VLC -e
+if "%choice%"=="28" winget install clsid2.mpc-hc -e
+if "%choice%"=="29" winget install XBMCFoundation.Kodi -e
+if "%choice%"=="30" winget install AIMP.AIMP -e
+if "%choice%"=="31" winget install Winamp.Winamp -e
+if "%choice%"=="32" winget install Apple.iTunes -e
+if "%choice%"=="33" (
+echo ------------------------------------------------------------------------
+echo	Turk Kanallari Legal IPTV Playlist [Otomatik Gucelleme] - 2024 AKTIF
+echo	http://stream.tvcdn.net/lists/tr.m3u
+echo	http://stream.tvcdn.net/lists/tr-alt.m3u
+echo	http://stream.tvcdn.net/lists/tr-ss.m3u
+echo ------------------------------------------------------------------------
+echo	Grouped by category
+echo	https://iptv-org.github.io/iptv/index.category.m3u
+echo	Grouped by language
+echo	https://iptv-org.github.io/iptv/index.language.m3u
+echo	Grouped by country
+echo	https://iptv-org.github.io/iptv/index.country.m3u
+echo	Grouped by region
+echo	https://iptv-org.github.io/iptv/index.region.m3u
+echo ------------------------------------------------------------------------
+winget install 4gray.iptvnator -e
+)
+if "%choice%"=="34" winget install Spotify.Spotify -e
+if "%choice%"=="35" winget install Telegram.TelegramDesktop -e
+if "%choice%"=="36" winget install Telegram.TelegramDesktop.Beta -e
+if "%choice%"=="37" winget install Discord.Discord -e
 
+if "%choice%"=="41" winget install Fortinet.FortiClientVPN -e
+if "%choice%"=="42" winget install Windscribe.Windscribe -e
+if "%choice%"=="43" winget install ProtonTechnologies.ProtonVPN -e
+if "%choice%"=="44" winget install Radmin.VPN -e
+if "%choice%"=="45" winget install OpenVPNTechnologies.OpenVPN -e
+if "%choice%"=="46" winget install OpenVPNTechnologies.OpenVPNConnect -e
+if "%choice%"=="47" winget install uvncbvba.UltraVnc -e
+if "%choice%"=="48" winget install RealVNC.VNCViewer -e
+if "%choice%"=="49" winget install AnyDeskSoftwareGmbH.AnyDesk -e
+if "%choice%"=="50" winget install TeamViewer.TeamViewer -e
+if "%choice%"=="51" winget install Valve.Steam -e
+if "%choice%"=="52" winget install EpicGames.EpicGamesLauncher -e
+if "%choice%"=="53" winget install ElectronicArts.EADesktop -e
+if "%choice%"=="54" winget install Ubisoft.Connect -e
+if "%choice%"=="55" winget install GOG.Galaxy -e
+if "%choice%"=="56" winget install Amazon.Games -e
+if "%choice%"=="57" winget install Google.PlayGames.Beta -e
+if "%choice%"=="58" winget install Blitz.Blitz -e
+if "%choice%"=="59" winget install Microsoft.DirectX -e
+if "%choice%"=="60" (
+                    winget install Microsoft.VCRedist.2005.x86 -e
+                    winget install Microsoft.VCRedist.2005.x64 -e
+                    winget install Microsoft.VCRedist.2008.x86 -e
+                    winget install Microsoft.VCRedist.2008.x64 -e
+                    winget install Microsoft.VCRedist.2010.x86 -e
+                    winget install Microsoft.VCRedist.2010.x64 -e
+                    winget install Microsoft.VCRedist.2012.x86 -e
+                    winget install Microsoft.VCRedist.2012.x64 -e
+                    winget install Microsoft.VCRedist.2013.x86 -e
+                    winget install Microsoft.VCRedist.2013.x64 -e
+                    winget install Microsoft.VCRedist.2015+.x86 -e
+                    winget install Microsoft.VCRedist.2015+.x64 -e
+)
 pause
 goto winget_soft
 
@@ -155,17 +227,24 @@ echo [1] Any To ISO
 echo [2] WinSCP
 echo [3] FileZilla Client
 echo [4] Advanced Port Scan
+echo [5] FileZilla Server
+echo [6] UniFi Network Application
+echo [7] qBittorrent
+echo [8] Rockstar Games Launcher
 echo --------------------------
 echo [0] Exit
 echo --------------------------
 set /p choice="Enter your choice (0,1,2,3...): "
-
+echo --------------------------
 if "%choice%"=="0" goto ShowMenu
 if "%choice%"=="1" choco install anytoiso -y
 if "%choice%"=="2" choco install winscp -y
 if "%choice%"=="3" choco install filezilla -y
 if "%choice%"=="4" choco install advanced-port-scanner -y
-
+if "%choice%"=="5" choco install filezilla.server -y
+if "%choice%"=="6" choco install ubiquiti-unifi-controller -y
+if "%choice%"=="7" choco install qbittorrent -y
+if "%choice%"=="8" choco install rockstar-launcher -y
 pause
 goto choco_soft
 
@@ -173,18 +252,88 @@ goto choco_soft
 cls
 echo --------------------------
 echo [1] iTop Easy Desktop
-echo [1] 1Remote
+echo [2] 1Remote
+echo [3] MSI Center 
+echo [4] MSI Driver App Center
+echo [5] WhatsApp
+echo [6] WhatsApp Beta
+echo [7] Microsoft OneNote
+echo [8] Microsoft Remote Desktop Store
+echo [9] Windows Scan
 echo --------------------------
 echo [0] Exit
 echo --------------------------
-
 set /p choice="Enter your choice (0,1,2,3...): "
-
+echo --------------------------
 if "%choice%"=="0" goto ShowMenu
 if "%choice%"=="1" powershell -NoProfile -ExecutionPolicy Bypass -Command "winget install --id XPFCJVZV10X2WV --accept-package-agreements --accept-source-agreements --silent"
 if "%choice%"=="2" powershell -NoProfile -ExecutionPolicy Bypass -Command "winget install --id 9PNMNF92JNFP --accept-package-agreements --accept-source-agreements --silent"
+if "%choice%"=="3" powershell -NoProfile -ExecutionPolicy Bypass -Command "winget install --id 9NVMNJCR03XV --accept-package-agreements --accept-source-agreements --silent"
+if "%choice%"=="4" powershell -NoProfile -ExecutionPolicy Bypass -Command "winget install --id 9P9WDH947752 --accept-package-agreements --accept-source-agreements --silent"
+if "%choice%"=="5" powershell -NoProfile -ExecutionPolicy Bypass -Command "winget install -e --id 9NKSQGP7F2NH --accept-package-agreements --accept-source-agreements --silent"
+if "%choice%"=="6" powershell -NoProfile -ExecutionPolicy Bypass -Command "winget install -e --id 9NBDXK71NK08 --accept-package-agreements --accept-source-agreements --silent"
+if "%choice%"=="7" powershell -NoProfile -ExecutionPolicy Bypass -Command "winget install -e --id XPFFZHVGQWWLHB --accept-package-agreements --accept-source-agreements --silent"
+if "%choice%"=="8" powershell -NoProfile -ExecutionPolicy Bypass -Command "winget install -e --id 9WZDNCRFJ3PS --accept-package-agreements --accept-source-agreements --silent"
+if "%choice%"=="9" powershell -NoProfile -ExecutionPolicy Bypass -Command "winget install -e --id 9WZDNCRFJ3PV --accept-package-agreements --accept-source-agreements --silent"
 pause
 goto msstore_soft
+
+
+:microsoft_app
+cls
+echo -------------------------------------------------------------------
+echo [1]  Microsoft OneNote Store
+echo [2]  Microsoft PC Manager
+echo [3]  Microsoft OneDrive
+echo [4]  Microsoft Teams
+echo [5]  Microsoft PowerToys
+echo [6]  Microsoft DirectX
+echo [7]  Microsoft VCRedist 2005-2015+
+echo [8]  Microsoft Dot Net Framework 3-4+
+echo [9]  Grammarly for Windows
+echo [10] Microsoft Remote Desktop Store
+echo [11] Microsoft 365 Apps for enterprise
+echo [12] Windows Scan
+echo -------------------------------------------------------------------
+echo [0] Exit
+echo -------------------------------------------------------------------
+set /p choice="Enter your choice (0,1,2,3...): "
+echo -------------------------------------------------------------------
+if "%choice%"=="0" goto other_soft
+if "%choice%"=="1" powershell -NoProfile -ExecutionPolicy Bypass -Command "winget install -e --id XPFFZHVGQWWLHB --accept-package-agreements --accept-source-agreements --silent"
+if "%choice%"=="2" winget install Microsoft.PCManager -e
+if "%choice%"=="3" winget install Microsoft.OneDrive -e
+if "%choice%"=="4" winget install Microsoft.Teams -e
+if "%choice%"=="5" winget install Microsoft.PowerToys -e
+if "%choice%"=="6" winget install Microsoft.DirectX -e
+if "%choice%"=="7" (
+                    winget install Microsoft.VCRedist.2005.x86 -e
+                    winget install Microsoft.VCRedist.2005.x64 -e
+                    winget install Microsoft.VCRedist.2008.x86 -e
+                    winget install Microsoft.VCRedist.2008.x64 -e
+                    winget install Microsoft.VCRedist.2010.x86 -e
+                    winget install Microsoft.VCRedist.2010.x64 -e
+                    winget install Microsoft.VCRedist.2012.x86 -e
+                    winget install Microsoft.VCRedist.2012.x64 -e
+                    winget install Microsoft.VCRedist.2013.x86 -e
+                    winget install Microsoft.VCRedist.2013.x64 -e
+                    winget install Microsoft.VCRedist.2015+.x86 -e
+                    winget install Microsoft.VCRedist.2015+.x64 -e
+)
+if "%choice%"=="8" (
+                    choco install dotnet3.5 -y
+                    choco install dotnet4.5.1 -y
+                    choco install dotnet4.5.2 -y
+)
+if "%choice%"=="9" winget install Grammarly.Grammarly -e
+if "%choice%"=="10" powershell -NoProfile -ExecutionPolicy Bypass -Command "winget install -e --id 9WZDNCRFJ3PS --accept-package-agreements --accept-source-agreements --silent"
+if "%choice%"=="11" winget install Microsoft.Office -e
+if "%choice%"=="12" powershell -NoProfile -ExecutionPolicy Bypass -Command "winget install -e --id 9WZDNCRFJ3PV --accept-package-agreements --accept-source-agreements --silent"
+if "%choice%"=="13" goto install_programK13
+
+pause
+goto microsoft_app
+
 
 
 
