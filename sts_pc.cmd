@@ -68,6 +68,7 @@ echo [1] Winget
 echo [2] Choco
 echo [3] MS Store
 echo [4] Microsoft App
+echo [5] Microsoft .Net
 echo ----------------------------------------------------
 echo [4] OBS Studio Teleport (18.2-copy)
 echo [5] WinRar Key (18.2-copy)
@@ -85,6 +86,7 @@ if "%choice%"=="1" goto winget_soft
 if "%choice%"=="2" goto choco_soft
 if "%choice%"=="3" goto msstore_soft
 if "%choice%"=="4" goto microsoft_app
+if "%choice%"=="5" goto microsoft_net
 
 if "%choice%"=="4" robocopy "\\192.168.18.2\setup\source\key-crack+\obs-teleport" "C:\Program Files\obs-studio\obs-plugins\64bit" obs-teleport.dll /IS
 if "%choice%"=="5" robocopy "\\192.168.18.2\setup\source\setup\AnyToISO\AnyToISOcrack" "C:\Program Files (x86)\AnyToISO" anytoiso.exe /IS
@@ -118,9 +120,9 @@ echo [14] Revo Uninstaller Pro               [34] Spotify                       
 echo [15] AOMEI Partitio Assistant           [35] Telegram Desktop                 [55] GOG GALAXY
 echo [16] Internet Download Manager          [36] Telegram Desktop Beta            [56] Amazon Games
 echo [17] File Converter                     [37] Discord                          [57] Google Play Games Beta
-echo [18] NVIDIA GeForce Experience          [38] Microsoft OneDrive               [58] Blitz
-echo [19] Intel Driver Support Assistant     [39] Microsoft PC Manager             [59] Microsoft DirectX
-echo [20] Rufus                              [40] Microsoft 365 Enterprise         [60] Microsoft VCRedist 2005-2022+
+echo [18] NVIDIA GeForce Experience          [38] TechPowerUp GPU-Z                [58] Blitz
+echo [19] Intel Driver Support Assistant     [39] Crystal Disk Info                [59] Telerik Fiddler Classic
+echo [20] Rufus                              [40] Crystal Disk Mark                [60] Core Temp
 echo ---------------------------------------------------------------------------------------------------------------------
 echo [0] Exit
 echo ---------------------------------------------------------------------------------------------------------------------
@@ -182,6 +184,10 @@ if "%choice%"=="34" winget install Spotify.Spotify -e
 if "%choice%"=="35" winget install Telegram.TelegramDesktop -e
 if "%choice%"=="36" winget install Telegram.TelegramDesktop.Beta -e
 if "%choice%"=="37" winget install Discord.Discord -e
+if "%choice%"=="38" winget install TechPowerUp.GPU-Z -e
+if "%choice%"=="39" winget install CrystalDewWorld.CrystalDiskInfo -e
+if "%choice%"=="40" winget install CrystalDewWorld.CrystalDiskMark -e
+
 
 if "%choice%"=="41" winget install Fortinet.FortiClientVPN -e
 if "%choice%"=="42" winget install Windscribe.Windscribe -e
@@ -201,21 +207,8 @@ if "%choice%"=="55" winget install GOG.Galaxy -e
 if "%choice%"=="56" winget install Amazon.Games -e
 if "%choice%"=="57" winget install Google.PlayGames.Beta -e
 if "%choice%"=="58" winget install Blitz.Blitz -e
-if "%choice%"=="59" winget install Microsoft.DirectX -e
-if "%choice%"=="60" (
-                    winget install Microsoft.VCRedist.2005.x86 -e
-                    winget install Microsoft.VCRedist.2005.x64 -e
-                    winget install Microsoft.VCRedist.2008.x86 -e
-                    winget install Microsoft.VCRedist.2008.x64 -e
-                    winget install Microsoft.VCRedist.2010.x86 -e
-                    winget install Microsoft.VCRedist.2010.x64 -e
-                    winget install Microsoft.VCRedist.2012.x86 -e
-                    winget install Microsoft.VCRedist.2012.x64 -e
-                    winget install Microsoft.VCRedist.2013.x86 -e
-                    winget install Microsoft.VCRedist.2013.x64 -e
-                    winget install Microsoft.VCRedist.2015+.x86 -e
-                    winget install Microsoft.VCRedist.2015+.x64 -e
-)
+if "%choice%"=="59" winget install Telerik.Fiddler.Classic -e
+if "%choice%"=="60" winget install ALCPU.CoreTemp -e
 pause
 goto winget_soft
 
@@ -257,24 +250,30 @@ echo [3] MSI Center
 echo [4] MSI Driver App Center
 echo [5] WhatsApp
 echo [6] WhatsApp Beta
-echo [7] Microsoft OneNote
-echo [8] Microsoft Remote Desktop Store
-echo [9] Windows Scan
+echo [7] Realtek Audio Control
+echo [8] Intel Unison
+echo [9] Amazon Appstore
+echo [10] Windows Subsystem for Android
+echo [11] WSATools - APK installer and more
+echo [12] FlipClock - Retro Flip Clock Widget
 echo --------------------------
 echo [0] Exit
 echo --------------------------
 set /p choice="Enter your choice (0,1,2,3...): "
 echo --------------------------
-if "%choice%"=="0" goto ShowMenu
+if "%choice%"=="0" goto other_soft
 if "%choice%"=="1" powershell -NoProfile -ExecutionPolicy Bypass -Command "winget install --id XPFCJVZV10X2WV --accept-package-agreements --accept-source-agreements --silent"
 if "%choice%"=="2" powershell -NoProfile -ExecutionPolicy Bypass -Command "winget install --id 9PNMNF92JNFP --accept-package-agreements --accept-source-agreements --silent"
 if "%choice%"=="3" powershell -NoProfile -ExecutionPolicy Bypass -Command "winget install --id 9NVMNJCR03XV --accept-package-agreements --accept-source-agreements --silent"
 if "%choice%"=="4" powershell -NoProfile -ExecutionPolicy Bypass -Command "winget install --id 9P9WDH947752 --accept-package-agreements --accept-source-agreements --silent"
 if "%choice%"=="5" powershell -NoProfile -ExecutionPolicy Bypass -Command "winget install -e --id 9NKSQGP7F2NH --accept-package-agreements --accept-source-agreements --silent"
 if "%choice%"=="6" powershell -NoProfile -ExecutionPolicy Bypass -Command "winget install -e --id 9NBDXK71NK08 --accept-package-agreements --accept-source-agreements --silent"
-if "%choice%"=="7" powershell -NoProfile -ExecutionPolicy Bypass -Command "winget install -e --id XPFFZHVGQWWLHB --accept-package-agreements --accept-source-agreements --silent"
-if "%choice%"=="8" powershell -NoProfile -ExecutionPolicy Bypass -Command "winget install -e --id 9WZDNCRFJ3PS --accept-package-agreements --accept-source-agreements --silent"
-if "%choice%"=="9" powershell -NoProfile -ExecutionPolicy Bypass -Command "winget install -e --id 9WZDNCRFJ3PV --accept-package-agreements --accept-source-agreements --silent"
+if "%choice%"=="7" powershell -NoProfile -ExecutionPolicy Bypass -Command "winget install -e --id 9p2b8mcsvpln --accept-package-agreements --accept-source-agreements --silent"
+if "%choice%"=="8" powershell -NoProfile -ExecutionPolicy Bypass -Command "winget install -e --id 9pp9gzm2gn26 --accept-package-agreements --accept-source-agreements --silent"
+if "%choice%"=="9" powershell -NoProfile -ExecutionPolicy Bypass -Command "winget install -e --id 9njhk44ttksx --accept-package-agreements --accept-source-agreements --silent"
+if "%choice%"=="10" powershell -NoProfile -ExecutionPolicy Bypass -Command "winget install -e --id 9p3395vx91nr --accept-package-agreements --accept-source-agreements --silent"
+if "%choice%"=="11" powershell -NoProfile -ExecutionPolicy Bypass -Command "winget install -e --id 9n4p75dxl6fg --accept-package-agreements --accept-source-agreements --silent"
+if "%choice%"=="12" powershell -NoProfile -ExecutionPolicy Bypass -Command "winget install -e --id 9p70w9pmz22k --accept-package-agreements --accept-source-agreements --silent"
 pause
 goto msstore_soft
 
@@ -333,6 +332,96 @@ if "%choice%"=="13" goto install_programK13
 
 pause
 goto microsoft_app
+
+
+:microsoft_net
+cls
+echo -------------------------------------------------------------------
+echo [1]  Microsoft Dot Net Framework 3.5
+echo [2]  Microsoft Dot Net Framework 4.5.1
+echo [3]  Microsoft Dot Net Framework 4.5.2
+echo [4]  Microsoft Build of OpenJDK with Hotspot 11
+echo [5]  Microsoft Build of OpenJDK with Hotspot 16
+echo [6]  Microsoft Build of OpenJDK with Hotspot 17
+echo [7]  Microsoft Build of OpenJDK with Hotspot 21
+echo [8]  Microsoft Windows Desktop Runtime - 3 (x64)
+echo [9]  Microsoft Windows Desktop Runtime - 3 (x86)
+echo [10] Microsoft Windows Desktop Runtime - 5 (x64)
+echo [11] Microsoft Windows Desktop Runtime - 5 (x86)
+echo [12] Microsoft Windows Desktop Runtime - 6 (x64)
+echo [13] Microsoft Windows Desktop Runtime - 6 (x86)
+echo [14] Microsoft Visual C++ 2005 Redistributable (x86)
+echo [15] Microsoft Visual C++ 2005 Redistributable (x64)
+echo [16] Microsoft Visual C++ 2008 Redistributable (x86)
+echo [17] Microsoft Visual C++ 2008 Redistributable (x64)
+echo [18] Microsoft Visual C++ 2010 Redistributable (x86)
+echo [19] Microsoft Visual C++ 2010 Redistributable (x64)
+echo [20] Microsoft Visual C++ 2012 Redistributable (x86)
+echo [21] Microsoft Visual C++ 2012 Redistributable (x64)
+echo [22] Microsoft Visual C++ 2013 Redistributable (x86)
+echo [23] Microsoft Visual C++ 2013 Redistributable (x64)
+echo [24] Microsoft Visual C++ 2015+ Redistributable (x86)
+echo [25] Microsoft Visual C++ 2015+ Redistributable (x64)
+echo [26] Microsoft .NET Runtime 3.1
+echo [27] Microsoft .NET Runtime 5.0
+echo [28] Microsoft .NET Runtime 6.0
+echo [29] Microsoft .NET Runtime 7.0
+echo [30] Microsoft .NET Runtime 8.0
+echo [31] Microsoft .NET Runtime 9.0 Preview
+echo [32] Microsoft ASP.NET Core Hosting Bundle 3.1
+echo [33] Microsoft ASP.NET Core Hosting Bundle 5.0
+echo [34] Microsoft ASP.NET Core Hosting Bundle 6.0
+echo [35] Microsoft ASP.NET Core Hosting Bundle 7.0
+echo [36] Microsoft ASP.NET Core Hosting Bundle 8.0
+echo [37] Microsoft ASP.NET Core Hosting Bundle 9.0 Preview
+echo -------------------------------------------------------------------
+echo [0] Exit
+echo -------------------------------------------------------------------
+echo.
+echo -------------------------------------------------------------------
+set /p choice="Enter your choice (0,1,2,3...): "
+echo -------------------------------------------------------------------
+if "%choice%"=="0" goto othe_soft
+if "%choice%"=="1" choco install dotnet3.5 -y & goto menu_12
+if "%choice%"=="2" choco install dotnet4.5.1 -y & goto menu_12
+if "%choice%"=="3" choco install dotnet4.5.2 -y & goto menu_12
+if "%choice%"=="4" winget install Microsoft.OpenJDK.11 -e & goto menu_12
+if "%choice%"=="5" winget install Microsoft.OpenJDK.16 -e & goto menu_12
+if "%choice%"=="6" winget install Microsoft.OpenJDK.17 -e & goto menu_12
+if "%choice%"=="7" winget install Microsoft.OpenJDK.21 -e & goto menu_12
+if "%choice%"=="8" winget install Microsoft.dotnetRuntime.3-x64 -e & goto menu_12
+if "%choice%"=="9" winget install Microsoft.dotnetRuntime.3-x86 -e & goto menu_12
+if "%choice%"=="10" winget install Microsoft.dotnetRuntime.5-x64 -e & goto menu_12
+if "%choice%"=="11" winget install Microsoft.dotnetRuntime.5-x86 -e & goto menu_12
+if "%choice%"=="12" winget install Microsoft.dotnetRuntime.6-x64 -e & goto menu_12
+if "%choice%"=="13" winget install Microsoft.dotnetRuntime.6-x86 -e & goto menu_12
+if "%choice%"=="14" winget install Microsoft.VCRedist.2005.x86 -e & goto menu_12
+if "%choice%"=="15" winget install Microsoft.VCRedist.2005.x64 -e & goto menu_12
+if "%choice%"=="16" winget install Microsoft.VCRedist.2008.x86 -e & goto menu_12
+if "%choice%"=="17" winget install Microsoft.VCRedist.2008.x64 -e & goto menu_12
+if "%choice%"=="18" winget install Microsoft.VCRedist.2010.x86 -e & goto menu_12
+if "%choice%"=="19" winget install Microsoft.VCRedist.2010.x64 -e & goto menu_12
+if "%choice%"=="20" winget install Microsoft.VCRedist.2012.x86 -e & goto menu_12
+if "%choice%"=="21" winget install Microsoft.VCRedist.2012.x64 -e & goto menu_12
+if "%choice%"=="22" winget install Microsoft.VCRedist.2013.x86 -e & goto menu_12
+if "%choice%"=="23" winget install Microsoft.VCRedist.2013.x64 -e & goto menu_12
+if "%choice%"=="24" winget install Microsoft.VCRedist.2015+.x86 -e & goto menu_12
+if "%choice%"=="25" winget install Microsoft.VCRedist.2015+.x64 -e & goto menu_12
+if "%choice%"=="26" winget install Microsoft.DotNet.Runtime.3_1 -e & goto menu_12
+if "%choice%"=="27" winget install Microsoft.DotNet.Runtime.5 -e & goto menu_12
+if "%choice%"=="28" winget install Microsoft.DotNet.Runtime.6 -e & goto menu_12
+if "%choice%"=="29" winget install Microsoft.DotNet.Runtime.7 -e & goto menu_12
+if "%choice%"=="30" winget install Microsoft.DotNet.Runtime.8 -e & goto menu_12
+if "%choice%"=="31" winget install Microsoft.DotNet.Runtime.Preview -e & goto menu_12
+if "%choice%"=="32" winget install Microsoft.DotNet.HostingBundle.3_1 -e & goto menu_12
+if "%choice%"=="33" winget install Microsoft.DotNet.HostingBundle.5 -e & goto menu_12
+if "%choice%"=="34" winget install Microsoft.DotNet.HostingBundle.6 -e & goto menu_12
+if "%choice%"=="35" winget install Microsoft.DotNet.HostingBundle.7 -e & goto menu_12
+if "%choice%"=="36" winget install Microsoft.DotNet.HostingBundle.8 -e & goto menu_12
+if "%choice%"=="37" winget install Microsoft.DotNet.HostingBundle.Preview -e & goto menu_12
+
+pause
+goto microsoft_net
 
 
 
