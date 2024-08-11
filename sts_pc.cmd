@@ -883,23 +883,23 @@ goto ShowMenu
 
 
 
+
 :install_office
 cls
 echo -------------------------------------------------------------------
 echo      Setup Microsoft Office Installer EXE       
 echo -------------------------------------------------------------------
-echo [1] Microsoft Office Enterprise 2007
-echo [2] Microsoft Office Professional 2013
-echo [3] Microsoft Office ProPlus 2016
-echo [4] Microsoft Office ProPlus 2019
-echo [5] Microsoft Office ProPlus 2021
-echo [6] Microsoft Office Std 2013
-echo [7] Microsoft Office Business 365
-echo [8] Microsoft Office ProPlus 365
-echo [9] Microsoft Visio Pro 365
-echo [10] Microsoft Project Pro 365
+echo [1]  *Std 2013*                [6]  Enterprise 2007
+echo [2]  Business 365
+echo [3]  ProPlus 365
+echo [4]  Visio Pro 365
+echo [5]  Project Pro 365
 echo -------------------------------------------------------------------
-echo [99] Microsoft Activation Scripts
+echo [11] ProPlus 2016
+echo [12] ProPlus 2019
+echo [13] ProPlus 2021
+echo -------------------------------------------------------------------
+echo [22] Microsoft Activation Scripts
 echo -------------------------------------------------------------------
 echo [0] Exit
 echo -------------------------------------------------------------------
@@ -908,31 +908,31 @@ set /p choice="Enter your choice (0,1,2,3...): "
 ::---------------------------------------------------------------------------------------------------------------------------
 if "%choice%"=="0" goto ShowMenu
 
-if "%choice%"=="1" (
-cls
-echo ========================================================================================================================
-echo Key	KGFVY-7733B-8WCK9-KTG64-BC7D8
-echo ========================================================================================================================
-start /wait "" "\\192.168.18.2\setup\source\office\office2007Enterprise_tr\Setup.exe"
-pause
-)
-if "%choice%"=="2" start /wait "" "\\192.168.18.2\setup\source\office\office2013Pro_tr\setup64.exe"
-if "%choice%"=="3" start /wait "" "\\192.168.18.2\setup\source\office\office2016ProPlus_tr\setup.exe"
-if "%choice%"=="4" start /wait "" "\\192.168.18.2\setup\source\office\office2019ProPlus_tr\Setup64.exe"
-if "%choice%"=="5" start /wait "" "\\192.168.18.2\setup\source\office\office2021ProPlus_tr\Setup64.exe"
-if "%choice%"=="6" start /wait "" "\\192.168.18.2\setup\source\office\office2013Std_tr\setup.exe"
-if "%choice%"=="7" start /wait "" "\\192.168.18.2\setup\source\office\office365Business_tr\Setup64.exe"
-if "%choice%"=="8" start /wait "" "\\192.168.18.2\setup\source\office\office365ProPlus_tr\Setup64.exe"
-if "%choice%"=="9" start /wait "" "\\192.168.18.2\setup\source\office\office365VisioPro_tr\Setup64.exe"
-if "%choice%"=="10" start /wait "" "\\192.168.18.2\setup\source\office\office365ProjectPro_tr\Setup64.exe"
+if "%choice%"=="1" start /wait "" "\\192.168.18.2\setup\source\office\office2013Std_tr\setup.exe"
+if "%choice%"=="2" start /wait "" "\\192.168.18.2\setup\source\office\office365Business_tr\Setup64.exe"
+if "%choice%"=="3" start /wait "" "\\192.168.18.2\setup\source\office\office365ProPlus_tr\Setup64.exe"
+if "%choice%"=="4" start /wait "" "\\192.168.18.2\setup\source\office\office365VisioPro_tr\Setup64.exe"
+if "%choice%"=="5" start /wait "" "\\192.168.18.2\setup\source\office\office365ProjectPro_tr\Setup64.exe"
+if "%choice%"=="6" goto enterprise2007
+if "%choice%"=="11" start /wait "" "\\192.168.18.2\setup\source\office\office2016ProPlus_tr\setup.exe"
+if "%choice%"=="12" start /wait "" "\\192.168.18.2\setup\source\office\office2019ProPlus_tr\Setup64.exe"
+if "%choice%"=="13" start /wait "" "\\192.168.18.2\setup\source\office\office2021ProPlus_tr\Setup64.exe"
+
+
 ::---------------------------------------------------------------------------------------------------------------------------
-if "%choice%"=="99" powershell -NoProfile -ExecutionPolicy Bypass -Command "$ProgressPreference='SilentlyContinue'; [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; irm \\192.168.18.2\setup\source\massgrave_mas.ps1 | iex"
-
-
+if "%choice%"=="22" powershell -NoProfile -ExecutionPolicy Bypass -Command "$ProgressPreference='SilentlyContinue'; [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; irm \\192.168.18.2\setup\source\massgrave_mas.ps1 | iex"
 
 pause
 goto install_office
 
+enterprise2007:
+cls
+echo =====================================
+echo Key	KGFVY-7733B-8WCK9-KTG64-BC7D8
+echo =====================================
+start /wait "" "\\192.168.18.2\setup\source\office\office2007Enterprise_tr\Setup.exe"
+pause
+goto install_office
 
 
 
@@ -965,8 +965,6 @@ goto ShowMenu
 
 :fix1
 cls
-echo -------------------------------------------------------------------
-echo ---            --- * System File Fixed * ---                    ---
 echo -------------------------------------------------------------------
 echo [1] System File Checker
 echo [2] DISM Scan Health
@@ -1032,8 +1030,6 @@ goto fix1
 
 :fix2
 cls
-echo -------------------------------------------------------------------
-echo ---             --- * Windows Fixed * ---                       ---
 echo -------------------------------------------------------------------
 echo [1] Disable User Account Control
 echo [2] Enable User Account Control
@@ -1131,18 +1127,16 @@ goto fix2
 
 :fix3
 cls
-echo -------------------------------------------------------------------
-echo ---            --- * Windows Fixed * ---                        ---
-echo -------------------------------------------------------------------
+echo -------------------------------------------------------------------------------------------
 echo [1] Disabling 'Accounts: Limit local account use of blank passwords to console logon only'
 echo [2] Enabling 'Launching applications and unsafe files' in Internet Options
 echo [3] Enable Administrator Account
 echo [4] Set Administrator Password ( admin )
 echo [5] Enabling Remote Desktop for Administrator
 echo [6] User Creation ( scan )
-echo -------------------------------------------------------------------
+echo -------------------------------------------------------------------------------------------
 echo [0] Exit
-echo -------------------------------------------------------------------
+echo -------------------------------------------------------------------------------------------
 set /p choice="Enter your choice (0,1,2,3...) "
 
 if "%choice%"=="0" goto fix_menu
@@ -1203,144 +1197,179 @@ goto fix3
 :fix4
 cls
 echo -------------------------------------------------------------------
-echo ---            --- * Outlook Fixed * ---                        ---
-echo -------------------------------------------------------------------
-echo [1] Outlook 2007 - 12.0 ost-pst 100gb
-echo [2] Outlook 2007 - 12.0 ost-pst max
-echo [3] Outlook 2010 - 14.0 ost-pst 100gb
-echo [4] Outlook 2010 - 14.0 ost-pst max
-echo [5] Outlook 2013 - 15.0 ost-pst 100gb
-echo [6] Outlook 2013 - 15.0 ost-pst max
-echo [7] Outlook 2016-2019-2021-365 - 16.0 ost-pst 100gb
-echo [8] Outlook 2016-2019-2021-365 - 16.0 ost-pst max
-echo [9] Outlook 2007 - 12.0 MaximumAttachmentSize
+echo [1]  Outlook 2007 - 12.0 ost-pst 100gb
+echo [2]  Outlook 2007 - 12.0 ost-pst max
+echo [3]  Outlook 2010 - 14.0 ost-pst 100gb
+echo [4]  Outlook 2010 - 14.0 ost-pst max
+echo [5]  *Outlook 2013* - 15.0 ost-pst 100gb*
+echo [6]  *Outlook 2013* - 15.0 ost-pst max*
+echo [7]  Outlook 2016-2019-2021-365 - 16.0 ost-pst 100gb
+echo [8]  Outlook 2016-2019-2021-365 - 16.0 ost-pst max
+echo [9]  Outlook 2007 - 12.0 MaximumAttachmentSize
 echo [10] Outlook 2010 - 14.0 MaximumAttachmentSize
-echo [11] Outlook 2013 - 15.0 MaximumAttachmentSize
+echo [11] *Outlook 2013* - 15.0 MaximumAttachmentSize*
 echo [12] Outlook 2016-2019-2021-365 - 16.0 MaximumAttachmentSize
 echo -------------------------------------------------------------------
 echo [0] Back Menu
 echo -------------------------------------------------------------------
 set /p choice="Enter your choice (0,1,2,3...) "
 
+::100 GB (102400 MB) için
+::Desimal Değer: 102400
+::Onaltılı (Hexadecimal) Değer: 0x18A80
+
+::5 GB (5120 MB) için
+::Desimal Değer: 5120
+::Onaltılı (Hexadecimal) Değer: 0x1400
+
+::500 GB (512000 MB)
+::Desimal: 512000
+::Onaltılı: 0x7D000
+
+
 if "%choice%"=="0" goto fix_menu
 if "%choice%"=="1" goto SetOutlook2007_100gb
-if "%choice%"=="2" goto SetOutlook2007_Max
+if "%choice%"=="2" goto SetOutlook2007500gb
 if "%choice%"=="3" goto SetOutlook2010_100gb
-if "%choice%"=="4" goto SetOutlook2010_Max
+if "%choice%"=="4" goto SetOutlook2010500gb
 if "%choice%"=="5" goto SetOutlook2013_100gb
-if "%choice%"=="6" goto SetOutlook2013_Max
+if "%choice%"=="6" goto SetOutlook2013500gb
 if "%choice%"=="7" goto SetOutlook2016_100gb
-if "%choice%"=="8" goto SetOutlook2016_Max
-if "%choice%"=="9" goto SetOutlook2007_MaxAttachment
-if "%choice%"=="10" goto SetOutlook2010_MaxAttachment
-if "%choice%"=="11" goto SetOutlook2013_MaxAttachment
-if "%choice%"=="12" goto SetOutlook2016_MaxAttachment
+if "%choice%"=="8" goto SetOutlook2016500gb
+if "%choice%"=="9" goto SetOutlook2007500gbAttachment
+if "%choice%"=="10" goto SetOutlook2010500gbAttachment
+if "%choice%"=="11" goto SetOutlook2013500gbAttachment
+if "%choice%"=="12" goto SetOutlook2016500gbAttachment
 goto fix4
 
 :SetOutlook2007_100gb
 echo Setting Outlook 2007 - 12.0 ost-pst 100gb...
-reg add "HKCU\Software\Microsoft\Office\12.0\Outlook\PST" /v WarmLargeFileSize /t REG_DWORD /d 6144 /f
-reg add "HKCU\Software\Microsoft\Office\12.0\Outlook\PST" /v MaxLargeFileSize /t REG_DWORD /d 6144 /f
-reg add "HKCU\Software\Microsoft\Office\12.0\Outlook\OST" /v WarmLargeFileSize /t REG_DWORD /d 6144 /f
-reg add "HKCU\Software\Microsoft\Office\12.0\Outlook\OST" /v MaxLargeFileSize /t REG_DWORD /d 6144 /f
+reg add "HKCU\Software\Microsoft\Office\12.0\Outlook\PST" /v WarmLargeFileSize /t REG_DWORD /d 102400 /f
+reg add "HKCU\Software\Microsoft\Office\12.0\Outlook\PST" /v MaxLargeFileSize /t REG_DWORD /d 102400 /f
+reg add "HKCU\Software\Microsoft\Office\12.0\Outlook\OST" /v WarmLargeFileSize /t REG_DWORD /d 102400 /f
+reg add "HKCU\Software\Microsoft\Office\12.0\Outlook\OST" /v MaxLargeFileSize /t REG_DWORD /d 102400 /f
 echo Configuration for Outlook 2007 - 12.0 set to 100gb.
 pause 
 goto fix4
 
-:SetOutlook2007_Max
-echo Setting Outlook 2007 - 12.0 ost-pst max...
-reg add "HKCU\Software\Microsoft\Office\12.0\Outlook\PST" /v WarmLargeFileSize /t REG_DWORD /d 4080214766 /f
-reg add "HKCU\Software\Microsoft\Office\12.0\Outlook\PST" /v MaxLargeFileSize /t REG_DWORD /d 4294967295 /f
-reg add "HKCU\Software\Microsoft\Office\12.0\Outlook\OST" /v WarmLargeFileSize /t REG_DWORD /d 4080214766 /f
-reg add "HKCU\Software\Microsoft\Office\12.0\Outlook\OST" /v MaxLargeFileSize /t REG_DWORD /d 4294967295 /f
+:SetOutlook2007500gb
+echo Setting Outlook 2007 - 12.0 ost-pst 500gb...
+reg add "HKCU\Software\Microsoft\Office\12.0\Outlook\PST" /v WarmLargeFileSize /t REG_DWORD /d 512000 /f
+reg add "HKCU\Software\Microsoft\Office\12.0\Outlook\PST" /v MaxLargeFileSize /t REG_DWORD /d 512000 /f
+reg add "HKCU\Software\Microsoft\Office\12.0\Outlook\OST" /v WarmLargeFileSize /t REG_DWORD /d 512000 /f
+reg add "HKCU\Software\Microsoft\Office\12.0\Outlook\OST" /v MaxLargeFileSize /t REG_DWORD /d 512000 /f
 echo Configuration for Outlook 2007 - 12.0 set to max.
 pause 
 goto fix4
 
 :SetOutlook2010_100gb
 echo Setting Outlook 2010 - 14.0 ost-pst 100gb...
-reg add "HKCU\Software\Microsoft\Office\14.0\Outlook\PST" /v WarmLargeFileSize /t REG_DWORD /d 6144 /f
-reg add "HKCU\Software\Microsoft\Office\14.0\Outlook\PST" /v MaxLargeFileSize /t REG_DWORD /d 6144 /f
-reg add "HKCU\Software\Microsoft\Office\14.0\Outlook\OST" /v WarmLargeFileSize /t REG_DWORD /d 6144 /f
-reg add "HKCU\Software\Microsoft\Office\14.0\Outlook\OST" /v MaxLargeFileSize /t REG_DWORD /d 6144 /f
+reg add "HKCU\Software\Microsoft\Office\14.0\Outlook\PST" /v WarmLargeFileSize /t REG_DWORD /d 102400 /f
+reg add "HKCU\Software\Microsoft\Office\14.0\Outlook\PST" /v MaxLargeFileSize /t REG_DWORD /d 102400 /f
+reg add "HKCU\Software\Microsoft\Office\14.0\Outlook\OST" /v WarmLargeFileSize /t REG_DWORD /d 102400 /f
+reg add "HKCU\Software\Microsoft\Office\14.0\Outlook\OST" /v MaxLargeFileSize /t REG_DWORD /d 102400 /f
 echo Configuration for Outlook 2010 - 14.0 set to 100gb.
 pause 
 goto fix4
 
-:SetOutlook2010_Max
-echo Setting Outlook 2010 - 14.0 ost-pst max...
-reg add "HKCU\Software\Microsoft\Office\14.0\Outlook\PST" /v WarmLargeFileSize /t REG_DWORD /d 4080214766 /f
-reg add "HKCU\Software\Microsoft\Office\14.0\Outlook\PST" /v MaxLargeFileSize /t REG_DWORD /d 4294967295 /f
-reg add "HKCU\Software\Microsoft\Office\14.0\Outlook\OST" /v WarmLargeFileSize /t REG_DWORD /d 4080214766 /f
-reg add "HKCU\Software\Microsoft\Office\14.0\Outlook\OST" /v MaxLargeFileSize /t REG_DWORD /d 4294967295 /f
+:SetOutlook2010500gb
+echo Setting Outlook 2010 - 14.0 ost-pst 500gb...
+reg add "HKCU\Software\Microsoft\Office\14.0\Outlook\PST" /v WarmLargeFileSize /t REG_DWORD /d 512000 /f
+reg add "HKCU\Software\Microsoft\Office\14.0\Outlook\PST" /v MaxLargeFileSize /t REG_DWORD /d 512000 /f
+reg add "HKCU\Software\Microsoft\Office\14.0\Outlook\OST" /v WarmLargeFileSize /t REG_DWORD /d 512000 /f
+reg add "HKCU\Software\Microsoft\Office\14.0\Outlook\OST" /v MaxLargeFileSize /t REG_DWORD /d 512000 /f
 echo Configuration for Outlook 2010 - 14.0 set to max.
 pause 
 goto fix4
 
 :SetOutlook2013_100gb
 echo Setting Outlook 2013 - 15.0 ost-pst 100gb...
-reg add "HKCU\Software\Microsoft\Office\15.0\Outlook\PST" /v WarmLargeFileSize /t REG_DWORD /d 6144 /f
-reg add "HKCU\Software\Microsoft\Office\15.0\Outlook\PST" /v MaxLargeFileSize /t REG_DWORD /d 6144 /f
-reg add "HKCU\Software\Microsoft\Office\15.0\Outlook\OST" /v WarmLargeFileSize /t REG_DWORD /d 6144 /f
-reg add "HKCU\Software\Microsoft\Office\15.0\Outlook\OST" /v MaxLargeFileSize /t REG_DWORD /d 6144 /f
+reg add "HKCU\Software\Microsoft\Office\15.0\Outlook\PST" /v MaxLargeFileSize /t REG_DWORD /d 102400 /f
+reg add "HKCU\Software\Microsoft\Office\15.0\Outlook\PST" /v WarmLargeFileSize /t REG_DWORD /d 102400 /f
+reg add "HKCU\Software\Microsoft\Office\15.0\Outlook\PST" /v MaxFileSize /t REG_DWORD /d 5120 /f
+reg add "HKCU\Software\Microsoft\Office\15.0\Outlook\PST" /v WarnFileSize /t REG_DWORD /d 5120 /f
+
+reg add "HKCU\Software\Microsoft\Office\15.0\Outlook\OST" /v MaxLargeFileSize /t REG_DWORD /d 102400 /f
+reg add "HKCU\Software\Microsoft\Office\15.0\Outlook\OST" /v WarmLargeFileSize /t REG_DWORD /d 102400 /f
+reg add "HKCU\Software\Microsoft\Office\15.0\Outlook\OST" /v MaxFileSize /t REG_DWORD /d 5120 /f
+reg add "HKCU\Software\Microsoft\Office\15.0\Outlook\OST" /v WarnFileSize /t REG_DWORD /d 5120 /f
 echo Configuration for Outlook 2013 - 15.0 set to 100gb.
 pause 
 goto fix4
 
-:SetOutlook2013_Max
-echo Setting Outlook 2013 - 15.0 ost-pst max...
-reg add "HKCU\Software\Microsoft\Office\15.0\Outlook\PST" /v WarmLargeFileSize /t REG_DWORD /d 4080214766 /f
-reg add "HKCU\Software\Microsoft\Office\15.0\Outlook\PST" /v MaxLargeFileSize /t REG_DWORD /d 4294967295 /f
-reg add "HKCU\Software\Microsoft\Office\15.0\Outlook\OST" /v WarmLargeFileSize /t REG_DWORD /d 4080214766 /f
-reg add "HKCU\Software\Microsoft\Office\15.0\Outlook\OST" /v MaxLargeFileSize /t REG_DWORD /d 4294967295 /f
+:SetOutlook2013500gb
+echo Setting Outlook 2013 - 15.0 ost-pst 500gb...
+reg add "HKCU\Software\Microsoft\Office\15.0\Outlook\PST" /v MaxLargeFileSize /t REG_DWORD /d 512000 /f
+reg add "HKCU\Software\Microsoft\Office\15.0\Outlook\PST" /v WarmLargeFileSize /t REG_DWORD /d 512000 /f
+reg add "HKCU\Software\Microsoft\Office\15.0\Outlook\PST" /v MaxFileSize /t REG_DWORD /d 5120 /f
+reg add "HKCU\Software\Microsoft\Office\15.0\Outlook\PST" /v WarnFileSize /t REG_DWORD /d 5120 /f
+
+reg add "HKCU\Software\Microsoft\Office\15.0\Outlook\OST" /v MaxLargeFileSize /t REG_DWORD /d 512000 /f
+reg add "HKCU\Software\Microsoft\Office\15.0\Outlook\OST" /v WarmLargeFileSize /t REG_DWORD /d 512000 /f
+reg add "HKCU\Software\Microsoft\Office\15.0\Outlook\OST" /v MaxFileSize /t REG_DWORD /d 5120 /f
+reg add "HKCU\Software\Microsoft\Office\15.0\Outlook\OST" /v WarnFileSize /t REG_DWORD /d 5120 /f
+
 echo Configuration for Outlook 2013 - 15.0 set to max.
 pause 
 goto fix4
 
 :SetOutlook2016_100gb
 echo Setting Outlook 2016-2019-2021-365 - 16.0 ost-pst 100gb...
-reg add "HKCU\Software\Microsoft\Office\16.0\Outlook\PST" /v WarmLargeFileSize /t REG_DWORD /d 6144 /f
-reg add "HKCU\Software\Microsoft\Office\16.0\Outlook\PST" /v MaxLargeFileSize /t REG_DWORD /d 6144 /f
-reg add "HKCU\Software\Microsoft\Office\16.0\Outlook\OST" /v WarmLargeFileSize /t REG_DWORD /d 6144 /f
-reg add "HKCU\Software\Microsoft\Office\16.0\Outlook\OST" /v MaxLargeFileSize /t REG_DWORD /d 6144 /f
+reg add "HKCU\Software\Microsoft\Office\16.0\Outlook\PST" /v WarmLargeFileSize /t REG_DWORD /d 102400 /f
+reg add "HKCU\Software\Microsoft\Office\16.0\Outlook\PST" /v MaxLargeFileSize /t REG_DWORD /d 102400 /f
+reg add "HKCU\Software\Microsoft\Office\16.0\Outlook\PST" /v MaxFileSize /t REG_DWORD /d 5120 /f
+reg add "HKCU\Software\Microsoft\Office\16.0\Outlook\PST" /v WarnFileSize /t REG_DWORD /d 5120 /f
+
+
+reg add "HKCU\Software\Microsoft\Office\16.0\Outlook\OST" /v WarmLargeFileSize /t REG_DWORD /d 102400 /f
+reg add "HKCU\Software\Microsoft\Office\16.0\Outlook\OST" /v MaxLargeFileSize /t REG_DWORD /d 102400 /f
+reg add "HKCU\Software\Microsoft\Office\16.0\Outlook\OST" /v MaxFileSize /t REG_DWORD /d 5120 /f
+reg add "HKCU\Software\Microsoft\Office\16.0\Outlook\OST" /v WarnFileSize /t REG_DWORD /d 5120 /f
+
 echo Configuration for Outlook 2016-2019-2021-365 - 16.0 set to 100gb.
 pause 
 goto fix4
 
-:SetOutlook2016_Max
-echo Setting Outlook 2016-2019-2021-365 - 16.0 ost-pst max...
-reg add "HKCU\Software\Microsoft\Office\16.0\Outlook\PST" /v WarmLargeFileSize /t REG_DWORD /d 4080214766 /f
-reg add "HKCU\Software\Microsoft\Office\16.0\Outlook\PST" /v MaxLargeFileSize /t REG_DWORD /d 4294967295 /f
-reg add "HKCU\Software\Microsoft\Office\16.0\Outlook\OST" /v WarmLargeFileSize /t REG_DWORD /d 4080214766 /f
-reg add "HKCU\Software\Microsoft\Office\16.0\Outlook\OST" /v MaxLargeFileSize /t REG_DWORD /d 4294967295 /f
+:SetOutlook2016500gb
+echo Setting Outlook 2016-2019-2021-365 - 16.0 ost-pst 500gb...
+reg add "HKCU\Software\Microsoft\Office\16.0\Outlook\PST" /v MaxLargeFileSize /t REG_DWORD /d 512000 /f
+reg add "HKCU\Software\Microsoft\Office\16.0\Outlook\PST" /v WarmLargeFileSize /t REG_DWORD /d 512000 /f
+reg add "HKCU\Software\Microsoft\Office\16.0\Outlook\PST" /v MaxFileSize /t REG_DWORD /d 5120 /f
+reg add "HKCU\Software\Microsoft\Office\16.0\Outlook\PST" /v WarnFileSize /t REG_DWORD /d 5120 /f
+
+reg add "HKCU\Software\Microsoft\Office\16.0\Outlook\OST" /v MaxLargeFileSize /t REG_DWORD /d 512000 /f
+reg add "HKCU\Software\Microsoft\Office\16.0\Outlook\OST" /v WarmLargeFileSize /t REG_DWORD /d 512000 /f
+reg add "HKCU\Software\Microsoft\Office\16.0\Outlook\OST" /v MaxFileSize /t REG_DWORD /d 5120 /f
+reg add "HKCU\Software\Microsoft\Office\16.0\Outlook\OST" /v WarnFileSize /t REG_DWORD /d 5120 /f
+
 echo Configuration for Outlook 2016-2019-2021-365 - 16.0 set to max.
 pause 
 goto fix4
 
-:SetOutlook2007_MaxAttachment
+:SetOutlook2007500gbAttachment
 echo Setting Outlook 2007 - 12.0 MaximumAttachmentSize...
-reg add "HKCU\Software\Microsoft\Office\12.0\Outlook\Preferences" /v MaximumAttachmentSize /t REG_DWORD /d 198656 /f
+reg add "HKCU\Software\Microsoft\Office\12.0\Outlook\Preferences" /v MaximumAttachmentSize /t REG_DWORD /d 204800 /f
 echo MaximumAttachmentSize set for Outlook 2007 - 12.0.
 pause 
 goto fix4
 
-:SetOutlook2010_MaxAttachment
+:SetOutlook2010500gbAttachment
 echo Setting Outlook 2010 - 14.0 MaximumAttachmentSize...
-reg add "HKCU\Software\Microsoft\Office\14.0\Outlook\Preferences" /v MaximumAttachmentSize /t REG_DWORD /d 198656 /f
+reg add "HKCU\Software\Microsoft\Office\14.0\Outlook\Preferences" /v MaximumAttachmentSize /t REG_DWORD /d 204800 /f
 echo MaximumAttachmentSize set for Outlook 2010 - 14.0.
 pause 
 goto fix4
 
-:SetOutlook2013_MaxAttachment
+:SetOutlook2013500gbAttachment
 echo Setting Outlook 2013 - 15.0 MaximumAttachmentSize...
-reg add "HKCU\Software\Microsoft\Office\15.0\Outlook\Preferences" /v MaximumAttachmentSize /t REG_DWORD /d 198656 /f
+reg add "HKCU\Software\Microsoft\Office\15.0\Outlook\Preferences" /v MaximumAttachmentSize /t REG_DWORD /d 204800 /f
 echo MaximumAttachmentSize set for Outlook 2013 - 15.0.
 pause 
 goto fix4
 
-:SetOutlook2016_MaxAttachment
+:SetOutlook2016500gbAttachment
 echo Setting Outlook 2016-2019-2021-365 - 16.0 MaximumAttachmentSize...
-reg add "HKCU\Software\Microsoft\Office\16.0\Outlook\Preferences" /v MaximumAttachmentSize /t REG_DWORD /d 198656 /f
+reg add "HKCU\Software\Microsoft\Office\16.0\Outlook\Preferences" /v MaximumAttachmentSize /t REG_DWORD /d 204800 /f
 echo MaximumAttachmentSize set for Outlook 2016-2019-2021-365 - 16.0.
 pause 
 goto fix4
@@ -1349,10 +1378,9 @@ goto fix4
 
 
 
+
 :fix5
-cls
-echo -------------------------------------------------------------------
-echo                   Windows Update Settings Menu                   
+cls      
 echo -------------------------------------------------------------------
 echo 1. Disable All Updates
 echo 2. Enable Only Security Updates
@@ -1458,9 +1486,7 @@ goto fix5
 
 
 :fix6
-cls
-echo -------------------------------------------------------------------
-echo                       Power Plan Settings Menu                   
+cls                  
 echo -------------------------------------------------------------------
 echo 1. Balanced
 echo 2. High Performance
